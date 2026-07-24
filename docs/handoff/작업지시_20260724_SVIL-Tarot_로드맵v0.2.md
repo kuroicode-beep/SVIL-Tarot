@@ -47,7 +47,7 @@ v0.1 MVP(배우기·스프레드·실전·AI·소울·TTS·히스토리)를 유�
 - [x] 실전/AI/소울에서 상단 저장으로 IndexedDB 기록 가능
 - [x] 기록 초기화 후 히스토리 비움
 - [x] `npm run build` 성공
-- [ ] origin main 푸시, VERSION=0.2.0
+- [x] origin main 푸시, VERSION=0.2.0
 
 ## 비범위
 
