@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import spreads from '../data/spreads.json'
 import { drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
 import { SpreadCards } from '../components/TarotCardView'
@@ -18,9 +18,35 @@ export function PracticePage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
-  const { speak, setLastSpeakText, ollamaOk } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
+  const stateRef = useRef({ cards, note, aiText, spread })
+  stateRef.current = { cards, note, aiText, spread }
+
+  const onSave = async () => {
+    const s = stateRef.current
+    if (!s.cards.length) {
+      setSaveMessage(t('save_none'))
+      return
+    }
+    await saveHistory({
+      kind: 'practice',
+      title: `실전 · ${s.spread.nameKo}`,
+      cards: s.cards,
+      userNote: s.note,
+      aiText: s.aiText,
+      meta: { spreadId: s.spread.id },
+    })
+    const msg = t('save_ok')
+    setSavedMsg(msg)
+    setSaveMessage(msg)
+  }
+
+  useEffect(() => {
+    registerSaveHandler(() => onSave())
+    return () => registerSaveHandler(null)
+  }, [registerSaveHandler, t])
 
   const onDraw = () => {
     setAiText('')
@@ -44,23 +70,10 @@ export function PracticePage() {
     }
   }
 
-  const onSave = async () => {
-    if (!cards.length) return
-    await saveHistory({
-      kind: 'practice',
-      title: `실전 · ${spread.nameKo}`,
-      cards,
-      userNote: note,
-      aiText,
-      meta: { spreadId: spread.id },
-    })
-    setSavedMsg('저장됨 — 기록 메뉴에서 확인할 수 있습니다.')
-  }
-
   return (
     <main className="page">
-      <h1>실전 타로 보기</h1>
-      <p className="muted">카드를 뽑고 나의 해설을 쓴 뒤, 로컬 AI 조언을 받습니다.</p>
+      <h1>{t('home_practice')}</h1>
+      <p className="muted">{t('home_practice_hint')}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
@@ -113,7 +126,7 @@ export function PracticePage() {
               {busy ? 'AI 조언 생성 중…' : 'AI 조언 받기'}
             </button>
             <button type="button" className="btn" onClick={() => void onSave()}>
-              저장하기
+              {t('nav_save')}
             </button>
           </div>
         </>
@@ -135,7 +148,7 @@ export function PracticePage() {
                 void speak(aiText)
               }}
             >
-              읽어주기
+              {t('nav_tts')}
             </button>
           </div>
         </div>

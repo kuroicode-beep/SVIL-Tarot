@@ -1,4 +1,5 @@
 import { cardImageUrl, type DrawnCard, getCard } from '../lib/cards'
+import { useApp } from '../context/AppContext'
 
 export function TarotCardView({
   cardId,
@@ -12,21 +13,23 @@ export function TarotCardView({
   large?: boolean
 }) {
   const card = getCard(cardId)
+  const { t } = useApp()
+  const dir = isReversed ? t('reversed') : t('upright')
   return (
     <div className="spread-slot">
       {positionLabel && <div className="spread-slot__pos">{positionLabel}</div>}
       <img
         className={`card-img${isReversed ? ' card-img--reversed' : ''}`}
         src={cardImageUrl(card)}
-        alt={`${card.nameKo} ${isReversed ? '역방향' : '정방향'}`}
+        alt={`${card.nameKo} ${dir}`}
         style={large ? { maxWidth: 280 } : undefined}
       />
       <div style={{ marginTop: 8, fontWeight: 700 }}>{card.nameKo}</div>
       <div className="muted" style={{ fontSize: '0.9rem' }}>
         {card.nameEn}
       </div>
-      <span className="dir-label" aria-label={isReversed ? '역방향' : '정방향'}>
-        {isReversed ? '역방향' : '정방향'}
+      <span className="dir-label" aria-label={dir}>
+        {dir}
       </span>
     </div>
   )

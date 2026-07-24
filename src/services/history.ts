@@ -64,3 +64,8 @@ export async function deleteHistory(id: string): Promise<void> {
   const db = await getDb()
   await db.delete('history', id)
 }
+
+export async function clearHistory(): Promise<void> {
+  const db = await getDb()
+  await db.clear('history')
+}

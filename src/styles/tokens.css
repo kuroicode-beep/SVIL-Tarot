@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "KyoboHandwriting2019";
+  src: local("KyoboHandwriting2019"), local("교보손글씨2019");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LINESeedKR";
+  src: local("LINESeedKR"), local("LINE Seed Sans KR");
+  font-display: swap;
+}
+
 :root {
   --bg: #0d0d12;
   --surface: #16161d;
@@ -159,6 +171,35 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.home-page {
+  overflow: hidden;
+}
+
+.home-silhouette {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.12;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 90%);
+}
+
+.home-silhouette img {
+  width: min(80vw, 720px);
+  height: auto;
+  object-fit: contain;
+}
+
+.home-page > *:not(.home-silhouette) {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-title {
@@ -453,7 +494,12 @@ textarea.field {
   color: var(--text-sub);
 }
 
-.error-text {
+.save-banner-ok {
+  color: var(--positive);
+  font-weight: 700;
+}
+
+.save-banner-bad {
   color: var(--negative);
   font-weight: 700;
 }

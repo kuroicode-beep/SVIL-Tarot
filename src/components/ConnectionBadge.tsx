@@ -1,3 +1,5 @@
+import { useApp } from '../context/AppContext'
+
 export function ConnectionBadge({
   label,
   ok,
@@ -5,10 +7,11 @@ export function ConnectionBadge({
   label: string
   ok: boolean | null
 }) {
+  const { t } = useApp()
   if (ok === null) {
     return (
       <span className="status-badge status-badge--warn" role="status">
-        {label}: 확인 중
+        {label}: {t('status_checking')}
       </span>
     )
   }
@@ -17,7 +20,7 @@ export function ConnectionBadge({
       className={`status-badge ${ok ? 'status-badge--ok' : 'status-badge--bad'}`}
       role="status"
     >
-      {label}: {ok ? '연결됨' : '끊김'}
+      {label}: {ok ? t('status_ok') : t('status_bad')}
     </span>
   )
 }

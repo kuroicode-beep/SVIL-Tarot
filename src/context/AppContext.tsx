@@ -4,16 +4,25 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from 'react'
 import { checkOllama } from '../services/ollama'
 import { checkTts, listVoices, speakText, stopTts } from '../services/tts'
+import {
+  fontOptions,
+  translate,
+  type FontId,
+  type Locale,
+} from '../i18n'
 
 export type FontSize = 'sm' | 'md' | 'lg'
 
 type Settings = {
   fontSize: FontSize
+  fontId: FontId
+  locale: Locale
   ttsVoice: string
   ttsSpeed: number
 }
@@ -21,8 +30,11 @@ type Settings = {
 type AppContextValue = {
   settings: Settings
   setFontSize: (v: FontSize) => void
+  setFontId: (v: FontId) => void
+  setLocale: (v: Locale) => void
   setTtsVoice: (v: string) => void
   setTtsSpeed: (v: number) => void
+  t: (key: string) => string
   ollamaOk: boolean | null
   ttsOk: boolean | null
   voices: string[]
@@ -34,12 +46,18 @@ type AppContextValue = {
   enterFullscreen: () => Promise<void>
   lastSpeakText: string
   setLastSpeakText: (t: string) => void
+  registerSaveHandler: (fn: (() => Promise<void> | void) | null) => void
+  runSave: () => Promise<void>
+  saveMessage: string | null
+  setSaveMessage: (m: string | null) => void
 }
 
 const STORAGE_KEY = 'svil-tarot-settings'
 
 const defaults: Settings = {
   fontSize: 'md',
+  fontId: 'kyobo',
+  locale: 'ko',
   ttsVoice: 'default',
   ttsSpeed: 100,
 }
@@ -64,16 +82,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [speaking, setSpeaking] = useState(false)
   const [ttsError, setTtsError] = useState<string | null>(null)
   const [lastSpeakText, setLastSpeakText] = useState('')
+  const [saveMessage, setSaveMessage] = useState<string | null>(null)
+  const saveHandlerRef = useRef<(() => Promise<void> | void) | null>(null)
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
     document.documentElement.dataset.fontSize = settings.fontSize
+    document.documentElement.lang = settings.locale
+    const font = fontOptions.find((f) => f.id === settings.fontId) ?? fontOptions[1]
+    document.documentElement.style.setProperty('--font-ui', font.css)
   }, [settings])
 
   const refreshStatus = useCallback(async () => {
-    const [o, t, v] = await Promise.all([checkOllama(), checkTts(), listVoices()])
+    const [o, tts, v] = await Promise.all([checkOllama(), checkTts(), listVoices()])
     setOllamaOk(o)
-    setTtsOk(t)
+    setTtsOk(tts)
     setVoices(v)
   }, [])
 
@@ -83,7 +106,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return () => window.clearInterval(id)
   }, [refreshStatus])
 
+  const t = useCallback((key: string) => translate(settings.locale, key), [settings.locale])
+
   const setFontSize = (fontSize: FontSize) => setSettings((s) => ({ ...s, fontSize }))
+  const setFontId = (fontId: FontId) => setSettings((s) => ({ ...s, fontId }))
+  const setLocale = (locale: Locale) => setSettings((s) => ({ ...s, locale }))
   const setTtsVoice = (ttsVoice: string) => setSettings((s) => ({ ...s, ttsVoice }))
   const setTtsSpeed = (ttsSpeed: number) => setSettings((s) => ({ ...s, ttsSpeed }))
 
@@ -114,12 +141,28 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  const registerSaveHandler = useCallback((fn: (() => Promise<void> | void) | null) => {
+    saveHandlerRef.current = fn
+  }, [])
+
+  const runSave = useCallback(async () => {
+    setSaveMessage(null)
+    if (!saveHandlerRef.current) {
+      setSaveMessage(t('save_none'))
+      return
+    }
+    await saveHandlerRef.current()
+  }, [t])
+
   const value = useMemo(
     () => ({
       settings,
       setFontSize,
+      setFontId,
+      setLocale,
       setTtsVoice,
       setTtsSpeed,
+      t,
       ollamaOk,
       ttsOk,
       voices,
@@ -131,9 +174,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
       enterFullscreen,
       lastSpeakText,
       setLastSpeakText,
+      registerSaveHandler,
+      runSave,
+      saveMessage,
+      setSaveMessage,
     }),
     [
       settings,
+      t,
       ollamaOk,
       ttsOk,
       voices,
@@ -144,6 +192,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
       ttsError,
       enterFullscreen,
       lastSpeakText,
+      registerSaveHandler,
+      runSave,
+      saveMessage,
     ],
   )
 

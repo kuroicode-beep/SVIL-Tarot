@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import spreads from '../data/spreads.json'
 import { drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
 import { SpreadCards } from '../components/TarotCardView'
@@ -21,9 +21,35 @@ export function AiTarotPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
-  const { speak, setLastSpeakText, ollamaOk } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
+  const stateRef = useRef({ cards, result, mode, question, category, spreadId })
+  stateRef.current = { cards, result, mode, question, category, spreadId }
+
+  const onSave = async () => {
+    const s = stateRef.current
+    if (!s.cards.length) {
+      setSaveMessage(t('save_none'))
+      return
+    }
+    await saveHistory({
+      kind: 'ai',
+      title:
+        s.mode === 'question' ? `AI · ${s.question.slice(0, 40) || '질문'}` : `AI · ${s.category}`,
+      cards: s.cards,
+      aiText: s.result,
+      meta: { mode: s.mode, question: s.question, category: s.category, spreadId: s.spreadId },
+    })
+    const msg = t('save_ok')
+    setSavedMsg(msg)
+    setSaveMessage(msg)
+  }
+
+  useEffect(() => {
+    registerSaveHandler(() => onSave())
+    return () => registerSaveHandler(null)
+  }, [registerSaveHandler, t])
 
   const run = async () => {
     setBusy(true)
@@ -45,18 +71,6 @@ export function AiTarotPage() {
     } finally {
       setBusy(false)
     }
-  }
-
-  const onSave = async () => {
-    if (!cards.length) return
-    await saveHistory({
-      kind: 'ai',
-      title: mode === 'question' ? `AI · ${question.slice(0, 40) || '질문'}` : `AI · ${category}`,
-      cards,
-      aiText: result,
-      meta: { mode, question, category, spreadId },
-    })
-    setSavedMsg('저장됨 — 기록 메뉴에서 확인할 수 있습니다.')
   }
 
   return (

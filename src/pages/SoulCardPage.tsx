@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   calcSoulCard,
   soulCardDescriptions,
@@ -20,7 +20,40 @@ export function SoulCardPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
-  const { speak, setLastSpeakText, ollamaOk } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
+
+  const stateRef = useRef({ number, aiText, y, m, d })
+  stateRef.current = { number, aiText, y, m, d }
+
+  const onSave = async () => {
+    const s = stateRef.current
+    if (s.number == null) {
+      setSaveMessage(t('save_none'))
+      return
+    }
+    await saveHistory({
+      kind: 'soul',
+      title: `소울카드 · ${s.number} ${soulCardNames[s.number]}`,
+      cards: [
+        {
+          id: soulCardMajorIds[s.number],
+          nameKo: soulCardNames[s.number],
+          nameEn: soulCardNames[s.number],
+          isReversed: false,
+        },
+      ],
+      aiText: s.aiText || soulCardDescriptions[s.number],
+      meta: { number: s.number, birth: `${s.y}-${s.m}-${s.d}` },
+    })
+    const msg = t('save_ok')
+    setSavedMsg(msg)
+    setSaveMessage(msg)
+  }
+
+  useEffect(() => {
+    registerSaveHandler(() => onSave())
+    return () => registerSaveHandler(null)
+  }, [registerSaveHandler, t])
 
   const compute = () => {
     setError(null)
@@ -32,8 +65,7 @@ export function SoulCardPage() {
       setNumber(n)
       const name = soulCardNames[n]
       const base = soulCardDescriptions[n]
-      const text = `소울카드 ${n}번 ${name}. ${base}`
-      setLastSpeakText(text)
+      setLastSpeakText(`소울카드 ${n}번 ${name}. ${base}`)
     } catch (e) {
       setError(e instanceof Error ? e.message : '계산 실패')
       setNumber(null)
@@ -45,9 +77,11 @@ export function SoulCardPage() {
     setBusy(true)
     setError(null)
     try {
-      const name = soulCardNames[number]
-      const base = soulCardDescriptions[number]
-      const text = await soulCardAiExplain(number, name, base)
+      const text = await soulCardAiExplain(
+        number,
+        soulCardNames[number],
+        soulCardDescriptions[number],
+      )
       setAiText(text)
       setLastSpeakText(text)
     } catch (e) {
@@ -57,28 +91,9 @@ export function SoulCardPage() {
     }
   }
 
-  const onSave = async () => {
-    if (number == null) return
-    await saveHistory({
-      kind: 'soul',
-      title: `소울카드 · ${number} ${soulCardNames[number]}`,
-      cards: [
-        {
-          id: soulCardMajorIds[number],
-          nameKo: soulCardNames[number],
-          nameEn: soulCardNames[number],
-          isReversed: false,
-        },
-      ],
-      aiText: aiText || soulCardDescriptions[number],
-      meta: { number, birth: `${y}-${m}-${d}` },
-    })
-    setSavedMsg('저장됨 — 기록 메뉴에서 확인할 수 있습니다.')
-  }
-
   return (
     <main className="page">
-      <h1>소울카드</h1>
+      <h1>{t('home_soul')}</h1>
       <p className="muted">생년월일로 1~9 소울카드를 계산하고, 로컬 AI로 설명을 듣습니다.</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
@@ -154,7 +169,7 @@ export function SoulCardPage() {
                 void speak(text)
               }}
             >
-              기본 설명 읽어주기
+              {t('nav_tts')}
             </button>
             <button
               type="button"
@@ -165,7 +180,7 @@ export function SoulCardPage() {
               {busy ? 'AI 설명 생성 중…' : 'AI 설명 듣기'}
             </button>
             <button type="button" className="btn" onClick={() => void onSave()}>
-              저장하기
+              {t('nav_save')}
             </button>
           </div>
         </>
@@ -184,7 +199,7 @@ export function SoulCardPage() {
                 void speak(aiText)
               }}
             >
-              읽어주기
+              {t('nav_tts')}
             </button>
           </div>
         </div>

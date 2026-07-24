@@ -1,10 +1,21 @@
-import { ConnectionBadge } from '../components/ConnectionBadge'
 import { useApp, type FontSize } from '../context/AppContext'
+import { ConnectionBadge } from '../components/ConnectionBadge'
 import { OLLAMA_MODEL } from '../services/ollama'
+import { clearHistory } from '../services/history'
+import { fontOptions, localeLabels, type FontId, type Locale } from '../i18n'
+import { useState } from 'react'
 
-const VERSION = '0.1.0'
+const VERSION = '0.2.0'
 
 const changelog = [
+  {
+    version: '0.2.0',
+    lines: [
+      '글꼴·언어(5종) 설정, 상단 저장 버튼, 기록 초기화',
+      '홈 Star 실루엣 배경, 바탕화면 바로가기 스크립트',
+      '로드맵 v0.2 작업지시 확정',
+    ],
+  },
   {
     version: '0.1.0',
     lines: [
@@ -19,6 +30,8 @@ export function SettingsPage() {
   const {
     settings,
     setFontSize,
+    setFontId,
+    setLocale,
     setTtsVoice,
     setTtsSpeed,
     ollamaOk,
@@ -26,54 +39,89 @@ export function SettingsPage() {
     voices,
     refreshStatus,
     ttsError,
+    t,
   } = useApp()
+  const [cleared, setCleared] = useState(false)
 
   return (
     <main className="page">
-      <h1>설정</h1>
+      <h1>{t('settings_title')}</h1>
 
       <div className="panel">
-        <h2 style={{ marginTop: 0 }}>연결 상태</h2>
+        <h2 style={{ marginTop: 0 }}>{t('settings_conn')}</h2>
         <div className="btn-row">
           <ConnectionBadge label="Ollama" ok={ollamaOk} />
           <ConnectionBadge label="TTS" ok={ttsOk} />
           <button type="button" className="btn" onClick={() => void refreshStatus()}>
-            다시 확인
+            {t('settings_refresh')}
           </button>
         </div>
         <p className="muted mono" style={{ marginTop: 12 }}>
-          Ollama 모델: {OLLAMA_MODEL} · http://127.0.0.1:11434
+          Ollama: {OLLAMA_MODEL} · http://127.0.0.1:11434
         </p>
         <p className="muted mono">TTS: http://127.0.0.1:8765 (qwen3)</p>
         {ttsError && <p className="error-text">{ttsError}</p>}
       </div>
 
       <div className="panel">
-        <h2 style={{ marginTop: 0 }}>글자 크기</h2>
+        <h2 style={{ marginTop: 0 }}>{t('settings_lang')}</h2>
         <div className="chip-row">
-          {(
-            [
-              ['sm', '작음 16px'],
-              ['md', '보통 18px'],
-              ['lg', '큼 20px'],
-            ] as [FontSize, string][]
-          ).map(([v, label]) => (
+          {localeLabels.map((l) => (
             <button
-              key={v}
+              key={l.id}
               type="button"
-              className={`chip${settings.fontSize === v ? ' is-on' : ''}`}
-              onClick={() => setFontSize(v)}
+              className={`chip${settings.locale === l.id ? ' is-on' : ''}`}
+              onClick={() => setLocale(l.id as Locale)}
             >
-              {label}
+              {l.label}
             </button>
           ))}
         </div>
       </div>
 
       <div className="panel">
-        <h2 style={{ marginTop: 0 }}>TTS</h2>
+        <h2 style={{ marginTop: 0 }}>{t('settings_font')}</h2>
+        <div className="list-choice">
+          {fontOptions.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className={settings.fontId === f.id ? 'is-selected' : ''}
+              style={{ fontFamily: f.css }}
+              onClick={() => setFontId(f.id as FontId)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="panel">
+        <h2 style={{ marginTop: 0 }}>{t('settings_font_size')}</h2>
+        <div className="chip-row">
+          {(
+            [
+              ['sm', 'size_sm'],
+              ['md', 'size_md'],
+              ['lg', 'size_lg'],
+            ] as [FontSize, string][]
+          ).map(([v, key]) => (
+            <button
+              key={v}
+              type="button"
+              className={`chip${settings.fontSize === v ? ' is-on' : ''}`}
+              onClick={() => setFontSize(v)}
+            >
+              {t(key)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="panel">
+        <h2 style={{ marginTop: 0 }}>{t('settings_tts')}</h2>
         <label className="label" htmlFor="voice">
-          보이스
+          {t('settings_voice')}
         </label>
         <select
           id="voice"
@@ -89,7 +137,7 @@ export function SettingsPage() {
           ))}
         </select>
         <label className="label" htmlFor="speed" style={{ marginTop: 12 }}>
-          속도 {settings.ttsSpeed}%
+          {t('settings_speed')} {settings.ttsSpeed}%
         </label>
         <input
           id="speed"
@@ -104,8 +152,28 @@ export function SettingsPage() {
       </div>
 
       <div className="panel">
-        <h2 style={{ marginTop: 0 }}>히스토리 / 업데이트 내역</h2>
-        <p className="mono">버전 {VERSION}</p>
+        <h2 style={{ marginTop: 0 }}>{t('settings_data')}</h2>
+        <button
+          type="button"
+          className="btn"
+          style={{ borderColor: 'var(--negative)', color: 'var(--negative)', width: '100%' }}
+          onClick={async () => {
+            if (!window.confirm(t('settings_clear_warn'))) return
+            await clearHistory()
+            setCleared(true)
+          }}
+        >
+          {t('settings_clear')}
+        </button>
+        <p className="muted" style={{ textAlign: 'center' }}>
+          {t('settings_clear_warn')}
+        </p>
+        {cleared && <p className="feedback-ok">{t('settings_cleared')}</p>}
+      </div>
+
+      <div className="panel">
+        <h2 style={{ marginTop: 0 }}>{t('settings_history')}</h2>
+        <p className="mono">v{VERSION}</p>
         {changelog.map((c) => (
           <div key={c.version} style={{ marginTop: 12 }}>
             <strong className="mono">v{c.version}</strong>
