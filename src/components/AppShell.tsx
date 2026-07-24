@@ -10,13 +10,13 @@ export function AppShell() {
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main">
-        본문으로 건너뛰기
+        {t('skip_main')}
       </a>
       <header className="top-bar">
         <Link to="/" className="top-bar__brand">
           {t('brand')}
         </Link>
-        <nav className="top-bar__nav" aria-label="주요 기능">
+        <nav className="top-bar__nav" aria-label={t('nav_group')}>
           <button
             type="button"
             className="icon-btn"

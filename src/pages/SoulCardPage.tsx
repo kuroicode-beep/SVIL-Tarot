@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import {
   calcSoulCard,
+  isValidBirth,
   soulCardDescriptions,
   soulCardMajorIds,
   soulCardNames,
@@ -59,6 +60,11 @@ export function SoulCardPage() {
     setError(null)
     setAiText('')
     setSavedMsg(null)
+    if (!isValidBirth(y, m, d)) {
+      setError(t('soul_invalid'))
+      setNumber(null)
+      return
+    }
     try {
       const birth = `${y.padStart(4, '0')}${m.padStart(2, '0')}${d.padStart(2, '0')}`
       const n = calcSoulCard(birth)
@@ -94,16 +100,16 @@ export function SoulCardPage() {
   return (
     <main className="page">
       <h1>{t('home_soul')}</h1>
-      <p className="muted">생년월일로 1~9 소울카드를 계산하고, 로컬 AI로 설명을 듣습니다.</p>
+      <p className="muted">{t('soul_desc')}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
 
       <div className="panel">
-        <div className="label">생년월일</div>
+        <div className="label">{t('soul_birth')}</div>
         <div className="btn-row">
           <label>
-            년
+            {t('soul_year')}
             <input
               className="field"
               style={{ width: 120, marginLeft: 8 }}
@@ -111,11 +117,11 @@ export function SoulCardPage() {
               value={y}
               onChange={(e) => setY(e.target.value.replace(/\D/g, '').slice(0, 4))}
               placeholder="YYYY"
-              aria-label="년"
+              aria-label={t('soul_year')}
             />
           </label>
           <label>
-            월
+            {t('soul_month')}
             <input
               className="field"
               style={{ width: 80, marginLeft: 8 }}
@@ -123,11 +129,11 @@ export function SoulCardPage() {
               value={m}
               onChange={(e) => setM(e.target.value.replace(/\D/g, '').slice(0, 2))}
               placeholder="MM"
-              aria-label="월"
+              aria-label={t('soul_month')}
             />
           </label>
           <label>
-            일
+            {t('soul_day')}
             <input
               className="field"
               style={{ width: 80, marginLeft: 8 }}
@@ -135,13 +141,13 @@ export function SoulCardPage() {
               value={d}
               onChange={(e) => setD(e.target.value.replace(/\D/g, '').slice(0, 2))}
               placeholder="DD"
-              aria-label="일"
+              aria-label={t('soul_day')}
             />
           </label>
         </div>
         <div className="btn-row">
           <button type="button" className="btn btn--primary" onClick={compute}>
-            소울카드 계산
+            {t('soul_calc')}
           </button>
         </div>
       </div>
@@ -152,8 +158,8 @@ export function SoulCardPage() {
       {number != null && (
         <>
           <div className="panel" style={{ textAlign: 'center' }}>
-            <p className="progress">번호 {number}</p>
-            <h2 style={{ marginTop: 0 }}>영혼의 목소리: {soulCardNames[number]}</h2>
+            <p className="progress">{t('soul_number', { n: number })}</p>
+            <h2 style={{ marginTop: 0 }}>{t('soul_voice_of', { name: soulCardNames[number] })}</h2>
             <div className="spread-row">
               <TarotCardView cardId={soulCardMajorIds[number]} large />
             </div>
@@ -177,7 +183,7 @@ export function SoulCardPage() {
               disabled={busy}
               onClick={() => void onAi()}
             >
-              {busy ? 'AI 설명 생성 중…' : 'AI 설명 듣기'}
+              {busy ? t('soul_ai_busy') : t('soul_ai')}
             </button>
             <button type="button" className="btn" onClick={() => void onSave()}>
               {t('nav_save')}
@@ -188,7 +194,7 @@ export function SoulCardPage() {
 
       {aiText && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>AI 설명</h2>
+          <h2 style={{ marginTop: 0 }}>{t('soul_ai_title')}</h2>
           <div className="ai-result">{aiText}</div>
           <div className="btn-row">
             <button

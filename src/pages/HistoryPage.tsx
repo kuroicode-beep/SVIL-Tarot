@@ -8,17 +8,18 @@ import { SpreadCards } from '../components/TarotCardView'
 import { cardImageUrl } from '../lib/cards'
 import { useApp } from '../context/AppContext'
 
-const kindLabel: Record<string, string> = {
-  practice: '실전',
-  ai: 'AI 타로',
-  soul: '소울카드',
-  learn: '배우기',
+const kindKey: Record<string, string> = {
+  practice: 'kind_practice',
+  ai: 'kind_ai',
+  soul: 'kind_soul',
+  learn: 'kind_learn',
 }
 
 export function HistoryPage() {
   const [items, setItems] = useState<HistoryEntry[]>([])
   const [open, setOpen] = useState<HistoryEntry | null>(null)
-  const { speak, setLastSpeakText } = useApp()
+  const { speak, setLastSpeakText, t } = useApp()
+  const kindLabel = (kind: string) => (kindKey[kind] ? t(kindKey[kind]) : kind)
 
   const reload = async () => {
     setItems(await listHistory())
@@ -34,18 +35,18 @@ export function HistoryPage() {
         <h1>{open.title}</h1>
         <p className="mono muted">{new Date(open.createdAt).toLocaleString()}</p>
         <p>
-          <span className="status-badge status-badge--warn">{kindLabel[open.kind] ?? open.kind}</span>
+          <span className="status-badge status-badge--warn">{kindLabel(open.kind)}</span>
         </p>
         {open.cards && open.cards.length > 0 && <SpreadCards cards={open.cards} />}
         {open.userNote && (
           <div className="panel">
-            <h2 style={{ marginTop: 0 }}>나의 해설</h2>
+            <h2 style={{ marginTop: 0 }}>{t('practice_note_label')}</h2>
             <p className="ai-result">{open.userNote}</p>
           </div>
         )}
         {open.aiText && (
           <div className="panel">
-            <h2 style={{ marginTop: 0 }}>AI / 설명</h2>
+            <h2 style={{ marginTop: 0 }}>{t('hist_ai_note')}</h2>
             <div className="ai-result">{open.aiText}</div>
             <div className="btn-row">
               <button
@@ -56,14 +57,14 @@ export function HistoryPage() {
                   void speak(open.aiText ?? '')
                 }}
               >
-                읽어주기
+                {t('nav_tts')}
               </button>
             </div>
           </div>
         )}
         <div className="btn-row">
           <button type="button" className="btn" onClick={() => setOpen(null)}>
-            목록
+            {t('list_label')}
           </button>
           <button
             type="button"
@@ -74,7 +75,7 @@ export function HistoryPage() {
               await reload()
             }}
           >
-            삭제
+            {t('delete_label')}
           </button>
         </div>
       </main>
@@ -83,11 +84,11 @@ export function HistoryPage() {
 
   return (
     <main className="page">
-      <h1>History</h1>
-      <p className="muted">저장된 리딩과 소울카드 기록입니다.</p>
+      <h1>{t('nav_history')}</h1>
+      <p className="muted">{t('hist_desc')}</p>
       {items.length === 0 ? (
         <div className="panel">
-          <p>저장된 기록이 없습니다. 실전·AI 타로·소울카드에서 저장해 보세요.</p>
+          <p>{t('hist_empty')}</p>
         </div>
       ) : (
         <div className="list-choice" style={{ marginTop: 16 }}>
@@ -113,7 +114,7 @@ export function HistoryPage() {
                   <strong>{item.title}</strong>
                 </div>
                 <div className="muted">
-                  {kindLabel[item.kind] ?? item.kind} ·{' '}
+                  {kindLabel(item.kind)} ·{' '}
                   <span className="mono">{new Date(item.createdAt).toLocaleString()}</span>
                 </div>
               </div>

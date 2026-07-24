@@ -80,7 +80,7 @@ export function PracticePage() {
 
       <div className="panel">
         <label className="label" htmlFor="spread">
-          스프레드
+          {t('practice_spread')}
         </label>
         <select
           id="spread"
@@ -96,7 +96,7 @@ export function PracticePage() {
         </select>
         <div className="btn-row">
           <button type="button" className="btn btn--primary" onClick={onDraw}>
-            셔플 후 뽑기
+            {t('practice_draw')}
           </button>
         </div>
       </div>
@@ -106,14 +106,14 @@ export function PracticePage() {
           <SpreadCards cards={cards} />
           <div className="panel">
             <label className="label" htmlFor="note">
-              나의 해설
+              {t('practice_note_label')}
             </label>
             <textarea
               id="note"
               className="field"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              placeholder="카드가 말해 주는 것을 자유롭게 적어 보세요."
+              placeholder={t('practice_note_ph')}
             />
           </div>
           <div className="btn-row">
@@ -123,7 +123,7 @@ export function PracticePage() {
               disabled={busy}
               onClick={() => void onAdvice()}
             >
-              {busy ? 'AI 조언 생성 중…' : 'AI 조언 받기'}
+              {busy ? t('practice_advice_busy') : t('practice_advice')}
             </button>
             <button type="button" className="btn" onClick={() => void onSave()}>
               {t('nav_save')}
@@ -137,7 +137,7 @@ export function PracticePage() {
 
       {aiText && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>AI 조언</h2>
+          <h2 style={{ marginTop: 0 }}>{t('practice_advice_title')}</h2>
           <div className="ai-result">{aiText}</div>
           <div className="btn-row">
             <button

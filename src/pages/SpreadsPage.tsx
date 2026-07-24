@@ -9,7 +9,7 @@ export function SpreadsPage() {
   const [selected, setSelected] = useState<Spread | null>(null)
   const [quizMode, setQuizMode] = useState(false)
   const [picked, setPicked] = useState<number | null>(null)
-  const { speak, setLastSpeakText } = useApp()
+  const { speak, setLastSpeakText, t } = useApp()
 
   if (quizMode && selected) {
     const q = selected.quiz
@@ -17,7 +17,7 @@ export function SpreadsPage() {
     const correct = picked === q.answerIndex
     return (
       <main className="page">
-        <h1>{selected.nameKo} 퀴즈</h1>
+        <h1>{t('spreads_quiz_title', { name: selected.nameKo })}</h1>
         <p>{q.question}</p>
         <div className="list-choice">
           {q.options.map((opt, i) => (
@@ -42,7 +42,7 @@ export function SpreadsPage() {
         </div>
         {answered && (
           <p className={correct ? 'feedback-ok' : 'feedback-bad'} role="status">
-            {correct ? '정답입니다.' : `오답입니다. 정답: ${q.options[q.answerIndex]}`}
+            {correct ? t('quiz_right') : t('quiz_wrong', { answer: q.options[q.answerIndex] })}
           </p>
         )}
         <div className="btn-row">
@@ -54,7 +54,7 @@ export function SpreadsPage() {
               setPicked(null)
             }}
           >
-            스프레드로 돌아가기
+            {t('spreads_back')}
           </button>
         </div>
       </main>
@@ -68,7 +68,7 @@ export function SpreadsPage() {
         <h1>{selected.nameKo}</h1>
         <p className="muted">{selected.description}</p>
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>포지션</h2>
+          <h2 style={{ marginTop: 0 }}>{t('spreads_positions')}</h2>
           <div className="spread-row">
             {selected.positions.map((p, i) => (
               <div key={p.key} className="spread-slot">
@@ -102,7 +102,7 @@ export function SpreadsPage() {
               void speak(text)
             }}
           >
-            읽어주기
+            {t('nav_tts')}
           </button>
           <button
             type="button"
@@ -112,10 +112,10 @@ export function SpreadsPage() {
               setPicked(null)
             }}
           >
-            퀴즈
+            {t('quiz')}
           </button>
           <button type="button" className="btn" onClick={() => setSelected(null)}>
-            목록
+            {t('list_label')}
           </button>
         </div>
       </main>
@@ -124,14 +124,14 @@ export function SpreadsPage() {
 
   return (
     <main className="page">
-      <h1>스프레드 선택</h1>
-      <p className="muted">1카드 · 3카드 · 5카드 스프레드를 소개하고 퀴즈로 확인합니다.</p>
+      <h1>{t('spreads_title')}</h1>
+      <p className="muted">{t('spreads_desc')}</p>
       <div className="list-choice" style={{ marginTop: 20 }}>
         {list.map((s) => (
           <button key={s.id} type="button" onClick={() => setSelected(s)}>
             <strong>{s.nameKo}</strong>
             <div className="muted">{s.description}</div>
-            <div className="muted mono">카드 {s.cardCount}장</div>
+            <div className="muted mono">{t('card_count', { n: s.cardCount })}</div>
           </button>
         ))}
       </div>

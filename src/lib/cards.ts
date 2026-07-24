@@ -23,9 +23,14 @@ export function getCard(id: string): TarotCard {
   return card
 }
 
+// Vite base(예: 서브패스 배포) 아래에서도 덱 이미지 경로가 깨지지 않도록 BASE_URL을 붙인다.
+export function deckUrl(file: string): string {
+  return `${import.meta.env.BASE_URL}deck/${file}`
+}
+
 export function cardImageUrl(card: TarotCard | string): string {
   const file = typeof card === 'string' ? getCard(card).file : card.file
-  return `/deck/${file}`
+  return deckUrl(file)
 }
 
 export type DrawnCard = {

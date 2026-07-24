@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useApp } from '../context/AppContext'
+import { deckUrl } from '../lib/cards'
 
 export function HomePage() {
-  const { enterFullscreen, setLastSpeakText, t } = useApp()
+  const { setLastSpeakText, t } = useApp()
 
   const links = [
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },
@@ -19,18 +20,15 @@ export function HomePage() {
     { to: '/soul', labelKey: 'home_soul', icon: '💫' },
   ]
 
+  // 전체화면은 사용자 제스처가 필요해 자동 진입은 브라우저가 차단한다. 상단바 버튼으로 진입한다.
   useEffect(() => {
     setLastSpeakText(`${t('brand')}. ${t('tagline')}`)
-    const timer = window.setTimeout(() => {
-      void enterFullscreen()
-    }, 400)
-    return () => window.clearTimeout(timer)
-  }, [enterFullscreen, setLastSpeakText, t])
+  }, [setLastSpeakText, t])
 
   return (
     <main className="page page--center home-page">
       <div className="home-silhouette" aria-hidden="true">
-        <img src="/deck/17_The_Star_00001_.webp" alt="" />
+        <img src={deckUrl('17_The_Star_00001_.webp')} alt="" />
       </div>
       <h1 className="hero-title">{t('brand')}</h1>
       <p className="hero-sub">{t('tagline')}</p>

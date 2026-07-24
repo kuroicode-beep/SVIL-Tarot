@@ -27,7 +27,7 @@ export function LearnPage() {
     return (
       <main className="page" id="main">
         <h1>{t('home_learn')}</h1>
-        <p className="muted">단계별로 카드를 익히고, 퀴즈로 확인합니다.</p>
+        <p className="muted">{t('learn_desc')}</p>
         <div className="list-choice" style={{ marginTop: 20 }}>
           {stages.map((s, i) => (
             <button key={s.id} type="button" onClick={() => nav(`/learn/${s.id}`)}>
@@ -35,7 +35,7 @@ export function LearnPage() {
                 {i + 1}. {s.title}
               </strong>
               <div className="muted">{s.description}</div>
-              <div className="muted mono">카드 {s.cardIds.length}장</div>
+              <div className="muted mono">{t('card_count', { n: s.cardIds.length })}</div>
             </button>
           ))}
         </div>
@@ -45,7 +45,7 @@ export function LearnPage() {
 
   return (
     <div className="learn-layout" id="main">
-      <aside className="learn-sidebar" aria-label="학습 단계">
+      <aside className="learn-sidebar" aria-label={t('learn_stage_aria')}>
         <p className="learn-sidebar__title">{stage.title}</p>
         <div className="learn-sidebar__list">
           {stage.cardIds.map((id, i) => {
@@ -63,7 +63,7 @@ export function LearnPage() {
                   {i + 1}
                 </span>
                 <span>
-                  <span className="learn-step__label">카드 {i + 1}</span>
+                  <span className="learn-step__label">{t('learn_card_n', { n: i + 1 })}</span>
                   <span className="learn-step__name">
                     {c.nameKo} ({c.nameEn})
                   </span>
@@ -73,7 +73,7 @@ export function LearnPage() {
           })}
         </div>
         <Link className="btn" to="/learn" style={{ marginTop: 12 }}>
-          단계 목록
+          {t('learn_stage_list')}
         </Link>
       </aside>
 
@@ -114,7 +114,7 @@ export function LearnPage() {
             disabled={idx === 0}
             onClick={() => setIdx((v) => Math.max(0, v - 1))}
           >
-            이전
+            {t('prev')}
           </button>
           <button
             type="button"
@@ -124,10 +124,10 @@ export function LearnPage() {
               else nav(`/learn/${stage.id}/quiz`)
             }}
           >
-            {idx < stage.cardIds.length - 1 ? '다음' : '퀴즈 풀기'}
+            {idx < stage.cardIds.length - 1 ? t('next') : t('learn_take_quiz')}
           </button>
           <Link className="btn" to={`/learn/${stage.id}/quiz`}>
-            퀴즈로 바로가기
+            {t('learn_goto_quiz')}
           </Link>
         </div>
       </main>

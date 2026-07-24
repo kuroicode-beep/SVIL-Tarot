@@ -2,12 +2,20 @@ import { useEffect, useRef, useState } from 'react'
 import spreads from '../data/spreads.json'
 import { drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
 import { SpreadCards } from '../components/TarotCardView'
-import { fullAiReading } from '../services/ollama'
+import { fullAiReading, OLLAMA_MODEL } from '../services/ollama'
 import { saveHistory } from '../services/history'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 
+// 값은 한국어로 유지(LLM 프롬프트·저장 메타에 사용), 화면 라벨만 번역한다.
 const CATEGORIES = ['연애', '직업', '금전', '건강', '종합'] as const
+const CATEGORY_KEY: Record<(typeof CATEGORIES)[number], string> = {
+  연애: 'cat_love',
+  직업: 'cat_job',
+  금전: 'cat_money',
+  건강: 'cat_health',
+  종합: 'cat_all',
+}
 type Spread = (typeof spreads)[number]
 
 export function AiTarotPage() {
@@ -76,19 +84,19 @@ export function AiTarotPage() {
   return (
     <main className="page" id="main">
       <h1>{t('home_ai')}</h1>
-      <p className="muted">로컬 LLM(Ollama gemma4:12b)이 리딩을 작성합니다.</p>
+      <p className="muted">{t('ai_desc', { model: OLLAMA_MODEL })}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
 
-      <div className="segment" role="group" aria-label="질문 방식" style={{ margin: '16px 0', width: '100%', maxWidth: 480 }}>
+      <div className="segment" role="group" aria-label={t('ai_mode_group')} style={{ margin: '16px 0', width: '100%', maxWidth: 480 }}>
         <button
           type="button"
           className={mode === 'question' ? 'is-on' : ''}
           style={{ flex: 1 }}
           onClick={() => setMode('question')}
         >
-          질문 지정
+          {t('ai_mode_question')}
         </button>
         <button
           type="button"
@@ -96,7 +104,7 @@ export function AiTarotPage() {
           style={{ flex: 1 }}
           onClick={() => setMode('category')}
         >
-          카테고리 지정
+          {t('ai_mode_category')}
         </button>
       </div>
 
@@ -105,19 +113,19 @@ export function AiTarotPage() {
           {mode === 'question' ? (
             <div>
               <label className="label" htmlFor="q">
-                타로에게 물어보세요
+                {t('ai_q_label')}
               </label>
               <textarea
                 id="q"
                 className="field"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                placeholder="고민하고 계신 내용을 자세히 적어주세요..."
+                placeholder={t('ai_q_ph')}
               />
             </div>
           ) : (
             <div>
-              <div className="label">카테고리</div>
+              <div className="label">{t('ai_category')}</div>
               <div className="chip-row">
                 {CATEGORIES.map((c) => (
                   <button
@@ -126,7 +134,7 @@ export function AiTarotPage() {
                     className={`chip${category === c ? ' is-on' : ''}`}
                     onClick={() => setCategory(c)}
                   >
-                    {c}
+                    {t(CATEGORY_KEY[c])}
                   </button>
                 ))}
               </div>
@@ -135,7 +143,7 @@ export function AiTarotPage() {
 
           <div style={{ marginTop: 16 }}>
             <label className="label" htmlFor="sp">
-              스프레드 선택
+              {t('ai_spread_label')}
             </label>
             <select
               id="sp"
@@ -159,7 +167,7 @@ export function AiTarotPage() {
               disabled={busy}
               onClick={() => void run()}
             >
-              {busy ? '리딩 중…' : 'AI 상담 시작'}
+              {busy ? t('ai_run_busy') : t('ai_run')}
             </button>
           </div>
         </div>
@@ -199,7 +207,7 @@ export function AiTarotPage() {
                 marginBottom: 12,
               }}
             >
-              <h2 style={{ margin: 0 }}>AI 해석 리포트</h2>
+              <h2 style={{ margin: 0 }}>{t('ai_report_title')}</h2>
               {result && (
                 <button
                   type="button"
@@ -223,7 +231,7 @@ export function AiTarotPage() {
                 </div>
               </>
             ) : (
-              <p className="muted">카드를 뽑으면 여기에 리딩이 표시됩니다.</p>
+              <p className="muted">{t('ai_report_empty')}</p>
             )}
           </div>
         </div>

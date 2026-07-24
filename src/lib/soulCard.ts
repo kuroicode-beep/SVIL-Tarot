@@ -1,3 +1,15 @@
+// 년/월/일이 모두 채워졌고 실제 존재하는 날짜인지 검증한다.
+export function isValidBirth(y: string, m: string, d: string): boolean {
+  if (!y || !m || !d) return false
+  const yy = Number(y)
+  const mm = Number(m)
+  const dd = Number(d)
+  if (!Number.isInteger(yy) || yy < 1 || yy > 9999) return false
+  if (!Number.isInteger(mm) || mm < 1 || mm > 12) return false
+  const daysInMonth = new Date(yy, mm, 0).getDate()
+  return Number.isInteger(dd) && dd >= 1 && dd <= daysInMonth
+}
+
 export function calcSoulCard(birthdate: string): number {
   const digits = birthdate.replace(/\D/g, '')
   if (!digits) throw new Error('생년월일 형식 오류')
