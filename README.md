@@ -1,6 +1,8 @@
 # SVIL Tarot
 
-저시력 친화 타로 학습·실전·AI 리딩 웹앱 (Vite + React + TypeScript).
+저시력 친화 타로 학습·실전·AI 리딩 웹앱 (Vite + React + TypeScript). **v1.0.0**
+
+랜딩: https://kuroicode-beep.github.io/SVIL-Tarot/
 
 ## 기능
 
