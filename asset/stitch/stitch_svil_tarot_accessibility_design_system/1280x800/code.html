@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - Compact Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0d0d12;
+            color: #e4e1e9;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden; /* Fixed viewport for 1280x800 */
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .tarot-grid-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarot-grid-item:hover {
+            transform: translateY(-4px);
+            background-color: #1f1f2a;
+            border-color: #6b6b82;
+        }
+
+        .tarot-grid-item:active {
+            transform: scale(0.98);
+        }
+
+        .focus-ring:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px #131318, 0 0 0 6px #ffd479;
+        }
+
+        /* Occult Glow Effect */
+        .occult-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(162, 203, 237, 0.05) 0%, rgba(13, 13, 18, 0) 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+<!-- Custom Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container": "#1f1f24",
+                "outline-variant": "#42474d",
+                "on-error-container": "#ffdad6",
+                "primary-container": "#b3ddff",
+                "surface-container-low": "#1b1b20",
+                "error": "#ffb4ab",
+                "tertiary-container": "#fdd277",
+                "on-tertiary-fixed": "#261a00",
+                "on-tertiary-fixed-variant": "#5b4300",
+                "primary": "#edf5ff",
+                "inverse-surface": "#e4e1e9",
+                "on-secondary": "#00344f",
+                "on-secondary-container": "#cde7ff",
+                "tertiary-fixed": "#ffdf9f",
+                "on-tertiary": "#402d00",
+                "on-secondary-fixed": "#001e30",
+                "surface-container-lowest": "#0e0e13",
+                "tertiary-fixed-dim": "#eac168",
+                "on-tertiary-container": "#775904",
+                "inverse-on-surface": "#303035",
+                "inverse-primary": "#396380",
+                "on-background": "#e4e1e9",
+                "outline": "#8c9198",
+                "on-primary-container": "#38627f",
+                "on-secondary-fixed-variant": "#004b70",
+                "background": "#131318",
+                "on-primary": "#00344e",
+                "secondary-container": "#036c9e",
+                "surface-container-high": "#2a292f",
+                "primary-fixed-dim": "#a2cbed",
+                "on-surface-variant": "#c1c7ce",
+                "surface-tint": "#a2cbed",
+                "secondary-fixed": "#cae6ff",
+                "on-surface": "#e4e1e9",
+                "surface-dim": "#131318",
+                "on-error": "#690005",
+                "on-primary-fixed-variant": "#1e4b67",
+                "error-container": "#93000a",
+                "tertiary": "#fff2e0",
+                "surface": "#131318",
+                "on-primary-fixed": "#001e2f",
+                "secondary-fixed-dim": "#8dcdff",
+                "secondary": "#8dcdff",
+                "surface-variant": "#35343a",
+                "surface-bright": "#39383e",
+                "primary-fixed": "#c9e6ff",
+                "surface-container-highest": "#35343a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "margin-mobile": "24px",
+                "touch-target-min": "50px",
+                "unit": "8px",
+                "container-max": "1200px",
+                "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                "headline-md": ["Hanken Grotesk"],
+                "label-md": ["Atkinson Hyperlegible Next"],
+                "headline-sm": ["Hanken Grotesk"],
+                "display-lg-mobile": ["Hanken Grotesk"],
+                "body-md": ["Atkinson Hyperlegible Next"],
+                "body-lg": ["Atkinson Hyperlegible Next"],
+                "label-lg": ["Atkinson Hyperlegible Next"],
+                "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background flex flex-col h-screen w-full relative">
+<!-- Top AppBar (JSON Mapping) -->
+<header class="bg-background text-primary docked full-width top-0 border-b-2 border-outline-variant flex justify-between items-center w-full px-gutter h-touch-target-min z-50">
+<div class="flex items-center gap-4">
+<h1 class="text-headline-sm font-headline-sm text-primary">SVIL Tarot</h1>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Voice Record" class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors focus-ring">
+<span class="material-symbols-outlined">record_voice_over</span>
+</button>
+<button aria-label="Save" class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors focus-ring">
+<span class="material-symbols-outlined">save</span>
+</button>
+<button aria-label="History" class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors focus-ring">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button aria-label="Settings" class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-xl hover:bg-surface-container-high transition-colors focus-ring">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center p-gutter relative overflow-hidden">
+<!-- Subtle Animated Background Component Placeholder -->
+
+<!-- Title & Subline -->
+<div class="z-10 text-center mb-10">
+<h2 class="font-display-lg text-display-lg text-primary tracking-tight mb-2">지혜의 카드, 당신의 운명</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">SVIL Tarot와 함께 깊은 무의식의 세계를 탐험하고 내면의 지혜를 발견하세요.</p>
+</div>
+<!-- Bento Grid Navigation (Compact for 1280x800) -->
+<div class="z-10 grid grid-cols-6 grid-rows-2 gap-4 w-full max-w-[1100px] h-[440px]">
+<!-- Large Primary Action (타로 배우기) -->
+<button class="tarot-grid-item focus-ring col-span-3 row-span-2 bg-surface rounded-xl border-2 border-[#3a3a48] p-8 flex flex-col justify-end group">
+<div class="occult-glow"></div>
+<div class="absolute top-8 left-8">
+<span class="material-symbols-outlined text-[48px] text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div class="relative z-10 text-left">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">타로 배우기</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">기초부터 상급 리딩까지, 타로의 상징 체계를 체계적으로 습득합니다.</p>
+</div>
+</button>
+<!-- Secondary Action (스프레드) -->
+<button class="tarot-grid-item focus-ring col-span-3 row-span-1 bg-surface rounded-xl border-2 border-[#3a3a48] p-6 flex items-center gap-6 group">
+<div class="w-16 h-16 bg-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-[32px]">dashboard_customize</span>
+</div>
+<div class="text-left">
+<h3 class="font-headline-sm text-headline-sm text-primary">스프레드</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">질문에 최적화된 다양한 카드 배열법을 선택하세요.</p>
+</div>
+</button>
+<!-- Action Grid Row 2 -->
+<button class="tarot-grid-item focus-ring col-span-1 row-span-1 bg-surface rounded-xl border-2 border-[#3a3a48] p-4 flex flex-col items-center justify-center text-center group">
+<span class="material-symbols-outlined text-primary text-[32px] mb-3">auto_awesome</span>
+<span class="font-label-lg text-label-lg text-primary">실전 타로 보기</span>
+</button>
+<button class="tarot-grid-item focus-ring col-span-1 row-span-1 bg-surface rounded-xl border-2 border-[#3a3a48] p-4 flex flex-col items-center justify-center text-center group">
+<span class="material-symbols-outlined text-primary text-[32px] mb-3">psychology</span>
+<span class="font-label-lg text-label-lg text-primary">AI 타로</span>
+</button>
+<button class="tarot-grid-item focus-ring col-span-1 row-span-1 bg-surface rounded-xl border-2 border-[#3a3a48] p-4 flex flex-col items-center justify-center text-center group">
+<span class="material-symbols-outlined text-primary text-[32px] mb-3">diamond</span>
+<span class="font-label-lg text-label-lg text-primary">소울카드</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation (JSON Mapping & Execution) -->
+<nav class="bg-surface-container fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2 z-50 h-[80px] border-t-2 border-outline-variant">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 transition-transform ring-3 ring-tertiary ring-offset-2" href="#">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Particle Effect on Grid Hover
+        document.querySelectorAll('.tarot-grid-item').forEach(button => {
+            button.addEventListener('mousemove', e => {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                button.style.setProperty('--mouse-x', `${x}px`);
+                button.style.setProperty('--mouse-y', `${y}px`);
+                
+                // Add a dynamic glow that follows the mouse
+                button.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(162, 203, 237, 0.08) 0%, rgba(22, 22, 29, 0) 50%), #16161d`;
+            });
+
+            button.addEventListener('mouseleave', () => {
+                button.style.background = '#131318';
+            });
+        });
+
+        // Toggle Focus Ring Accessibility via Keyboard
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+    </script>
+</body></html>

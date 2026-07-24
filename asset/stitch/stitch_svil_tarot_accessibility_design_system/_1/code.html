@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - Spreads</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131318;
+            color: #e4e1e9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1f1f24;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #42474d;
+            border-radius: 2px;
+        }
+        .card-slot-pulse {
+            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: #3a3a48; }
+            50% { border-color: #7ec8ff; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-container": "#1f1f24",
+                "outline-variant": "#42474d",
+                "on-error-container": "#ffdad6",
+                "primary-container": "#b3ddff",
+                "surface-container-low": "#1b1b20",
+                "error": "#ffb4ab",
+                "tertiary-container": "#fdd277",
+                "on-tertiary-fixed": "#261a00",
+                "on-tertiary-fixed-variant": "#5b4300",
+                "primary": "#edf5ff",
+                "inverse-surface": "#e4e1e9",
+                "on-secondary": "#00344f",
+                "on-secondary-container": "#cde7ff",
+                "tertiary-fixed": "#ffdf9f",
+                "on-tertiary": "#402d00",
+                "on-secondary-fixed": "#001e30",
+                "surface-container-lowest": "#0e0e13",
+                "tertiary-fixed-dim": "#eac168",
+                "on-tertiary-container": "#775904",
+                "inverse-on-surface": "#303035",
+                "inverse-primary": "#396380",
+                "on-background": "#e4e1e9",
+                "outline": "#8c9198",
+                "on-primary-container": "#38627f",
+                "on-secondary-fixed-variant": "#004b70",
+                "background": "#131318",
+                "on-primary": "#00344e",
+                "secondary-container": "#036c9e",
+                "surface-container-high": "#2a292f",
+                "primary-fixed-dim": "#a2cbed",
+                "on-surface-variant": "#c1c7ce",
+                "surface-tint": "#a2cbed",
+                "secondary-fixed": "#cae6ff",
+                "on-surface": "#e4e1e9",
+                "surface-dim": "#131318",
+                "on-error": "#690005",
+                "on-primary-fixed-variant": "#1e4b67",
+                "error-container": "#93000a",
+                "tertiary": "#fff2e0",
+                "surface": "#131318",
+                "on-primary-fixed": "#001e2f",
+                "secondary-fixed-dim": "#8dcdff",
+                "secondary": "#8dcdff",
+                "surface-variant": "#35343a",
+                "surface-bright": "#39383e",
+                "primary-fixed": "#c9e6ff",
+                "surface-container-highest": "#35343a"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "gutter": "24px",
+                "margin-mobile": "24px",
+                "touch-target-min": "50px",
+                "unit": "8px",
+                "container-max": "1200px",
+                "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                "headline-md": ["Hanken Grotesk"],
+                "label-md": ["Atkinson Hyperlegible Next"],
+                "headline-sm": ["Hanken Grotesk"],
+                "display-lg-mobile": ["Hanken Grotesk"],
+                "body-md": ["Atkinson Hyperlegible Next"],
+                "body-lg": ["Atkinson Hyperlegible Next"],
+                "label-lg": ["Atkinson Hyperlegible Next"],
+                "display-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background border-b-2 border-outline-variant flex justify-between items-center w-full px-gutter h-touch-target-min fixed top-0 z-50">
+<div class="text-headline-sm font-headline-sm text-primary dark:text-primary">SVIL Tarot</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full h-[40px] w-[40px] flex items-center justify-center">record_voice_over</button>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full h-[40px] w-[40px] flex items-center justify-center">save</button>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full h-[40px] w-[40px] flex items-center justify-center">history</button>
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full h-[40px] w-[40px] flex items-center justify-center">settings</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[50px] pb-[80px] px-gutter md:px-margin-desktop max-w-container-max mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 mt-8">
+<!-- Left: Spread List (Bento-style rows) -->
+<section class="md:col-span-5 flex flex-col gap-4">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-primary mb-2">스프레드 선택</h1>
+<!-- 1-Card Selection -->
+<button class="group w-full text-left bg-surface border-2 border-outline-variant rounded-xl p-6 transition-all duration-300 hover:border-secondary hover:bg-surface-container-high ring-offset-2 focus:ring-3 focus:ring-tertiary active:scale-[0.98]">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-secondary scale-125">filter_1</span>
+<span class="text-headline-sm font-headline-sm text-primary">원 카드 스프레드</span>
+</div>
+<p class="text-on-surface-variant font-body-md">오늘의 운세나 간단한 질문에 적합합니다.</p>
+</button>
+<!-- 3-Card Selection (Active State Example) -->
+<button class="group w-full text-left bg-surface-container-high border-2 border-secondary rounded-xl p-6 ring-3 ring-tertiary ring-offset-2 transition-all duration-300 active:scale-[0.98]">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary scale-125">filter_3</span>
+<span class="text-headline-sm font-headline-sm text-primary">쓰리 카드 스프레드</span>
+</div>
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+</div>
+<p class="text-on-surface-variant font-body-md">과거, 현재, 미래를 한눈에 파악합니다.</p>
+</button>
+<!-- 5-Card Selection -->
+<button class="group w-full text-left bg-surface border-2 border-outline-variant rounded-xl p-6 transition-all duration-300 hover:border-secondary hover:bg-surface-container-high ring-offset-2 focus:ring-3 focus:ring-tertiary active:scale-[0.98]">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-secondary scale-125">filter_5</span>
+<span class="text-headline-sm font-headline-sm text-primary">파이브 카드 스프레드</span>
+</div>
+<p class="text-on-surface-variant font-body-md">문제의 원인과 결과를 심도 있게 분석합니다.</p>
+</button>
+</section>
+<!-- Right: Detail View Panel -->
+<section class="md:col-span-7">
+<div class="bg-surface border-2 border-outline-variant rounded-xl h-full flex flex-col p-8 relative overflow-hidden">
+<!-- Atmospheric Background Shader -->
+
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary mb-1">쓰리 카드 분석 구조</h2>
+<p class="text-on-surface-variant font-label-md">흐름과 시간적 인과관계를 탐구합니다</p>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg font-label-md flex items-center gap-2 border-2 border-outline-variant">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                            심화 분석 모드
+                        </div>
+</div>
+<!-- Position Diagram -->
+<div class="flex-grow flex items-center justify-center gap-8 py-12">
+<!-- Slot 1: 과거 -->
+<div class="flex flex-col items-center gap-4">
+<div class="w-24 h-40 border-2 border-outline-variant rounded-lg bg-surface-container-lowest flex flex-col items-center justify-center relative transition-colors hover:border-secondary group cursor-help">
+<span class="text-outline-variant text-headline-sm font-headline-sm group-hover:text-secondary">1</span>
+<div class="absolute -bottom-8 whitespace-nowrap text-label-md font-label-md text-on-surface">과거</div>
+</div>
+</div>
+<!-- Slot 2: 현재 (Highlighted) -->
+<div class="flex flex-col items-center gap-4">
+<div class="w-28 h-44 border-4 border-secondary rounded-xl bg-surface-container flex flex-col items-center justify-center relative card-slot-pulse shadow-[0_0_20px_rgba(126,200,255,0.2)]">
+<span class="text-secondary text-headline-md font-headline-md">2</span>
+<div class="absolute -bottom-8 whitespace-nowrap text-label-lg font-label-lg text-secondary">현재</div>
+</div>
+</div>
+<!-- Slot 3: 미래 -->
+<div class="flex flex-col items-center gap-4">
+<div class="w-24 h-40 border-2 border-outline-variant rounded-lg bg-surface-container-lowest flex flex-col items-center justify-center relative transition-colors hover:border-secondary group cursor-help">
+<span class="text-outline-variant text-headline-sm font-headline-sm group-hover:text-secondary">3</span>
+<div class="absolute -bottom-8 whitespace-nowrap text-label-md font-label-md text-on-surface">미래</div>
+</div>
+</div>
+</div>
+<!-- Detail Information Card -->
+<div class="mt-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-low border-2 border-outline-variant p-4 rounded-xl">
+<h4 class="text-label-md font-label-md text-primary flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+                                질문 유형
+                            </h4>
+<p class="text-body-md text-on-surface-variant">어떠한 고민이든 시간적 흐름에 따라 해결책을 제시합니다.</p>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant p-4 rounded-xl flex items-center justify-center">
+<button class="w-full h-touch-target-min bg-tertiary-container text-on-tertiary-container font-label-lg rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-105 active:scale-95 border-2 border-on-tertiary-container/20">
+<span class="material-symbols-outlined">quiz</span>
+                                퀴즈 시작하기
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2 bg-surface-container dark:bg-surface-container border-t-2 border-outline-variant z-50 h-[80px]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 transition-transform ring-3 ring-tertiary ring-offset-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<!-- Navigation for Desktop (Integrated in header/cluster logic but defined by JSON) -->
+<script>
+        // Interactive Micro-interactions
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                // Subtle hover effect logic if needed
+            });
+        });
+    </script>
+</body></html>

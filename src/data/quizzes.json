@@ -1,0 +1,72 @@
+{
+  "byStage": {
+    "major-basics": [
+      {
+        "cardId": "major_00",
+        "question": "바보(The Fool) 카드의 정방향 핵심 의미는?",
+        "options": ["새로운 시작, 순수, 모험", "권위, 구조, 안정", "급변, 붕괴, 각성", "집착, 유혹, 속박"],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_01",
+        "question": "마법사 카드가 상징하는 것은?",
+        "options": ["고독과 성찰", "의지와 창조", "풍요와 양육", "공정과 균형"],
+        "answerIndex": 1
+      },
+      {
+        "cardId": "major_06",
+        "question": "연인 카드의 정방향 키워드는?",
+        "options": ["승리, 추진", "사랑, 선택, 조화", "전환, 끝과 시작", "희망, 치유"],
+        "answerIndex": 1
+      }
+    ],
+    "major-middle": [
+      {
+        "cardId": "major_13",
+        "question": "죽음 카드의 정방향은 주로 무엇을 의미하나요?",
+        "options": ["문자 그대로의 재앙만", "전환, 끝과 시작, 변모", "물질적 풍요", "전통적 가르침"],
+        "answerIndex": 1
+      },
+      {
+        "cardId": "major_16",
+        "question": "탑 카드의 정방향 메시지는?",
+        "options": ["급변, 붕괴, 각성", "기쁨과 성공", "직관과 비밀", "양육과 창조성"],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_17",
+        "question": "별 카드의 정방향 키워드는?",
+        "options": ["불안, 환상", "희망, 치유, 영감", "집착, 유혹", "독단, 경직"],
+        "answerIndex": 1
+      }
+    ],
+    "major-finale": [
+      {
+        "cardId": "major_21",
+        "question": "세계 카드의 정방향 의미는?",
+        "options": ["미완성, 정체", "완성, 성취, 통합", "무모함, 지연", "혼란, 가혹함"],
+        "answerIndex": 1
+      },
+      {
+        "cardId": "major_20",
+        "question": "심판 카드가 가리키는 것은?",
+        "options": ["부활, 각성, 소명", "물질 집착", "감정 단절", "우연한 놀이"],
+        "answerIndex": 0
+      }
+    ],
+    "minor-suits": [
+      {
+        "cardId": "cup_01",
+        "question": "컵 슈트가 주로 다루는 영역은?",
+        "options": ["감정·관계", "물질·현실만", "전투·전쟁만", "숫자 계산"],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "sword_01",
+        "question": "검 슈트의 주제는?",
+        "options": ["열정·행동", "사고·갈등", "양육·풍요", "소울카드 번호"],
+        "answerIndex": 1
+      }
+    ]
+  }
+}

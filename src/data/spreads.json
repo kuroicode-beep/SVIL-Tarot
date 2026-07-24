@@ -1,0 +1,51 @@
+[
+  {
+    "id": "one",
+    "nameKo": "1카드 스프레드",
+    "nameEn": "One Card",
+    "cardCount": 1,
+    "description": "오늘의 메시지, 빠른 통찰에 적합합니다. 한 장의 카드로 핵심만 봅니다.",
+    "positions": [{ "key": "message", "labelKo": "오늘의 메시지", "labelEn": "Message" }],
+    "quiz": {
+      "question": "1카드 스프레드의 주된 용도는?",
+      "options": ["복잡한 관계의 과거·현재·미래 분석", "빠른 통찰과 오늘의 메시지", "다섯 영역의 종합 진단", "소울카드 번호 계산"],
+      "answerIndex": 1
+    }
+  },
+  {
+    "id": "three",
+    "nameKo": "3카드 스프레드",
+    "nameEn": "Three Card",
+    "cardCount": 3,
+    "description": "과거·현재·미래를 한눈에 보는 가장 널리 쓰이는 스프레드입니다.",
+    "positions": [
+      { "key": "past", "labelKo": "과거", "labelEn": "Past" },
+      { "key": "present", "labelKo": "현재", "labelEn": "Present" },
+      { "key": "future", "labelKo": "미래", "labelEn": "Future" }
+    ],
+    "quiz": {
+      "question": "3카드 스프레드에서 가운데 카드는 보통 무엇을 의미하나요?",
+      "options": ["과거", "현재", "미래", "조언"],
+      "answerIndex": 1
+    }
+  },
+  {
+    "id": "five",
+    "nameKo": "5카드 스프레드",
+    "nameEn": "Five Card",
+    "cardCount": 5,
+    "description": "상황·도전·조언·영향·결과까지 살펴보는 실전용 스프레드입니다.",
+    "positions": [
+      { "key": "situation", "labelKo": "상황", "labelEn": "Situation" },
+      { "key": "challenge", "labelKo": "도전", "labelEn": "Challenge" },
+      { "key": "advice", "labelKo": "조언", "labelEn": "Advice" },
+      { "key": "influence", "labelKo": "영향", "labelEn": "Influence" },
+      { "key": "outcome", "labelKo": "결과", "labelEn": "Outcome" }
+    ],
+    "quiz": {
+      "question": "5카드 스프레드에 포함되지 않는 포지션은?",
+      "options": ["상황", "도전", "조언", "생년월일"],
+      "answerIndex": 3
+    }
+  }
+]

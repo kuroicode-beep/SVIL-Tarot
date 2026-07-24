@@ -1,0 +1,28 @@
+{
+  "stages": [
+    {
+      "id": "major-basics",
+      "title": "1단계 · 메이저 아르카나 기초",
+      "description": "0번 바보부터 핵심 메이저 카드를 순서대로 배웁니다.",
+      "cardIds": ["major_00", "major_01", "major_02", "major_03", "major_04", "major_05", "major_06", "major_07"]
+    },
+    {
+      "id": "major-middle",
+      "title": "2단계 · 메이저 아르카나 심화",
+      "description": "힘부터 태양까지, 전환과 성장의 카드를 익힙니다.",
+      "cardIds": ["major_08", "major_09", "major_10", "major_11", "major_12", "major_13", "major_14", "major_15", "major_16", "major_17", "major_18", "major_19"]
+    },
+    {
+      "id": "major-finale",
+      "title": "3단계 · 메이저 완결",
+      "description": "심판과 세계로 메이저 여정을 마무리합니다.",
+      "cardIds": ["major_20", "major_21"]
+    },
+    {
+      "id": "minor-suits",
+      "title": "4단계 · 마이너 슈트 입문",
+      "description": "컵·완드·검·펜타클의 에이스와 대표 카드를 익힙니다.",
+      "cardIds": ["cup_01", "wand_01", "sword_01", "pentacle_01", "cup_10", "wand_10", "sword_10", "pentacle_10"]
+    }
+  ]
+}

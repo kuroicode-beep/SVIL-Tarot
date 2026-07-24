@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0d0d12;
+            color: #e4e1e9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        .bg-radial-gradient {
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0d0d12 70%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-silhouette {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+        /* Custom hover for 2px border logic */
+        .interactive-card {
+            border: 2px solid #3a3a48;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interactive-card:hover {
+            border-color: #6b6b82;
+            background-color: #1f1f2a;
+        }
+        .interactive-card:active {
+            transform: scale(0.98);
+            border-color: #ffd479; /* Warning color for focus/active */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#1f1f24",
+                      "outline-variant": "#42474d",
+                      "on-error-container": "#ffdad6",
+                      "primary-container": "#b3ddff",
+                      "surface-container-low": "#1b1b20",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#fdd277",
+                      "on-tertiary-fixed": "#261a00",
+                      "on-tertiary-fixed-variant": "#5b4300",
+                      "primary": "#edf5ff",
+                      "inverse-surface": "#e4e1e9",
+                      "on-secondary": "#00344f",
+                      "on-secondary-container": "#cde7ff",
+                      "tertiary-fixed": "#ffdf9f",
+                      "on-tertiary": "#402d00",
+                      "on-secondary-fixed": "#001e30",
+                      "surface-container-lowest": "#0e0e13",
+                      "tertiary-fixed-dim": "#eac168",
+                      "on-tertiary-container": "#775904",
+                      "inverse-on-surface": "#303035",
+                      "inverse-primary": "#396380",
+                      "on-background": "#e4e1e9",
+                      "outline": "#8c9198",
+                      "on-primary-container": "#38627f",
+                      "on-secondary-fixed-variant": "#004b70",
+                      "background": "#131318",
+                      "on-primary": "#00344e",
+                      "secondary-container": "#036c9e",
+                      "surface-container-high": "#2a292f",
+                      "primary-fixed-dim": "#a2cbed",
+                      "on-surface-variant": "#c1c7ce",
+                      "surface-tint": "#a2cbed",
+                      "secondary-fixed": "#cae6ff",
+                      "on-surface": "#e4e1e9",
+                      "surface-dim": "#131318",
+                      "on-error": "#690005",
+                      "on-primary-fixed-variant": "#1e4b67",
+                      "error-container": "#93000a",
+                      "tertiary": "#fff2e0",
+                      "surface": "#131318",
+                      "on-primary-fixed": "#001e2f",
+                      "secondary-fixed-dim": "#8dcdff",
+                      "secondary": "#8dcdff",
+                      "surface-variant": "#35343a",
+                      "surface-bright": "#39383e",
+                      "primary-fixed": "#c9e6ff",
+                      "surface-container-highest": "#35343a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "24px",
+                      "touch-target-min": "50px",
+                      "unit": "8px",
+                      "container-max": "1200px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "label-md": ["Atkinson Hyperlegible Next"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "display-lg-mobile": ["Hanken Grotesk"],
+                      "body-md": ["Atkinson Hyperlegible Next"],
+                      "body-lg": ["Atkinson Hyperlegible Next"],
+                      "label-lg": ["Atkinson Hyperlegible Next"],
+                      "display-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-radial-gradient min-h-screen flex flex-col font-body-md text-on-surface selection:bg-tertiary-container selection:text-on-tertiary-container">
+<!-- Background Anchor: Silhouette -->
+<div class="fixed inset-0 pointer-events-none z-0 flex justify-center items-center opacity-10 card-silhouette">
+<img class="w-[80%] h-auto object-contain max-h-screen" data-alt="A stylized, minimalist white outline silhouette of The Star tarot card, featuring a celestial woman pouring water into a pool under a large eight-pointed star. The illustration is set against a deep obsidian background with subtle dark blue cosmic nebulas. The style is occult precision, clean and structural, matching a high-contrast dark UI theme with celestial accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS5AlThzHzqLRfjZbdC5GXM3IZGFqxRLzL5eQ60_dHI41wL1kXswXFShXDxifED6Er7e_Vmo68HZ9u-zv-52u4XZO93ztEB9ht1n8F2270Hskg7N0ZI06_oobSREXl6sHFOtg8C7oJ35nBRVu4-xo1E3Yy7SXm44bbHSspS9iaZZS4UtNLWZyKi1csqjwb6MiFlNZ9vH4MeBkoqARv7khG7_kUEdvjWD8dz20Re4GANUeJBjiG4926m1fQtSEWQH-4iVXfG7aDF--c"/>
+</div>
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md flex justify-between items-center px-gutter h-touch-target-min border-b-2 border-outline-variant">
+<div class="text-headline-sm font-headline-sm text-primary">SVIL Tarot</div>
+<nav class="flex items-center gap-4">
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group">
+<span class="material-symbols-outlined group-hover:text-primary">record_voice_over</span>
+<span class="text-label-md font-label-md">읽어주기</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group">
+<span class="material-symbols-outlined group-hover:text-primary">save</span>
+<span class="text-label-md font-label-md">저장</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group">
+<span class="material-symbols-outlined group-hover:text-primary">history</span>
+<span class="text-label-md font-label-md">기록</span>
+</button>
+<button class="flex flex-col items-center justify-center p-2 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg group">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="text-label-md font-label-md">설정</span>
+</button>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="flex-1 relative z-10 flex flex-col items-center justify-center px-gutter py-12">
+<div class="text-center mb-12">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg text-primary-container tracking-tight mb-2">
+                SVIL Tarot
+            </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant opacity-80 tracking-widest uppercase">
+                배우기 · 스프레드 · 실전 · AI 타로
+            </p>
+</div>
+<!-- Bento-style Grid Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full max-w-[600px]">
+<!-- CTA 1: 타로 배우기 -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-fixed min-h-[140px] rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-95 ring-offset-2 focus:ring-3 focus:ring-tertiary-container group">
+<span class="material-symbols-outlined text-[40px] mb-3" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="text-headline-sm font-headline-sm">타로 배우기</span>
+</button>
+<!-- CTA 2: 스프레드 -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-fixed min-h-[140px] rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-95 ring-offset-2 focus:ring-3 focus:ring-tertiary-container group">
+<span class="material-symbols-outlined text-[40px] mb-3" style="font-variation-settings: 'FILL' 1;">dashboard_customize</span>
+<span class="text-headline-sm font-headline-sm">스프레드</span>
+</button>
+<!-- CTA 3: 실전 타로 보기 (Spans 2 cols on mobile for visual weight) -->
+<button class="md:col-span-2 flex flex-col items-center justify-center bg-primary-container text-on-primary-fixed min-h-[160px] rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-95 ring-offset-2 focus:ring-3 focus:ring-tertiary-container group">
+<span class="material-symbols-outlined text-[48px] mb-2" style="font-variation-settings: 'FILL' 1;">style</span>
+<span class="text-headline-sm font-headline-sm">실전 타로 보기</span>
+<span class="text-label-md font-label-md opacity-60 mt-1">깊이 있는 운명의 해석</span>
+</button>
+<!-- CTA 4: AI 타로 -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-fixed min-h-[140px] rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-95 ring-offset-2 focus:ring-3 focus:ring-tertiary-container group">
+<span class="material-symbols-outlined text-[40px] mb-3" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-headline-sm font-headline-sm">AI 타로</span>
+</button>
+<!-- CTA 5: 소울카드 -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-fixed min-h-[140px] rounded-xl p-6 transition-all hover:scale-[1.02] active:scale-95 ring-offset-2 focus:ring-3 focus:ring-tertiary-container group">
+<span class="material-symbols-outlined text-[40px] mb-3" style="font-variation-settings: 'FILL' 1;">person_pin</span>
+<span class="text-headline-sm font-headline-sm">소울카드</span>
+</button>
+</div>
+<!-- Atmospheric Script -->
+<div class="mt-16 text-center text-on-surface-variant opacity-40">
+<span class="material-symbols-outlined text-[32px]">flare</span>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only visibility handled by logic, but structured for the shell) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-[80px] bg-surface-container border-t-2 border-outline-variant flex justify-around items-center px-4 pb-2 z-50">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 transition-transform ring-3 ring-tertiary ring-offset-2" href="#">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Ambient twinkle effect
+        function createTwinkle() {
+            const star = document.createElement('div');
+            star.className = 'fixed rounded-full bg-white opacity-0 transition-opacity duration-1000 pointer-events-none z-[1]';
+            const size = Math.random() * 2 + 1 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            document.body.appendChild(star);
+
+            setTimeout(() => {
+                star.style.opacity = Math.random() * 0.5 + 0.2;
+                setTimeout(() => {
+                    star.style.opacity = '0';
+                    setTimeout(() => star.remove(), 1000);
+                }, 1000);
+            }, 10);
+        }
+
+        setInterval(createTwinkle, 2000);
+    </script>
+</body></html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - AI Reading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#1f1f24",
+                    "outline-variant": "#42474d",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#b3ddff",
+                    "surface-container-low": "#1b1b20",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#fdd277",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary": "#edf5ff",
+                    "inverse-surface": "#e4e1e9",
+                    "on-secondary": "#00344f",
+                    "on-secondary-container": "#cde7ff",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-tertiary": "#402d00",
+                    "on-secondary-fixed": "#001e30",
+                    "surface-container-lowest": "#0e0e13",
+                    "tertiary-fixed-dim": "#eac168",
+                    "on-tertiary-container": "#775904",
+                    "inverse-on-surface": "#303035",
+                    "inverse-primary": "#396380",
+                    "on-background": "#e4e1e9",
+                    "outline": "#8c9198",
+                    "on-primary-container": "#38627f",
+                    "on-secondary-fixed-variant": "#004b70",
+                    "background": "#131318",
+                    "on-primary": "#00344e",
+                    "secondary-container": "#036c9e",
+                    "surface-container-high": "#2a292f",
+                    "primary-fixed-dim": "#a2cbed",
+                    "on-surface-variant": "#c1c7ce",
+                    "surface-tint": "#a2cbed",
+                    "secondary-fixed": "#cae6ff",
+                    "on-surface": "#e4e1e9",
+                    "surface-dim": "#131318",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#1e4b67",
+                    "error-container": "#93000a",
+                    "tertiary": "#fff2e0",
+                    "surface": "#131318",
+                    "on-primary-fixed": "#001e2f",
+                    "secondary-fixed-dim": "#8dcdff",
+                    "secondary": "#8dcdff",
+                    "surface-variant": "#35343a",
+                    "surface-bright": "#39383e",
+                    "primary-fixed": "#c9e6ff",
+                    "surface-container-highest": "#35343a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "24px",
+                    "touch-target-min": "50px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "label-lg": ["Atkinson Hyperlegible Next"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131318;
+            color: #e4e1e9;
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for immersive feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131318; }
+        ::-webkit-scrollbar-thumb { background: #3a3a48; border-radius: 10px; }
+        
+        .high-contrast-border { border: 2px solid #3a3a48; }
+        .focus-ring:focus-within { outline: 3px solid #ffd479; outline-offset: 2px; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary docked full-width top-0 border-b-2 border-outline-variant flat no shadows flex justify-between items-center w-full px-gutter h-touch-target-min sticky z-50">
+<div class="text-headline-sm font-headline-sm text-primary dark:text-primary tracking-tighter">SVIL Tarot</div>
+<div class="flex gap-4">
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full material-symbols-outlined">record_voice_over</button>
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full material-symbols-outlined">history</button>
+<button class="hover:bg-surface-container-high transition-colors p-2 rounded-full material-symbols-outlined">settings</button>
+</div>
+</header>
+<main class="flex-grow container mx-auto max-w-container-max px-gutter py-8 pb-32">
+<!-- Mode Toggle Section -->
+<section class="mb-8">
+<div class="flex bg-surface-container-low high-contrast-border rounded-xl p-1 w-full max-w-md mx-auto">
+<button class="flex-1 py-3 text-label-md font-label-md rounded-lg transition-all bg-secondary-container text-on-secondary-container ring-3 ring-tertiary ring-offset-2 duration-200" id="btn-question" onclick="switchMode('question')">질문 지정</button>
+<button class="flex-1 py-3 text-label-md font-label-md rounded-lg transition-all text-on-surface-variant hover:bg-surface-container-high" id="btn-category" onclick="switchMode('category')">카테고리 지정</button>
+</div>
+</section>
+<!-- Category Selection (Visible when '카테고리 지정' is selected) -->
+<section class="hidden mb-8 overflow-x-auto" id="category-section">
+<div class="flex gap-3 pb-2 justify-center">
+<button class="px-6 py-3 rounded-full border-2 border-outline-variant text-label-md font-label-md whitespace-nowrap bg-surface-container-high text-primary hover:border-secondary transition-colors">연애</button>
+<button class="px-6 py-3 rounded-full border-2 border-outline-variant text-label-md font-label-md whitespace-nowrap text-on-surface-variant hover:bg-surface-container-high transition-colors">직업</button>
+<button class="px-6 py-3 rounded-full border-2 border-outline-variant text-label-md font-label-md whitespace-nowrap text-on-surface-variant hover:bg-surface-container-high transition-colors">금전</button>
+<button class="px-6 py-3 rounded-full border-2 border-outline-variant text-label-md font-label-md whitespace-nowrap text-on-surface-variant hover:bg-surface-container-high transition-colors">건강</button>
+<button class="px-6 py-3 rounded-full border-2 border-outline-variant text-label-md font-label-md whitespace-nowrap text-on-surface-variant hover:bg-surface-container-high transition-colors">종합</button>
+</div>
+</section>
+<!-- Input Area -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-label-lg font-label-lg text-secondary">타로에게 물어보세요</label>
+<div class="relative focus-ring rounded-xl overflow-hidden">
+<textarea class="w-full h-48 p-4 bg-surface dark:bg-surface high-contrast-border rounded-xl text-body-lg focus:outline-none focus:border-secondary transition-colors placeholder-outline resize-none" placeholder="고민하고 계신 내용을 자세히 적어주세요..."></textarea>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-label-lg font-label-lg text-secondary">스프레드 선택</label>
+<div class="relative high-contrast-border rounded-xl bg-surface-container-low h-[56px] flex items-center px-4">
+<select class="w-full bg-transparent text-body-md font-label-md appearance-none focus:outline-none">
+<option>원 카드 (조언 한마디)</option>
+<option>쓰리 카드 (과거, 현재, 미래)</option>
+<option>켈틱 크로스 (심층 분석)</option>
+<option>관계운 스프레드</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 pointer-events-none">expand_more</span>
+</div>
+</div>
+<button class="w-full h-[60px] bg-secondary text-on-secondary rounded-xl text-label-lg font-label-lg flex items-center justify-center gap-2 hover:scale-[0.98] transition-transform active:scale-95 shadow-lg">
+<span class="material-symbols-outlined">auto_awesome</span>
+                    AI 상담 시작
+                </button>
+</div>
+<!-- Visual & Result Area -->
+<div class="flex flex-col gap-6">
+<!-- Visual Decoration Card -->
+<div class="aspect-video relative rounded-xl high-contrast-border overflow-hidden bg-surface-container flex items-center justify-center">
+
+<div class="relative z-10 flex gap-4 animate-float">
+<!-- Tarot Card Backs -->
+<div class="w-24 h-40 bg-surface-container-high border-2 border-outline-variant rounded-lg flex items-center justify-center rotate-[-5deg] shadow-2xl overflow-hidden">
+<div class="w-full h-full p-2 opacity-30" style="background-image: radial-gradient(circle at center, #8dcdff 1px, transparent 1px); background-size: 8px 8px;"></div>
+</div>
+<div class="w-24 h-40 bg-surface-container-high border-4 border-secondary rounded-lg flex items-center justify-center z-20 shadow-2xl -mt-4">
+<div class="w-full h-full bg-cover bg-center" data-alt="A mystical tarot card illustration showing the star arcana with a divine figure pouring celestial water into a cosmic pool under a bright eight-pointed star. The art style is modern occult with sharp line work and high-contrast blues, blacks, and glowing golden accents. The lighting is ethereal and emanates from the center of the card." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCTRXzytxHZRv-P7KFGHX2cmnbMxfVX0o0mbSeBUbI9krkpnxHWYjaVaRM0cHycGhKUjtp9JO98-EhyW-GALgnMptxd3Mk1TKsmJ0ErwdXSHVeBQRoiX4R8kNrdKj-TPxU57Ve8obMZAHAOl85g20EkixC-1gAcDDr5NmrDx01nBCjKfQCES8L3DDR4M-pNyp-ZpSsSaniNhEMFS9j2M2DFklrNnGwM0IUdpZk7iFr7uueMAVkzPbm_evGw6wSsDvxD0NbGuOJziGWx')"></div>
+</div>
+<div class="w-24 h-40 bg-surface-container-high border-2 border-outline-variant rounded-lg flex items-center justify-center rotate-[5deg] shadow-2xl overflow-hidden">
+<div class="w-full h-full p-2 opacity-30" style="background-image: radial-gradient(circle at center, #8dcdff 1px, transparent 1px); background-size: 8px 8px;"></div>
+</div>
+</div>
+</div>
+<!-- AI Reading Results -->
+<div class="flex-grow flex flex-col high-contrast-border rounded-xl bg-surface-container-low min-h-[300px]">
+<div class="p-4 border-b-2 border-outline-variant flex justify-between items-center bg-surface-container-high rounded-t-xl">
+<span class="text-label-md font-label-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">psychology</span>
+                            AI 해석 리포트
+                        </span>
+<button class="flex items-center gap-1 text-label-md font-label-md text-secondary-fixed hover:underline" onclick="playTTS()">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+                            읽어주기
+                        </button>
+</div>
+<div class="p-6 h-[250px] overflow-y-auto space-y-4">
+<p class="text-body-md text-on-surface leading-relaxed">
+<span class="text-secondary font-bold">현재 상황:</span> 당신의 운명의 수레바퀴가 천천히 회전하기 시작했습니다. 선택한 '별' 카드는 고통스러운 시기가 지나가고 희망의 서광이 비치고 있음을 암시합니다.
+                        </p>
+<p class="text-body-md text-on-surface leading-relaxed">
+<span class="text-secondary font-bold">해결 방안:</span> 지금은 서두르기보다 자신의 내면의 목소리에 귀를 기울여야 할 때입니다. 억지로 상황을 바꾸려 하기보다 자연스럽게 흘러가는 에너지를 신뢰하십시오. 당신의 정직함이 가장 큰 무기가 될 것입니다.
+                        </p>
+<p class="text-body-md text-on-surface leading-relaxed">
+<span class="text-secondary font-bold">결론:</span> 긍정적인 변화의 흐름이 곧 당신을 찾아올 것입니다. 마음을 열고 우주가 보내는 신호를 받아들이세요.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Save Button -->
+<section class="mt-8 flex justify-center">
+<button class="px-12 h-[56px] border-2 border-outline-variant rounded-full text-label-lg font-label-lg flex items-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined">save</span>
+                결과 저장하기
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden bg-surface-container dark:bg-surface-container fixed bottom-0 w-full z-50 h-[80px] border-t-2 border-outline-variant flat no shadows fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 transition-transform ring-3 ring-tertiary ring-offset-2" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        function switchMode(mode) {
+            const btnQuestion = document.getElementById('btn-question');
+            const btnCategory = document.getElementById('btn-category');
+            const categorySection = document.getElementById('category-section');
+
+            const activeClasses = ['bg-secondary-container', 'text-on-secondary-container', 'ring-3', 'ring-tertiary', 'ring-offset-2'];
+            const inactiveClasses = ['text-on-surface-variant', 'hover:bg-surface-container-high'];
+
+            if (mode === 'question') {
+                btnQuestion.classList.add(...activeClasses);
+                btnQuestion.classList.remove(...inactiveClasses);
+                btnCategory.classList.add(...inactiveClasses);
+                btnCategory.classList.remove(...activeClasses);
+                categorySection.classList.add('hidden');
+            } else {
+                btnCategory.classList.add(...activeClasses);
+                btnCategory.classList.remove(...inactiveClasses);
+                btnQuestion.classList.add(...inactiveClasses);
+                btnQuestion.classList.remove(...activeClasses);
+                categorySection.classList.remove('hidden');
+            }
+        }
+
+        function playTTS() {
+            // Placeholder for TTS animation/functionality
+            const btn = event.currentTarget;
+            btn.classList.add('animate-pulse');
+            setTimeout(() => btn.classList.remove('animate-pulse'), 3000);
+            alert("해석을 음성으로 읽어줍니다.");
+        }
+    </script>
+</body></html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#1f1f24",
+                    "outline-variant": "#42474d",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#b3ddff",
+                    "surface-container-low": "#1b1b20",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#fdd277",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary": "#edf5ff",
+                    "inverse-surface": "#e4e1e9",
+                    "on-secondary": "#00344f",
+                    "on-secondary-container": "#cde7ff",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-tertiary": "#402d00",
+                    "on-secondary-fixed": "#001e30",
+                    "surface-container-lowest": "#0e0e13",
+                    "tertiary-fixed-dim": "#eac168",
+                    "on-tertiary-container": "#775904",
+                    "inverse-on-surface": "#303035",
+                    "inverse-primary": "#396380",
+                    "on-background": "#e4e1e9",
+                    "outline": "#8c9198",
+                    "on-primary-container": "#38627f",
+                    "on-secondary-fixed-variant": "#004b70",
+                    "background": "#131318",
+                    "on-primary": "#00344e",
+                    "secondary-container": "#036c9e",
+                    "surface-container-high": "#2a292f",
+                    "primary-fixed-dim": "#a2cbed",
+                    "on-surface-variant": "#c1c7ce",
+                    "surface-tint": "#a2cbed",
+                    "secondary-fixed": "#cae6ff",
+                    "on-surface": "#e4e1e9",
+                    "surface-dim": "#131318",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#1e4b67",
+                    "error-container": "#93000a",
+                    "tertiary": "#fff2e0",
+                    "surface": "#131318",
+                    "on-primary-fixed": "#001e2f",
+                    "secondary-fixed-dim": "#8dcdff",
+                    "secondary": "#8dcdff",
+                    "surface-variant": "#35343a",
+                    "surface-bright": "#39383e",
+                    "primary-fixed": "#c9e6ff",
+                    "surface-container-highest": "#35343a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "24px",
+                    "touch-target-min": "50px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "label-lg": ["Atkinson Hyperlegible Next"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131318;
+            color: #e4e1e9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* High-contrast structural borders */
+        .card-border { border: 2px solid #3a3a48; }
+        .card-border-active { border: 4px solid #8dcdff; }
+        
+        /* Focus state */
+        .focus-ring:focus {
+            outline: none;
+            ring: 3px solid #fdd277;
+            ring-offset: 2px;
+            ring-offset-color: #131318;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #131318; }
+        ::-webkit-scrollbar-thumb { background: #3a3a48; border-radius: 4px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-background border-b-2 border-outline-variant flex justify-between items-center w-full px-gutter h-touch-target-min">
+<div class="flex items-center gap-4">
+<span class="text-headline-sm font-headline-sm text-primary">SVIL Tarot</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-xl hover:bg-surface-container-high transition-colors text-primary focus-ring">
+<span class="material-symbols-outlined">record_voice_over</span>
+</button>
+<button class="p-2 rounded-xl hover:bg-surface-container-high transition-colors text-primary focus-ring">
+<span class="material-symbols-outlined">save</span>
+</button>
+<button class="p-2 rounded-xl bg-surface-container-high text-secondary font-bold focus-ring">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-2 rounded-xl hover:bg-surface-container-high transition-colors text-primary focus-ring">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-8 mb-24">
+<!-- Screen Title -->
+<div class="mb-10">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg mb-2">History</h1>
+<p class="text-on-surface-variant text-body-lg">과거의 신비로운 기록들을 되짚어보세요.</p>
+</div>
+<!-- History List Content -->
+<div class="space-y-4" id="history-container">
+<!-- Row 1 -->
+<div class="card-border bg-surface-container rounded-xl p-4 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-surface-container-high transition-all">
+<div class="flex flex-col gap-2">
+<span class="mono text-secondary text-label-md tracking-wider">2023.10.25</span>
+<span class="text-headline-sm font-headline-sm">연애운 (쓰리 카드)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-24 rounded bg-surface-container-lowest card-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A highly detailed illustration of the Lovers tarot card, featuring ethereal figures under a golden sun. The style is occult precision with deep obsidian blacks, shimmering gold accents, and sharp architectural lines. The lighting is dramatic and focused, emphasizing mystical textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ZhTmgQVdUBdwb0QebA8mNhrGx_FN8TiCxlxTnYA1F3zgt3uNDgW_mBPXt7bJPkmbFxNhj3Y8yzZ0FiniIOs8fzmkVvHBI3G1X7f4jXZBWGD8OMHqrzE6SaE5TRrzWIAxVOURanFzm9JhOmCgX2Cp_YnFXyd7_bJ0WujgYFPTMxP7WgSiRkMw9EEsFkhct_9LuHnQoK0DN_n2i7DIT1orvtXBF1g0be75aHGrIwyWakTNgta8TZYqPwY_SNykcNw_gXMRb9F5pdO6"/>
+</div>
+<div class="w-16 h-24 rounded bg-surface-container-lowest card-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="The Three of Swords tarot card depicted as a sleek, modern obsidian heart pierced by three crystal-clear glass swords. The background is a swirling dark nebula with bright blue electrical sparks. High contrast lighting with cold spectral highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASz4D9xloTdhrgKtQIdjTYYJVYfExzrVEmQO3VSQ_XaivBqhAdjFSRbCLgNq4UYLlf5_KyN_qxFSt_EU-V9bw7UfoJCPzEb-ga5fvbybv_MlwgptpK5h-MJbRfxv3EzqkttOxonrMnYwtoJvcGNvGYqzsMtXcAt755T76fBX3v23dxny2IENtfBbwRGtP-KjqZaDSAuRgq0e7VhRzHeuhKHatGlO_AsvCxVHBRSxngoWKfDL1MUHe_LzWEJT3Rs1At3hbZeMZFqNh0"/>
+</div>
+<div class="w-16 h-24 rounded bg-surface-container-lowest card-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="The Star tarot card rendered in a futuristic, mystical aesthetic. A celestial being pours liquid light into a dark geometric basin under a cluster of glowing white eight-pointed stars. Deep navy and silver color palette with intense clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzv3g2qNm_ND2ZRkKQ9iEGXQDmhpVahS1Uu-kblc8rufBKifMjiSAM9v70KMeh5ARRbugX-rI3QI0ERZf_i5Sw9EWBGnJN8-J-jD6o7HQCudZv1EKOOnJoEaQ0ROuG808DfZ6Wm-8wu04MJEUi3t3l8VLnMLXwv7bID1iEreJLmCitMMD5-3SZFJA3nDnMYzDEPOXljvsKYzJqSK2KLFON2npqyH6yh5Dbc5xBS_aqPCU2cod0MSEdwprJCIOJ3MfY2aJqGpjroQyz"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="min-h-[50px] min-w-[100px] px-6 bg-secondary-container text-on-secondary-container rounded-xl font-label-md flex items-center justify-center gap-2 hover:scale-95 transition-transform focus-ring">
+<span class="material-symbols-outlined">open_in_new</span>
+                        열기
+                    </button>
+<button class="min-h-[50px] min-w-[100px] px-6 card-border text-on-surface rounded-xl font-label-md flex items-center justify-center gap-2 hover:bg-error-container hover:text-on-error-container transition-colors focus-ring">
+<span class="material-symbols-outlined">delete</span>
+                        삭제
+                    </button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="card-border bg-surface-container rounded-xl p-4 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-surface-container-high transition-all">
+<div class="flex flex-col gap-2">
+<span class="mono text-secondary text-label-md tracking-wider">2023.10.22</span>
+<span class="text-headline-sm font-headline-sm">금전운 (원 카드)</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-24 rounded bg-surface-container-lowest card-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="The Wheel of Fortune tarot card as a massive golden mechanical gear floating in a void of deep cosmic purple. Intricate etchings of celestial symbols glow with neon blue energy. The style is sharp, high-contrast, and meticulously detailed digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKha6482Y0Skz8LBjzd8DUIe3ZV3xnZvMhy9-VlZERcfr66hdyr2gMSVJy2g2uvLS56W3fEeIMBNYHF-XaXb1_zzUdAZjfvSYP2xQURSvlkwayKuPjzN-qPVGAGgSWXg5WFce8VMc7r3OvmqNGmNqKTT3iUQvMRGPwOEM8z8L5KCOEpQn7HcRR7bGralbqS33e4qnwpPPwekUfILcsyanSYKA-6XFRbwocNMwYZr19nmmQeqi1nifAsMZLxs1HxRo699KSP-y35DnX"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="min-h-[50px] min-w-[100px] px-6 bg-secondary-container text-on-secondary-container rounded-xl font-label-md flex items-center justify-center gap-2 hover:scale-95 transition-transform focus-ring">
+<span class="material-symbols-outlined">open_in_new</span>
+                        열기
+                    </button>
+<button class="min-h-[50px] min-w-[100px] px-6 card-border text-on-surface rounded-xl font-label-md flex items-center justify-center gap-2 hover:bg-error-container hover:text-on-error-container transition-colors focus-ring">
+<span class="material-symbols-outlined">delete</span>
+                        삭제
+                    </button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="card-border bg-surface-container rounded-xl p-4 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-surface-container-high transition-all">
+<div class="flex flex-col gap-2">
+<span class="mono text-secondary text-label-md tracking-wider">2023.10.15</span>
+<span class="text-headline-sm font-headline-sm">오늘의 운세</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-16 h-24 rounded bg-surface-container-lowest card-border overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="The Magician tarot card showing a master of the elements. An obsidian-skinned figure manipulates floating symbols of a cup, sword, pentacle, and wand in a rain of digital sparks. Neon teal and pure white lighting on a pitch-black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPq8eyx7uC4hBCm7WbJkL8zRLNtY7PbPyVzNGrk0VBZIos6UmvV7ffBiioMJeu9_Y1eczGYgF0_ir8-5MuWAZViVOc0m7y90ncPlaw1XP_wNI2zZugRCrlP9q8fnhc65atY25jTy1lMnxTTtm7l6B1mGpr86fWVMLF-m3pRveVowhxPaO40co8VQaW1XtF-m6V0Vw1sbo7lm1iSq7ZpLKQ4CcDN0oLYZQ73CkbFlbbVaU2crQzR6lIeKbN50KlgpNaX58jgQhn6M4L"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="min-h-[50px] min-w-[100px] px-6 bg-secondary-container text-on-secondary-container rounded-xl font-label-md flex items-center justify-center gap-2 hover:scale-95 transition-transform focus-ring">
+<span class="material-symbols-outlined">open_in_new</span>
+                        열기
+                    </button>
+<button class="min-h-[50px] min-w-[100px] px-6 card-border text-on-surface rounded-xl font-label-md flex items-center justify-center gap-2 hover:bg-error-container hover:text-on-error-container transition-colors focus-ring">
+<span class="material-symbols-outlined">delete</span>
+                        삭제
+                    </button>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown via JS if needed) -->
+<div class="hidden flex-col items-center justify-center py-24 text-center" id="empty-state">
+<span class="material-symbols-outlined text-outline text-8xl mb-6">auto_awesome_mosaic</span>
+<p class="text-headline-sm font-headline-sm text-on-surface-variant">저장된 기록이 없습니다.</p>
+<button class="mt-8 min-h-[50px] px-8 bg-tertiary-container text-on-tertiary-container rounded-xl font-label-md hover:scale-95 transition-transform focus-ring">
+                운세 보러 가기
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 h-[80px] bg-surface-container border-t-2 border-outline-variant flex justify-around items-center px-4 pb-2">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-all focus-ring">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-all focus-ring">
+<span class="material-symbols-outlined">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 transition-transform ring-3 ring-tertiary ring-offset-2">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-xl transition-all focus-ring">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for delete buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('삭제')) {
+                btn.addEventListener('click', function() {
+                    const row = this.closest('.card-border');
+                    row.style.opacity = '0';
+                    row.style.transform = 'translateX(20px)';
+                    setTimeout(() => {
+                        row.remove();
+                        checkEmptyState();
+                    }, 300);
+                });
+            }
+        });
+
+        function checkEmptyState() {
+            const container = document.getElementById('history-container');
+            const emptyState = document.getElementById('empty-state');
+            if (container.children.length === 0) {
+                container.style.display = 'none';
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+            }
+        }
+    </script>
+</body></html>

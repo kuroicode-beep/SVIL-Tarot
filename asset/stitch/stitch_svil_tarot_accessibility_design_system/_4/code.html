@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - Practice Reading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131318;
+            color: #e4e1e9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .tarot-card-glow {
+            box-shadow: 0 0 20px rgba(126, 200, 255, 0.2);
+        }
+        .active-ring:focus-within {
+            outline: none;
+            ring: 3px solid #ffd479;
+            ring-offset: 2px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#1f1f24",
+                        "outline-variant": "#42474d",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#b3ddff",
+                        "surface-container-low": "#1b1b20",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#fdd277",
+                        "on-tertiary-fixed": "#261a00",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "primary": "#edf5ff",
+                        "inverse-surface": "#e4e1e9",
+                        "on-secondary": "#00344f",
+                        "on-secondary-container": "#cde7ff",
+                        "tertiary-fixed": "#ffdf9f",
+                        "on-tertiary": "#402d00",
+                        "on-secondary-fixed": "#001e30",
+                        "surface-container-lowest": "#0e0e13",
+                        "tertiary-fixed-dim": "#eac168",
+                        "on-tertiary-container": "#775904",
+                        "inverse-on-surface": "#303035",
+                        "inverse-primary": "#396380",
+                        "on-background": "#e4e1e9",
+                        "outline": "#8c9198",
+                        "on-primary-container": "#38627f",
+                        "on-secondary-fixed-variant": "#004b70",
+                        "background": "#131318",
+                        "on-primary": "#00344e",
+                        "secondary-container": "#036c9e",
+                        "surface-container-high": "#2a292f",
+                        "primary-fixed-dim": "#a2cbed",
+                        "on-surface-variant": "#c1c7ce",
+                        "surface-tint": "#a2cbed",
+                        "secondary-fixed": "#cae6ff",
+                        "on-surface": "#e4e1e9",
+                        "surface-dim": "#131318",
+                        "on-error": "#690005",
+                        "on-primary-fixed-variant": "#1e4b67",
+                        "error-container": "#93000a",
+                        "tertiary": "#fff2e0",
+                        "surface": "#131318",
+                        "on-primary-fixed": "#001e2f",
+                        "secondary-fixed-dim": "#8dcdff",
+                        "secondary": "#8dcdff",
+                        "surface-variant": "#35343a",
+                        "surface-bright": "#39383e",
+                        "primary-fixed": "#c9e6ff",
+                        "surface-container-highest": "#35343a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-mobile": "24px",
+                        "touch-target-min": "50px",
+                        "unit": "8px",
+                        "container-max": "1200px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-sm": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "label-lg": ["Atkinson Hyperlegible Next"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background border-b-2 border-outline-variant px-gutter h-touch-target-min flex justify-between items-center">
+<div class="flex items-center gap-2">
+<h1 class="text-headline-sm font-headline-sm text-primary">SVIL Tarot</h1>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 flex flex-col items-center justify-center hover:bg-surface-container-high transition-colors rounded-lg group active:ring-3 active:ring-tertiary active:ring-offset-2">
+<span class="material-symbols-outlined text-primary">save</span>
+<span class="text-[10px] font-label-md text-on-surface-variant">저장</span>
+</button>
+<button class="p-2 flex flex-col items-center justify-center hover:bg-surface-container-high transition-colors rounded-lg group active:ring-3 active:ring-tertiary active:ring-offset-2">
+<span class="material-symbols-outlined text-primary">history</span>
+<span class="text-[10px] font-label-md text-on-surface-variant">기록</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high transition-colors rounded-lg active:ring-3 active:ring-tertiary active:ring-offset-2">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-20 pb-28 px-gutter w-full max-w-container-max mx-auto space-y-12">
+<!-- Shuffle and Draw Section -->
+<section class="flex flex-col items-center text-center space-y-8 py-8">
+<div class="relative w-full max-w-2xl h-64 flex items-center justify-center overflow-hidden rounded-xl border-2 border-outline-variant bg-surface-container-lowest">
+
+<button class="relative z-10 px-8 py-4 bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm rounded-xl border-2 border-outline-variant hover:scale-105 active:scale-95 transition-all shadow-xl flex items-center gap-3" onclick="drawCards()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">style</span>
+                    셔플 및 카드 뽑기
+                </button>
+</div>
+</section>
+<!-- Tarot Spread Area -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6" id="card-area">
+<!-- Placeholder for Cards -->
+<div class="aspect-[2/3] rounded-xl border-2 border-dashed border-outline-variant bg-surface-container flex flex-col items-center justify-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-4xl mb-2">style</span>
+<p class="font-label-md">과거</p>
+</div>
+<div class="aspect-[2/3] rounded-xl border-2 border-dashed border-outline-variant bg-surface-container flex flex-col items-center justify-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-4xl mb-2">style</span>
+<p class="font-label-md">현재</p>
+</div>
+<div class="aspect-[2/3] rounded-xl border-2 border-dashed border-outline-variant bg-surface-container flex flex-col items-center justify-center text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-4xl mb-2">style</span>
+<p class="font-label-md">미래</p>
+</div>
+</section>
+<!-- User Interpretation Input -->
+<section class="space-y-4">
+<h2 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">edit_note</span>
+                해설 연습
+            </h2>
+<div class="relative group">
+<textarea class="w-full min-h-[160px] bg-surface-container border-2 border-outline-variant rounded-xl p-4 text-on-surface font-body-md focus:border-secondary focus:ring-3 focus:ring-tertiary focus:ring-offset-2 transition-all outline-none active-ring" placeholder="카드의 상징과 당신의 직관을 바탕으로 나만의 해설을 입력해보세요..."></textarea>
+</div>
+</section>
+<!-- AI Interaction Section -->
+<section class="flex flex-col gap-6">
+<button class="w-full h-touch-target-min bg-secondary-container text-on-secondary-container font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-3 hover:bg-surface-container-highest transition-colors active:scale-95 border-2 border-outline-variant" onclick="revealAdvice()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                AI 조언 받기
+            </button>
+<!-- AI Advice Panel (Hidden by default) -->
+<div class="hidden animate-in fade-in slide-in-from-bottom-4 duration-500 bg-surface-container border-2 border-outline-variant rounded-xl p-6 space-y-6" id="ai-advice">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container">psychology</span>
+</div>
+<div>
+<h3 class="text-label-lg font-label-lg text-primary">AI 리딩 어드바이스</h3>
+<p class="text-label-md font-label-md text-on-surface-variant">신비로운 지혜의 한 마디</p>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 border-2 border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-high active:ring-3 active:ring-tertiary active:ring-offset-2 transition-all">
+<span class="material-symbols-outlined">volume_up</span>
+                        읽어주기
+                    </button>
+</div>
+<div class="prose prose-invert max-w-none">
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+                        현재 당신의 배열에서 '매달린 사람'과 '별' 카드가 조화를 이루고 있습니다. 이는 인내의 끝에 희망적인 보상이 기다리고 있음을 암시합니다. 당신이 기록한 해석은 직관적이지만, 조금 더 '정지된 상태에서의 통찰'에 집중해본다면 더 깊은 해답을 찾을 수 있을 것입니다.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-highest rounded-full border-2 border-outline-variant text-[14px] font-label-md text-secondary">#직관강화</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full border-2 border-outline-variant text-[14px] font-label-md text-secondary">#인내와희망</span>
+<span class="px-3 py-1 bg-surface-container-highest rounded-full border-2 border-outline-variant text-[14px] font-label-md text-secondary">#키워드분석</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 h-[80px] bg-surface-container border-t-2 border-outline-variant flex justify-around items-center px-4 pb-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors rounded-xl min-w-[64px]" href="#">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-[12px] font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 ring-3 ring-tertiary ring-offset-2 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">style</span>
+<span class="text-[12px] font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors rounded-xl min-w-[64px]" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[12px] font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors rounded-xl min-w-[64px]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[12px] font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        function drawCards() {
+            const cardArea = document.getElementById('card-area');
+            const cardThemes = [
+                { title: '과거', icon: 'history_edu' },
+                { title: '현재', icon: 'visibility' },
+                { title: '미래', icon: 'auto_graph' }
+            ];
+
+            cardArea.innerHTML = cardThemes.map((theme, i) => `
+                <div class="group relative aspect-[2/3] bg-surface rounded-xl border-2 border-outline-variant overflow-hidden hover:border-secondary transition-all tarot-card-glow cursor-pointer animate-in fade-in zoom-in duration-500 delay-[${i*200}ms]">
+                    <div style="background-image: url('placeholder')" data-alt="A highly detailed tarot card illustration in a mystical dark occult style. The card features intricate golden linework on a deep obsidian background with vibrant teal and gold accents. High contrast lighting makes the magical symbols glow against the dark paper texture." class="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <p class="text-label-md font-label-md text-secondary mb-1">${theme.title}</p>
+                        <p class="text-headline-sm font-headline-sm text-primary">심판 (Judgment)</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function revealAdvice() {
+            const advicePanel = document.getElementById('ai-advice');
+            advicePanel.classList.remove('hidden');
+            advicePanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body></html>

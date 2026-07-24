@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#1f1f24",
+                    "outline-variant": "#42474d",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#b3ddff",
+                    "surface-container-low": "#1b1b20",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#fdd277",
+                    "on-tertiary-fixed": "#261a00",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary": "#edf5ff",
+                    "inverse-surface": "#e4e1e9",
+                    "on-secondary": "#00344f",
+                    "on-secondary-container": "#cde7ff",
+                    "tertiary-fixed": "#ffdf9f",
+                    "on-tertiary": "#402d00",
+                    "on-secondary-fixed": "#001e30",
+                    "surface-container-lowest": "#0e0e13",
+                    "tertiary-fixed-dim": "#eac168",
+                    "on-tertiary-container": "#775904",
+                    "inverse-on-surface": "#303035",
+                    "inverse-primary": "#396380",
+                    "on-background": "#e4e1e9",
+                    "outline": "#8c9198",
+                    "on-primary-container": "#38627f",
+                    "on-secondary-fixed-variant": "#004b70",
+                    "background": "#131318",
+                    "on-primary": "#00344e",
+                    "secondary-container": "#036c9e",
+                    "surface-container-high": "#2a292f",
+                    "primary-fixed-dim": "#a2cbed",
+                    "on-surface-variant": "#c1c7ce",
+                    "surface-tint": "#a2cbed",
+                    "secondary-fixed": "#cae6ff",
+                    "on-surface": "#e4e1e9",
+                    "surface-dim": "#131318",
+                    "on-error": "#690005",
+                    "on-primary-fixed-variant": "#1e4b67",
+                    "error-container": "#93000a",
+                    "tertiary": "#fff2e0",
+                    "surface": "#131318",
+                    "on-primary-fixed": "#001e2f",
+                    "secondary-fixed-dim": "#8dcdff",
+                    "secondary": "#8dcdff",
+                    "surface-variant": "#35343a",
+                    "surface-bright": "#39383e",
+                    "primary-fixed": "#c9e6ff",
+                    "surface-container-highest": "#35343a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "24px",
+                    "touch-target-min": "50px",
+                    "unit": "8px",
+                    "container-max": "1200px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "headline-sm": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "label-lg": ["Atkinson Hyperlegible Next"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                    "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131318;
+            color: #e4e1e9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        /* Custom range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #42474d;
+            border-radius: 4px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #8dcdff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -8px;
+            border: 2px solid #131318;
+        }
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #42474d;
+        }
+        .border-2px {
+            border-width: 2px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Top AppBar (from Shared Components) -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary docked full-width top-0 border-b-2 border-outline-variant flex justify-between items-center w-full px-gutter h-touch-target-min z-50 sticky">
+<div class="text-headline-sm font-headline-sm text-primary dark:text-primary">SVIL Tarot</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined hover:bg-surface-container-high transition-colors p-2 rounded-full" data-icon="record_voice_over">record_voice_over</button>
+<button class="material-symbols-outlined hover:bg-surface-container-high transition-colors p-2 rounded-full" data-icon="save">save</button>
+<button class="material-symbols-outlined hover:bg-surface-container-high transition-colors p-2 rounded-full" data-icon="history">history</button>
+<button class="material-symbols-outlined text-secondary dark:text-secondary font-bold hover:bg-surface-container-high transition-colors p-2 rounded-full ring-3 ring-tertiary ring-offset-2 duration-200" data-icon="settings">settings</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-8 mb-24">
+<h1 class="text-headline-md font-headline-md mb-8">설정</h1>
+<div class="space-y-6">
+<!-- Font Size Options Section -->
+<section class="p-6 bg-surface border-2px border-[#3a3a48] rounded-xl">
+<h2 class="text-label-lg font-label-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="format_size">format_size</span>
+                    글자 크기
+                </h2>
+<div class="grid grid-cols-3 gap-4">
+<button class="h-[60px] flex items-center justify-center border-2px border-[#6b6b82] rounded-xl text-label-lg font-label-lg hover:bg-surface-container-high transition-all active:scale-95 focus:ring-3 focus:ring-[#ffd479] focus:ring-offset-2">S</button>
+<button class="h-[60px] flex items-center justify-center border-2px border-[#8dcdff] bg-secondary-container text-on-secondary-container rounded-xl text-label-lg font-label-lg transition-all active:scale-95 focus:ring-3 focus:ring-[#ffd479] focus:ring-offset-2">M</button>
+<button class="h-[60px] flex items-center justify-center border-2px border-[#6b6b82] rounded-xl text-label-lg font-label-lg hover:bg-surface-container-high transition-all active:scale-95 focus:ring-3 focus:ring-[#ffd479] focus:ring-offset-2">L</button>
+</div>
+</section>
+<!-- TTS Settings Section -->
+<section class="p-6 bg-surface border-2px border-[#3a3a48] rounded-xl space-y-6">
+<h2 class="text-label-lg font-label-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+                    음성 설정 (TTS)
+                </h2>
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant">목소리 선택</label>
+<div class="relative">
+<select class="w-full h-[56px] px-4 bg-surface-container border-2px border-[#3a3a48] rounded-xl appearance-none text-body-md font-body-md focus:border-secondary focus:ring-3 focus:ring-[#ffd479] focus:ring-offset-2">
+<option>신비로운 예언가 (여성)</option>
+<option>지혜로운 현자 (남성)</option>
+<option>차분한 가이드 (중성)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="text-label-md font-label-md text-on-surface-variant">말하기 속도</label>
+<span class="text-secondary font-bold">1.0x</span>
+</div>
+<input class="focus:ring-3 focus:ring-[#ffd479] rounded-full" max="2.0" min="0.5" step="0.1" type="range" value="1.0"/>
+<div class="flex justify-between text-label-md font-label-md text-outline">
+<span>느림</span>
+<span>빠름</span>
+</div>
+</div>
+</section>
+<!-- Ollama Status Section -->
+<section class="p-6 bg-surface border-2px border-[#3a3a48] rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-full border-2px border-[#3a3a48]">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+</div>
+<div>
+<h2 class="text-label-lg font-label-lg">Ollama Status</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">서버 상태: 연결됨</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-secondary-container/20 border-2px border-secondary rounded-full">
+<span class="w-3 h-3 bg-[#8dcdff] rounded-full animate-pulse"></span>
+<span class="text-label-md font-label-md text-secondary">ONLINE</span>
+</div>
+</section>
+<!-- History Management Section -->
+<section class="p-6 bg-surface border-2px border-[#3a3a48] rounded-xl">
+<h2 class="text-label-lg font-label-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+                    데이터 관리
+                </h2>
+<button class="w-full h-[60px] flex items-center justify-center gap-2 border-2px border-error text-error rounded-xl font-label-lg hover:bg-error-container/10 transition-all active:scale-95 focus:ring-3 focus:ring-[#ffd479] focus:ring-offset-2">
+<span class="material-symbols-outlined" data-icon="delete_forever">delete_forever</span>
+                    기록 초기화
+                </button>
+<p class="mt-4 text-label-md font-label-md text-outline text-center">이 작업은 복구할 수 없습니다.</p>
+</section>
+<!-- Version Info -->
+<div class="text-center py-4">
+<p class="text-label-md font-label-md text-outline">SVIL Tarot Version v1.0.0</p>
+<p class="text-label-md font-label-md text-outline-variant mt-1">© 2024 SVIL Systems</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (from Shared Components) -->
+<nav class="bg-surface-container dark:bg-surface-container fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2 border-t-2 border-outline-variant z-50 h-[80px]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome_mosaic">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] scale-95 transition-transform ring-3 ring-tertiary ring-offset-2" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Interactive Elements Handler
+        document.querySelectorAll('button, select, input[type="range"]').forEach(element => {
+            element.addEventListener('click', () => {
+                // Micro-interaction sound or vibration could be added here
+                console.log('Interaction detected on:', element);
+            });
+        });
+
+        // Font Size Selection Logic
+        const sizeButtons = document.querySelectorAll('.grid-cols-3 button');
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sizeButtons.forEach(b => {
+                    b.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-[#8dcdff]');
+                    b.classList.add('border-[#6b6b82]');
+                });
+                btn.classList.remove('border-[#6b6b82]');
+                btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-[#8dcdff]');
+            });
+        });
+    </script>
+</body></html>

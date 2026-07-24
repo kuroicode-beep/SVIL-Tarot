@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - Soul Card</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@700;800&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131318;
+            color: #e4e1e9;
+            -webkit-font-smoothing: antialiased;
+        }
+        .soul-card-container {
+            perspective: 1000px;
+        }
+        .card-inner {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .shimmer-effect {
+            background: linear-gradient(45deg, transparent 25%, rgba(126, 200, 255, 0.1) 50%, transparent 75%);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .focus-ring:focus-within {
+            outline: 3px solid #ffd479;
+            outline-offset: 2px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#1f1f24",
+                      "outline-variant": "#42474d",
+                      "on-error-container": "#ffdad6",
+                      "primary-container": "#b3ddff",
+                      "surface-container-low": "#1b1b20",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#fdd277",
+                      "on-tertiary-fixed": "#261a00",
+                      "on-tertiary-fixed-variant": "#5b4300",
+                      "primary": "#edf5ff",
+                      "inverse-surface": "#e4e1e9",
+                      "on-secondary": "#00344f",
+                      "on-secondary-container": "#cde7ff",
+                      "tertiary-fixed": "#ffdf9f",
+                      "on-tertiary": "#402d00",
+                      "on-secondary-fixed": "#001e30",
+                      "surface-container-lowest": "#0e0e13",
+                      "tertiary-fixed-dim": "#eac168",
+                      "on-tertiary-container": "#775904",
+                      "inverse-on-surface": "#303035",
+                      "inverse-primary": "#396380",
+                      "on-background": "#e4e1e9",
+                      "outline": "#8c9198",
+                      "on-primary-container": "#38627f",
+                      "on-secondary-fixed-variant": "#004b70",
+                      "background": "#131318",
+                      "on-primary": "#00344e",
+                      "secondary-container": "#036c9e",
+                      "surface-container-high": "#2a292f",
+                      "primary-fixed-dim": "#a2cbed",
+                      "on-surface-variant": "#c1c7ce",
+                      "surface-tint": "#a2cbed",
+                      "secondary-fixed": "#cae6ff",
+                      "on-surface": "#e4e1e9",
+                      "surface-dim": "#131318",
+                      "on-error": "#690005",
+                      "on-primary-fixed-variant": "#1e4b67",
+                      "error-container": "#93000a",
+                      "tertiary": "#fff2e0",
+                      "surface": "#131318",
+                      "on-primary-fixed": "#001e2f",
+                      "secondary-fixed-dim": "#8dcdff",
+                      "secondary": "#8dcdff",
+                      "surface-variant": "#35343a",
+                      "surface-bright": "#39383e",
+                      "primary-fixed": "#c9e6ff",
+                      "surface-container-highest": "#35343a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "24px",
+                      "touch-target-min": "50px",
+                      "unit": "8px",
+                      "container-max": "1200px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Hanken Grotesk"],
+                      "label-md": ["Atkinson Hyperlegible Next"],
+                      "headline-sm": ["Hanken Grotesk"],
+                      "display-lg-mobile": ["Hanken Grotesk"],
+                      "body-md": ["Atkinson Hyperlegible Next"],
+                      "body-lg": ["Atkinson Hyperlegible Next"],
+                      "label-lg": ["Atkinson Hyperlegible Next"],
+                      "display-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "label-md": ["16px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-lg": ["18px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary docked full-width top-0 border-b-2 border-outline-variant flat no shadows flex justify-between items-center w-full px-gutter h-touch-target-min z-50">
+<div class="text-headline-sm font-headline-sm text-primary dark:text-primary">SVIL Tarot</div>
+<nav class="hidden md:flex space-x-6">
+<a class="text-secondary dark:text-secondary font-bold hover:bg-surface-container-high transition-colors px-2" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors px-2" href="#">Readings</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors px-2" href="#">History</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors px-2" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high transition-colors rounded-full">record_voice_over</button>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high transition-colors rounded-full">save</button>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high transition-colors rounded-full">history</button>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high transition-colors rounded-full">settings</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-8 mb-24">
+<section class="flex flex-col items-center">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-center mb-8 text-primary">영혼의 목소리: 소울 카드</h1>
+<!-- Date Inputs -->
+<div class="grid grid-cols-3 gap-4 w-full max-w-md mb-12">
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant ml-1">YYYY</label>
+<input class="h-[56px] bg-surface text-on-surface border-2 border-outline-variant rounded-xl px-4 focus:border-secondary focus:ring-0 focus-ring font-body-lg text-body-lg text-center" placeholder="1990" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant ml-1">MM</label>
+<input class="h-[56px] bg-surface text-on-surface border-2 border-outline-variant rounded-xl px-4 focus:border-secondary focus:ring-0 focus-ring font-body-lg text-body-lg text-center" placeholder="01" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-md font-label-md text-on-surface-variant ml-1">DD</label>
+<input class="h-[56px] bg-surface text-on-surface border-2 border-outline-variant rounded-xl px-4 focus:border-secondary focus:ring-0 focus-ring font-body-lg text-body-lg text-center" placeholder="01" type="text"/>
+</div>
+</div>
+<!-- Result View / Soul Card -->
+<div class="w-full flex flex-col items-center animate-in fade-in duration-700">
+<div class="soul-card-container mb-10 w-full max-w-[340px] aspect-[2/3.5] relative group">
+<!-- High Contrast Card Border (2px structural) -->
+<div class="card-inner w-full h-full bg-surface border-2 border-outline-variant rounded-2xl overflow-hidden relative shadow-2xl flex flex-col p-4 ring-4 ring-secondary/30">
+<div class="absolute inset-0 shimmer-effect pointer-events-none opacity-40"></div>
+<!-- Card Header -->
+<div class="flex justify-between items-center mb-4 z-10">
+<span class="text-headline-sm font-headline-sm text-secondary">I</span>
+<span class="text-label-lg font-label-lg text-secondary uppercase tracking-widest">The Magician</span>
+</div>
+<!-- Card Illustration -->
+<div class="flex-grow bg-surface-container-lowest rounded-lg border-2 border-outline-variant relative overflow-hidden mb-4 z-10">
+<img class="w-full h-full object-cover" data-alt="A highly detailed tarot card illustration of 'The Magician' in a high-contrast occult precision style. The figure stands before an altar of cosmic tools under a deep obsidian sky filled with glowing celestial bodies. Vibrant blue and gold accents illuminate the magician's flowing robes and mystical artifacts. The scene is framed with thick architectural lines and sharp geometric patterns, emphasizing a modern dark aesthetic with intense clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPFoQrV3YdcWrAY4lQowcsrjTR3wsfvS3xfBNjXhhDuS_Ri1tiE1bu5Jbz4SZiADss2DjbVCm8vICu-at2gMhcC4UGiDyPiJn819-ReLdH_ogh5n5-WUQ-TfxUojZ3eY_w3x0IBOEs6bpw9NXl8kNOtFUD1wjlg49b1MzJvYUFEOZ2AbQdt_h-DKj7GjtdBsGw29ilc3p-CBicHlfwgVufeaPfJ9AXzGboLqWcmbKLzi-EscA8xDd89s0QaGS-B7Mppt4w_04z89UD"/>
+</div>
+<!-- Card Footer -->
+<div class="text-center z-10">
+<h2 class="text-headline-sm font-headline-sm text-primary mb-1">마법사</h2>
+<div class="flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Text Content Container -->
+<div class="max-w-xl text-center space-y-6">
+<div class="space-y-2">
+<h3 class="text-headline-md font-headline-md text-primary">당신의 소울 카드는 1번: 마법사입니다.</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant px-4">
+                            당신은 무한한 잠재력과 창조적 에너지를 타고난 존재입니다. 보이지 않는 것을 현실로 이끌어내는 강력한 의지력을 가지고 있으며, 지혜와 도구를 완벽하게 다루는 타고난 리더입니다.
+                        </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4 px-4">
+<button class="h-touch-target-min min-h-[50px] bg-secondary text-on-secondary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-3 w-full transition-transform active:scale-95 ring-3 ring-offset-2 ring-transparent focus:ring-tertiary">
+<span class="material-symbols-outlined">auto_awesome</span>
+                            AI 설명 듣기
+                        </button>
+<div class="flex items-center justify-center gap-8 py-2">
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-14 h-14 rounded-full border-2 border-outline-variant flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-weight="fill">record_voice_over</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">읽어주기</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-14 h-14 rounded-full border-2 border-outline-variant flex items-center justify-center group-hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">공유하기</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container dark:bg-surface-container border-t-2 border-outline-variant h-[80px] z-50 flex justify-around items-center px-4 pb-2 flat no shadows">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">auto_awesome_mosaic</span>
+<span class="text-label-md font-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl p-2 min-w-[64px] transition-transform ring-3 ring-tertiary ring-offset-2" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-label-md font-label-md">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length >= e.target.placeholder.length) {
+                    const next = e.target.parentElement.nextElementSibling?.querySelector('input');
+                    if (next) next.focus();
+                }
+            });
+        });
+
+        // Hover Effect on Card
+        const card = document.querySelector('.card-inner');
+        const container = document.querySelector('.soul-card-container');
+
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        });
+    </script>
+</body></html>
