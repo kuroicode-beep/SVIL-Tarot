@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!-- SVIL 배포 페이지 템플릿 — 자체 완결형 단일 파일. CDN 금지(폰트·스크립트·스타일 전부 인라인/로컬).
+     {{ }} 표시는 프로젝트에 맞게 교체. 문구는 아래 I18N 사전(5개 언어)에서 관리하고 HTML엔 data-i18n 키만 둔다. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVIL Tarot — Low-vision friendly tarot learn & AI reading</title>
+<meta name="description" content="Learn tarot, practice spreads, and get local AI readings with a high-contrast deck.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%2316161d' stroke='%23b3ddff' stroke-width='3'/></svg>">
+<style>
+  :root {
+    --bg: #0d0d12;
+    --surface: #16161d;
+    --surface-2: #1f1f2a;
+    --border: #3a3a48;
+    --border-strong: #6b6b82;
+    --text: #f5f5f7;
+    --text-sub: #c9c9d4;
+    --accent: #7ec8ff;
+    --accent-strong: #b3ddff;
+    --accent-max: #d6ecff;
+    --positive: #7ee2a8;
+    --warning: #ffd479;
+    --focus: #ffd479;
+    /* 로컬 설치 폰트만 — CDN 금지. 없으면 시스템 산세리프로 폴백. */
+    --font-ui: "LINESeedKR", "Pretendard", "Malgun Gothic", "맑은 고딕",
+               system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "Consolas", "Cascadia Mono", ui-monospace, "Malgun Gothic", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+  }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font-ui); font-size: 18px; line-height: 1.8;
+    letter-spacing: 0.02em; word-break: keep-all; overflow-wrap: break-word;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 20px; }
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-max); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+  code, .mono, .ver { font-family: var(--font-mono); }
+
+  header { border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top: 0; z-index: 10; }
+  .bar { display: flex; align-items: center; gap: 16px; min-height: 68px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
+  .brand svg { width: 30px; height: 30px; flex: none; }
+  .brand b { font-weight: normal; font-size: 1.25rem; }
+  .ver { color: var(--accent); font-size: 0.85rem; }
+
+  /* 언어 스위처 — 색만이 아니라 밑줄로도 선택 상태 표시 */
+  .langs { display: flex; gap: 4px; flex-wrap: wrap; }
+  .langs button {
+    min-height: 40px; padding: 6px 12px; background: transparent; color: var(--text-sub);
+    border: 1.5px solid transparent; border-radius: 999px; font-family: inherit; font-size: 0.92rem;
+    cursor: pointer; border-bottom: 3px solid transparent;
+  }
+  .langs button:hover { color: var(--accent-strong); border-color: var(--border-strong); }
+  .langs button[aria-current="true"] { color: var(--accent-strong); border-bottom-color: var(--accent); background: var(--surface-2); }
+
+  .hero { padding: 72px 0 56px; text-align: center; }
+  .hero h1 { font-size: 2.2rem; margin: 0 0 12px; font-weight: normal; }
+  .tagline { font-size: 1.35rem; color: var(--text-sub); margin: 0 auto 36px; max-width: 34em; }
+  .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 56px; padding: 12px 28px; border-radius: 12px; border: 2px solid var(--border-strong);
+    background: var(--surface-2); color: var(--text); font-family: inherit; font-size: 1.05rem; text-decoration: none;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .btn-primary { background: var(--accent-strong); color: #000; border-color: var(--accent-strong); }
+  .btn-primary:hover { background: var(--accent-max); color: #000; border-color: var(--accent-max); }
+  .meta { margin-top: 18px; color: var(--text-sub); font-size: 0.95rem; }
+  .meta .mono { color: var(--text); }
+
+  section { padding: 44px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 1.7rem; font-weight: normal; margin: 0 0 8px; color: var(--accent-strong); }
+  .sub { color: var(--text-sub); margin: 0 0 28px; }
+
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px; }
+  .card h3 { font-size: 1.35rem; font-weight: normal; margin: 0 0 6px; }
+  .card p { margin: 0; color: var(--text-sub); font-size: 0.97rem; }
+
+  .links { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .link-card {
+    display: flex; flex-direction: column; gap: 4px; min-height: 56px; padding: 20px 22px;
+    background: var(--surface); border: 2px solid var(--border-strong); border-radius: 12px;
+    text-decoration: none; color: var(--text);
+  }
+  .link-card:hover { border-color: var(--accent); color: var(--accent-strong); }
+  .link-card span { color: var(--text-sub); font-size: 0.9rem; overflow-wrap: anywhere; }
+
+  /* 후원 — svil-donation-section 스킬과 동일 규격 (QR 이미지만, 계좌 텍스트 금지) */
+  .support-card {
+    display: flex; gap: 26px; align-items: center; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+  }
+  .qr-frame { background: #fff; border-radius: 12px; padding: 14px; flex: none; line-height: 0; }
+  .qr-frame img { display: block; width: 216px; height: 216px; }
+  .qr-meta { display: flex; flex-direction: column; gap: 6px; min-width: 220px; flex: 1; }
+  .qr-meta b { font-weight: normal; font-size: 1.25rem; color: var(--accent-strong); }
+  .qr-meta span { color: var(--text-sub); font-size: 0.97rem; }
+  @media (max-width: 560px) { .support-card { justify-content: center; text-align: center; } .qr-meta { align-items: center; } }
+
+  footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--text-sub); font-size: 0.9rem; text-align: center; }
+  /* 표준 푸터 링크 — 협업 문의·블로그·홈페이지(SVIL 공통 상수). 라벨만 번역, 값은 고정. */
+  .foot-links { display: flex; flex-direction: column; gap: 8px; align-items: center; margin: 0 0 20px; }
+  .foot-links .row { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; justify-content: center; }
+  .foot-links .k { color: var(--text-sub); font-size: 0.85rem; min-width: 84px; text-align: right; }
+  @media (max-width: 560px) { .foot-links .k { min-width: 0; text-align: center; } }
+
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .hero { padding: 48px 0 40px; }
+    .hero h1 { font-size: 1.8rem; }
+    .tagline { font-size: 1.15rem; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#16161d" stroke="#b3ddff" stroke-width="3"/></svg>
+      <b>SVIL Tarot</b>
+      <span class="ver">v1.0.0</span>
+    </div>
+    <nav class="langs" aria-label="Language">
+      <button type="button" data-lang="en" lang="en">English</button>
+      <button type="button" data-lang="ko" lang="ko">한국어</button>
+      <button type="button" data-lang="ja" lang="ja">日本語</button>
+      <button type="button" data-lang="zh" lang="zh">中文</button>
+      <button type="button" data-lang="vi" lang="vi">Tiếng Việt</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <h1 data-i18n="hero_title"></h1>
+    <p class="tagline" data-i18n="hero_tagline"></p>
+    <div class="cta">
+      <!-- 다운로드/설치가 없는 프로젝트면 이 버튼은 제거하거나 다른 1차 CTA로 교체 -->
+      <a class="btn btn-primary" href="https://github.com/kuroicode-beep/SVIL-Tarot"><span data-i18n="cta_primary"></span></a>
+      <a class="btn" href="https://github.com/kuroicode-beep/SVIL-Tarot#readme"><span data-i18n="cta_secondary"></span></a>
+    </div>
+    <p class="meta"><span data-i18n="meta_a"></span> · <span data-i18n="meta_b"></span> · <span class="mono">MIT</span></p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 data-i18n="features_title"></h2>
+      <p class="sub" data-i18n="features_sub"></p>
+      <div class="grid">
+        <!-- 카드 개수는 자유. 각 카드 h3/p에 data-i18n 키를 붙이고 아래 사전에 5개 언어 모두 추가 -->
+        <div class="card"><h3 data-i18n="f1_t"></h3><p data-i18n="f1_d"></p></div>
+        <div class="card"><h3 data-i18n="f2_t"></h3><p data-i18n="f2_d"></p></div>
+        <div class="card"><h3 data-i18n="f3_t"></h3><p data-i18n="f3_d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 data-i18n="links_title"></h2>
+      <p class="sub" data-i18n="links_sub"></p>
+      <div class="links">
+        <a class="link-card" href="https://github.com/kuroicode-beep/SVIL-Tarot"><b data-i18n="link_gh"></b><span class="mono">kuroicode-beep/SVIL-Tarot</span></a>
+        <a class="link-card" href="mailto:kuroicode@gmail.com"><b data-i18n="link_contact"></b><span class="mono">kuroicode@gmail.com</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 후원 섹션 — QR 이미지는 svil-donation-section 스킬의 표준 QR을 assets/toss-qr.png 로 복사 -->
+  <section id="support">
+    <div class="wrap">
+      <h2 data-i18n="support_title"></h2>
+      <p class="sub" data-i18n="support_sub"></p>
+      <div class="support-card">
+        <div class="qr-frame">
+          <img src="assets/toss-qr.png" alt="토스 후원 QR — Toss donation QR" width="216" height="216" loading="lazy">
+        </div>
+        <div class="qr-meta">
+          <b data-i18n="support_toss_label"></b>
+          <span data-i18n="support_toss_hint"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <!-- 표준 SVIL 푸터 링크. 값(이메일·블로그·홈페이지)은 SVIL 공통 상수이므로 그대로 둔다. -->
+    <div class="foot-links">
+      <div class="row"><span class="k" data-i18n="foot_contact"></span><a href="mailto:kuroicode@gmail.com">kuroicode@gmail.com</a></div>
+      <div class="row"><span class="k" data-i18n="foot_blog"></span><a href="https://ghost-production-0ec2.up.railway.app/" target="_blank" rel="noopener">인블루의 로그 보관소</a></div>
+      <div class="row"><span class="k" data-i18n="foot_home"></span><a href="https://kuroicode-beep.github.io/svil-homepage/" target="_blank" rel="noopener">SVIL</a></div>
+    </div>
+    <p data-i18n="footer_lic"></p>
+    <p data-i18n="footer_by"></p>
+  </div>
+</footer>
+
+<script>
+// 다국어 사전. 영어(en)가 디폴트/폴백. 모든 언어의 키 집합이 동일해야 한다(누락 시 en으로 폴백).
+// 사람/AI 이름·고유명사·코드·이메일은 번역하지 않는다.
+const I18N = {
+  "en": {
+    "_title": "SVIL Tarot — Low-vision friendly tarot",
+    "hero_title": "SVIL Tarot",
+    "hero_tagline": "Learn cards step by step, practice spreads, and read with a local LLM — built for high contrast and screen readers.",
+    "cta_primary": "Open repository",
+    "cta_secondary": "Read README",
+    "meta_a": "Web · Desktop browser",
+    "meta_b": "Free and open source",
+    "features_title": "What it does",
+    "features_sub": "Learning, practice, and AI readings in one fullscreen app.",
+    "f1_t": "Learn & quiz",
+    "f1_d": "Major arcana stages with quizzes and text-to-speech.",
+    "f2_t": "Practice + AI",
+    "f2_d": "Draw 1/3/5-card spreads, write your notes, get Ollama advice.",
+    "f3_t": "Soul card",
+    "f3_d": "Numerology 1–9 from birthdate with local AI explanation.",
+    "f4_t": "Accessibility first",
+    "f4_d": "High-contrast deck, large targets, labels with color, fullscreen.",
+    "f5_t": "Local LLM",
+    "f5_d": "Ollama gemma4:12b — no cloud DeepSeek key in the app.",
+    "links_title": "Links",
+    "links_sub": "Questions, bugs, or just want to say hello.",
+    "link_gh": "GitHub repository",
+    "link_contact": "Contact us",
+    "support_title": "Support",
+    "support_sub": "If this helped you, you can leave a small tip. Entirely optional — it stays free either way.",
+    "support_toss_label": "Tip via Toss",
+    "support_toss_hint": "Scan the QR with the Toss app (Korea) to send a tip.",
+    "foot_contact": "Contact",
+    "foot_blog": "Blog",
+    "foot_home": "Homepage",
+    "footer_lic": "Released under the MIT License.",
+    "footer_by": "Built by SVIL — Singularity Visual Intelligence Lab."
+  },
+  "ko": {
+    "_title": "SVIL Tarot — 저시력 친화 타로",
+    "hero_title": "SVIL Tarot",
+    "hero_tagline": "단계별 학습·스프레드 실전·로컬 AI 리딩. 고대비 덱과 큰 터치 타겟으로 만들었습니다.",
+    "cta_primary": "저장소 열기",
+    "cta_secondary": "README 보기",
+    "meta_a": "웹 · 데스크톱 브라우저",
+    "meta_b": "무료 · 오픈소스",
+    "features_title": "무엇을 하나요",
+    "features_sub": "배우기·실전·AI를 한 전체화면 앱에서.",
+    "f1_t": "배우기·퀴즈",
+    "f1_d": "메이저 단계 레슨과 퀴즈, TTS 낭독.",
+    "f2_t": "실전 + AI",
+    "f2_d": "1/3/5카드 드로우, 나의 해설, Ollama 조언.",
+    "f3_t": "소울카드",
+    "f3_d": "생년월일 수비학 1–9 + 로컬 AI 설명.",
+    "f4_t": "접근성 우선",
+    "f4_d": "고대비 덱, 큰 버튼, 색+라벨, 전체화면.",
+    "f5_t": "로컬 LLM",
+    "f5_d": "Ollama gemma4:12b — 앱에 클라우드 키 없음.",
+    "links_title": "링크",
+    "links_sub": "문의, 버그 제보, 그냥 인사도 좋습니다.",
+    "link_gh": "GitHub 저장소",
+    "link_contact": "문의하기",
+    "support_title": "후원",
+    "support_sub": "이 앱이 도움이 되셨다면 작은 후원으로 응원해 주세요. 전적으로 선택이고, 후원과 무관하게 앱은 계속 무료예요.",
+    "support_toss_label": "토스로 후원",
+    "support_toss_hint": "토스 앱으로 QR을 스캔하면 바로 후원할 수 있어요.",
+    "foot_contact": "협업 문의",
+    "foot_blog": "블로그",
+    "foot_home": "홈페이지",
+    "footer_lic": "MIT 라이선스로 배포됩니다.",
+    "footer_by": "SVIL — Singularity Visual Intelligence Lab 제작."
+  },
+  "ja": {
+    "_title": "SVIL Tarot — 低視力フレンドリー",
+    "hero_title": "SVIL Tarot",
+    "hero_tagline": "段階学習・スプレッド実践・ローカルAIリーディング。高コントラストデッキ対応。",
+    "cta_primary": "リポジトリを開く",
+    "cta_secondary": "README",
+    "meta_a": "Web・デスクトップ",
+    "meta_b": "無料・オープンソース",
+    "features_title": "できること",
+    "features_sub": "学習・実践・AIを一つの全画面アプリで。",
+    "f1_t": "学習とクイズ",
+    "f1_d": "メジャー段階レッスンとTTS。",
+    "f2_t": "実践 + AI",
+    "f2_d": "1/3/5枚スプレッドとOllama助言。",
+    "f3_t": "ソウルカード",
+    "f3_d": "生年月日数秘術1–9 + ローカルAI。",
+    "f4_t": "アクセシビリティ",
+    "f4_d": "高コントラスト、大きなターゲット、全画面。",
+    "f5_t": "ローカルLLM",
+    "f5_d": "Ollama gemma4:12b。",
+    "links_title": "リンク",
+    "links_sub": "お問い合わせ歓迎。",
+    "link_gh": "GitHub",
+    "link_contact": "お問い合わせ",
+    "support_title": "支援",
+    "support_sub": "任意のチップで応援できます。",
+    "support_toss_label": "Toss で支援",
+    "support_toss_hint": "TossアプリでQRをスキャン。",
+    "foot_contact": "お問い合わせ",
+    "foot_blog": "ブログ",
+    "foot_home": "ホームページ",
+    "footer_lic": "MIT ライセンス。",
+    "footer_by": "SVIL 制作。"
+  },
+  "zh": {
+    "_title": "SVIL Tarot — 低视力友好塔罗",
+    "hero_title": "SVIL Tarot",
+    "hero_tagline": "分步学习、牌阵练习与本地 AI 解读。高对比度牌面。",
+    "cta_primary": "打开仓库",
+    "cta_secondary": "查看 README",
+    "meta_a": "网页 · 桌面浏览器",
+    "meta_b": "免费 · 开源",
+    "features_title": "它能做什么",
+    "features_sub": "学习、实战与 AI 同在全屏应用。",
+    "f1_t": "学习与测验",
+    "f1_d": "大阿卡纳阶段课程与 TTS。",
+    "f2_t": "实战 + AI",
+    "f2_d": "1/3/5 牌阵与 Ollama 建议。",
+    "f3_t": "灵魂牌",
+    "f3_d": "生日数秘 1–9 + 本地 AI。",
+    "f4_t": "无访问优先",
+    "f4_d": "高对比、大按钮、全屏。",
+    "f5_t": "本地 LLM",
+    "f5_d": "Ollama gemma4:12b。",
+    "links_title": "链接",
+    "links_sub": "欢迎联系。",
+    "link_gh": "GitHub",
+    "link_contact": "联系我们",
+    "support_title": "赞助",
+    "support_sub": "可选小费支持。",
+    "support_toss_label": "用 Toss 赞助",
+    "support_toss_hint": "用 Toss 扫描二维码。",
+    "foot_contact": "合作咨询",
+    "foot_blog": "博客",
+    "foot_home": "主页",
+    "footer_lic": "MIT 许可证。",
+    "footer_by": "由 SVIL 制作。"
+  },
+  "vi": {
+    "_title": "SVIL Tarot — thân thiện thị lực kém",
+    "hero_title": "SVIL Tarot",
+    "hero_tagline": "Học từng bước, trải bài thực hành, đọc AI cục bộ — bộ bài tương phản cao.",
+    "cta_primary": "Mở kho",
+    "cta_secondary": "Đọc README",
+    "meta_a": "Web · trình duyệt desktop",
+    "meta_b": "Miễn phí · mã mở",
+    "features_title": "Ứng dụng làm gì",
+    "features_sub": "Học, thực hành và AI trong một app toàn màn hình.",
+    "f1_t": "Học & quiz",
+    "f1_d": "Bài học major và TTS.",
+    "f2_t": "Thực hành + AI",
+    "f2_d": "Trải 1/3/5 lá và lời khuyên Ollama.",
+    "f3_t": "Soul card",
+    "f3_d": "Số học 1–9 + AI cục bộ.",
+    "f4_t": "Ưu tiên a11y",
+    "f4_d": "Tương phản cao, nút lớn, toàn màn hình.",
+    "f5_t": "LLM cục bộ",
+    "f5_d": "Ollama gemma4:12b.",
+    "links_title": "Liên kết",
+    "links_sub": "Liên hệ thoải mái.",
+    "link_gh": "GitHub",
+    "link_contact": "Liên hệ",
+    "support_title": "Ủng hộ",
+    "support_sub": "Tip tùy ý qua Toss.",
+    "support_toss_label": "Ủng hộ Toss",
+    "support_toss_hint": "Quét QR bằng app Toss.",
+    "foot_contact": "Liên hệ",
+    "foot_blog": "Blog",
+    "foot_home": "Trang chủ",
+    "footer_lic": "MIT.",
+    "footer_by": "Xây bởi SVIL."
+  }
+};
+
+const LANGS = ["en", "ko", "ja", "zh", "vi"];   // en = 디폴트/폴백
+
+function applyLang(code) {
+  const dict = I18N[code] || I18N.en;
+  document.documentElement.lang = code;
+  document.title = dict._title || I18N.en._title;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const val = dict[el.dataset.i18n] ?? I18N.en[el.dataset.i18n];   // 누락 키는 영어로 폴백
+    if (val) el.textContent = val;
+  });
+  document.querySelectorAll(".langs button").forEach(b => {
+    b.setAttribute("aria-current", String(b.dataset.lang === code));
+  });
+  try { localStorage.setItem("site-lang", code); } catch (e) {}
+}
+
+function initialLang() {
+  try { const s = localStorage.getItem("site-lang"); if (s && LANGS.includes(s)) return s; } catch (e) {}
+  for (const pref of navigator.languages || [navigator.language || "en"]) {
+    const base = String(pref).toLowerCase().split("-")[0];
+    if (LANGS.includes(base)) return base;
+  }
+  return "en";   // 디폴트 영어
+}
+
+document.querySelectorAll(".langs button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+applyLang(initialLang());
+</script>
+</body>
+</html>
