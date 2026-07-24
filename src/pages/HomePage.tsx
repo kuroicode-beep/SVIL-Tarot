@@ -34,7 +34,7 @@ export function HomePage() {
       </div>
       <h1 className="hero-title">{t('brand')}</h1>
       <p className="hero-sub">{t('tagline')}</p>
-      <div className="home-grid">
+      <div className="home-grid" id="main">
         {links.map((l) => (
           <Link
             key={l.to}

@@ -3,69 +3,627 @@
     "major-basics": [
       {
         "cardId": "major_00",
-        "question": "바보(The Fool) 카드의 정방향 핵심 의미는?",
-        "options": ["새로운 시작, 순수, 모험", "권위, 구조, 안정", "급변, 붕괴, 각성", "집착, 유혹, 속박"],
-        "answerIndex": 0
+        "question": "바보(The Fool) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "새로운 시작, 순수, 모험",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
       },
       {
         "cardId": "major_01",
-        "question": "마법사 카드가 상징하는 것은?",
-        "options": ["고독과 성찰", "의지와 창조", "풍요와 양육", "공정과 균형"],
+        "question": "마법사(The Magician) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_02",
+        "question": "여사제(The High Priestess) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "직관, 비밀, 내면",
+          "권위, 구조, 안정",
+          "의지, 창조, 기술"
+        ],
         "answerIndex": 1
       },
       {
+        "cardId": "major_03",
+        "question": "여황제(The Empress) 카드의 정방향 의미는?",
+        "options": [
+          "풍요, 양육, 창조성",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "의지, 창조, 기술"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_04",
+        "question": "황제(The Emperor) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_05",
+        "question": "교황(The Hierophant) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "전통, 가르침, 신념",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
+      },
+      {
         "cardId": "major_06",
-        "question": "연인 카드의 정방향 키워드는?",
-        "options": ["승리, 추진", "사랑, 선택, 조화", "전환, 끝과 시작", "희망, 치유"],
+        "question": "연인(The Lovers) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "사랑, 선택, 조화",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정"
+        ],
         "answerIndex": 1
+      },
+      {
+        "cardId": "major_07",
+        "question": "전차(The Chariot) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술"
+        ],
+        "answerIndex": 0
       }
     ],
     "major-middle": [
       {
-        "cardId": "major_13",
-        "question": "죽음 카드의 정방향은 주로 무엇을 의미하나요?",
-        "options": ["문자 그대로의 재앙만", "전환, 끝과 시작, 변모", "물질적 풍요", "전통적 가르침"],
+        "cardId": "major_08",
+        "question": "힘(Strength) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "용기, 인내, 부드러운 힘"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_09",
+        "question": "은둔자(The Hermit) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "성찰, 지혜, 고독",
+          "의지, 창조, 기술"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_10",
+        "question": "운명의 수레바퀴(Wheel of Fortune) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "권위, 구조, 안정",
+          "변화, 기회, 순환",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_11",
+        "question": "정의(Justice) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "공정, 균형, 진실",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정"
+        ],
         "answerIndex": 1
+      },
+      {
+        "cardId": "major_12",
+        "question": "매달린 남자(The Hanged Man) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "희생, 새로운 관점, 멈춤",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_13",
+        "question": "죽음(Death) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "전환, 끝과 시작, 변모",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "cardId": "major_14",
+        "question": "절제(Temperance) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정",
+          "균형, 절제, 치유"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_15",
+        "question": "악마(The Devil) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정",
+          "집착, 유혹, 속박"
+        ],
+        "answerIndex": 3
       },
       {
         "cardId": "major_16",
-        "question": "탑 카드의 정방향 메시지는?",
-        "options": ["급변, 붕괴, 각성", "기쁨과 성공", "직관과 비밀", "양육과 창조성"],
-        "answerIndex": 0
+        "question": "탑(The Tower) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "급변, 붕괴, 각성",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 2
       },
       {
         "cardId": "major_17",
-        "question": "별 카드의 정방향 키워드는?",
-        "options": ["불안, 환상", "희망, 치유, 영감", "집착, 유혹", "독단, 경직"],
+        "question": "별(The Star) 카드의 정방향 의미는?",
+        "options": [
+          "희망, 치유, 영감",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "의지, 창조, 기술"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_18",
+        "question": "달(The Moon) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "불안, 환상, 무의식",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정"
+        ],
         "answerIndex": 1
+      },
+      {
+        "cardId": "major_19",
+        "question": "태양(The Sun) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "기쁨, 성공, 활력",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
       }
     ],
     "major-finale": [
       {
-        "cardId": "major_21",
-        "question": "세계 카드의 정방향 의미는?",
-        "options": ["미완성, 정체", "완성, 성취, 통합", "무모함, 지연", "혼란, 가혹함"],
-        "answerIndex": 1
+        "cardId": "major_20",
+        "question": "심판(Judgement) 카드의 정방향 의미는?",
+        "options": [
+          "부활, 각성, 소명",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 0
       },
       {
-        "cardId": "major_20",
-        "question": "심판 카드가 가리키는 것은?",
-        "options": ["부활, 각성, 소명", "물질 집착", "감정 단절", "우연한 놀이"],
-        "answerIndex": 0
+        "cardId": "major_21",
+        "question": "세계(The World) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "완성, 성취, 통합",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 1
       }
     ],
     "minor-suits": [
       {
         "cardId": "cup_01",
-        "question": "컵 슈트가 주로 다루는 영역은?",
-        "options": ["감정·관계", "물질·현실만", "전투·전쟁만", "숫자 계산"],
+        "question": "컵 에이스가 속한 영역/의미는?",
+        "options": [
+          "감정·관계 — 감정의 흐름과 연결 (에이스)",
+          "감정·관계 — 감정 불균형·단절 (에이스)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "wand_01",
+        "question": "완드 에이스가 속한 영역/의미는?",
+        "options": [
+          "열정·행동 — 에너지와 추진 (에이스)",
+          "열정·행동 — 소진·지연 (에이스)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
         "answerIndex": 0
       },
       {
         "cardId": "sword_01",
-        "question": "검 슈트의 주제는?",
-        "options": ["열정·행동", "사고·갈등", "양육·풍요", "소울카드 번호"],
+        "question": "검 에이스가 속한 영역/의미는?",
+        "options": [
+          "사고·갈등 — 명확한 사고와 결단 (에이스)",
+          "사고·갈등 — 혼란·가혹함 (에이스)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "pentacle_01",
+        "question": "펜타클 에이스가 속한 영역/의미는?",
+        "options": [
+          "물질·현실 — 안정과 실천 (에이스)",
+          "물질·현실 — 불안·집착 (에이스)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "cup_10",
+        "question": "컵 10가 속한 영역/의미는?",
+        "options": [
+          "감정·관계 — 감정의 흐름과 연결 (10)",
+          "감정·관계 — 감정 불균형·단절 (10)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "wand_10",
+        "question": "완드 10가 속한 영역/의미는?",
+        "options": [
+          "열정·행동 — 에너지와 추진 (10)",
+          "열정·행동 — 소진·지연 (10)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "sword_10",
+        "question": "검 10가 속한 영역/의미는?",
+        "options": [
+          "사고·갈등 — 명확한 사고와 결단 (10)",
+          "사고·갈등 — 혼란·가혹함 (10)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "pentacle_10",
+        "question": "펜타클 10가 속한 영역/의미는?",
+        "options": [
+          "물질·현실 — 안정과 실천 (10)",
+          "물질·현실 — 불안·집착 (10)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "cup_14",
+        "question": "컵 왕가 속한 영역/의미는?",
+        "options": [
+          "감정·관계 — 감정의 흐름과 연결 (왕)",
+          "감정·관계 — 감정 불균형·단절 (왕)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "wand_14",
+        "question": "완드 왕가 속한 영역/의미는?",
+        "options": [
+          "열정·행동 — 에너지와 추진 (왕)",
+          "열정·행동 — 소진·지연 (왕)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "sword_14",
+        "question": "검 왕가 속한 영역/의미는?",
+        "options": [
+          "사고·갈등 — 명확한 사고와 결단 (왕)",
+          "사고·갈등 — 혼란·가혹함 (왕)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "pentacle_14",
+        "question": "펜타클 왕가 속한 영역/의미는?",
+        "options": [
+          "물질·현실 — 안정과 실천 (왕)",
+          "물질·현실 — 불안·집착 (왕)",
+          "숫자만의 의미",
+          "스프레드 포지션 이름"
+        ],
+        "answerIndex": 0
+      }
+    ],
+    "major-review": [
+      {
+        "cardId": "major_00",
+        "question": "바보(The Fool) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "새로운 시작, 순수, 모험"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_01",
+        "question": "마법사(The Magician) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_02",
+        "question": "여사제(The High Priestess) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "직관, 비밀, 내면",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_03",
+        "question": "여황제(The Empress) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "풍요, 양육, 창조성",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_04",
+        "question": "황제(The Emperor) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_05",
+        "question": "교황(The Hierophant) 카드의 정방향 의미는?",
+        "options": [
+          "전통, 가르침, 신념",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_06",
+        "question": "연인(The Lovers) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "승리, 추진, 의지",
+          "사랑, 선택, 조화",
+          "의지, 창조, 기술"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_07",
+        "question": "전차(The Chariot) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_08",
+        "question": "힘(Strength) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "용기, 인내, 부드러운 힘",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_09",
+        "question": "은둔자(The Hermit) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "성찰, 지혜, 고독",
+          "의지, 창조, 기술",
+          "권위, 구조, 안정"
+        ],
         "answerIndex": 1
+      },
+      {
+        "cardId": "major_10",
+        "question": "운명의 수레바퀴(Wheel of Fortune) 카드의 정방향 의미는?",
+        "options": [
+          "변화, 기회, 순환",
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_11",
+        "question": "정의(Justice) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "권위, 구조, 안정",
+          "공정, 균형, 진실",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_12",
+        "question": "매달린 남자(The Hanged Man) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "희생, 새로운 관점, 멈춤"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_13",
+        "question": "죽음(Death) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "전환, 끝과 시작, 변모"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_14",
+        "question": "절제(Temperance) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "균형, 절제, 치유",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_15",
+        "question": "악마(The Devil) 카드의 정방향 의미는?",
+        "options": [
+          "집착, 유혹, 속박",
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_16",
+        "question": "탑(The Tower) 카드의 정방향 의미는?",
+        "options": [
+          "급변, 붕괴, 각성",
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "cardId": "major_17",
+        "question": "별(The Star) 카드의 정방향 의미는?",
+        "options": [
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "희망, 치유, 영감"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_18",
+        "question": "달(The Moon) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "불안, 환상, 무의식"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_19",
+        "question": "태양(The Sun) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "의지, 창조, 기술",
+          "기쁨, 성공, 활력",
+          "승리, 추진, 의지"
+        ],
+        "answerIndex": 2
+      },
+      {
+        "cardId": "major_20",
+        "question": "심판(Judgement) 카드의 정방향 의미는?",
+        "options": [
+          "권위, 구조, 안정",
+          "승리, 추진, 의지",
+          "의지, 창조, 기술",
+          "부활, 각성, 소명"
+        ],
+        "answerIndex": 3
+      },
+      {
+        "cardId": "major_21",
+        "question": "세계(The World) 카드의 정방향 의미는?",
+        "options": [
+          "의지, 창조, 기술",
+          "승리, 추진, 의지",
+          "권위, 구조, 안정",
+          "완성, 성취, 통합"
+        ],
+        "answerIndex": 3
       }
     ]
   }

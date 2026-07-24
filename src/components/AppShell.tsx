@@ -9,6 +9,9 @@ export function AppShell() {
 
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main">
+        본문으로 건너뛰기
+      </a>
       <header className="top-bar">
         <Link to="/" className="top-bar__brand">
           {t('brand')}
@@ -26,21 +29,11 @@ export function AppShell() {
             <span aria-hidden="true">{speaking ? '⏹' : '🔊'}</span>
             <span className="icon-btn__label">{speaking ? t('nav_stop') : t('nav_tts')}</span>
           </button>
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={() => void runSave()}
-            aria-label={t('nav_save')}
-          >
+          <button type="button" className="icon-btn" onClick={() => void runSave()} aria-label={t('nav_save')}>
             <span aria-hidden="true">💾</span>
             <span className="icon-btn__label">{t('nav_save')}</span>
           </button>
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={() => nav('/history')}
-            aria-label={t('nav_history')}
-          >
+          <button type="button" className="icon-btn" onClick={() => nav('/history')} aria-label={t('nav_history')}>
             <span aria-hidden="true">📋</span>
             <span className="icon-btn__label">{t('nav_history')}</span>
           </button>
@@ -49,6 +42,7 @@ export function AppShell() {
             className="icon-btn"
             onClick={() => nav('/settings')}
             aria-label={t('nav_settings')}
+            aria-current={loc.pathname === '/settings' ? 'page' : undefined}
           >
             <span aria-hidden="true">⚙</span>
             <span className="icon-btn__label">{t('nav_settings')}</span>
@@ -65,7 +59,7 @@ export function AppShell() {
         </nav>
       </header>
       {saveMessage && (
-        <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }} role="status">
+        <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }} role="status" aria-live="polite">
           <p className="save-banner-ok">{saveMessage}</p>
         </div>
       )}

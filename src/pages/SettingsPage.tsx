@@ -5,9 +5,24 @@ import { clearHistory } from '../services/history'
 import { fontOptions, localeLabels, type FontId, type Locale } from '../i18n'
 import { useState } from 'react'
 
-const VERSION = '0.2.0'
+const VERSION = '1.0.0'
 
 const changelog = [
+  {
+    version: '1.0.0',
+    lines: [
+      '안정판: Stitch형 배우기/AI 레이아웃, 메이저 전체 퀴즈',
+      '런북·GitHub Pages 랜딩·접근성 skip-link',
+      '로드맵 Phase2–3 완료',
+    ],
+  },
+  {
+    version: '0.3.0',
+    lines: [
+      '콘텐츠·퀴즈 확장, CORS/preview 런북',
+      'AI 2열·배우기 사이드바 Stitch 정렬',
+    ],
+  },
   {
     version: '0.2.0',
     lines: [
