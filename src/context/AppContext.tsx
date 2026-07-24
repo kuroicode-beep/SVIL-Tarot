@@ -34,7 +34,7 @@ type AppContextValue = {
   setLocale: (v: Locale) => void
   setTtsVoice: (v: string) => void
   setTtsSpeed: (v: number) => void
-  t: (key: string) => string
+  t: (key: string, params?: Record<string, string | number>) => string
   ollamaOk: boolean | null
   ttsOk: boolean | null
   voices: string[]
@@ -106,7 +106,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return () => window.clearInterval(id)
   }, [refreshStatus])
 
-  const t = useCallback((key: string) => translate(settings.locale, key), [settings.locale])
+  const t = useCallback(
+    (key: string, params?: Record<string, string | number>) =>
+      translate(settings.locale, key, params),
+    [settings.locale],
+  )
 
   const setFontSize = (fontSize: FontSize) => setSettings((s) => ({ ...s, fontSize }))
   const setFontId = (fontId: FontId) => setSettings((s) => ({ ...s, fontId }))

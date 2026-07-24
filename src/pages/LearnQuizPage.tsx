@@ -19,7 +19,7 @@ export function LearnQuizPage() {
   const [picked, setPicked] = useState<number | null>(null)
   const [score, setScore] = useState(0)
   const [done, setDone] = useState(false)
-  const { speak, setLastSpeakText } = useApp()
+  const { speak, setLastSpeakText, t } = useApp()
 
   const q = items[qi]
   const card = useMemo(() => (q ? getCard(q.cardId) : null), [q])
@@ -27,25 +27,23 @@ export function LearnQuizPage() {
   if (!items.length) {
     return (
       <main className="page">
-        <h1>퀴즈</h1>
-        <p className="error-text">이 단계의 퀴즈가 없습니다.</p>
+        <h1>{t('quiz')}</h1>
+        <p className="error-text">{t('quiz_none')}</p>
         <Link className="btn" to="/learn">
-          단계 목록
+          {t('learn_stage_list')}
         </Link>
       </main>
     )
   }
 
   if (done) {
-    const text = `퀴즈 완료. ${items.length}문제 중 ${score}문제 정답.`
+    const text = t('quiz_done_spoken', { total: items.length, score })
     return (
       <main className="page">
-        <h1>퀴즈 결과</h1>
-        <p className="progress">
-          정답 {score} / {items.length}
-        </p>
+        <h1>{t('quiz_result')}</h1>
+        <p className="progress">{t('quiz_score', { score, total: items.length })}</p>
         <p className={score === items.length ? 'feedback-ok' : 'feedback-bad'}>
-          {score === items.length ? '정답 — 모두 맞혔습니다.' : '오답 포함 — 다시 복습해 보세요.'}
+          {score === items.length ? t('quiz_all_ok') : t('quiz_some_wrong')}
         </p>
         <div className="btn-row">
           <button
@@ -56,10 +54,10 @@ export function LearnQuizPage() {
               void speak(text)
             }}
           >
-            읽어주기
+            {t('nav_tts')}
           </button>
           <Link className="btn btn--primary" to="/learn">
-            단계 목록
+            {t('learn_stage_list')}
           </Link>
         </div>
       </main>
@@ -71,9 +69,7 @@ export function LearnQuizPage() {
 
   return (
     <main className="page">
-      <p className="progress">
-        퀴즈 {qi + 1} / {items.length}
-      </p>
+      <p className="progress">{t('quiz_progress', { i: qi + 1, n: items.length })}</p>
       <h1>{q.question}</h1>
       {card && (
         <div className="spread-row">
@@ -107,7 +103,7 @@ export function LearnQuizPage() {
       {answered && (
         <>
           <p className={correct ? 'feedback-ok' : 'feedback-bad'} role="status">
-            {correct ? '정답입니다.' : `오답입니다. 정답: ${q.options[q.answerIndex]}`}
+            {correct ? t('quiz_right') : t('quiz_wrong', { answer: q.options[q.answerIndex] })}
           </p>
           <div className="btn-row">
             <button
@@ -121,7 +117,7 @@ export function LearnQuizPage() {
                 }
               }}
             >
-              {qi >= items.length - 1 ? '결과 보기' : '다음 문제'}
+              {qi >= items.length - 1 ? t('quiz_see_result') : t('quiz_next_q')}
             </button>
           </div>
         </>

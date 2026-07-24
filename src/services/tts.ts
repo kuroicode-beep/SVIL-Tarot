@@ -1,6 +1,8 @@
 const TTS_BASE = import.meta.env.DEV ? '/tts-api' : 'http://127.0.0.1:8765'
 
 let currentAudio: HTMLAudioElement | null = null
+let currentUrl: string | null = null
+let currentResolve: (() => void) | null = null
 
 export async function checkTts(): Promise<boolean> {
   try {
@@ -23,12 +25,21 @@ export async function listVoices(): Promise<string[]> {
   }
 }
 
+// 재생 중인 오디오를 정리한다. 진행 중이던 재생 Promise는 오류가 아닌 '정상 중단'으로 resolve한다.
 export function stopTts() {
-  if (currentAudio) {
-    currentAudio.pause()
-    currentAudio.src = ''
-    currentAudio = null
-  }
+  if (!currentAudio) return
+  const audio = currentAudio
+  const url = currentUrl
+  const resolve = currentResolve
+  currentAudio = null
+  currentUrl = null
+  currentResolve = null
+  audio.onended = null
+  audio.onerror = null
+  audio.pause()
+  audio.src = ''
+  if (url) URL.revokeObjectURL(url)
+  resolve?.()
 }
 
 export async function speakText(
@@ -57,17 +68,29 @@ export async function speakText(
   const url = URL.createObjectURL(blob)
   const audio = new Audio(url)
   currentAudio = audio
+  currentUrl = url
   await new Promise<void>((resolve, reject) => {
-    audio.onended = () => {
+    currentResolve = resolve
+    // 이 재생만 정리한다. stopTts로 이미 교체됐다면 건드리지 않는다.
+    const cleanup = () => {
+      if (currentAudio === audio) {
+        currentAudio = null
+        currentUrl = null
+        currentResolve = null
+      }
       URL.revokeObjectURL(url)
-      currentAudio = null
+    }
+    audio.onended = () => {
+      cleanup()
       resolve()
     }
     audio.onerror = () => {
-      URL.revokeObjectURL(url)
-      currentAudio = null
+      cleanup()
       reject(new Error('TTS 재생 실패'))
     }
-    void audio.play().catch(reject)
+    void audio.play().catch((e) => {
+      cleanup()
+      reject(e instanceof Error ? e : new Error('TTS 재생 실패'))
+    })
   })
 }
