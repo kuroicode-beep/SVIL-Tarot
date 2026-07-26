@@ -6,10 +6,11 @@ import { getCustomer, recordServiceConsultation, type Customer } from '../servic
 import { saveHistory } from '../services/history'
 import { sajuReading } from '../services/ollama'
 import { useApp } from '../context/AppContext'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 export function SajuPage() {
   const { ollamaOk, speak, setLastSpeakText, t, setSaveMessage } = useApp()
-  const [customerId, setCustomerId] = useState('')
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const [birthDate, setBirthDate] = useState('')
   const [birthTime, setBirthTime] = useState('')
   const [gender, setGender] = useState('')

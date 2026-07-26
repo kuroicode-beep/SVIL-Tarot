@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   deleteHistory,
   listHistory,
   type HistoryEntry,
 } from '../services/history'
+import { getCustomer } from '../services/customers'
 import { SpreadCards } from '../components/TarotCardView'
 import { cardImageUrl } from '../lib/cards'
 import { useApp } from '../context/AppContext'
@@ -21,12 +23,22 @@ const kindKey: Record<string, string> = {
 
 export function HistoryPage() {
   const [items, setItems] = useState<HistoryEntry[]>([])
+  const [names, setNames] = useState<Record<string, string>>({})
   const [open, setOpen] = useState<HistoryEntry | null>(null)
   const { speak, setLastSpeakText, t } = useApp()
   const kindLabel = (kind: string) => (kindKey[kind] ? t(kindKey[kind]) : kind)
 
   const reload = async () => {
-    setItems(await listHistory())
+    const list = await listHistory()
+    setItems(list)
+    const map: Record<string, string> = {}
+    await Promise.all(
+      [...new Set(list.map((h) => h.customerId).filter(Boolean) as string[])].map(async (id) => {
+        const c = await getCustomer(id)
+        if (c) map[id] = c.name
+      }),
+    )
+    setNames(map)
   }
 
   useEffect(() => {
@@ -40,6 +52,14 @@ export function HistoryPage() {
         <p className="mono muted">{new Date(open.createdAt).toLocaleString()}</p>
         <p>
           <span className="status-badge status-badge--warn">{kindLabel(open.kind)}</span>
+          {open.customerId && names[open.customerId] && (
+            <>
+              {' '}
+              <Link className="status-badge" to={`/customers/${open.customerId}`}>
+                {names[open.customerId]}
+              </Link>
+            </>
+          )}
         </p>
         {open.cards && open.cards.length > 0 && <SpreadCards cards={open.cards} />}
         {open.userNote && (
@@ -118,8 +138,11 @@ export function HistoryPage() {
                   <strong>{item.title}</strong>
                 </div>
                 <div className="muted">
-                  {kindLabel(item.kind)} ·{' '}
-                  <span className="mono">{new Date(item.createdAt).toLocaleString()}</span>
+                  {kindLabel(item.kind)}
+                  {item.customerId && names[item.customerId]
+                    ? ` · ${names[item.customerId]}`
+                    : ''}{' '}
+                  · <span className="mono">{new Date(item.createdAt).toLocaleString()}</span>
                 </div>
               </div>
             </button>

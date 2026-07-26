@@ -76,16 +76,25 @@ export function CustomersPage() {
         </p>
         {detail.notes && <div className="panel">{detail.notes}</div>}
         <div className="btn-row">
-          <Link className="btn" to="/saju">
+          <Link className="btn" to={`/practice?customer=${detail.id}`}>
+            실전
+          </Link>
+          <Link className="btn" to={`/ai?customer=${detail.id}`}>
+            AI 타로
+          </Link>
+          <Link className="btn" to={`/soul?customer=${detail.id}`}>
+            소울
+          </Link>
+          <Link className="btn" to={`/saju?customer=${detail.id}`}>
             사주
           </Link>
-          <Link className="btn" to="/compat">
+          <Link className="btn" to={`/compat?customer=${detail.id}`}>
             궁합
           </Link>
-          <Link className="btn" to="/nameology">
+          <Link className="btn" to={`/nameology?customer=${detail.id}`}>
             성명학
           </Link>
-          <Link className="btn" to="/naming">
+          <Link className="btn" to={`/naming?customer=${detail.id}`}>
             작명
           </Link>
           <button type="button" className="btn" onClick={() => nav('/customers')}>

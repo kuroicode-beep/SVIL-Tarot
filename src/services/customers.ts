@@ -86,6 +86,11 @@ export async function deleteConsultation(id: string): Promise<void> {
   await db.delete('consultations', id)
 }
 
+export async function clearConsultations(): Promise<void> {
+  const db = await getDb()
+  await db.clear('consultations')
+}
+
 export async function recordServiceConsultation(opts: {
   customerId: string
   serviceType: ServiceType

@@ -8,6 +8,7 @@ export function HomePage() {
 
   const links = [
     { to: '/customers', labelKey: 'home_customers', icon: '👥', wide: true, hintKey: undefined as string | undefined },
+    { to: '/consultations', labelKey: 'home_consultations', icon: '🗂️', wide: true, hintKey: undefined as string | undefined },
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },
     { to: '/spreads', labelKey: 'home_spreads', icon: '🃏' },
     {

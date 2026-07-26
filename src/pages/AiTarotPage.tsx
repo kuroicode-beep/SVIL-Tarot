@@ -4,8 +4,11 @@ import { deckUrl, drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib
 import { SpreadCards } from '../components/TarotCardView'
 import { fullAiReading, OLLAMA_MODEL } from '../services/ollama'
 import { saveHistory } from '../services/history'
+import { recordServiceConsultation } from '../services/customers'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
+import { CustomerPicker } from '../components/CustomerPicker'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 // 값은 한국어로 유지(LLM 프롬프트·저장 메타에 사용), 화면 라벨만 번역한다.
 const CATEGORIES = ['연애', '직업', '금전', '건강', '종합'] as const
@@ -29,11 +32,12 @@ export function AiTarotPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
-  const stateRef = useRef({ cards, result, mode, question, category, spreadId })
-  stateRef.current = { cards, result, mode, question, category, spreadId }
+  const stateRef = useRef({ cards, result, mode, question, category, spreadId, customerId })
+  stateRef.current = { cards, result, mode, question, category, spreadId, customerId }
 
   const onSave = async () => {
     const s = stateRef.current
@@ -41,14 +45,27 @@ export function AiTarotPage() {
       setSaveMessage(t('save_none'))
       return
     }
-    await saveHistory({
+    const title =
+      s.mode === 'question' ? `AI · ${s.question.slice(0, 40) || '질문'}` : `AI · ${s.category}`
+    const hist = await saveHistory({
       kind: 'ai',
-      title:
-        s.mode === 'question' ? `AI · ${s.question.slice(0, 40) || '질문'}` : `AI · ${s.category}`,
+      title,
       cards: s.cards,
       aiText: s.result,
+      customerId: s.customerId || undefined,
       meta: { mode: s.mode, question: s.question, category: s.category, spreadId: s.spreadId },
     })
+    if (s.customerId) {
+      await recordServiceConsultation({
+        customerId: s.customerId,
+        serviceType: 'ai',
+        title,
+        summary: s.result?.slice(0, 120) || 'AI 타로 상담',
+        resultText: s.result,
+        historyId: hist.id,
+        meta: { mode: s.mode, category: s.category },
+      })
+    }
     const msg = t('save_ok')
     setSavedMsg(msg)
     setSaveMessage(msg)
@@ -110,6 +127,7 @@ export function AiTarotPage() {
 
       <div className="ai-layout">
         <div className="panel">
+          <CustomerPicker value={customerId} onChange={setCustomerId} />
           {mode === 'question' ? (
             <div>
               <label className="label" htmlFor="q">

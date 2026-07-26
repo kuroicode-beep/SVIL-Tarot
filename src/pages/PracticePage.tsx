@@ -8,6 +8,7 @@ import { recordServiceConsultation } from '../services/customers'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 import { CustomerPicker } from '../components/CustomerPicker'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 type Spread = (typeof spreads)[number]
 
@@ -20,7 +21,7 @@ export function PracticePage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
-  const [customerId, setCustomerId] = useState('')
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
@@ -94,7 +95,7 @@ export function PracticePage() {
       </div>
 
       <div className="panel">
-        <CustomerPicker value={customerId} onChange={(id) => setCustomerId(id)} />
+        <CustomerPicker value={customerId} onChange={setCustomerId} />
         <label className="label" htmlFor="spread" style={{ marginTop: 12 }}>
           {t('practice_spread')}
         </label>

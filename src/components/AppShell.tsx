@@ -48,6 +48,15 @@ export function AppShell() {
             <span aria-hidden="true">👥</span>
             <span className="icon-btn__label">{t('home_customers')}</span>
           </button>
+          <button
+            type="button"
+            className="icon-btn"
+            onClick={() => nav('/consultations')}
+            aria-label={t('home_consultations')}
+          >
+            <span aria-hidden="true">🗂️</span>
+            <span className="icon-btn__label">{t('home_consultations')}</span>
+          </button>
           <button type="button" className="icon-btn" onClick={() => nav('/history')} aria-label={t('nav_history')}>
             <span aria-hidden="true">📋</span>
             <span className="icon-btn__label">{t('nav_history')}</span>

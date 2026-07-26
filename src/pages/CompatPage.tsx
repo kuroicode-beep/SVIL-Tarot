@@ -6,6 +6,7 @@ import { recordServiceConsultation } from '../services/customers'
 import { saveHistory } from '../services/history'
 import { compatReading } from '../services/ollama'
 import { useApp } from '../context/AppContext'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 type Person = { label: string; birthDate: string; birthTime: string; gender: string }
 
@@ -18,7 +19,7 @@ const blank = (label: string): Person => ({
 
 export function CompatPage() {
   const { ollamaOk, speak, setLastSpeakText, t, setSaveMessage } = useApp()
-  const [customerId, setCustomerId] = useState('')
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const [relation, setRelation] = useState('연인')
   const [a, setA] = useState<Person>(blank('A'))
   const [b, setB] = useState<Person>(blank('B'))
@@ -116,7 +117,7 @@ export function CompatPage() {
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
       <div className="panel">
-        <CustomerPicker value={customerId} onChange={(id) => setCustomerId(id)} />
+        <CustomerPicker value={customerId} onChange={setCustomerId} />
         <div className="label" style={{ marginTop: 12 }}>
           관계 유형
         </div>

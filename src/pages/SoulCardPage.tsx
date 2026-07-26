@@ -9,8 +9,11 @@ import {
 import { TarotCardView } from '../components/TarotCardView'
 import { soulCardAiExplain } from '../services/ollama'
 import { saveHistory } from '../services/history'
+import { recordServiceConsultation } from '../services/customers'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
+import { CustomerPicker } from '../components/CustomerPicker'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 export function SoulCardPage() {
   const [y, setY] = useState('')
@@ -21,10 +24,11 @@ export function SoulCardPage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
 
-  const stateRef = useRef({ number, aiText, y, m, d })
-  stateRef.current = { number, aiText, y, m, d }
+  const stateRef = useRef({ number, aiText, y, m, d, customerId })
+  stateRef.current = { number, aiText, y, m, d, customerId }
 
   const onSave = async () => {
     const s = stateRef.current
@@ -32,9 +36,11 @@ export function SoulCardPage() {
       setSaveMessage(t('save_none'))
       return
     }
-    await saveHistory({
+    const title = `소울카드 · ${s.number} ${soulCardNames[s.number]}`
+    const resultText = s.aiText || soulCardDescriptions[s.number]
+    const hist = await saveHistory({
       kind: 'soul',
-      title: `소울카드 · ${s.number} ${soulCardNames[s.number]}`,
+      title,
       cards: [
         {
           id: soulCardMajorIds[s.number],
@@ -43,9 +49,21 @@ export function SoulCardPage() {
           isReversed: false,
         },
       ],
-      aiText: s.aiText || soulCardDescriptions[s.number],
+      aiText: resultText,
+      customerId: s.customerId || undefined,
       meta: { number: s.number, birth: `${s.y}-${s.m}-${s.d}` },
     })
+    if (s.customerId) {
+      await recordServiceConsultation({
+        customerId: s.customerId,
+        serviceType: 'soul',
+        title,
+        summary: resultText.slice(0, 120),
+        resultText,
+        historyId: hist.id,
+        meta: { number: s.number },
+      })
+    }
     const msg = t('save_ok')
     setSavedMsg(msg)
     setSaveMessage(msg)
@@ -106,7 +124,10 @@ export function SoulCardPage() {
       </div>
 
       <div className="panel">
-        <div className="label">{t('soul_birth')}</div>
+        <CustomerPicker value={customerId} onChange={setCustomerId} />
+        <div className="label" style={{ marginTop: 12 }}>
+          {t('soul_birth')}
+        </div>
         <div className="btn-row">
           <label>
             {t('soul_year')}

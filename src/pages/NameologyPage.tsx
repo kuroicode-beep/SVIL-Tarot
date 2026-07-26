@@ -6,10 +6,11 @@ import { recordServiceConsultation } from '../services/customers'
 import { saveHistory } from '../services/history'
 import { nameologyReading } from '../services/ollama'
 import { useApp } from '../context/AppContext'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 export function NameologyPage() {
   const { ollamaOk, speak, setLastSpeakText, t, setSaveMessage } = useApp()
-  const [customerId, setCustomerId] = useState('')
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const [fullName, setFullName] = useState('')
   const [birthDate, setBirthDate] = useState('')
   const [strokeText, setStrokeText] = useState('')
@@ -72,7 +73,7 @@ export function NameologyPage() {
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
       <div className="panel">
-        <CustomerPicker value={customerId} onChange={(id) => setCustomerId(id)} />
+        <CustomerPicker value={customerId} onChange={setCustomerId} />
         <label className="label" htmlFor="nm" style={{ marginTop: 12 }}>
           이름 (한글)
         </label>

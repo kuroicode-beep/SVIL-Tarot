@@ -6,10 +6,11 @@ import { recordServiceConsultation } from '../services/customers'
 import { saveHistory } from '../services/history'
 import { namingSuggest } from '../services/ollama'
 import { useApp } from '../context/AppContext'
+import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
 export function NamingPage() {
   const { ollamaOk, speak, setLastSpeakText, t, setSaveMessage } = useApp()
-  const [customerId, setCustomerId] = useState('')
+  const [customerId, setCustomerId] = useCustomerQueryParam()
   const [surname, setSurname] = useState('')
   const [gender, setGender] = useState('female')
   const [birthDate, setBirthDate] = useState('')
@@ -72,7 +73,7 @@ export function NamingPage() {
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
       <div className="panel">
-        <CustomerPicker value={customerId} onChange={(id) => setCustomerId(id)} />
+        <CustomerPicker value={customerId} onChange={setCustomerId} />
         <div className="btn-row" style={{ marginTop: 12 }}>
           <label>
             성

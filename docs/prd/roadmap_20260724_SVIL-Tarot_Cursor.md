@@ -8,5 +8,7 @@
 | 1.0.0 | 완료 | QA 보강·랜딩(gh-pages)·안정판 |
 | 1.1.0 | 완료 | 글꼴 번들·TTS 미리듣기·버전 배지·서브패스 |
 | 1.2.0 | 완료 | 고객 CRM + 사주·궁합·성명학·작명 + 상담 기록 |
+| **1.3.0** | **완료** | CRM 완성 — 전 서비스 연동·상담목록·랜딩 |
+| 1.4.0 | 예정 | 정밀 만세력 엔진·예약/결제(비범위 유지) |
 
-상세: `docs/handoff/작업지시_20260724_SVIL-Tarot_로드맵v0.2.md` · 완료보고 `docs/reports/완료보고서_20260725_SVIL-Tarot_v1.0_Cursor.md`
+상세: `docs/prd/roadmap_20260727_SVIL-Tarot_v1.3_Cursor.md` · 작업지시 `docs/handoff/작업지시_20260727_SVIL-Tarot_로드맵v1.3_CRM완성_Cursor.md`

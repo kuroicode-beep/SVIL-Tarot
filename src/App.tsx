@@ -15,6 +15,7 @@ import { SajuPage } from './pages/SajuPage'
 import { CompatPage } from './pages/CompatPage'
 import { NameologyPage } from './pages/NameologyPage'
 import { NamingPage } from './pages/NamingPage'
+import { ConsultationsPage } from './pages/ConsultationsPage'
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="soul" element={<SoulCardPage />} />
             <Route path="customers" element={<CustomersPage />} />
             <Route path="customers/:id" element={<CustomersPage />} />
+            <Route path="consultations" element={<ConsultationsPage />} />
             <Route path="saju" element={<SajuPage />} />
             <Route path="compat" element={<CompatPage />} />
             <Route path="nameology" element={<NameologyPage />} />

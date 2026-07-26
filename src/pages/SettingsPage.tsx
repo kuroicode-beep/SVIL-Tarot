@@ -2,6 +2,7 @@ import { useApp, type FontSize } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 import { OLLAMA_MODEL } from '../services/ollama'
 import { clearHistory } from '../services/history'
+import { clearConsultations } from '../services/customers'
 import { fontOptions, localeLabels, type FontId, type Locale } from '../i18n'
 import { useState } from 'react'
 import { APP_VERSION, VERSION_HISTORY } from '../version'
@@ -157,6 +158,7 @@ export function SettingsPage() {
           onClick={async () => {
             if (!window.confirm(t('settings_clear_warn'))) return
             await clearHistory()
+            await clearConsultations()
             setCleared(true)
           }}
         >

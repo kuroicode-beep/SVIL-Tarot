@@ -3,7 +3,7 @@
 // 버전은 로고 옆에 상시 표시한다. 기능 추가 시마다 여기만 갱신한다.
 // 루트 VERSION 파일 / package.json의 version과 항상 같은 값을 유지할 것.
 
-export const APP_VERSION = '1.2.0'
+export const APP_VERSION = '1.3.0'
 
 export type VersionEntry = {
   version: string
@@ -14,6 +14,15 @@ export type VersionEntry = {
 
 /** 최신순 정렬. 설정 > 히스토리/업데이트 내역에 그대로 노출된다. */
 export const VERSION_HISTORY: VersionEntry[] = [
+  {
+    version: '1.3.0',
+    date: '2026-07-27',
+    lines: [
+      'CRM 완성 — AI·소울 포함 전 서비스 고객 연동·상담 자동 기록',
+      '전체 상담 목록·고객 바로가기(?customer=)·기록에 고객명 표시',
+      '설정 초기화 시 상담 이력도 삭제, 랜딩 기능 문구 갱신',
+    ],
+  },
   {
     version: '1.2.0',
     date: '2026-07-27',
