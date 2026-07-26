@@ -7,6 +7,7 @@ export function HomePage() {
   const { setLastSpeakText, t } = useApp()
 
   const links = [
+    { to: '/customers', labelKey: 'home_customers', icon: '👥', wide: true, hintKey: undefined as string | undefined },
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },
     { to: '/spreads', labelKey: 'home_spreads', icon: '🃏' },
     {
@@ -18,6 +19,10 @@ export function HomePage() {
     },
     { to: '/ai', labelKey: 'home_ai', icon: '🤖' },
     { to: '/soul', labelKey: 'home_soul', icon: '💫' },
+    { to: '/saju', labelKey: 'home_saju', icon: '📜' },
+    { to: '/compat', labelKey: 'home_compat', icon: '💞' },
+    { to: '/nameology', labelKey: 'home_nameology', icon: '🔤' },
+    { to: '/naming', labelKey: 'home_naming', icon: '👶' },
   ]
 
   // 전체화면은 사용자 제스처가 필요해 자동 진입은 브라우저가 차단한다. 상단바 버튼으로 진입한다.
@@ -32,7 +37,7 @@ export function HomePage() {
       </div>
       <h1 className="hero-title">{t('brand')}</h1>
       <p className="hero-sub">{t('tagline')}</p>
-      <div className="home-grid" id="main">
+      <div className="home-grid">
         {links.map((l) => (
           <Link
             key={l.to}

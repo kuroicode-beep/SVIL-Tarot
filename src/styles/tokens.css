@@ -1,12 +1,53 @@
+/* SVIL 표준 글꼴 — 전부 로컬 번들(CDN 금지). 맑은 고딕은 Windows 기본 제공.
+   경로는 CSS 파일 기준 상대경로라 서브패스 배포에서도 안전하다. */
 @font-face {
-  font-family: "KyoboHandwriting2019";
-  src: local("KyoboHandwriting2019"), local("교보손글씨2019");
+  font-family: "LINESeedKR";
+  src: url("/fonts/LINESeedKR-Rg.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "LINESeedKR";
-  src: local("LINESeedKR"), local("LINE Seed Sans KR");
+  font-family: "KyoboHandwriting2019";
+  src: url("/fonts/KyoboHandwriting2019.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NanumGothic";
+  src: url("/fonts/NanumGothic.woff") format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gowun Dodum";
+  src: url("/fonts/GowunDodum-Regular.woff") format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cafe24Dongdong";
+  src: url("/fonts/Cafe24Dongdong.woff") format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TmoneyRoundWind";
+  src: url("/fonts/TmoneyRoundWindRegular.woff") format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Recipekorea";
+  src: url("/fonts/Recipekorea.woff") format("woff");
+  font-weight: normal;
   font-display: swap;
 }
 
@@ -26,11 +67,13 @@
   --negative: #ff9b9b;
   --focus: #ffd479;
   --on-primary: #000000;
+  --bg-glow: #1a1a2e;
+  --img-backdrop: #000000;
   --font-size-base: 18px;
   --radius: 12px;
   --radius-lg: 16px;
   --touch-min: 50px;
-  --font-ui: "LINESeedKR", "KyoboHandwriting2019", "Segoe UI", "Malgun Gothic", sans-serif;
+  --font-ui: "LINESeedKR", "Malgun Gothic", "Segoe UI", sans-serif;
   --font-mono: Consolas, "Courier New", monospace;
 }
 
@@ -68,7 +111,7 @@ body {
   word-break: keep-all;
   color: var(--text);
   background: var(--bg);
-  background-image: radial-gradient(circle at 50% 30%, #1a1a2e 0%, var(--bg) 70%);
+  background-image: radial-gradient(circle at 50% 30%, var(--bg-glow) 0%, var(--bg) 70%);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -99,6 +142,17 @@ a {
   flex-direction: column;
 }
 
+/* skip-link 대상 겸 본문 래퍼. .page(flex:1)가 높이를 채우도록 flex 컬럼을 유지한다. */
+.main-region {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.main-region:focus {
+  outline: none;
+}
+
 .top-bar {
   position: sticky;
   top: 0;
@@ -122,6 +176,22 @@ a {
   min-height: var(--touch-min);
   display: inline-flex;
   align-items: center;
+}
+
+.top-bar__brand-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 상시 표시 버전. 보조 정보라 컴팩트하게 두되 최소 12px 규칙을 지킨다. */
+.top-bar__version {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
 }
 
 .top-bar__nav {
@@ -370,7 +440,7 @@ textarea.field {
   height: auto;
   border-radius: 12px;
   border: 2px solid var(--border-strong);
-  background: #000;
+  background: var(--img-backdrop);
 }
 
 .card-img--reversed {
@@ -566,7 +636,7 @@ textarea.field {
 
 .learn-sidebar {
   border-right: 2px solid var(--border);
-  background: #0e0e13;
+  background: var(--bg);
   padding: 16px;
   overflow-y: auto;
 }
@@ -625,7 +695,7 @@ textarea.field {
 
 .learn-step.is-active .learn-step__num {
   background: var(--accent-strong);
-  color: #000;
+  color: var(--on-primary);
   border-color: transparent;
 }
 
@@ -649,7 +719,7 @@ textarea.field {
   padding: 6px 12px;
   border-radius: 999px;
   background: var(--warning);
-  color: #000;
+  color: var(--on-primary);
   font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 12px;
@@ -700,7 +770,7 @@ textarea.field {
   top: 0;
   z-index: 100;
   background: var(--accent-strong);
-  color: #000;
+  color: var(--on-primary);
   padding: 12px 20px;
   font-weight: 700;
   min-height: var(--touch-min);

@@ -4,8 +4,10 @@ import { drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
 import { SpreadCards } from '../components/TarotCardView'
 import { adviceFromPractice } from '../services/ollama'
 import { saveHistory } from '../services/history'
+import { recordServiceConsultation } from '../services/customers'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
+import { CustomerPicker } from '../components/CustomerPicker'
 
 type Spread = (typeof spreads)[number]
 
@@ -18,11 +20,12 @@ export function PracticePage() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
+  const [customerId, setCustomerId] = useState('')
   const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
-  const stateRef = useRef({ cards, note, aiText, spread })
-  stateRef.current = { cards, note, aiText, spread }
+  const stateRef = useRef({ cards, note, aiText, spread, customerId })
+  stateRef.current = { cards, note, aiText, spread, customerId }
 
   const onSave = async () => {
     const s = stateRef.current
@@ -30,14 +33,26 @@ export function PracticePage() {
       setSaveMessage(t('save_none'))
       return
     }
-    await saveHistory({
+    const hist = await saveHistory({
       kind: 'practice',
       title: `실전 · ${s.spread.nameKo}`,
       cards: s.cards,
       userNote: s.note,
       aiText: s.aiText,
+      customerId: s.customerId || undefined,
       meta: { spreadId: s.spread.id },
     })
+    if (s.customerId) {
+      await recordServiceConsultation({
+        customerId: s.customerId,
+        serviceType: 'practice',
+        title: `실전 타로 · ${s.spread.nameKo}`,
+        summary: s.note?.slice(0, 120) || '실전 타로 상담',
+        detail: s.note,
+        resultText: s.aiText,
+        historyId: hist.id,
+      })
+    }
     const msg = t('save_ok')
     setSavedMsg(msg)
     setSaveMessage(msg)
@@ -79,7 +94,8 @@ export function PracticePage() {
       </div>
 
       <div className="panel">
-        <label className="label" htmlFor="spread">
+        <CustomerPicker value={customerId} onChange={(id) => setCustomerId(id)} />
+        <label className="label" htmlFor="spread" style={{ marginTop: 12 }}>
           {t('practice_spread')}
         </label>
         <select

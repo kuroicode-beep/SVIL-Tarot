@@ -89,3 +89,53 @@ export function soulCardAiExplain(number: number, name: string, base: string): P
     },
   ])
 }
+
+const SYSTEM_MYSTIC =
+  '당신은 한국어로 상담하는 명리·성명 조언자입니다. 저시력 사용자를 위해 짧고 명확한 문단으로 쓰세요. 의료·법률·확정적 예언은 피하고, 참고용·자기성찰용임을 밝히세요. 전문 만세력과 다를 수 있는 간이 계산임을 인정하세요.'
+
+export function sajuReading(summaryText: string, focus: string): Promise<string> {
+  return ollamaChat([
+    { role: 'system', content: SYSTEM_MYSTIC },
+    {
+      role: 'user',
+      content: `사주 풀이를 해주세요.\n\n원국 요약:\n${summaryText}\n\n상담 초점: ${focus || '종합'}\n\n성격 경향, 강점, 주의점, 올해 조언(참고)을 한국어로 정리해 주세요.`,
+    },
+  ])
+}
+
+export function compatReading(aText: string, bText: string, relation: string): Promise<string> {
+  return ollamaChat([
+    { role: 'system', content: SYSTEM_MYSTIC },
+    {
+      role: 'user',
+      content: `두 사람의 궁합을 봐 주세요. 관계: ${relation}\n\n[A]\n${aText}\n\n[B]\n${bText}\n\n잘 맞는 점, 갈등 포인트, 관계 조언을 점수(100점 만점 참고)와 함께 한국어로 작성해 주세요.`,
+    },
+  ])
+}
+
+export function nameologyReading(name: string, strokeText: string, birthHint: string): Promise<string> {
+  return ollamaChat([
+    { role: 'system', content: SYSTEM_MYSTIC },
+    {
+      role: 'user',
+      content: `성명학 풀이입니다.\n이름: ${name}\n획수·오행 힌트:\n${strokeText}\n생년월일 참고: ${birthHint || '(없음)'}\n\n발음·이미지·기운 균형·일상 조언을 한국어로 설명해 주세요.`,
+    },
+  ])
+}
+
+export function namingSuggest(opts: {
+  surname: string
+  gender: string
+  sajuText: string
+  style: string
+  count?: number
+}): Promise<string> {
+  const n = opts.count ?? 5
+  return ollamaChat([
+    { role: 'system', content: SYSTEM_MYSTIC },
+    {
+      role: 'user',
+      content: `아기/개명 작명 후보를 ${n}개 제안해 주세요.\n성: ${opts.surname}\n성별: ${opts.gender}\n사주 참고:\n${opts.sajuText}\n원하는 분위기: ${opts.style || '밝고 바르며 부르기 쉬운 이름'}\n\n각 후보마다 이름(한글), 추천 한자(가능하면), 의미, 추천 이유를 번호 목록으로 써 주세요. 법적 효력은 없음을 고지하세요.`,
+    },
+  ])
+}

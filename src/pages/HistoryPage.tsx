@@ -13,6 +13,10 @@ const kindKey: Record<string, string> = {
   ai: 'kind_ai',
   soul: 'kind_soul',
   learn: 'kind_learn',
+  saju: 'kind_saju',
+  compat: 'kind_compat',
+  nameology: 'kind_nameology',
+  naming: 'kind_naming',
 }
 
 export function HistoryPage() {

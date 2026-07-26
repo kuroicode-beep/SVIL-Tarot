@@ -56,7 +56,7 @@ const STORAGE_KEY = 'svil-tarot-settings'
 
 const defaults: Settings = {
   fontSize: 'md',
-  fontId: 'kyobo',
+  fontId: 'lineseed',
   locale: 'ko',
   ttsVoice: 'default',
   ttsSpeed: 100,
@@ -89,7 +89,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
     document.documentElement.dataset.fontSize = settings.fontSize
     document.documentElement.lang = settings.locale
-    const font = fontOptions.find((f) => f.id === settings.fontId) ?? fontOptions[1]
+    // 알 수 없는 fontId면 SVIL 표준 기본값(라인시드, 목록 첫 항목)으로 되돌린다.
+    const font = fontOptions.find((f) => f.id === settings.fontId) ?? fontOptions[0]
     document.documentElement.style.setProperty('--font-ui', font.css)
   }, [settings])
 

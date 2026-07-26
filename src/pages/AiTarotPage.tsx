@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import spreads from '../data/spreads.json'
-import { drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
+import { deckUrl, drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
 import { SpreadCards } from '../components/TarotCardView'
 import { fullAiReading, OLLAMA_MODEL } from '../services/ollama'
 import { saveHistory } from '../services/history'
@@ -82,7 +82,7 @@ export function AiTarotPage() {
   }
 
   return (
-    <main className="page" id="main">
+    <main className="page">
       <h1>{t('home_ai')}</h1>
       <p className="muted">{t('ai_desc', { model: OLLAMA_MODEL })}</p>
       <div className="btn-row">
@@ -178,7 +178,7 @@ export function AiTarotPage() {
               <>
                 <div className="card-back" style={{ transform: 'rotate(-6deg)' }} />
                 <img
-                  src="/deck/17_The_Star_00001_.webp"
+                  src={deckUrl('17_The_Star_00001_.webp')}
                   alt=""
                   style={{
                     width: 96,

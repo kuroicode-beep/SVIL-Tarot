@@ -25,7 +25,7 @@ export function LearnPage() {
 
   if (!stageId) {
     return (
-      <main className="page" id="main">
+      <main className="page">
         <h1>{t('home_learn')}</h1>
         <p className="muted">{t('learn_desc')}</p>
         <div className="list-choice" style={{ marginTop: 20 }}>
@@ -44,7 +44,7 @@ export function LearnPage() {
   }
 
   return (
-    <div className="learn-layout" id="main">
+    <div className="learn-layout">
       <aside className="learn-sidebar" aria-label={t('learn_stage_aria')}>
         <p className="learn-sidebar__title">{stage.title}</p>
         <div className="learn-sidebar__list">

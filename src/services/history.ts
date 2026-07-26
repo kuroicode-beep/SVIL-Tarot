@@ -1,40 +1,7 @@
-import { openDB, type DBSchema, type IDBPDatabase } from 'idb'
+import { getDb, type HistoryEntry, type HistoryKind } from './db'
 import type { DrawnCard } from '../lib/cards'
 
-export type HistoryKind = 'practice' | 'ai' | 'soul' | 'learn'
-
-export type HistoryEntry = {
-  id: string
-  kind: HistoryKind
-  title: string
-  createdAt: string
-  cards?: DrawnCard[]
-  userNote?: string
-  aiText?: string
-  meta?: Record<string, string | number>
-}
-
-interface TarotDB extends DBSchema {
-  history: {
-    key: string
-    value: HistoryEntry
-    indexes: { 'by-date': string }
-  }
-}
-
-let dbPromise: Promise<IDBPDatabase<TarotDB>> | null = null
-
-function getDb() {
-  if (!dbPromise) {
-    dbPromise = openDB<TarotDB>('svil-tarot', 1, {
-      upgrade(db) {
-        const store = db.createObjectStore('history', { keyPath: 'id' })
-        store.createIndex('by-date', 'createdAt')
-      },
-    })
-  }
-  return dbPromise
-}
+export type { HistoryEntry, HistoryKind }
 
 export async function saveHistory(
   entry: Omit<HistoryEntry, 'id' | 'createdAt'> & { id?: string; createdAt?: string },
@@ -69,3 +36,5 @@ export async function clearHistory(): Promise<void> {
   const db = await getDb()
   await db.clear('history')
 }
+
+export type { DrawnCard }

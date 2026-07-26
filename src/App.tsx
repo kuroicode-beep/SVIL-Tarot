@@ -10,11 +10,16 @@ import { AiTarotPage } from './pages/AiTarotPage'
 import { SoulCardPage } from './pages/SoulCardPage'
 import { HistoryPage } from './pages/HistoryPage'
 import { SettingsPage } from './pages/SettingsPage'
+import { CustomersPage } from './pages/CustomersPage'
+import { SajuPage } from './pages/SajuPage'
+import { CompatPage } from './pages/CompatPage'
+import { NameologyPage } from './pages/NameologyPage'
+import { NamingPage } from './pages/NamingPage'
 
 export default function App() {
   return (
     <AppProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<AppShell />}>
             <Route index element={<HomePage />} />
@@ -25,6 +30,12 @@ export default function App() {
             <Route path="practice" element={<PracticePage />} />
             <Route path="ai" element={<AiTarotPage />} />
             <Route path="soul" element={<SoulCardPage />} />
+            <Route path="customers" element={<CustomersPage />} />
+            <Route path="customers/:id" element={<CustomersPage />} />
+            <Route path="saju" element={<SajuPage />} />
+            <Route path="compat" element={<CompatPage />} />
+            <Route path="nameology" element={<NameologyPage />} />
+            <Route path="naming" element={<NamingPage />} />
             <Route path="history" element={<HistoryPage />} />
             <Route path="settings" element={<SettingsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />

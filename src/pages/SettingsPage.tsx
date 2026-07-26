@@ -4,42 +4,7 @@ import { OLLAMA_MODEL } from '../services/ollama'
 import { clearHistory } from '../services/history'
 import { fontOptions, localeLabels, type FontId, type Locale } from '../i18n'
 import { useState } from 'react'
-
-const VERSION = '1.0.0'
-
-const changelog = [
-  {
-    version: '1.0.0',
-    lines: [
-      '안정판: Stitch형 배우기/AI 레이아웃, 메이저 전체 퀴즈',
-      '런북·GitHub Pages 랜딩·접근성 skip-link',
-      '로드맵 Phase2–3 완료',
-    ],
-  },
-  {
-    version: '0.3.0',
-    lines: [
-      '콘텐츠·퀴즈 확장, CORS/preview 런북',
-      'AI 2열·배우기 사이드바 Stitch 정렬',
-    ],
-  },
-  {
-    version: '0.2.0',
-    lines: [
-      '글꼴·언어(5종) 설정, 상단 저장 버튼, 기록 초기화',
-      '홈 Star 실루엣 배경, 바탕화면 바로가기 스크립트',
-      '로드맵 v0.2 작업지시 확정',
-    ],
-  },
-  {
-    version: '0.1.0',
-    lines: [
-      '타로 배우기·스프레드·실전·AI 타로·소울카드 첫 공개',
-      'Ollama gemma4:12b · TTS · 저장/히스토리',
-      '저시력 고대비 덱 · 전체화면 · SVIL 디자인',
-    ],
-  },
-]
+import { APP_VERSION, VERSION_HISTORY } from '../version'
 
 export function SettingsPage() {
   const {
@@ -54,6 +19,9 @@ export function SettingsPage() {
     voices,
     refreshStatus,
     ttsError,
+    speak,
+    stopSpeak,
+    speaking,
     t,
   } = useApp()
   const [cleared, setCleared] = useState(false)
@@ -152,7 +120,7 @@ export function SettingsPage() {
           ))}
         </select>
         <label className="label" htmlFor="speed" style={{ marginTop: 12 }}>
-          {t('settings_speed')} {settings.ttsSpeed}%
+          {t('settings_speed')} <span className="mono">{settings.ttsSpeed}%</span>
         </label>
         <input
           id="speed"
@@ -164,6 +132,20 @@ export function SettingsPage() {
           value={settings.ttsSpeed}
           onChange={(e) => setTtsSpeed(Number(e.target.value))}
         />
+        {/* 보이스·속도를 바꾼 자리에서 바로 확인한다. 화면을 옮기지 않아도 되게. */}
+        <div className="btn-row">
+          <button
+            type="button"
+            className="btn btn--primary"
+            disabled={ttsOk === false}
+            onClick={() => {
+              if (speaking) stopSpeak()
+              else void speak(t('settings_preview_text'))
+            }}
+          >
+            {speaking ? t('settings_preview_stop') : t('settings_preview')}
+          </button>
+        </div>
       </div>
 
       <div className="panel">
@@ -188,10 +170,11 @@ export function SettingsPage() {
 
       <div className="panel">
         <h2 style={{ marginTop: 0 }}>{t('settings_history')}</h2>
-        <p className="mono">v{VERSION}</p>
-        {changelog.map((c) => (
+        <p className="mono">v{APP_VERSION}</p>
+        {VERSION_HISTORY.map((c) => (
           <div key={c.version} style={{ marginTop: 12 }}>
-            <strong className="mono">v{c.version}</strong>
+            <strong className="mono">v{c.version}</strong>{' '}
+            <span className="mono muted">{c.date}</span>
             <ul>
               {c.lines.map((line) => (
                 <li key={line}>{line}</li>
