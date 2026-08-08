@@ -3,7 +3,7 @@
 // 버전은 로고 옆에 상시 표시한다. 기능 추가 시마다 여기만 갱신한다.
 // 루트 VERSION 파일 / package.json의 version과 항상 같은 값을 유지할 것.
 
-export const APP_VERSION = '1.5.0'
+export const APP_VERSION = '1.5.1'
 
 export type VersionEntry = {
   version: string
@@ -14,6 +14,14 @@ export type VersionEntry = {
 
 /** 최신순 정렬. 설정 > 히스토리/업데이트 내역에 그대로 노출된다. */
 export const VERSION_HISTORY: VersionEntry[] = [
+  {
+    version: '1.5.1',
+    date: '2026-08-09',
+    lines: [
+      '버튼을 짙은 회색 바탕 + 흰 테두리·흰 글자로 통일 (노랑 강조 폐기)',
+      '노랑은 포커스 링 전용 — 흰 테두리와 3px 간격을 둬 구분',
+    ],
+  },
   {
     version: '1.5.0',
     date: '2026-08-09',

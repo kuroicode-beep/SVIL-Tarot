@@ -23,10 +23,10 @@
     --positive: #7ee2a8;
     --warning: #ffd479;
     --focus: #ffd479;
-    /* 강조 버튼용 — 밝은 바탕 대신 어두운 바탕 + 노랑 테두리·글자(대비 10.5:1). */
-    --primary-surface: #1c2431;
-    --primary-surface-hover: #26334a;
-    --yellow: #ffd94a;
+    /* 강조 버튼용 — 밝은 바탕 대신 짙은 회색 바탕 + 흰 테두리·글자(대비 13.08:1). */
+    --primary-surface: #303038;
+    --primary-surface-hover: #3d3d47;
+    --primary-border: #ffffff;
     /* 로컬 설치 폰트만 — CDN 금지. 없으면 시스템 산세리프로 폴백. */
     --font-ui: "LINESeedKR", "Pretendard", "Malgun Gothic", "맑은 고딕",
                system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -76,8 +76,8 @@
     background: var(--surface-2); color: var(--text); font-family: inherit; font-size: 1.05rem; text-decoration: none;
   }
   .btn:hover { border-color: var(--accent); color: var(--accent-strong); }
-  /* 저시력 사용자에게 밝은 바탕 버튼은 눈부심을 일으킨다. 강조는 어두운 바탕 + 노랑 테두리·글자로 준다. */
-  .btn-primary { background: var(--primary-surface); color: var(--yellow); border-color: var(--yellow); }
+  /* 저시력 사용자에게 밝은 바탕 버튼은 눈부심을 일으킨다. 강조는 짙은 회색 바탕 + 흰 테두리·글자로 준다. */
+  .btn-primary { background: var(--primary-surface); color: var(--primary-border); border-color: var(--primary-border); }
   .btn-primary:hover { background: var(--primary-surface-hover); color: var(--accent-max); border-color: var(--accent-max); }
   .meta { margin-top: 18px; color: var(--text-sub); font-size: 0.95rem; }
   .meta .mono { color: var(--text); }
