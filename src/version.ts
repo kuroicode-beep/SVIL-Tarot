@@ -3,7 +3,7 @@
 // 버전은 로고 옆에 상시 표시한다. 기능 추가 시마다 여기만 갱신한다.
 // 루트 VERSION 파일 / package.json의 version과 항상 같은 값을 유지할 것.
 
-export const APP_VERSION = '1.3.0'
+export const APP_VERSION = '1.4.0'
 
 export type VersionEntry = {
   version: string
@@ -14,6 +14,16 @@ export type VersionEntry = {
 
 /** 최신순 정렬. 설정 > 히스토리/업데이트 내역에 그대로 노출된다. */
 export const VERSION_HISTORY: VersionEntry[] = [
+  {
+    version: '1.4.0',
+    date: '2026-08-09',
+    lines: [
+      '밝은 바탕 버튼 전면 교체 — 어두운 바탕 + 노랑 테두리·글자로 눈부심 제거',
+      '오늘의 한 장·백업/복원·리딩 결과 추적·스프레드 자동 진단 추가',
+      '사주 월주·연주(입춘)·수리오행 계산 오류 수정, 퀴즈 중복 보기 정정',
+      '오류 표시·포커스 링·고대비 모드·글자 크기 반영 등 접근성 일괄 보강',
+    ],
+  },
   {
     version: '1.3.0',
     date: '2026-07-27',

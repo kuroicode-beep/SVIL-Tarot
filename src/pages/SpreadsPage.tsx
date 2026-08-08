@@ -1,3 +1,4 @@
+// src/pages/SpreadsPage.tsx — 스프레드 목록·상세·퀴즈 화면
 import { useState } from 'react'
 import spreads from '../data/spreads.json'
 import { useApp } from '../context/AppContext'
@@ -14,35 +15,42 @@ export function SpreadsPage() {
   if (quizMode && selected) {
     const q = selected.quiz
     const answered = picked !== null
-    const correct = picked === q.answerIndex
+    // 보기 문자열이 중복될 수 있어 인덱스가 아니라 정답 문자열로 비교한다.
+    const answerText = q.options[q.answerIndex]
+    const correct = picked !== null && q.options[picked] === answerText
     return (
       <main className="page">
         <h1>{t('spreads_quiz_title', { name: selected.nameKo })}</h1>
         <p>{q.question}</p>
         <div className="list-choice">
-          {q.options.map((opt, i) => (
-            <button
-              key={opt}
-              type="button"
-              className={`option-btn${
-                answered
-                  ? i === q.answerIndex
-                    ? ' is-correct'
-                    : i === picked
-                      ? ' is-wrong'
-                      : ''
-                  : ''
-              }`}
-              disabled={answered}
-              onClick={() => setPicked(i)}
-            >
-              {opt}
-            </button>
-          ))}
+          {q.options.map((opt, i) => {
+            // 정오답을 테두리 색으로만 알리면 색각·저시력 사용자가 구분하지 못해 글자 라벨을 함께 붙인다.
+            const isCorrect = answered && opt === answerText
+            const isWrong = answered && i === picked && opt !== answerText
+            return (
+              <button
+                // 보기 문자열이 겹쳐도 키가 충돌하지 않도록 스프레드 id + 인덱스로 고정한다.
+                key={`${selected.id}-opt-${i}`}
+                type="button"
+                className={`option-btn${isCorrect ? ' is-correct' : isWrong ? ' is-wrong' : ''}`}
+                // disabled면 답을 고른 순간 포커스가 body로 튕기고 탭 순서에서 빠져 결과를 다시 읽을 수 없다.
+                aria-disabled={answered || undefined}
+                onClick={() => {
+                  if (answered) return
+                  setPicked(i)
+                }}
+              >
+                <span>{opt}</span>
+                {(isCorrect || isWrong) && (
+                  <span className="option-btn__mark">{isCorrect ? t('quiz_mark_ok') : t('quiz_mark_bad')}</span>
+                )}
+              </button>
+            )
+          })}
         </div>
         {answered && (
           <p className={correct ? 'feedback-ok' : 'feedback-bad'} role="status">
-            {correct ? t('quiz_right') : t('quiz_wrong', { answer: q.options[q.answerIndex] })}
+            {correct ? t('quiz_right') : t('quiz_wrong', { answer: answerText })}
           </p>
         )}
         <div className="btn-row">
@@ -62,7 +70,10 @@ export function SpreadsPage() {
   }
 
   if (selected) {
-    const text = `${selected.nameKo}. ${selected.description}. 포지션: ${selected.positions.map((p) => p.labelKo).join(', ')}`
+    // 낭독 문구의 '포지션' 머리말도 언어를 따라가야 해서 사전 키를 쓴다.
+    const text = `${selected.nameKo}. ${selected.description}. ${t('spreads_positions')}: ${selected.positions
+      .map((p) => p.labelKo)
+      .join(', ')}`
     return (
       <main className="page">
         <h1>{selected.nameKo}</h1>

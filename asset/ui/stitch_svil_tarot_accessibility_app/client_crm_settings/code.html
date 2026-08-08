@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - CRM &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#2f3132",
+                      "surface": "#11131b",
+                      "on-secondary-fixed-variant": "#454749",
+                      "surface-tint": "#e8c435",
+                      "on-primary-fixed": "#231b00",
+                      "tertiary-fixed": "#cae6ff",
+                      "inverse-surface": "#e2e1ed",
+                      "tertiary-container": "#bde0ff",
+                      "secondary-fixed": "#e2e2e4",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#1a1c1d",
+                      "on-tertiary-container": "#006696",
+                      "surface-container-high": "#282a32",
+                      "background": "#11131b",
+                      "outline": "#99907a",
+                      "inverse-on-surface": "#2e3038",
+                      "primary-fixed": "#ffe179",
+                      "surface-container-highest": "#33343d",
+                      "on-tertiary-fixed": "#001e30",
+                      "surface-container": "#1d1f27",
+                      "on-primary": "#3b2f00",
+                      "tertiary-fixed-dim": "#8dcdff",
+                      "error-container": "#93000a",
+                      "on-surface-variant": "#d0c6ae",
+                      "secondary": "#c6c6c8",
+                      "on-background": "#e2e1ed",
+                      "secondary-container": "#454749",
+                      "on-secondary-container": "#b4b5b7",
+                      "on-surface": "#e2e1ed",
+                      "primary-container": "#ffd94a",
+                      "tertiary": "#f5f9ff",
+                      "outline-variant": "#4d4634",
+                      "primary": "#fff8eb",
+                      "surface-variant": "#33343d",
+                      "surface-container-low": "#191b23",
+                      "secondary-fixed-dim": "#c6c6c8",
+                      "surface-dim": "#11131b",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed-variant": "#004b70",
+                      "surface-bright": "#373941",
+                      "on-tertiary": "#00344f",
+                      "on-primary-container": "#735e00",
+                      "on-primary-fixed-variant": "#554500",
+                      "inverse-primary": "#715c00",
+                      "surface-container-lowest": "#0c0e15",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed-dim": "#e8c435"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gap-standard": "12px",
+                      "stack-sm": "16px",
+                      "margin-page": "24px",
+                      "stack-md": "24px",
+                      "touch-target-min": "50px",
+                      "stack-lg": "40px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "interactive-label": [
+                              "Be Vietnam Pro"
+                      ],
+                      "tiny": [
+                              "Be Vietnam Pro"
+                      ],
+                      "caption": [
+                              "Be Vietnam Pro"
+                      ],
+                      "body-lg": [
+                              "Be Vietnam Pro"
+                      ],
+                      "headline-md": [
+                              "Be Vietnam Pro"
+                      ],
+                      "body-base": [
+                              "Be Vietnam Pro"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "interactive-label": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "tiny": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "caption": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.8",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-base": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.8",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Interactive State Borders as per spec */
+        .interactive-element:focus-visible {
+            outline: 3px solid theme('colors.primary-container');
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-base min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center px-margin-page py-stack-sm w-full max-w-full bg-background dark:bg-background docked full-width top-0 sticky z-50 border-b-2 border-outline-variant flat no shadows">
+<div class="font-headline-md text-headline-md text-primary dark:text-primary-fixed">
+            SVIL 타로
+        </div>
+<div class="flex gap-gap-standard">
+<span class="material-symbols-outlined cursor-pointer active:scale-95 text-secondary dark:text-secondary-fixed-dim hover:text-primary-container transition-colors duration-200" style="min-width: 50px; min-height: 50px; display: flex; align-items: center; justify-content: center;">settings</span>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex flex-col h-full py-stack-md bg-surface-container-low dark:bg-surface-container-low h-screen w-72 left-0 top-0 fixed border-r-2 border-outline-variant flat no shadows z-40">
+<div class="px-margin-page mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary">SVIL Tarot</h1>
+<p class="font-caption text-caption text-secondary">v1.4.0</p>
+</div>
+<nav class="flex-1 flex flex-col gap-gap-standard">
+<!-- Navigation Items -->
+<a class="flex items-center gap-gap-standard text-secondary px-stack-sm py-3 hover:bg-surface-container hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px;">
+<span class="material-symbols-outlined">home</span>
+<span class="font-interactive-label text-interactive-label">Home</span>
+</a>
+<a class="flex items-center gap-gap-standard text-secondary px-stack-sm py-3 hover:bg-surface-container hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px;">
+<span class="material-symbols-outlined">school</span>
+<span class="font-interactive-label text-interactive-label">Lessons</span>
+</a>
+<a class="flex items-center gap-gap-standard text-primary-container font-bold border-l-4 border-primary-container px-stack-sm py-3 bg-surface-container-high hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px;">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">person_search</span>
+<span class="font-interactive-label text-interactive-label">CRM</span>
+</a>
+<a class="flex items-center gap-gap-standard text-secondary px-stack-sm py-3 hover:bg-surface-container hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px;">
+<span class="material-symbols-outlined">history</span>
+<span class="font-interactive-label text-interactive-label">History</span>
+</a>
+<a class="flex items-center gap-gap-standard text-secondary px-stack-sm py-3 hover:bg-surface-container hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px;">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-interactive-label text-interactive-label">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-gap-standard pt-stack-md border-t border-outline-variant px-stack-sm">
+<a class="flex items-center gap-gap-standard text-secondary py-3 hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px; padding-left: 16px;">
+<span class="material-symbols-outlined">help</span>
+<span class="font-interactive-label text-interactive-label">Help</span>
+</a>
+<a class="flex items-center gap-gap-standard text-secondary py-3 hover:bg-surface-container-highest transition-all active:opacity-80" href="#" style="min-height: 50px; padding-left: 16px;">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-interactive-label text-interactive-label">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-72 flex flex-col lg:flex-row p-margin-page gap-stack-lg min-h-screen pb-32 md:pb-margin-page">
+<!-- Left Column: CRM List & Search -->
+<div class="flex-1 flex flex-col gap-stack-md max-w-3xl">
+<!-- Search -->
+<div class="flex flex-col gap-gap-standard">
+<label class="font-interactive-label text-interactive-label text-on-surface" for="client-search">Search Clients</label>
+<div class="relative bg-[#1F1F2A] border border-[#6B6B82] rounded-DEFAULT focus-within:border-[2px] focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-secondary">search</span>
+<input class="w-full bg-transparent text-on-surface p-4 pl-12 focus:outline-none placeholder:text-secondary-fixed-dim" id="client-search" placeholder="Name, Date of Birth, or Tags..." style="min-height: 50px;" type="text"/>
+</div>
+</div>
+<!-- Client List (Cards) -->
+<div class="flex flex-col gap-gap-standard">
+<!-- Client Card 1 (Active) -->
+<button class="flex flex-col text-left w-full bg-[#16161D] rounded-xl border-[2px] border-primary-container p-4 interactive-element active:scale-95 transition-transform" style="min-height: 50px;">
+<div class="flex justify-between items-start w-full">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Elara Moon</h3>
+<p class="font-caption text-caption text-secondary">DOB: 1985. 10. 12</p>
+</div>
+<span class="font-caption text-caption text-secondary-fixed-dim">Last: 2 days ago</span>
+</div>
+<div class="flex gap-2 mt-4 flex-wrap">
+<span class="px-3 py-1 bg-surface-container-highest text-secondary rounded-full font-tiny text-tiny border border-outline-variant">Love</span>
+<span class="px-3 py-1 bg-surface-container-highest text-secondary rounded-full font-tiny text-tiny border border-outline-variant">Career</span>
+</div>
+</button>
+<!-- Client Card 2 -->
+<button class="flex flex-col text-left w-full bg-[#16161D] rounded-xl border border-[#6B6B82] p-4 interactive-element hover:border-primary-container active:scale-95 transition-all" style="min-height: 50px;">
+<div class="flex justify-between items-start w-full">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Kaelen Star</h3>
+<p class="font-caption text-caption text-secondary">DOB: 1992. 03. 24</p>
+</div>
+<span class="font-caption text-caption text-secondary-fixed-dim">Last: 1 month ago</span>
+</div>
+<div class="flex gap-2 mt-4 flex-wrap">
+<span class="px-3 py-1 bg-surface-container-highest text-secondary rounded-full font-tiny text-tiny border border-outline-variant">Finance</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Right Column: Detail Panel & Settings Grid -->
+<div class="flex-[1.5] flex flex-col gap-stack-lg">
+<!-- Detail Panel (Bento Style) -->
+<div class="bg-[#16161D] rounded-xl border border-[#6B6B82] p-stack-md flex flex-col gap-stack-md">
+<div class="flex justify-between items-center border-b border-outline-variant pb-4">
+<h2 class="font-headline-lg text-headline-lg text-primary">Elara Moon - Consultation History</h2>
+<button class="bg-[#1F1F2A] border-2 border-[#6B6B82] text-[#F5F5F7] font-interactive-label text-interactive-label px-4 rounded-DEFAULT interactive-element flex items-center justify-center" style="min-width: 50px; min-height: 50px;">
+                        New Session
+                    </button>
+</div>
+<!-- Timeline -->
+<div class="flex flex-col gap-stack-sm relative before:content-[''] before:absolute before:left-[24px] before:top-2 before:bottom-2 before:w-[2px] before:bg-[#6B6B82]">
+<!-- Timeline Item -->
+<div class="flex gap-stack-sm relative z-10">
+<div class="w-[50px] h-[50px] rounded-full bg-surface-container-high border-2 border-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container fill" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="bg-[#1F1F2A] rounded-lg border border-[#6B6B82] p-4 flex-1">
+<h4 class="font-interactive-label text-interactive-label text-primary mb-1">Career Crossroads Spread</h4>
+<p class="font-caption text-caption text-secondary mb-3">2023. 10. 24 - Focused on upcoming promotion chances.</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 bg-[#1C2431] border border-primary-container text-primary-container rounded font-tiny text-tiny">Tarot</span>
+<span class="px-2 py-1 bg-surface-container text-secondary border border-outline-variant rounded font-tiny text-tiny">1 hr</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Settings Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gap-standard">
+<div class="bg-[#16161D] rounded-xl border border-[#6B6B82] p-stack-sm flex flex-col gap-gap-standard">
+<h3 class="font-interactive-label text-interactive-label text-primary border-b border-outline-variant pb-2">Appearance Settings</h3>
+<div class="flex flex-col gap-2">
+<span class="font-caption text-caption text-secondary">Font Size</span>
+<div class="flex rounded-lg overflow-hidden border border-[#6B6B82]">
+<button class="flex-1 bg-[#1F1F2A] text-secondary hover:bg-surface-container-highest transition-colors flex items-center justify-center font-caption text-caption interactive-element" style="min-height: 50px; min-width: 50px;">작게</button>
+<button class="flex-1 bg-primary-container text-on-primary-container font-bold flex items-center justify-center gap-1 font-caption text-caption interactive-element" style="min-height: 50px; min-width: 50px;">
+                                 보통 <span class="material-symbols-outlined text-[16px]">check</span>
+</button>
+<button class="flex-1 bg-[#1F1F2A] text-secondary hover:bg-surface-container-highest transition-colors flex items-center justify-center font-caption text-caption interactive-element" style="min-height: 50px; min-width: 50px;">크게</button>
+</div>
+</div>
+</div>
+<div class="bg-[#16161D] rounded-xl border border-[#6B6B82] p-stack-sm flex flex-col gap-gap-standard">
+<h3 class="font-interactive-label text-interactive-label text-primary border-b border-outline-variant pb-2">Audio &amp; TTS</h3>
+<div class="flex flex-col gap-2">
+<span class="font-caption text-caption text-secondary">TTS Speed</span>
+<div class="flex items-center gap-4">
+<input class="flex-1 h-2 bg-[#1F1F2A] rounded-lg appearance-none cursor-pointer interactive-element" max="2.0" min="0.5" step="0.1" style="min-height: 50px;" type="range" value="1.0"/>
+<button class="bg-[#1F1F2A] border-2 border-[#6B6B82] text-[#F5F5F7] rounded-full flex items-center justify-center interactive-element hover:border-primary-container" style="min-width: 50px; min-height: 50px;">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Update History -->
+<div class="bg-[#16161D] rounded-xl border border-[#6B6B82] p-stack-sm">
+<h3 class="font-interactive-label text-interactive-label text-primary border-b border-outline-variant pb-2 mb-4">Update History</h3>
+<ul class="flex flex-col gap-4">
+<li class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary-container bg-[#1C2431] px-2 py-0.5 rounded font-tiny text-tiny border border-primary-container">v1.4.0</span>
+<span class="font-caption text-caption text-secondary-fixed-dim">2023. 10. 01</span>
+</div>
+<p class="font-caption text-caption text-secondary pl-2 border-l-2 border-[#6B6B82] ml-1">Added CRM client tagging and enhanced TTS settings.</p>
+</li>
+</ul>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-around items-center h-touch-target-min px-4 pb-safe bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 w-full z-50 rounded-t-xl border-t-2 border-outline-variant flat no shadows font-tiny text-tiny text-primary dark:text-primary-fixed">
+<a class="flex flex-col items-center justify-center text-secondary p-2 hover:text-primary active:scale-90 transition-transform" href="#" style="min-width: 50px; min-height: 50px;">
+<span class="material-symbols-outlined">auto_stories</span>
+<span>Read</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary p-2 hover:text-primary active:scale-90 transition-transform" href="#" style="min-width: 50px; min-height: 50px;">
+<span class="material-symbols-outlined">save</span>
+<span>Save</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-container bg-surface-container-highest rounded-lg p-2 border-2 border-primary-container hover:text-primary active:scale-90 transition-transform" href="#" style="min-width: 50px; min-height: 50px;">
+<span class="material-symbols-outlined fill" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>Clients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary p-2 hover:text-primary active:scale-90 transition-transform" href="#" style="min-width: 50px; min-height: 50px;">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</body></html>

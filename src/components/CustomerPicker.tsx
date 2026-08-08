@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { listCustomers, type Customer } from '../services/customers'
+import { useApp } from '../context/AppContext'
 
 export function CustomerPicker({
   value,
@@ -11,6 +12,7 @@ export function CustomerPicker({
   allowEmpty?: boolean
 }) {
   const [customers, setCustomers] = useState<Customer[]>([])
+  const { t } = useApp()
 
   useEffect(() => {
     void listCustomers().then(setCustomers)
@@ -19,7 +21,7 @@ export function CustomerPicker({
   return (
     <div>
       <label className="label" htmlFor="customer-pick">
-        고객 선택
+        {t('picker_label')}
       </label>
       <select
         id="customer-pick"
@@ -33,7 +35,7 @@ export function CustomerPicker({
           )
         }}
       >
-        {allowEmpty && <option value="">(고객 미지정 — 상담 기록 안 함)</option>}
+        {allowEmpty && <option value="">{t('picker_none')}</option>}
         {customers.map((c) => (
           <option key={c.id} value={c.id}>
             {c.name}
@@ -44,7 +46,7 @@ export function CustomerPicker({
       </select>
       {customers.length === 0 && (
         <p className="muted" style={{ marginTop: 8 }}>
-          등록된 고객이 없습니다. 고객 관리에서 먼저 추가하세요.
+          {t('picker_empty')}
         </p>
       )}
     </div>

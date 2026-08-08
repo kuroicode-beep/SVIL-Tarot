@@ -8,6 +8,15 @@ import { sajuReading } from '../services/ollama'
 import { useApp } from '../context/AppContext'
 import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
+/** 상담 초점도 화면 라벨이자 LLM 프롬프트 인자·meta 저장값이라 id와 라벨을 분리한다. */
+const FOCUSES = [
+  { id: 'all', key: 'cat_all', prompt: '종합' },
+  { id: 'love', key: 'cat_love', prompt: '연애' },
+  { id: 'job', key: 'cat_job', prompt: '직업' },
+  { id: 'money', key: 'cat_money', prompt: '재물' },
+  { id: 'health', key: 'cat_health', prompt: '건강' },
+] as const
+
 export function SajuPage() {
   const { ollamaOk, speak, setLastSpeakText, t, setSaveMessage } = useApp()
   const [customerId, setCustomerId] = useCustomerQueryParam()
@@ -15,8 +24,10 @@ export function SajuPage() {
   const [birthTime, setBirthTime] = useState('')
   const [gender, setGender] = useState('')
   const [calendarType, setCalendarType] = useState<'solar' | 'lunar'>('solar')
-  const [focus, setFocus] = useState('종합')
+  const [focusId, setFocusId] = useState<(typeof FOCUSES)[number]['id']>('all')
   const [summary, setSummary] = useState('')
+  // 계산 한계(음력 미환산·시주 미산출·입춘 경계 등)를 사용자에게 그대로 알린다.
+  const [warnings, setWarnings] = useState<string[]>([])
   const [result, setResult] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -35,13 +46,16 @@ export function SajuPage() {
   const run = async () => {
     setError(null)
     if (!birthDate) {
-      setError('생년월일을 입력하세요.')
+      setError(t('saju_need_birth'))
       return
     }
     setBusy(true)
+    const f = FOCUSES.find((x) => x.id === focusId) ?? FOCUSES[0]
+    const focus = f.prompt
     try {
       const s = buildSajuSummary({ birthDate, birthTime, gender, calendarType })
       setSummary(s.textBlock)
+      setWarnings(s.warnings ?? [])
       const text = await sajuReading(s.textBlock, focus)
       setResult(text)
       setLastSpeakText(text)
@@ -50,7 +64,7 @@ export function SajuPage() {
         title: `사주 · ${birthDate}`,
         aiText: text,
         customerId: customerId || undefined,
-        meta: { focus, birthDate },
+        meta: { focus: f.id, birthDate },
       })
       if (customerId) {
         await recordServiceConsultation({
@@ -62,10 +76,10 @@ export function SajuPage() {
           resultText: text,
           historyId: hist.id,
         })
-        setSaveMessage('상담 기록에 저장되었습니다.')
+        setSaveMessage(t('save_ok'))
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : '사주 풀이 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
     } finally {
       setBusy(false)
     }
@@ -74,10 +88,7 @@ export function SajuPage() {
   return (
     <main className="page">
       <h1>{t('home_saju')}</h1>
-      <p className="muted">
-        유사 앱(도사·운세닷컴)처럼 생년월일시·성별을 받아 원국 요약 후 AI 풀이를 제공합니다. 만세력은
-        간이 계산입니다.
-      </p>
+      <p className="muted">{t('saju_desc')}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
@@ -92,7 +103,7 @@ export function SajuPage() {
         />
         <div className="btn-row" style={{ marginTop: 12 }}>
           <label>
-            생년월일
+            {t('cust_f_birth')}
             <input
               type="date"
               className="field"
@@ -102,7 +113,7 @@ export function SajuPage() {
             />
           </label>
           <label>
-            출생 시각
+            {t('cust_f_time')}
             <input
               type="time"
               className="field"
@@ -112,58 +123,70 @@ export function SajuPage() {
             />
           </label>
           <label>
-            성별
+            {t('cust_f_gender')}
             <select
               className="field"
               style={{ marginTop: 4 }}
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <option value="">미지정</option>
-              <option value="female">여</option>
-              <option value="male">남</option>
-              <option value="other">기타</option>
+              <option value="">{t('cust_g_none')}</option>
+              <option value="female">{t('cust_g_f')}</option>
+              <option value="male">{t('cust_g_m')}</option>
+              <option value="other">{t('kind_other')}</option>
             </select>
           </label>
           <label>
-            달력
+            {t('cust_f_cal')}
             <select
               className="field"
               style={{ marginTop: 4 }}
               value={calendarType}
               onChange={(e) => setCalendarType(e.target.value as 'solar' | 'lunar')}
             >
-              <option value="solar">양력</option>
-              <option value="lunar">음력(참고)</option>
+              <option value="solar">{t('cust_cal_solar')}</option>
+              <option value="lunar">{t('cust_cal_lunar')}</option>
             </select>
           </label>
         </div>
-        <label className="label" htmlFor="focus" style={{ marginTop: 12 }}>
-          상담 초점
-        </label>
-        <div className="chip-row">
-          {['종합', '연애', '직업', '재물', '건강'].map((f) => (
+        {/* htmlFor="focus"는 대응 id가 없는 고아 레이블이었다. 칩 묶음은 role=group으로 이름을 준다. */}
+        <div className="label" style={{ marginTop: 12 }}>
+          {t('saju_focus')}
+        </div>
+        <div className="chip-row" role="group" aria-label={t('saju_focus')}>
+          {FOCUSES.map((f) => (
             <button
-              key={f}
+              key={f.id}
               type="button"
-              className={`chip${focus === f ? ' is-on' : ''}`}
-              onClick={() => setFocus(f)}
+              className={`chip${focusId === f.id ? ' is-on' : ''}`}
+              aria-pressed={focusId === f.id}
+              onClick={() => setFocusId(f.id)}
             >
-              {f}
+              {t(f.key)}
             </button>
           ))}
         </div>
         <div className="btn-row">
           <button type="button" className="btn btn--primary" disabled={busy} onClick={() => void run()}>
-            {busy ? '풀이 중…' : '사주 풀이 시작'}
+            {busy ? t('saju_busy') : t('saju_run')}
           </button>
         </div>
       </div>
 
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="error-text" role="alert">{error}</p>}
+      {warnings.length > 0 && (
+        <div className="warn-panel" role="note" aria-label={t('saju_warn_title')}>
+          <strong>{t('saju_warn_title')}</strong>
+          <ul>
+            {warnings.map((k) => (
+              <li key={k}>{t(k)}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       {summary && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>원국 요약 (간이)</h2>
+          <h2 style={{ marginTop: 0 }}>{t('saju_summary')}</h2>
           <pre className="ai-result" style={{ margin: 0 }}>
             {summary}
           </pre>
@@ -171,7 +194,7 @@ export function SajuPage() {
       )}
       {result && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>AI 사주 풀이</h2>
+          <h2 style={{ marginTop: 0 }}>{t('saju_result')}</h2>
           <div className="ai-result">{result}</div>
           <div className="btn-row">
             <button

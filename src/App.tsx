@@ -1,7 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { AppProvider } from './context/AppContext'
 import { AppShell } from './components/AppShell'
+import { ErrorBoundary } from './components/ErrorBoundary'
 import { HomePage } from './pages/HomePage'
+import { DailyPage } from './pages/DailyPage'
 import { LearnPage } from './pages/LearnPage'
 import { LearnQuizPage } from './pages/LearnQuizPage'
 import { SpreadsPage } from './pages/SpreadsPage'
@@ -20,10 +22,13 @@ import { ConsultationsPage } from './pages/ConsultationsPage'
 export default function App() {
   return (
     <AppProvider>
+      {/* 렌더 예외가 나면 화면이 통째로 백지가 되고, 설정이 localStorage에 남아 새로고침으로도 복구가 안 된다. */}
+      <ErrorBoundary>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<AppShell />}>
             <Route index element={<HomePage />} />
+            <Route path="daily" element={<DailyPage />} />
             <Route path="learn" element={<LearnPage />} />
             <Route path="learn/:stageId" element={<LearnPage />} />
             <Route path="learn/:stageId/quiz" element={<LearnQuizPage />} />
@@ -44,6 +49,7 @@ export default function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      </ErrorBoundary>
     </AppProvider>
   )
 }

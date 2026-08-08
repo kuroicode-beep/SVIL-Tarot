@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import spreads from '../data/spreads.json'
 import { drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
+import { analyzeSpread, analysisToPrompt } from '../lib/analyze'
 import { SpreadCards } from '../components/TarotCardView'
 import { adviceFromPractice } from '../services/ollama'
 import { saveHistory } from '../services/history'
@@ -22,11 +23,15 @@ export function PracticePage() {
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
   const [customerId, setCustomerId] = useCustomerQueryParam()
-  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, runSave, setSaveMessage, t } = useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
   const stateRef = useRef({ cards, note, aiText, spread, customerId })
   stateRef.current = { cards, note, aiText, spread, customerId }
+  // 저장 버튼과 상단바 저장이 동시에 눌리면 crypto.randomUUID()가 매번 새 id를 만들어
+  // 같은 리딩이 기록·상담 양쪽에 중복으로 쌓인다. 실행 중 차단 + 저장된 id 재사용으로 막는다.
+  const savingRef = useRef(false)
+  const savedRef = useRef<{ historyId: string; consultationId?: string } | null>(null)
 
   const onSave = async () => {
     const s = stateRef.current
@@ -34,29 +39,40 @@ export function PracticePage() {
       setSaveMessage(t('save_none'))
       return
     }
-    const hist = await saveHistory({
-      kind: 'practice',
-      title: `실전 · ${s.spread.nameKo}`,
-      cards: s.cards,
-      userNote: s.note,
-      aiText: s.aiText,
-      customerId: s.customerId || undefined,
-      meta: { spreadId: s.spread.id },
-    })
-    if (s.customerId) {
-      await recordServiceConsultation({
-        customerId: s.customerId,
-        serviceType: 'practice',
-        title: `실전 타로 · ${s.spread.nameKo}`,
-        summary: s.note?.slice(0, 120) || '실전 타로 상담',
-        detail: s.note,
-        resultText: s.aiText,
-        historyId: hist.id,
+    if (savingRef.current) return
+    savingRef.current = true
+    try {
+      const hist = await saveHistory({
+        id: savedRef.current?.historyId,
+        kind: 'practice',
+        title: `실전 · ${s.spread.nameKo}`,
+        cards: s.cards,
+        userNote: s.note,
+        aiText: s.aiText,
+        customerId: s.customerId || undefined,
+        meta: { spreadId: s.spread.id },
       })
+      let consultationId = savedRef.current?.consultationId
+      if (s.customerId) {
+        const cons = await recordServiceConsultation({
+          id: consultationId,
+          customerId: s.customerId,
+          serviceType: 'practice',
+          title: `실전 타로 · ${s.spread.nameKo}`,
+          summary: s.note?.slice(0, 120) || '실전 타로 상담',
+          detail: s.note,
+          resultText: s.aiText,
+          historyId: hist.id,
+        })
+        consultationId = cons.id
+      }
+      savedRef.current = { historyId: hist.id, consultationId }
+      const msg = t('save_ok')
+      setSavedMsg(msg)
+      setSaveMessage(msg)
+    } finally {
+      savingRef.current = false
     }
-    const msg = t('save_ok')
-    setSavedMsg(msg)
-    setSaveMessage(msg)
   }
 
   useEffect(() => {
@@ -68,6 +84,8 @@ export function PracticePage() {
     setAiText('')
     setSavedMsg(null)
     setError(null)
+    // 새 리딩은 새 기록이어야 한다. 이전 저장 id를 물고 가면 앞 리딩을 덮어쓴다.
+    savedRef.current = null
     setCards(drawCards(spread.cardCount, spread.positions))
   }
 
@@ -76,15 +94,23 @@ export function PracticePage() {
     setBusy(true)
     setError(null)
     try {
-      const text = await adviceFromPractice(formatDrawnForPrompt(cards), note)
+      // 규칙 진단을 프롬프트 앞에 붙이면 모델이 배열의 편중을 놓치지 않는다.
+      const text = await adviceFromPractice(
+        formatDrawnForPrompt(cards),
+        note,
+        analysisToPrompt(analyzeSpread(cards)),
+      )
       setAiText(text)
       setLastSpeakText(text)
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'AI 조언 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
     } finally {
       setBusy(false)
     }
   }
+
+  // 뽑은 카드가 바뀔 때만 다시 계산한다. 순수 규칙 연산이라 네트워크가 필요 없다.
+  const analysis = cards.length > 0 ? analyzeSpread(cards) : null
 
   return (
     <main className="page">
@@ -121,6 +147,16 @@ export function PracticePage() {
       {cards.length > 0 && (
         <>
           <SpreadCards cards={cards} />
+          {analysis && (
+            <div className="panel">
+              <h2 style={{ marginTop: 0 }}>{t('analyze_title')}</h2>
+              <ul>
+                {analysis.notes.map((n) => (
+                  <li key={n.key}>{t(n.key, n.params)}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           <div className="panel">
             <label className="label" htmlFor="note">
               {t('practice_note_label')}
@@ -142,14 +178,14 @@ export function PracticePage() {
             >
               {busy ? t('practice_advice_busy') : t('practice_advice')}
             </button>
-            <button type="button" className="btn" onClick={() => void onSave()}>
+            <button type="button" className="btn" onClick={() => void runSave()}>
               {t('nav_save')}
             </button>
           </div>
         </>
       )}
 
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="error-text" role="alert">{error}</p>}
       {savedMsg && <p className="feedback-ok">{savedMsg}</p>}
 
       {aiText && (

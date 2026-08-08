@@ -51,12 +51,32 @@ export async function ollamaChat(
 const SYSTEM_TAROT =
   '당신은 저시력 사용자를 배려하는 한국어 타로 조언자입니다. 명확하고 따뜻한 문장으로 쓰되, 단정·공포·의료·법률 확정은 피하고, 정방향/역방향 의미를 구분해서 설명하세요.'
 
-export function adviceFromPractice(cardsText: string, userNote: string): Promise<string> {
+/** 규칙 기반 배열 진단을 프롬프트 앞에 붙인다. 모델이 편중을 놓치지 않아 리딩 품질이 올라간다. */
+function withAnalysis(cardsText: string, analysis?: string): string {
+  return analysis ? `배열 진단(규칙 계산): ${analysis}\n\n뽑힌 카드:\n${cardsText}` : `뽑힌 카드:\n${cardsText}`
+}
+
+export function adviceFromPractice(
+  cardsText: string,
+  userNote: string,
+  analysis?: string,
+): Promise<string> {
   return ollamaChat([
     { role: 'system', content: SYSTEM_TAROT },
     {
       role: 'user',
-      content: `실전 타로입니다. 뽑힌 카드:\n${cardsText}\n\n사용자의 해설:\n${userNote || '(없음)'}\n\n사용자의 해설을 존중하면서, 보완·조언·주의점을 한국어로 짧게 작성해 주세요.`,
+      content: `실전 타로입니다. ${withAnalysis(cardsText, analysis)}\n\n사용자의 해설:\n${userNote || '(없음)'}\n\n사용자의 해설을 존중하면서, 보완·조언·주의점을 한국어로 짧게 작성해 주세요.`,
+    },
+  ])
+}
+
+/** 오늘의 한 장 — 하루치라 짧고 실행 가능한 조언 위주로 뽑는다. */
+export function dailyCardReading(cardText: string, dateLabel: string): Promise<string> {
+  return ollamaChat([
+    { role: 'system', content: SYSTEM_TAROT },
+    {
+      role: 'user',
+      content: `오늘(${dateLabel})의 한 장입니다.\n${cardText}\n\n오늘 하루를 위한 짧은 해설과, 실천할 수 있는 조언 한 가지를 한국어로 써 주세요. 5문장 이내로 짧게.`,
     },
   ])
 }
@@ -66,6 +86,7 @@ export function fullAiReading(opts: {
   question?: string
   category?: string
   cardsText: string
+  analysis?: string
 }): Promise<string> {
   const focus =
     opts.mode === 'question'
@@ -75,7 +96,7 @@ export function fullAiReading(opts: {
     { role: 'system', content: SYSTEM_TAROT },
     {
       role: 'user',
-      content: `AI 타로 리딩을 해주세요.\n${focus}\n\n카드:\n${opts.cardsText}\n\n포지션별로 해석한 뒤, 전체 메시지를 정리해 주세요.`,
+      content: `AI 타로 리딩을 해주세요.\n${focus}\n\n${withAnalysis(opts.cardsText, opts.analysis)}\n\n포지션별로 해석한 뒤, 전체 메시지를 정리해 주세요.`,
     },
   ])
 }

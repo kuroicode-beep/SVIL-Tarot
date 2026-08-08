@@ -1,8 +1,22 @@
+// src/services/tts.ts — 로컬 TTS 서버 호출과 재생 수명주기(취소·타임아웃·정리) 관리
+
 const TTS_BASE = import.meta.env.DEV ? '/tts-api' : 'http://127.0.0.1:8765'
+
+// 로컬 TTS가 응답하지 않을 때 무한 대기로 '중지도 안 되고 아무 일도 안 나는' 상태가 되지 않도록 상한을 둔다.
+const GENERATE_TIMEOUT_MS = 15_000
 
 let currentAudio: HTMLAudioElement | null = null
 let currentUrl: string | null = null
 let currentResolve: (() => void) | null = null
+// 오디오가 만들어지기 전(생성 요청 대기 중)에도 중지할 수 있어야 하므로 컨트롤러를 모듈 스코프에 둔다.
+let currentController: AbortController | null = null
+// 중지·재호출 때마다 올라가는 세대 번호. 값이 달라진 요청의 결과는 버려서 음성이 겹치지 않게 한다.
+let generation = 0
+
+// abort는 사용자의 '중지'나 재호출로 인한 정상 흐름이므로 오류로 취급하지 않는다.
+function isAbortError(e: unknown): boolean {
+  return typeof e === 'object' && e !== null && (e as { name?: string }).name === 'AbortError'
+}
 
 export async function checkTts(): Promise<boolean> {
   try {
@@ -25,8 +39,11 @@ export async function listVoices(): Promise<string[]> {
   }
 }
 
-// 재생 중인 오디오를 정리한다. 진행 중이던 재생 Promise는 오류가 아닌 '정상 중단'으로 resolve한다.
+// 재생 여부와 무관하게 먼저 세대를 올리고 요청을 끊는다. 그래야 '생성 대기 중 중지'가 나중에 튀어나오지 않는다.
 export function stopTts() {
+  generation += 1
+  currentController?.abort()
+  currentController = null
   if (!currentAudio) return
   const audio = currentAudio
   const url = currentUrl
@@ -38,6 +55,7 @@ export function stopTts() {
   audio.onerror = null
   audio.pause()
   audio.src = ''
+  // 진행 중이던 재생 Promise는 오류가 아닌 '정상 중단'으로 resolve한다.
   if (url) URL.revokeObjectURL(url)
   resolve?.()
 }
@@ -50,21 +68,50 @@ export async function speakText(
   const trimmed = text.trim()
   if (!trimmed) return
 
-  const res = await fetch(`${TTS_BASE}/api/tts/generate`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      text: trimmed.slice(0, 2000),
-      engine: 'qwen3',
-      voice_name: opts.voice || 'default',
-      speed_pct: opts.speedPct ?? 100,
-    }),
-  })
-  if (!res.ok) {
-    const err = await res.text()
-    throw new Error(`TTS 오류 (${res.status}): ${err.slice(0, 200)}`)
+  // 이 호출의 세대를 고정해 두고 단계마다 최신인지 확인한다. 다르면 이미 중지·재호출된 것이다.
+  const myGen = ++generation
+  const controller = new AbortController()
+  currentController = controller
+  // AbortSignal.timeout은 abort 사유를 덮어써 사용자의 '중지'와 구분이 안 되므로 같은 컨트롤러로 직접 끊는다.
+  let timedOut = false
+  const timer = window.setTimeout(() => {
+    timedOut = true
+    controller.abort()
+  }, GENERATE_TIMEOUT_MS)
+
+  let blob: Blob | undefined
+  try {
+    const res = await fetch(`${TTS_BASE}/api/tts/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: trimmed.slice(0, 2000),
+        engine: 'qwen3',
+        voice_name: opts.voice || 'default',
+        speed_pct: opts.speedPct ?? 100,
+      }),
+      signal: controller.signal,
+    })
+    if (myGen !== generation) return
+    if (!res.ok) {
+      const detail = await res.text()
+      throw new Error(`TTS 오류 (${res.status}): ${detail.slice(0, 200)}`)
+    }
+    blob = await res.blob()
+  } catch (e) {
+    // 중지·재호출로 버려진 요청은 조용히 끝낸다. 사용자에게 오류로 보이면 안 된다.
+    if (myGen !== generation) return
+    if (timedOut) throw new Error(`TTS 응답 시간 초과 (${GENERATE_TIMEOUT_MS / 1000}초)`)
+    if (isAbortError(e)) return
+    throw e
+  } finally {
+    window.clearTimeout(timer)
+    if (currentController === controller) currentController = null
   }
-  const blob = await res.blob()
+
+  // 응답을 읽는 사이에도 중지될 수 있으므로 오디오를 만들기 직전에 한 번 더 확인한다.
+  if (!blob || myGen !== generation) return
+
   const url = URL.createObjectURL(blob)
   const audio = new Audio(url)
   currentAudio = audio
@@ -78,6 +125,7 @@ export async function speakText(
         currentUrl = null
         currentResolve = null
       }
+      // 블롭 URL을 놔두면 페이지가 살아 있는 동안 메모리를 계속 잡는다.
       URL.revokeObjectURL(url)
     }
     audio.onended = () => {
@@ -86,10 +134,19 @@ export async function speakText(
     }
     audio.onerror = () => {
       cleanup()
+      if (myGen !== generation) {
+        resolve()
+        return
+      }
       reject(new Error('TTS 재생 실패'))
     }
     void audio.play().catch((e) => {
       cleanup()
+      // pause()로 끊긴 재생은 실패가 아니라 중지다.
+      if (isAbortError(e) || myGen !== generation) {
+        resolve()
+        return
+      }
       reject(e instanceof Error ? e : new Error('TTS 재생 실패'))
     })
   })

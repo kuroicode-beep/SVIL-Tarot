@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+// src/pages/LearnPage.tsx — 타로 배우기 화면(단계 목록 · 단계별 카드 학습)
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import lessons from '../data/lessons.json'
 import { getCard } from '../lib/cards'
@@ -15,10 +16,15 @@ export function LearnPage() {
   const stage = stages.find((s) => s.id === stageId) ?? stages[0]
   const [idx, setIdx] = useState(0)
 
+  // /learn과 /learn/:stageId가 같은 엘리먼트라 단계를 옮겨도 언마운트되지 않아 idx가 남는다.
+  // stage.id로 잡으면 파라미터가 없을 때 stages[0]으로 폴백해 값이 안 바뀌므로, URL 파라미터를 기준으로 초기화한다.
+  useEffect(() => setIdx(0), [stageId])
+
   const card = useMemo(() => getCard(stage.cardIds[Math.min(idx, stage.cardIds.length - 1)]), [stage, idx])
 
+  // 낭독문도 화면 언어를 따라야 해서 정/역방향 라벨을 사전 키로 뺀다.
   const speakLesson = () => {
-    const text = `${stage.title}. ${card.nameKo}. 정방향: ${card.upright}. 역방향: ${card.reversed}. ${card.lesson}`
+    const text = `${stage.title}. ${card.nameKo}. ${t('upright')}: ${card.upright}. ${t('reversed')}: ${card.reversed}. ${card.lesson}`
     setLastSpeakText(text)
     void speak(text)
   }

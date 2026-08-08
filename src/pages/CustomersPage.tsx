@@ -7,7 +7,7 @@ import {
   listConsultations,
   listCustomers,
   saveCustomer,
-  SERVICE_LABELS,
+  SERVICE_LABEL_KEYS,
   type Consultation,
   type Customer,
 } from '../services/customers'
@@ -35,7 +35,18 @@ export function CustomersPage() {
   const [detail, setDetail] = useState<Customer | null>(null)
   const [cons, setCons] = useState<Consultation[]>([])
 
-  const reload = async () => setList(await listCustomers())
+  const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading')
+
+  // DB 열기 실패와 '고객 없음'이 같은 화면으로 보이면 데이터 소실과 구분할 수 없다.
+  const reload = async () => {
+    setLoadState('loading')
+    try {
+      setList(await listCustomers())
+      setLoadState('ready')
+    } catch {
+      setLoadState('error')
+    }
+  }
 
   useEffect(() => {
     void reload()
@@ -62,7 +73,9 @@ export function CustomersPage() {
       setEditingId(null)
       await reload()
     } catch (e) {
-      setError(e instanceof Error ? e.message : '저장 실패')
+      // 서비스 계층은 로케일을 모르므로 sentinel만 던진다. 번역은 화면에서 한다.
+      const code = e instanceof Error ? e.message : ''
+      setError(code === 'CUSTOMER_NAME_REQUIRED' ? t('cust_name_required') : t('save_fail'))
     }
   }
 
@@ -71,66 +84,65 @@ export function CustomersPage() {
       <main className="page">
         <h1>{detail.name}</h1>
         <p className="muted mono">
-          {detail.birthDate || '생년월일 미등록'}
-          {detail.birthTime ? ` ${detail.birthTime}` : ''} · {detail.phone || '연락처 없음'}
+          {detail.birthDate || t('cust_no_birth')}
+          {detail.birthTime ? ` ${detail.birthTime}` : ''} · {detail.phone || t('cust_no_phone')}
         </p>
         {detail.notes && <div className="panel">{detail.notes}</div>}
         <div className="btn-row">
           <Link className="btn" to={`/practice?customer=${detail.id}`}>
-            실전
+            {t('home_practice')}
           </Link>
           <Link className="btn" to={`/ai?customer=${detail.id}`}>
-            AI 타로
+            {t('home_ai')}
           </Link>
           <Link className="btn" to={`/soul?customer=${detail.id}`}>
-            소울
+            {t('home_soul')}
           </Link>
           <Link className="btn" to={`/saju?customer=${detail.id}`}>
-            사주
+            {t('home_saju')}
           </Link>
           <Link className="btn" to={`/compat?customer=${detail.id}`}>
-            궁합
+            {t('home_compat')}
           </Link>
           <Link className="btn" to={`/nameology?customer=${detail.id}`}>
-            성명학
+            {t('home_nameology')}
           </Link>
           <Link className="btn" to={`/naming?customer=${detail.id}`}>
-            작명
+            {t('home_naming')}
           </Link>
           <button type="button" className="btn" onClick={() => nav('/customers')}>
-            목록
+            {t('list_label')}
           </button>
           <button
             type="button"
-            className="btn"
-            style={{ borderColor: 'var(--negative)', color: 'var(--negative)' }}
+            className="btn btn--danger"
             onClick={async () => {
-              if (!window.confirm('고객과 상담 기록을 모두 삭제할까요?')) return
+              if (!window.confirm(t('confirm_delete_customer'))) return
               await deleteCustomer(detail.id)
               nav('/customers')
             }}
           >
-            고객 삭제
+            {t('cust_delete')}
           </button>
         </div>
 
-        <h2>상담 이력</h2>
+        <h2>{t('cust_cons_title')}</h2>
         {cons.length === 0 ? (
-          <p className="muted">아직 상담 기록이 없습니다. 서비스를 이용하면 자동으로 쌓입니다.</p>
+          <p className="muted">{t('cons_empty')}</p>
         ) : (
           <div className="list-choice">
             {cons.map((c) => (
               <div key={c.id} className="panel" style={{ marginTop: 0 }}>
                 <div className="btn-row" style={{ justifyContent: 'space-between' }}>
                   <strong>
-                    [{SERVICE_LABELS[c.serviceType]}] {c.title}
+                    [{t(SERVICE_LABEL_KEYS[c.serviceType] ?? 'kind_other')}] {c.title}
                   </strong>
                   <span className="mono muted">{new Date(c.createdAt).toLocaleString()}</span>
                 </div>
                 <p>{c.summary}</p>
                 {c.resultText && (
                   <details>
-                    <summary>상담 내용 전문</summary>
+                    <summary>{t('cust_cons_full')}</summary>
                     <div className="ai-result">{c.resultText}</div>
                     <button
                       type="button"
@@ -146,13 +158,14 @@ export function CustomersPage() {
                 )}
                 <button
                   type="button"
-                  className="btn"
+                  className="btn btn--danger"
                   onClick={async () => {
+                    if (!window.confirm(t('confirm_delete_consultation'))) return
                     await deleteConsultation(c.id)
                     setCons(await listConsultations(detail.id))
                   }}
                 >
-                  이 기록 삭제
+                  {t('cons_delete')}
                 </button>
               </div>
             ))}
@@ -165,12 +178,12 @@ export function CustomersPage() {
   return (
     <main className="page">
       <h1>{t('home_customers')}</h1>
-      <p className="muted">고객 정보와 서비스·상담 내용을 한곳에서 관리합니다.</p>
+      <p className="muted">{t('cust_desc')}</p>
 
       <div className="panel">
-        <h2 style={{ marginTop: 0 }}>{editingId ? '고객 수정' : '고객 등록'}</h2>
+        <h2 style={{ marginTop: 0 }}>{editingId ? t('cust_form_edit') : t('cust_form_new')}</h2>
         <label className="label" htmlFor="cname">
-          이름 *
+          {t('cust_f_name')}
         </label>
         <input
           id="cname"
@@ -180,7 +193,7 @@ export function CustomersPage() {
         />
         <div className="btn-row" style={{ marginTop: 12 }}>
           <label>
-            전화
+            {t('cust_f_phone')}
             <input
               className="field"
               style={{ marginTop: 4 }}
@@ -189,7 +202,7 @@ export function CustomersPage() {
             />
           </label>
           <label>
-            이메일
+            {t('cust_f_email')}
             <input
               className="field"
               style={{ marginTop: 4 }}
@@ -200,7 +213,7 @@ export function CustomersPage() {
         </div>
         <div className="btn-row" style={{ marginTop: 12 }}>
           <label>
-            생년월일
+            {t('cust_f_birth')}
             <input
               type="date"
               className="field"
@@ -210,7 +223,7 @@ export function CustomersPage() {
             />
           </label>
           <label>
-            출생 시각
+            {t('cust_f_time')}
             <input
               type="time"
               className="field"
@@ -220,21 +233,21 @@ export function CustomersPage() {
             />
           </label>
           <label>
-            성별
+            {t('cust_f_gender')}
             <select
               className="field"
               style={{ marginTop: 4 }}
               value={form.gender}
               onChange={(e) => setForm({ ...form, gender: e.target.value as Customer['gender'] })}
             >
-              <option value="">미지정</option>
-              <option value="female">여</option>
-              <option value="male">남</option>
-              <option value="other">기타</option>
+              <option value="">{t('cust_g_none')}</option>
+              <option value="female">{t('cust_g_f')}</option>
+              <option value="male">{t('cust_g_m')}</option>
+              <option value="other">{t('kind_other')}</option>
             </select>
           </label>
           <label>
-            달력
+            {t('cust_f_cal')}
             <select
               className="field"
               style={{ marginTop: 4 }}
@@ -243,13 +256,13 @@ export function CustomersPage() {
                 setForm({ ...form, calendarType: e.target.value as 'solar' | 'lunar' })
               }
             >
-              <option value="solar">양력</option>
-              <option value="lunar">음력(참고)</option>
+              <option value="solar">{t('cust_cal_solar')}</option>
+              <option value="lunar">{t('cust_cal_lunar')}</option>
             </select>
           </label>
         </div>
         <label className="label" htmlFor="cnotes" style={{ marginTop: 12 }}>
-          메모
+          {t('cust_f_notes')}
         </label>
         <textarea
           id="cnotes"
@@ -257,10 +270,10 @@ export function CustomersPage() {
           value={form.notes}
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
         />
-        {error && <p className="error-text">{error}</p>}
+        {error && <p className="error-text" role="alert">{error}</p>}
         <div className="btn-row">
           <button type="button" className="btn btn--primary" onClick={() => void onSubmit()}>
-            {editingId ? '수정 저장' : '등록'}
+            {editingId ? t('cust_save_edit') : t('cust_save_new')}
           </button>
           {editingId && (
             <button
@@ -271,35 +284,49 @@ export function CustomersPage() {
                 setForm(emptyForm)
               }}
             >
-              취소
+              {t('cust_cancel')}
             </button>
           )}
         </div>
       </div>
 
-      <h2>고객 목록 ({list.length})</h2>
-      {list.length === 0 ? (
-        <p className="muted">등록된 고객이 없습니다.</p>
+      <h2>{t('cust_list_title', { n: list.length })}</h2>
+      {loadState === 'loading' ? (
+        <p className="muted" role="status">
+          {t('loading')}
+        </p>
+      ) : loadState === 'error' ? (
+        <div className="panel">
+          <p className="error-text" role="alert">
+            {t('load_error')}
+          </p>
+          <button type="button" className="btn btn--primary" onClick={() => void reload()}>
+            {t('retry')}
+          </button>
+        </div>
+      ) : list.length === 0 ? (
+        <p className="muted">{t('cust_empty')}</p>
       ) : (
         <div className="list-choice">
+          {/* 버튼 안에 버튼을 중첩하면 '수정'이 키보드·스크린리더로 도달 불가능해진다(WCAG 2.1.1).
+              컨테이너는 div로 두고 '상세'와 '수정'을 형제 컨트롤로 나눈다. */}
           {list.map((c) => (
-            <button
-              key={c.id}
-              type="button"
-              className="history-item"
-              onClick={() => nav(`/customers/${c.id}`)}
-            >
-              <div>
+            <div key={c.id} className="history-item">
+              <Link
+                to={`/customers/${c.id}`}
+                className="history-item__main"
+                aria-label={`${c.name} ${t('cust_open_detail')}`}
+              >
                 <strong>{c.name}</strong>
-                <div className="muted">
-                  {c.birthDate || '생일 미등록'} · {c.phone || '전화 없음'}
-                </div>
-              </div>
-              <span
+                <span className="muted">
+                  {c.birthDate || t('cust_no_birth')} · {c.phone || t('cust_no_phone')}
+                </span>
+              </Link>
+              <button
+                type="button"
                 className="btn"
-                role="presentation"
-                onClick={(e) => {
-                  e.stopPropagation()
+                aria-label={`${c.name} ${t('cust_edit')}`}
+                onClick={() => {
                   setEditingId(c.id)
                   setForm({
                     name: c.name,
@@ -314,9 +341,9 @@ export function CustomersPage() {
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
               >
-                수정
-              </span>
-            </button>
+                {t('cust_edit')}
+              </button>
+            </div>
           ))}
         </div>
       )}

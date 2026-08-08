@@ -66,7 +66,15 @@
   --warning: #ffd479;
   --negative: #ff9b9b;
   --focus: #ffd479;
-  --on-primary: #000000;
+  /* 강조(primary) 계열.
+     저시력 사용자에게 어두운 화면 속 밝은 바탕 버튼은 헤일레이션(번짐)·눈부심을 일으킨다.
+     그래서 강조는 "밝은 바탕"이 아니라 "어두운 바탕 + 굵은 노랑 테두리 + 노랑 글자"로 준다.
+     밝은 색은 글자·테두리에만 쓰고 넓은 면적을 채우지 않는다. */
+  --primary-surface: #1c2431;
+  --primary-surface-hover: #26334a;
+  --yellow: #ffd94a;
+  /* 강조 요소의 글자색. 어두운 바탕 위 노랑이라 대비 10.5:1(AAA). */
+  --on-primary: #ffd94a;
   --bg-glow: #1a1a2e;
   --img-backdrop: #000000;
   --font-size-base: 18px;
@@ -75,6 +83,11 @@
   --touch-min: 50px;
   --font-ui: "LINESeedKR", "Malgun Gothic", "Segoe UI", sans-serif;
   --font-mono: Consolas, "Courier New", monospace;
+  /* 포커스 링 안쪽(흰색). 하드코딩 금지 규칙에 맞춰 토큰으로 뺀다. */
+  --focus-ring-inner: #ffffff;
+  /* rem은 <html> 기준이다. 커스텀 속성만 바꾸면 rem으로 선언된 UI 텍스트가
+     '글자 크기' 설정을 따라오지 않는다. 루트 자체를 움직여야 전부 같이 커진다. */
+  font-size: var(--font-size-base);
 }
 
 [data-font-size="sm"] {
@@ -105,7 +118,7 @@ body,
 
 body {
   font-family: var(--font-ui);
-  font-size: var(--font-size-base);
+  font-size: 1rem;
   line-height: 1.8;
   letter-spacing: 0.02em;
   word-break: keep-all;
@@ -127,9 +140,22 @@ a {
   color: var(--accent);
 }
 
+/* 강조 버튼이 이제 노랑 테두리를 쓰므로, 포커스 링이 노랑 하나면 상태와 구분이 안 된다.
+   흰색 안쪽 링 + 노랑 바깥쪽 링의 2중 링으로 어떤 바탕에서도 튀게 만든다. */
 :focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  outline: 3px solid var(--focus-ring-inner);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 7px var(--focus);
+}
+
+/* sticky 상단바(약 66px)가 아래에서 위로 Tab 이동한 포커스를 가린다(WCAG 2.4.11). */
+a[href],
+button,
+input,
+select,
+textarea,
+[tabindex]:not([tabindex='-1']) {
+  scroll-margin-top: calc(var(--touch-min) + 30px);
 }
 
 .mono {
@@ -244,8 +270,11 @@ a {
   position: relative;
 }
 
+/* overflow:hidden은 자식 .home-cta 12개의 포커스 링(box-shadow)을 통째로 잘라
+   홈 화면에서 키보드 위치를 잃게 만든다. .home-silhouette은 position:fixed라
+   애초에 이 컨테이너의 클리핑 대상이 아니어서 선언 자체가 불필요했다. */
 .home-page {
-  overflow: hidden;
+  position: relative;
 }
 
 .home-silhouette {
@@ -303,9 +332,9 @@ a {
   gap: 8px;
   min-height: 140px;
   padding: 20px;
-  border: none;
+  border: 2px solid var(--yellow);
   border-radius: var(--radius-lg);
-  background: var(--accent-strong);
+  background: var(--primary-surface);
   color: var(--on-primary);
   font-weight: 700;
   font-size: 1.25rem;
@@ -314,7 +343,9 @@ a {
 }
 
 .home-cta:hover {
-  background: var(--accent-max);
+  background: var(--primary-surface-hover);
+  border-color: var(--accent-max);
+  color: var(--accent-max);
 }
 
 .home-cta--wide {
@@ -322,10 +353,12 @@ a {
   min-height: 160px;
 }
 
+/* 힌트도 본문급 대비를 유지한다. opacity로 흐리면 저시력에서 먼저 사라지는 부분이라
+   투명도 대신 별도 색상 토큰을 쓴다. */
 .home-cta__hint {
   font-size: 0.9rem;
   font-weight: 400;
-  opacity: 0.7;
+  color: var(--text-sub);
 }
 
 .btn {
@@ -340,6 +373,8 @@ a {
   background: var(--surface-2);
   color: var(--text);
   font-weight: 700;
+  /* 스티치 interactive-label 규격 — 조작 라벨은 자간을 넓혀 글자 뭉침을 막는다. */
+  letter-spacing: 0.04em;
   cursor: pointer;
   text-decoration: none;
 }
@@ -350,18 +385,35 @@ a {
 }
 
 .btn--primary {
-  border-color: transparent;
-  background: var(--accent-strong);
+  border-color: var(--yellow);
+  background: var(--primary-surface);
   color: var(--on-primary);
 }
 
 .btn--primary:hover {
-  background: var(--accent-max);
-  color: var(--on-primary);
+  background: var(--primary-surface-hover);
+  border-color: var(--accent-max);
+  color: var(--accent-max);
 }
 
+/* 위험 동작(삭제·초기화)은 색만이 아니라 테두리 굵기까지 달리해 구분한다. */
+.btn--danger {
+  border-color: var(--negative);
+  background: var(--primary-surface);
+  color: var(--negative);
+}
+
+.btn--danger:hover {
+  background: var(--primary-surface-hover);
+  border-color: var(--negative);
+  color: var(--negative);
+}
+
+/* 비활성은 opacity로만 표현하면 대비가 같이 무너진다. 색·테두리를 직접 낮춘다. */
 .btn:disabled {
-  opacity: 0.5;
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-sub);
   cursor: not-allowed;
 }
 
@@ -399,8 +451,9 @@ a {
   color: var(--text);
 }
 
+/* 스티치 규격: 입력 활성 상태는 파랑이 아니라 노랑 2px. 조작 대상은 전부 노랑 계열로 통일한다. */
 .field:focus {
-  border-color: var(--accent);
+  border-color: var(--yellow);
 }
 
 textarea.field {
@@ -409,28 +462,41 @@ textarea.field {
   line-height: 1.6;
 }
 
+/* 상태 배지 — 스티치 시안대로 중립 테두리 + 색 점 + 텍스트 라벨.
+   점은 보조 신호이고 판정은 항상 텍스트가 한다. */
 .status-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 34px;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 999px;
-  border: 1.5px solid currentColor;
+  border: 2px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
-.status-badge--ok {
-  color: var(--positive);
+.status-badge::before {
+  content: '';
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: currentColor;
 }
 
-.status-badge--bad {
-  color: var(--negative);
+.status-badge--ok::before {
+  background: var(--positive);
 }
 
-.status-badge--warn {
-  color: var(--warning);
+.status-badge--bad::before {
+  background: var(--negative);
+}
+
+.status-badge--warn::before {
+  background: var(--warning);
 }
 
 .card-img {
@@ -438,7 +504,7 @@ textarea.field {
   width: 100%;
   max-width: 220px;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 2px solid var(--border-strong);
   background: var(--img-backdrop);
 }
@@ -486,32 +552,122 @@ textarea.field {
   gap: 12px;
 }
 
+/* 조작 대상의 경계선은 --border(#3a3a48)면 배경 대비 1.6:1로 WCAG 1.4.11(3:1) 미달이다.
+   --border-strong(#6b6b82)은 세 배경 모두에서 3.1~3.7:1로 통과한다.
+   --border는 .panel 같은 비인터랙티브 컨테이너 전용으로 둔다. */
 .list-choice button,
 .option-btn {
   width: 100%;
   text-align: left;
   min-height: var(--touch-min);
   padding: 16px 18px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-lg);
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
 }
 
-.list-choice button:hover,
-.option-btn:hover,
-.list-choice button.is-selected {
-  border-color: var(--border-strong);
+.list-choice button:hover:not([aria-disabled='true']),
+.option-btn:hover:not([aria-disabled='true']) {
+  border-color: var(--accent);
   background: var(--surface-2);
 }
 
+/* 선택된 항목은 배경 차이만으로는 구분이 약하다. 노랑 테두리 + 체크 글리프를 함께 준다. */
+.list-choice button.is-selected {
+  border-color: var(--yellow);
+  background: var(--primary-surface);
+}
+
+.list-choice button.is-selected::before {
+  content: '✓ ';
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+/* 정오답은 색만으로 구분하지 않는다. 테두리 + 글자 라벨(.option-btn__mark)을 함께 쓴다.
+   라벨 문구는 5개 언어를 타야 해서 CSS content가 아니라 JSX에서 i18n으로 넣는다. */
 .option-btn.is-correct {
   border-color: var(--positive);
+  border-width: 3px;
+  background: color-mix(in srgb, var(--positive) 12%, var(--surface));
 }
 
 .option-btn.is-wrong {
   border-color: var(--negative);
+  border-width: 3px;
+  background: color-mix(in srgb, var(--negative) 12%, var(--surface));
+}
+
+.option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.option-btn__mark {
+  flex: none;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.option-btn.is-correct .option-btn__mark {
+  color: var(--positive);
+}
+
+.option-btn.is-wrong .option-btn__mark {
+  color: var(--negative);
+}
+
+/* 답을 고른 뒤에도 대비를 그대로 유지한다. 흐려지면 정답을 다시 읽을 수 없다. */
+.option-btn[aria-disabled='true'] {
+  color: var(--text);
+  cursor: default;
+}
+
+/* 11개 화면이 .error-text를 쓰는데 정의가 없어 오류 메시지가 본문과 똑같이 보였다.
+   색만이 아니라 좌측 굵은 막대 + 아이콘 접두어로 오류임을 알린다. */
+.error-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 12px 0;
+  padding: 12px 16px;
+  border: 2px solid var(--negative);
+  border-left-width: 6px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--negative);
+  font-weight: 700;
+}
+
+.error-text::before {
+  content: '⚠';
+  flex: none;
+  font-size: 1.1em;
+}
+
+/* 계산 한계 안내. 오류(.error-text)보다 낮은 등급이라 노랑 계열로 구분하되,
+   색만으로 등급을 알리지 않도록 제목("주의 — 계산 한계")을 항상 함께 쓴다. */
+.warn-panel {
+  margin: 16px 0;
+  padding: 16px 20px;
+  border: 2px solid var(--warning);
+  border-left-width: 6px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.warn-panel strong {
+  color: var(--warning);
+}
+
+.warn-panel ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
 }
 
 .feedback-ok {
@@ -533,19 +689,34 @@ textarea.field {
 .history-item {
   display: flex;
   gap: 16px;
-  align-items: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   text-align: left;
   padding: 16px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-lg);
   background: var(--surface);
   color: var(--text);
   cursor: pointer;
 }
 
-.history-item:hover {
+.history-item:hover,
+.history-item:focus-within {
   border-color: var(--accent);
+}
+
+/* 목록 행에서 '열기'와 '수정'을 형제 컨트롤로 나눌 때, 본문 링크가 남는 폭을 다 차지한다. */
+.history-item__main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 200px;
+  min-width: 0;
+  min-height: var(--touch-min);
+  justify-content: center;
+  color: var(--text);
+  text-decoration: none;
 }
 
 .history-thumbs {
@@ -591,33 +762,53 @@ textarea.field {
   cursor: pointer;
 }
 
+/* 선택 상태를 색으로만 알리지 않도록 체크 글리프를 함께 붙인다(SVIL 접근성 규칙). */
 .chip.is-on {
-  border-color: transparent;
-  background: var(--accent-strong);
+  border-color: var(--yellow);
+  background: var(--primary-surface);
   color: var(--on-primary);
 }
 
+.chip.is-on::before {
+  content: '✓ ';
+}
+
+/* overflow:hidden이면 자식 버튼의 포커스 링이 잘려 키보드 사용자가 위치를 잃는다.
+   대신 첫/마지막 버튼만 라운딩하고 넘침은 허용한다. */
 .segment {
   display: inline-flex;
   gap: 0;
   border: 2px solid var(--border-strong);
   border-radius: var(--radius);
-  overflow: hidden;
 }
 
 .segment button {
   min-height: var(--touch-min);
   padding: 10px 18px;
   border: none;
+  border-right: 2px solid var(--border-strong);
   background: var(--surface-2);
   color: var(--text);
   font-weight: 700;
   cursor: pointer;
 }
 
+.segment button:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.segment button:last-child {
+  border-right: none;
+  border-radius: 0 10px 10px 0;
+}
+
 .segment button.is-on {
-  background: var(--accent-strong);
+  background: var(--primary-surface);
   color: var(--on-primary);
+}
+
+.segment button.is-on::before {
+  content: '✓ ';
 }
 
 .ai-result {
@@ -634,10 +825,11 @@ textarea.field {
   margin: 0 auto;
 }
 
+/* overflow가 있는 컨테이너라 자식 포커스 링(최대 10px)이 잘리지 않게 패딩을 확보한다. */
 .learn-sidebar {
   border-right: 2px solid var(--border);
   background: var(--bg);
-  padding: 16px;
+  padding: 24px 16px;
   overflow-y: auto;
 }
 
@@ -673,11 +865,14 @@ textarea.field {
   color: var(--text);
 }
 
+/* 현재 단계 표시에 --focus(노랑 링)를 쓰면 키보드 포커스 링과 구분이 안 된다.
+   상태는 테두리 + 왼쪽 노랑 마커로, 포커스 링은 :focus-visible 전용으로 남긴다. */
 .learn-step.is-active {
-  background: color-mix(in srgb, var(--accent) 18%, var(--surface));
-  border-color: var(--border);
+  background: var(--primary-surface);
+  border-color: var(--yellow);
+  border-left-width: 6px;
   color: var(--text);
-  box-shadow: 0 0 0 3px var(--focus);
+  padding-left: 8px;
 }
 
 .learn-step__num {
@@ -693,10 +888,12 @@ textarea.field {
   font-weight: 700;
 }
 
+/* 스티치 시안: 현재 단계 번호만 노랑 원. 40px 소면적이라 헤일레이션 위험이 없고
+   '지금 어디' 를 한눈에 잡아주는 이득이 크다. 넓은 면적 채움 금지 규칙과 충돌하지 않는다. */
 .learn-step.is-active .learn-step__num {
-  background: var(--accent-strong);
-  color: var(--on-primary);
-  border-color: transparent;
+  background: var(--yellow);
+  color: #1c2431;
+  border-color: var(--yellow);
 }
 
 .learn-step__label {
@@ -718,7 +915,8 @@ textarea.field {
   display: inline-block;
   padding: 6px 12px;
   border-radius: 999px;
-  background: var(--warning);
+  border: 2px solid var(--yellow);
+  background: var(--primary-surface);
   color: var(--on-primary);
   font-weight: 700;
   font-size: 0.9rem;
@@ -742,7 +940,7 @@ textarea.field {
 
 .ai-visual {
   min-height: 200px;
-  border: 2px solid var(--border);
+  border: 2px solid var(--border-strong);
   border-radius: var(--radius-lg);
   background: var(--surface);
   display: flex;
@@ -769,11 +967,16 @@ textarea.field {
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: var(--accent-strong);
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--yellow);
+  border-radius: var(--radius);
+  background: var(--primary-surface);
   color: var(--on-primary);
   padding: 12px 20px;
   font-weight: 700;
   min-height: var(--touch-min);
+  text-decoration: none;
 }
 
 .skip-link:focus {
@@ -820,5 +1023,57 @@ textarea.field {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* Windows 고대비 모드(Contrast Themes)에서는 배경·테두리 색이 시스템 색으로 강제 치환된다.
+   저시력 사용자의 사용률이 높은 모드라, 색으로만 주던 신호를 시스템 색 키워드로 다시 그린다. */
+@media (forced-colors: active) {
+  .icon-btn,
+  .learn-step {
+    border-color: ButtonText;
+  }
+
+  .btn,
+  .chip,
+  .option-btn,
+  .history-item,
+  .list-choice button,
+  .field,
+  .status-badge {
+    border-color: ButtonText;
+  }
+
+  .chip.is-on,
+  .segment button.is-on,
+  .list-choice button.is-selected,
+  .learn-step.is-active,
+  .home-cta:hover,
+  .btn--primary {
+    background: Highlight;
+    color: HighlightText;
+    border-color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .learn-step.is-active .learn-step__num {
+    background: HighlightText;
+    color: Highlight;
+    forced-color-adjust: none;
+  }
+
+  a {
+    color: LinkText;
+  }
+
+  /* 무늬로만 카드 뒷면을 표현하면 고대비 모드에서 사라진다. */
+  .card-back {
+    border: 2px solid ButtonText;
+    background: Canvas;
+  }
+
+  :focus-visible {
+    outline: 3px solid Highlight;
+    box-shadow: none;
   }
 }

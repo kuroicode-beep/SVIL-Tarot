@@ -22,16 +22,16 @@ export function NameologyPage() {
     setError(null)
     const name = fullName.trim()
     if (!name) {
-      setError('이름을 입력하세요.')
+      setError(t('nameo_need_name'))
       return
     }
     setBusy(true)
     try {
       const est = estimateHangulStrokes(name)
       const stroke = [
-        `총획(한글 근사): ${est.total}`,
-        `글자별: ${est.perChar.map((p) => `${p.char}=${p.strokes}`).join(', ')}`,
-        `오행 힌트(총획 기준): ${est.elementHint}`,
+        `${t('nameo_total')}: ${est.total}`,
+        `${t('nameo_per_char')}: ${est.perChar.map((p) => `${p.char}=${p.strokes}`).join(', ')}`,
+        `${t('nameo_element')}: ${est.elementHint}`,
       ].join('\n')
       setStrokeText(stroke)
       const text = await nameologyReading(name, stroke, birthDate)
@@ -54,10 +54,10 @@ export function NameologyPage() {
           resultText: text,
           historyId: hist.id,
         })
-        setSaveMessage('상담 기록에 저장되었습니다.')
+        setSaveMessage(t('save_ok'))
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : '성명학 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
     } finally {
       setBusy(false)
     }
@@ -66,26 +66,24 @@ export function NameologyPage() {
   return (
     <main className="page">
       <h1>{t('home_nameology')}</h1>
-      <p className="muted">
-        좋은이름닷컴·작명왕류처럼 이름 획수·오행 힌트를 보고 AI로 성명 풀이를 제공합니다.
-      </p>
+      <p className="muted">{t('nameo_desc')}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
       <div className="panel">
         <CustomerPicker value={customerId} onChange={setCustomerId} />
         <label className="label" htmlFor="nm" style={{ marginTop: 12 }}>
-          이름 (한글)
+          {t('nameo_f_name')}
         </label>
         <input
           id="nm"
           className="field"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
-          placeholder="예: 김서연"
+          placeholder={t('nameo_ph_name')}
         />
         <label className="label" htmlFor="bd" style={{ marginTop: 12 }}>
-          생년월일 (선택)
+          {t('nameo_f_birth')}
         </label>
         <input
           id="bd"
@@ -96,14 +94,14 @@ export function NameologyPage() {
         />
         <div className="btn-row">
           <button type="button" className="btn btn--primary" disabled={busy} onClick={() => void run()}>
-            {busy ? '분석 중…' : '성명 풀이'}
+            {busy ? t('compat_busy') : t('nameo_run')}
           </button>
         </div>
       </div>
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="error-text" role="alert">{error}</p>}
       {strokeText && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>획수 요약</h2>
+          <h2 style={{ marginTop: 0 }}>{t('nameo_stroke_title')}</h2>
           <pre className="ai-result" style={{ margin: 0 }}>
             {strokeText}
           </pre>
@@ -111,7 +109,7 @@ export function NameologyPage() {
       )}
       {result && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>AI 성명학</h2>
+          <h2 style={{ marginTop: 0 }}>{t('nameo_result')}</h2>
           <div className="ai-result">{result}</div>
           <button
             type="button"

@@ -25,7 +25,7 @@ export function SoulCardPage() {
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
   const [customerId, setCustomerId] = useCustomerQueryParam()
-  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, runSave, setSaveMessage, t } = useApp()
 
   const stateRef = useRef({ number, aiText, y, m, d, customerId })
   stateRef.current = { number, aiText, y, m, d, customerId }
@@ -91,7 +91,7 @@ export function SoulCardPage() {
       const base = soulCardDescriptions[n]
       setLastSpeakText(`소울카드 ${n}번 ${name}. ${base}`)
     } catch (e) {
-      setError(e instanceof Error ? e.message : '계산 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
       setNumber(null)
     }
   }
@@ -109,7 +109,7 @@ export function SoulCardPage() {
       setAiText(text)
       setLastSpeakText(text)
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'AI 설명 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
     } finally {
       setBusy(false)
     }
@@ -173,7 +173,7 @@ export function SoulCardPage() {
         </div>
       </div>
 
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="error-text" role="alert">{error}</p>}
       {savedMsg && <p className="feedback-ok">{savedMsg}</p>}
 
       {number != null && (
@@ -206,7 +206,7 @@ export function SoulCardPage() {
             >
               {busy ? t('soul_ai_busy') : t('soul_ai')}
             </button>
-            <button type="button" className="btn" onClick={() => void onSave()}>
+            <button type="button" className="btn" onClick={() => void runSave()}>
               {t('nav_save')}
             </button>
           </div>

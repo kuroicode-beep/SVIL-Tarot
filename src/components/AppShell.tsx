@@ -4,15 +4,37 @@ import { useApp } from '../context/AppContext'
 import { APP_VERSION } from '../version'
 
 export function AppShell() {
-  const { speak, stopSpeak, speaking, lastSpeakText, enterFullscreen, runSave, saveMessage, setSaveMessage, t } =
-    useApp()
+  const {
+    speak,
+    stopSpeak,
+    speaking,
+    lastSpeakText,
+    setLastSpeakText,
+    enterFullscreen,
+    runSave,
+    saveMessage,
+    setSaveMessage,
+    saveFailed,
+    ttsError,
+    setTtsError,
+    t,
+  } = useApp()
   const nav = useNavigate()
   const loc = useLocation()
 
-  // 저장 알림은 그 화면에서만 유효하다. 화면을 옮기면 지워 낡은 안내가 남지 않게 한다.
+  // 저장 알림·TTS 오류는 그 화면에서만 유효하다. 화면을 옮기면 지워 낡은 안내가 남지 않게 한다.
   useEffect(() => {
     setSaveMessage(null)
-  }, [loc.pathname, setSaveMessage])
+    setTtsError(null)
+  }, [loc.pathname, setSaveMessage, setTtsError])
+
+  // 낭독 대상은 화면에 종속된다. 정리 함수에서 비워야 새 화면이 등록한 문장을 덮어쓰지 않는다.
+  // 본문에서 비우면 방금 마운트된 화면이 지정한 문장까지 같이 날아간다.
+  useEffect(() => {
+    return () => setLastSpeakText('')
+  }, [loc.pathname, setLastSpeakText])
+
+  const canSpeak = lastSpeakText.trim().length > 0
 
   return (
     <div className="app-shell">
@@ -28,14 +50,17 @@ export function AppShell() {
           <span className="top-bar__version mono">v{APP_VERSION}</span>
         </div>
         <nav className="top-bar__nav" aria-label={t('nav_group')}>
+          {/* 읽을 내용이 없을 때 disabled를 쓰면 탭 순서에서 빠져 상태를 알 길이 없어진다.
+              aria-disabled로 포커스는 유지하고 라벨로 이유를 알린다. */}
           <button
             type="button"
             className="icon-btn"
+            aria-disabled={!speaking && !canSpeak ? true : undefined}
             onClick={() => {
               if (speaking) stopSpeak()
-              else if (lastSpeakText) void speak(lastSpeakText)
+              else if (canSpeak) void speak(lastSpeakText)
             }}
-            aria-label={speaking ? t('nav_stop') : t('nav_tts')}
+            aria-label={speaking ? t('nav_stop') : canSpeak ? t('nav_tts') : t('nav_tts_none')}
           >
             <span aria-hidden="true">{speaking ? '⏹' : '🔊'}</span>
             <span className="icon-btn__label">{speaking ? t('nav_stop') : t('nav_tts')}</span>
@@ -82,9 +107,27 @@ export function AppShell() {
           </button>
         </nav>
       </header>
+      {/* 성공·실패를 색이 아니라 문구와 role로 구분한다. 실패는 alert로 즉시 알린다. */}
       {saveMessage && (
-        <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }} role="status" aria-live="polite">
-          <p className="save-banner-ok">{saveMessage}</p>
+        <div
+          className="page"
+          style={{ paddingTop: 8, paddingBottom: 0 }}
+          role={saveFailed ? 'alert' : 'status'}
+          aria-live={saveFailed ? 'assertive' : 'polite'}
+        >
+          {saveFailed ? (
+            <p className="error-text">{saveMessage}</p>
+          ) : (
+            <p className="save-banner-ok">{saveMessage}</p>
+          )}
+        </div>
+      )}
+      {/* TTS 오류는 지금까지 설정 화면에서만 보였다. 정작 낭독을 누르는 곳은 전 화면이다. */}
+      {ttsError && (
+        <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }}>
+          <p className="error-text" role="alert">
+            {t('tts_failed')}
+          </p>
         </div>
       )}
       {loc.pathname !== '/' && (

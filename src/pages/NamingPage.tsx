@@ -15,25 +15,29 @@ export function NamingPage() {
   const [gender, setGender] = useState('female')
   const [birthDate, setBirthDate] = useState('')
   const [birthTime, setBirthTime] = useState('')
-  const [style, setStyle] = useState('밝고 바르며 부르기 쉬운 이름')
+  // 초기값을 상태에 박으면 언어를 바꿔도 한국어가 남는다. 비워 두고 placeholder로 예시를 주되,
+  // 비어 있으면 실행 시점의 로케일 기본 문구를 프롬프트에 넣는다.
+  const [style, setStyle] = useState('')
   const [result, setResult] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [warnings, setWarnings] = useState<string[]>([])
 
   const run = async () => {
     setError(null)
     if (!surname.trim() || !birthDate) {
-      setError('성과 생년월일을 입력하세요.')
+      setError(t('naming_need_input'))
       return
     }
     setBusy(true)
     try {
       const saju = buildSajuSummary({ birthDate, birthTime, gender })
+      setWarnings(saju.warnings ?? [])
       const text = await namingSuggest({
         surname: surname.trim(),
         gender,
         sajuText: saju.textBlock,
-        style,
+        style: style.trim() || t('naming_style_default'),
       })
       setResult(text)
       setLastSpeakText(text)
@@ -54,10 +58,10 @@ export function NamingPage() {
           resultText: text,
           historyId: hist.id,
         })
-        setSaveMessage('상담 기록에 저장되었습니다.')
+        setSaveMessage(t('save_ok'))
       }
     } catch (e) {
-      setError(e instanceof Error ? e.message : '작명 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
     } finally {
       setBusy(false)
     }
@@ -66,9 +70,7 @@ export function NamingPage() {
   return (
     <main className="page">
       <h1>{t('home_naming')}</h1>
-      <p className="muted">
-        모두네임·넴유베류처럼 성·성별·사주 참고·원하는 분위기로 이름 후보를 제안합니다.
-      </p>
+      <p className="muted">{t('naming_desc')}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
@@ -76,30 +78,30 @@ export function NamingPage() {
         <CustomerPicker value={customerId} onChange={setCustomerId} />
         <div className="btn-row" style={{ marginTop: 12 }}>
           <label>
-            성
+            {t('naming_f_surname')}
             <input
               className="field"
               style={{ marginTop: 4, width: 120 }}
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
-              placeholder="김"
+              placeholder={t('naming_ph_surname')}
             />
           </label>
           <label>
-            성별
+            {t('cust_f_gender')}
             <select
               className="field"
               style={{ marginTop: 4 }}
               value={gender}
               onChange={(e) => setGender(e.target.value)}
             >
-              <option value="female">여아/여성</option>
-              <option value="male">남아/남성</option>
-              <option value="other">중성/기타</option>
+              <option value="female">{t('naming_g_f')}</option>
+              <option value="male">{t('naming_g_m')}</option>
+              <option value="other">{t('naming_g_x')}</option>
             </select>
           </label>
           <label>
-            생년월일
+            {t('cust_f_birth')}
             <input
               type="date"
               className="field"
@@ -109,7 +111,7 @@ export function NamingPage() {
             />
           </label>
           <label>
-            출생 시각
+            {t('cust_f_time')}
             <input
               type="time"
               className="field"
@@ -120,24 +122,35 @@ export function NamingPage() {
           </label>
         </div>
         <label className="label" htmlFor="style" style={{ marginTop: 12 }}>
-          원하는 이름 분위기
+          {t('naming_f_style')}
         </label>
         <input
           id="style"
           className="field"
           value={style}
+          placeholder={t('naming_style_default')}
           onChange={(e) => setStyle(e.target.value)}
         />
         <div className="btn-row">
           <button type="button" className="btn btn--primary" disabled={busy} onClick={() => void run()}>
-            {busy ? '추천 중…' : '이름 후보 받기'}
+            {busy ? t('naming_busy') : t('naming_run')}
           </button>
         </div>
       </div>
-      {error && <p className="error-text">{error}</p>}
+      {error && <p className="error-text" role="alert">{error}</p>}
+      {warnings.length > 0 && (
+        <div className="warn-panel" role="note" aria-label={t('saju_warn_title')}>
+          <strong>{t('saju_warn_title')}</strong>
+          <ul>
+            {warnings.map((k) => (
+              <li key={k}>{t(k)}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       {result && (
         <div className="panel">
-          <h2 style={{ marginTop: 0 }}>작명 후보</h2>
+          <h2 style={{ marginTop: 0 }}>{t('naming_result')}</h2>
           <div className="ai-result">{result}</div>
           <button
             type="button"

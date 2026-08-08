@@ -43,6 +43,7 @@ type AppContextValue = {
   stopSpeak: () => void
   speaking: boolean
   ttsError: string | null
+  setTtsError: (m: string | null) => void
   enterFullscreen: () => Promise<void>
   lastSpeakText: string
   setLastSpeakText: (t: string) => void
@@ -50,6 +51,8 @@ type AppContextValue = {
   runSave: () => Promise<void>
   saveMessage: string | null
   setSaveMessage: (m: string | null) => void
+  /** 저장 배너를 색이 아니라 값으로 구분하기 위한 플래그. */
+  saveFailed: boolean
 }
 
 const STORAGE_KEY = 'svil-tarot-settings'
@@ -83,7 +86,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [ttsError, setTtsError] = useState<string | null>(null)
   const [lastSpeakText, setLastSpeakText] = useState('')
   const [saveMessage, setSaveMessage] = useState<string | null>(null)
+  const [saveFailed, setSaveFailed] = useState(false)
   const saveHandlerRef = useRef<(() => Promise<void> | void) | null>(null)
+  // 마지막 speak 호출만 speaking·ttsError를 갱신하게 한다.
+  // 연속 호출 시 먼저 끝난 쪽의 finally가 나중 호출의 상태를 지워 '중지' 수단이 사라진다.
+  const speakSeqRef = useRef(0)
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
@@ -120,21 +127,27 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const setTtsSpeed = (ttsSpeed: number) => setSettings((s) => ({ ...s, ttsSpeed }))
 
   const stopSpeak = useCallback(() => {
+    speakSeqRef.current += 1
     stopTts()
     setSpeaking(false)
   }, [])
 
   const speak = useCallback(
     async (text: string) => {
+      const mySeq = ++speakSeqRef.current
       setTtsError(null)
       setLastSpeakText(text)
       setSpeaking(true)
       try {
         await speakText(text, { voice: settings.ttsVoice, speedPct: settings.ttsSpeed })
       } catch (e) {
-        setTtsError(e instanceof Error ? e.message : 'TTS 실패')
+        // 중단(abort)은 사용자가 의도한 것이라 오류로 알리지 않는다.
+        const aborted = e instanceof Error && (e.name === 'AbortError' || e.message === 'ABORTED')
+        if (!aborted && speakSeqRef.current === mySeq) {
+          setTtsError(e instanceof Error ? e.message : 'TTS_FAILED')
+        }
       } finally {
-        setSpeaking(false)
+        if (speakSeqRef.current === mySeq) setSpeaking(false)
       }
     },
     [settings.ttsVoice, settings.ttsSpeed],
@@ -150,13 +163,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     saveHandlerRef.current = fn
   }, [])
 
+  // 저장 실패가 조용히 삼켜지면 사용자는 저장된 줄 알고 화면을 떠난다.
+  // 호출부가 대부분 `void runSave()`라 rejection이 사라지므로 여기서 반드시 잡는다.
   const runSave = useCallback(async () => {
     setSaveMessage(null)
+    setSaveFailed(false)
     if (!saveHandlerRef.current) {
       setSaveMessage(t('save_none'))
       return
     }
-    await saveHandlerRef.current()
+    try {
+      await saveHandlerRef.current()
+    } catch {
+      setSaveFailed(true)
+      setSaveMessage(t('save_fail'))
+    }
   }, [t])
 
   const value = useMemo(
@@ -176,6 +197,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       stopSpeak,
       speaking,
       ttsError,
+      setTtsError,
       enterFullscreen,
       lastSpeakText,
       setLastSpeakText,
@@ -183,6 +205,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       runSave,
       saveMessage,
       setSaveMessage,
+      saveFailed,
     }),
     [
       settings,
@@ -200,6 +223,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       registerSaveHandler,
       runSave,
       saveMessage,
+      saveFailed,
     ],
   )
 

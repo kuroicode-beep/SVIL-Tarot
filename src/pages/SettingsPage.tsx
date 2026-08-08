@@ -3,8 +3,9 @@ import { ConnectionBadge } from '../components/ConnectionBadge'
 import { OLLAMA_MODEL } from '../services/ollama'
 import { clearHistory } from '../services/history'
 import { clearConsultations } from '../services/customers'
+import { downloadBackup, exportBackup, importBackup } from '../services/backup'
 import { fontOptions, localeLabels, type FontId, type Locale } from '../i18n'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { APP_VERSION, VERSION_HISTORY } from '../version'
 
 export function SettingsPage() {
@@ -26,6 +27,34 @@ export function SettingsPage() {
     t,
   } = useApp()
   const [cleared, setCleared] = useState(false)
+  const [backupMsg, setBackupMsg] = useState<string | null>(null)
+  const [backupError, setBackupError] = useState<string | null>(null)
+  const fileRef = useRef<HTMLInputElement>(null)
+
+  const onExport = async () => {
+    setBackupError(null)
+    try {
+      const { blob, filename, count } = await exportBackup()
+      downloadBackup(blob, filename)
+      setBackupMsg(t('backup_done', { n: count }))
+    } catch {
+      setBackupError(t('load_error'))
+    }
+  }
+
+  const onImport = async (file: File) => {
+    setBackupMsg(null)
+    setBackupError(null)
+    if (!window.confirm(t('backup_confirm'))) return
+    try {
+      const { count } = await importBackup(file)
+      setBackupMsg(t('backup_imported', { n: count }))
+    } catch (e) {
+      // 서비스 계층은 로케일을 모르므로 sentinel만 던진다.
+      const code = e instanceof Error ? e.message : ''
+      setBackupError(code === 'BACKUP_BAD_FILE' ? t('backup_bad_file') : t('load_error'))
+    }
+  }
 
   return (
     <main className="page">
@@ -44,7 +73,7 @@ export function SettingsPage() {
           Ollama: {OLLAMA_MODEL} · http://127.0.0.1:11434
         </p>
         <p className="muted mono">TTS: http://127.0.0.1:8765 (qwen3)</p>
-        {ttsError && <p className="error-text">{ttsError}</p>}
+        {ttsError && <p className="error-text" role="alert">{ttsError}</p>}
       </div>
 
       <div className="panel">
@@ -55,6 +84,7 @@ export function SettingsPage() {
               key={l.id}
               type="button"
               className={`chip${settings.locale === l.id ? ' is-on' : ''}`}
+              aria-pressed={settings.locale === l.id}
               onClick={() => setLocale(l.id as Locale)}
             >
               {l.label}
@@ -71,6 +101,7 @@ export function SettingsPage() {
               key={f.id}
               type="button"
               className={settings.fontId === f.id ? 'is-selected' : ''}
+              aria-pressed={settings.fontId === f.id}
               style={{ fontFamily: f.css }}
               onClick={() => setFontId(f.id as FontId)}
             >
@@ -94,6 +125,7 @@ export function SettingsPage() {
               key={v}
               type="button"
               className={`chip${settings.fontSize === v ? ' is-on' : ''}`}
+              aria-pressed={settings.fontSize === v}
               onClick={() => setFontSize(v)}
             >
               {t(key)}
@@ -149,12 +181,49 @@ export function SettingsPage() {
         </div>
       </div>
 
+      {/* 앱 전체가 IndexedDB에만 의존한다. 저장소를 비우면 고객·상담·리딩이 전부 사라지므로
+          수동 백업은 선택이 아니라 필수다. */}
+      <div className="panel">
+        <h2 style={{ marginTop: 0 }}>{t('backup_title')}</h2>
+        <p className="muted">{t('backup_desc')}</p>
+        <div className="btn-row">
+          <button type="button" className="btn btn--primary" onClick={() => void onExport()}>
+            {t('backup_export')}
+          </button>
+          <button type="button" className="btn" onClick={() => fileRef.current?.click()}>
+            {t('backup_import')}
+          </button>
+        </div>
+        <input
+          ref={fileRef}
+          type="file"
+          accept="application/json,.json"
+          style={{ display: 'none' }}
+          onChange={(e) => {
+            const file = e.target.files?.[0]
+            // 같은 파일을 연속으로 고를 수 있게 값을 비운다(change 이벤트가 안 뜨는 문제).
+            e.target.value = ''
+            if (file) void onImport(file)
+          }}
+        />
+        {backupMsg && (
+          <p className="feedback-ok" role="status">
+            {backupMsg}
+          </p>
+        )}
+        {backupError && (
+          <p className="error-text" role="alert">
+            {backupError}
+          </p>
+        )}
+      </div>
+
       <div className="panel">
         <h2 style={{ marginTop: 0 }}>{t('settings_data')}</h2>
         <button
           type="button"
-          className="btn"
-          style={{ borderColor: 'var(--negative)', color: 'var(--negative)', width: '100%' }}
+          className="btn btn--danger"
+          style={{ width: '100%' }}
           onClick={async () => {
             if (!window.confirm(t('settings_clear_warn'))) return
             await clearHistory()

@@ -1,3 +1,4 @@
+// src/pages/AiTarotPage.tsx — AI 타로 화면(질문·카테고리 → 스프레드 뽑기 → 로컬 LLM 리딩)
 import { useEffect, useRef, useState } from 'react'
 import spreads from '../data/spreads.json'
 import { deckUrl, drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
@@ -33,13 +34,16 @@ export function AiTarotPage() {
   const [error, setError] = useState<string | null>(null)
   const [savedMsg, setSavedMsg] = useState<string | null>(null)
   const [customerId, setCustomerId] = useCustomerQueryParam()
-  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, setSaveMessage, t } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, runSave, setSaveMessage, t } =
+    useApp()
 
   const spread = list.find((s) => s.id === spreadId) ?? list[1]
   const stateRef = useRef({ cards, result, mode, question, category, spreadId, customerId })
   stateRef.current = { cards, result, mode, question, category, spreadId, customerId }
 
   const onSave = async () => {
+    // 직전 성공 문구가 남아 있으면 저장 실패 배너와 나란히 떠서 저장된 줄 착각한다. 시도마다 지운다.
+    setSavedMsg(null)
     const s = stateRef.current
     if (!s.cards.length) {
       setSaveMessage(t('save_none'))
@@ -92,7 +96,7 @@ export function AiTarotPage() {
       setResult(text)
       setLastSpeakText(text)
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'AI 타로 실패')
+      setError(e instanceof Error ? e.message : t('load_error'))
     } finally {
       setBusy(false)
     }
@@ -107,10 +111,12 @@ export function AiTarotPage() {
       </div>
 
       <div className="segment" role="group" aria-label={t('ai_mode_group')} style={{ margin: '16px 0', width: '100%', maxWidth: 480 }}>
+        {/* 선택 상태를 색(is-on)만으로 알리지 않도록 aria-pressed로도 노출한다. */}
         <button
           type="button"
           className={mode === 'question' ? 'is-on' : ''}
           style={{ flex: 1 }}
+          aria-pressed={mode === 'question'}
           onClick={() => setMode('question')}
         >
           {t('ai_mode_question')}
@@ -119,6 +125,7 @@ export function AiTarotPage() {
           type="button"
           className={mode === 'category' ? 'is-on' : ''}
           style={{ flex: 1 }}
+          aria-pressed={mode === 'category'}
           onClick={() => setMode('category')}
         >
           {t('ai_mode_category')}
@@ -146,10 +153,12 @@ export function AiTarotPage() {
               <div className="label">{t('ai_category')}</div>
               <div className="chip-row">
                 {CATEGORIES.map((c) => (
+                  // chip은 선택돼도 텍스트가 바뀌지 않아, 보조기술에는 aria-pressed로 선택 여부를 준다.
                   <button
                     key={c}
                     type="button"
                     className={`chip${category === c ? ' is-on' : ''}`}
+                    aria-pressed={category === c}
                     onClick={() => setCategory(c)}
                   >
                     {t(CATEGORY_KEY[c])}
@@ -183,6 +192,7 @@ export function AiTarotPage() {
               className="btn btn--primary"
               style={{ width: '100%' }}
               disabled={busy}
+              aria-busy={busy}
               onClick={() => void run()}
             >
               {busy ? t('ai_run_busy') : t('ai_run')}
@@ -191,7 +201,8 @@ export function AiTarotPage() {
         </div>
 
         <div>
-          <div className="ai-visual" aria-hidden={cards.length > 0}>
+          {/* 뽑기 전 장식용 카드 뒷면만 숨긴다. 카드가 있으면 카드명·정역방향을 읽어야 하므로 노출한다. */}
+          <div className="ai-visual" aria-hidden={cards.length === 0}>
             {cards.length === 0 ? (
               <>
                 <div className="card-back" style={{ transform: 'rotate(-6deg)' }} />
@@ -212,10 +223,32 @@ export function AiTarotPage() {
             )}
           </div>
 
-          {error && <p className="error-text">{error}</p>}
+          {error && <p className="error-text" role="alert">{error}</p>}
           {savedMsg && <p className="feedback-ok">{savedMsg}</p>}
 
-          <div className="panel" aria-live="polite">
+          {/* 결과 전문(수천 자)이 음성 큐에 통째로 들어가지 않도록, 상태만 한 줄로 알린다.
+              노드를 조건부로 렌더하면 변경이 안 읽히므로 항상 DOM에 둔다. 전문 낭독은 아래 낭독 버튼이 맡는다.
+              진행 상태는 실행 버튼 문구로, 결과 도착은 아래 리포트 패널로 이미 눈에 보인다.
+              같은 문구를 한 번 더 띄우면 h2와 겹쳐 보여서, 화면에서는 지우고 보조기술에만 남긴다.
+              (tokens.css에 sr-only 유틸리티가 없어 인라인으로 둔다.) */}
+          <p
+            role="status"
+            style={{
+              position: 'absolute',
+              width: 1,
+              height: 1,
+              margin: -1,
+              padding: 0,
+              border: 0,
+              overflow: 'hidden',
+              clip: 'rect(0 0 0 0)',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {busy ? t('ai_run_busy') : result ? t('ai_report_title') : ''}
+          </p>
+
+          <div className="panel">
             <div
               style={{
                 display: 'flex',
@@ -243,7 +276,9 @@ export function AiTarotPage() {
               <>
                 <div className="ai-result">{result}</div>
                 <div className="btn-row">
-                  <button type="button" className="btn btn--primary" onClick={() => void onSave()}>
+                  {/* onSave를 직접 부르면 rejection이 void로 사라져 저장 실패가 조용히 묻힌다.
+                      runSave는 등록된 핸들러를 try/catch로 감싸 save_fail 배너까지 띄운다. */}
+                  <button type="button" className="btn btn--primary" onClick={() => void runSave()}>
                     {t('nav_save')}
                   </button>
                 </div>

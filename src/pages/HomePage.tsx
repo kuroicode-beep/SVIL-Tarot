@@ -7,6 +7,13 @@ export function HomePage() {
   const { setLastSpeakText, t } = useApp()
 
   const links = [
+    {
+      to: '/daily',
+      labelKey: 'home_daily',
+      icon: '🌅',
+      wide: true,
+      hintKey: 'daily_desc' as string | undefined,
+    },
     { to: '/customers', labelKey: 'home_customers', icon: '👥', wide: true, hintKey: undefined as string | undefined },
     { to: '/consultations', labelKey: 'home_consultations', icon: '🗂️', wide: true, hintKey: undefined as string | undefined },
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SVIL Tarot - UI Components</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#2f3132",
+                        "surface": "#11131b",
+                        "on-secondary-fixed-variant": "#454749",
+                        "surface-tint": "#e8c435",
+                        "on-primary-fixed": "#231b00",
+                        "tertiary-fixed": "#cae6ff",
+                        "inverse-surface": "#e2e1ed",
+                        "tertiary-container": "#bde0ff",
+                        "secondary-fixed": "#e2e2e4",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#1a1c1d",
+                        "on-tertiary-container": "#006696",
+                        "surface-container-high": "#282a32",
+                        "background": "#11131b",
+                        "outline": "#99907a",
+                        "inverse-on-surface": "#2e3038",
+                        "primary-fixed": "#ffe179",
+                        "surface-container-highest": "#33343d",
+                        "on-tertiary-fixed": "#001e30",
+                        "surface-container": "#1d1f27",
+                        "on-primary": "#3b2f00",
+                        "tertiary-fixed-dim": "#8dcdff",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#d0c6ae",
+                        "secondary": "#c6c6c8",
+                        "on-background": "#e2e1ed",
+                        "secondary-container": "#454749",
+                        "on-secondary-container": "#b4b5b7",
+                        "on-surface": "#e2e1ed",
+                        "primary-container": "#ffd94a",
+                        "tertiary": "#f5f9ff",
+                        "outline-variant": "#4d4634",
+                        "primary": "#fff8eb",
+                        "surface-variant": "#33343d",
+                        "surface-container-low": "#191b23",
+                        "secondary-fixed-dim": "#c6c6c8",
+                        "surface-dim": "#11131b",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#004b70",
+                        "surface-bright": "#373941",
+                        "on-tertiary": "#00344f",
+                        "on-primary-container": "#735e00",
+                        "on-primary-fixed-variant": "#554500",
+                        "inverse-primary": "#715c00",
+                        "surface-container-lowest": "#0c0e15",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#e8c435"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gap-standard": "12px",
+                        "stack-sm": "16px",
+                        "margin-page": "24px",
+                        "stack-md": "24px",
+                        "touch-target-min": "50px",
+                        "stack-lg": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Be Vietnam Pro"],
+                        "interactive-label": ["Be Vietnam Pro"],
+                        "tiny": ["Be Vietnam Pro"],
+                        "caption": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-md": ["Be Vietnam Pro"],
+                        "body-base": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "interactive-label": ["18px", { "lineHeight": "1.2", "letterSpacing": "0.04em", "fontWeight": "700" }],
+                        "tiny": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "caption": ["14px", { "lineHeight": "1.6", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "1.8", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.5", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-base": ["18px", { "lineHeight": "1.8", "letterSpacing": "0.02em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #11131b;
+            color: #e2e1ed;
+        }
+        
+        .btn-primary {
+            background-color: #1C2431;
+            border: 2px solid #FFD94A;
+            color: #FFD94A;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            min-height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:focus {
+            outline: 3px solid #FFD94A;
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background-color: #1F1F2A;
+            border: 2px solid #6B6B82;
+            color: #F5F5F7;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            min-height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:focus {
+            outline: 3px solid #FFD94A;
+            outline-offset: 2px;
+        }
+        
+        .btn-destructive {
+            background-color: #1F1F2A;
+            border: 2px solid #FF9B9B;
+            color: #FF9B9B;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            min-height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-destructive:focus {
+            outline: 3px solid #FFD94A;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen p-margin-page">
+<div class="max-w-7xl mx-auto space-y-stack-lg">
+<header class="border-b border-outline-variant pb-stack-md">
+<h1 class="font-headline-lg text-headline-lg text-primary">SVIL Tarot UI Kit</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mt-gap-standard">Component Library &amp; Design System Showcase</p>
+</header>
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg">
+<!-- Buttons -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md">Buttons</h2>
+<div class="space-y-stack-md">
+<div>
+<h3 class="font-interactive-label text-interactive-label text-secondary mb-gap-standard">Primary</h3>
+<div class="flex flex-wrap gap-gap-standard">
+<button class="btn-primary">Default</button>
+<button class="btn-primary hover:bg-[#253041]">Hover</button>
+<button class="btn-primary" style="outline: 3px solid #FFD94A; outline-offset: 2px;">Focused</button>
+</div>
+</div>
+<div>
+<h3 class="font-interactive-label text-interactive-label text-secondary mb-gap-standard">Secondary</h3>
+<div class="flex flex-wrap gap-gap-standard">
+<button class="btn-secondary">Default</button>
+<button class="btn-secondary hover:bg-[#2A2A38]">Hover</button>
+<button class="btn-secondary" style="outline: 3px solid #FFD94A; outline-offset: 2px;">Focused</button>
+</div>
+</div>
+<div>
+<h3 class="font-interactive-label text-interactive-label text-secondary mb-gap-standard">Destructive</h3>
+<div class="flex flex-wrap gap-gap-standard">
+<button class="btn-destructive">Default</button>
+<button class="btn-destructive hover:bg-[#2A2A38]">Hover</button>
+<button class="btn-destructive" style="outline: 3px solid #FFD94A; outline-offset: 2px;">Focused</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Chips & Badges -->
+<div class="space-y-stack-lg">
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md">Chips / Segmented</h2>
+<div class="flex flex-wrap gap-gap-standard">
+<button class="bg-[#1F1F2A] border-2 border-[#6B6B82] text-[#F5F5F7] px-4 py-2 rounded-full font-tiny text-tiny min-h-[50px] flex items-center">Unselected</button>
+<button class="bg-[#1F1F2A] border-2 border-[#FFD94A] text-[#FFD94A] px-4 py-2 rounded-full font-tiny text-tiny min-h-[50px] flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">check</span> Selected
+                        </button>
+<button class="bg-[#1F1F2A] border-2 border-[#6B6B82] text-[#F5F5F7] px-4 py-2 rounded-full font-tiny text-tiny min-h-[50px] flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span> Option
+                        </button>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl border border-outline-variant p-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md">Status Badges</h2>
+<div class="flex flex-wrap gap-gap-standard">
+<div class="flex items-center gap-2 bg-[#1F1F2A] border border-[#6B6B82] px-3 py-1.5 rounded-full font-caption text-caption text-[#F5F5F7]">
+<div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                            연결됨
+                        </div>
+<div class="flex items-center gap-2 bg-[#1F1F2A] border border-[#6B6B82] px-3 py-1.5 rounded-full font-caption text-caption text-[#F5F5F7]">
+<div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                            끊김
+                        </div>
+<div class="flex items-center gap-2 bg-[#1F1F2A] border border-[#6B6B82] px-3 py-1.5 rounded-full font-caption text-caption text-[#F5F5F7]">
+<div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+                            확인 중
+                        </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</body></html>
