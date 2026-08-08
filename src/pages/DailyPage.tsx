@@ -6,6 +6,7 @@ import { TarotCardView } from '../components/TarotCardView'
 import { dailyCardReading } from '../services/ollama'
 import { saveHistory } from '../services/history'
 import { ConnectionBadge } from '../components/ConnectionBadge'
+import { ReadingPlayer } from '../components/ReadingPlayer'
 import { useApp } from '../context/AppContext'
 
 export function DailyPage() {
@@ -62,9 +63,8 @@ export function DailyPage() {
         meta: { date: s.dateKey },
       })
       savedRef.current = hist.id
-      const msg = t('save_ok')
-      setSavedMsg(msg)
-      setSaveMessage(msg)
+      // 성공 문구는 버튼 옆 로컬 메시지로만 띄운다. 전역 배너는 실패 전용이라 중복되지 않는다.
+      setSavedMsg(t('save_ok'))
     } finally {
       savingRef.current = false
     }
@@ -160,6 +160,8 @@ export function DailyPage() {
         <div className="panel">
           <h2 style={{ marginTop: 0 }}>{t('daily_ai')}</h2>
           <div className="ai-result">{aiText}</div>
+          {/* 장문은 읽던 위치를 잃기 쉽다. 문장 단위 낭독으로 주시점을 고정한다. */}
+          <ReadingPlayer text={aiText} />
           <div className="btn-row">
             <button
               type="button"

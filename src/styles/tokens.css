@@ -90,16 +90,72 @@
   font-size: var(--font-size-base);
 }
 
-[data-font-size="sm"] {
+/* 저시력 앱이라 상한을 넉넉히 둔다. rem 요소가 함께 커지도록 :root의 font-size를 움직인다. */
+[data-font-size='xs'] {
   --font-size-base: 16px;
 }
 
-[data-font-size="md"] {
+[data-font-size='sm'] {
   --font-size-base: 18px;
 }
 
-[data-font-size="lg"] {
+[data-font-size='md'] {
   --font-size-base: 20px;
+}
+
+[data-font-size='lg'] {
+  --font-size-base: 24px;
+}
+
+[data-font-size='xl'] {
+  --font-size-base: 28px;
+}
+
+/* 초고대비 — 순수 검정 바탕에 노랑/흰색. 잔여 색조까지 걷어내 최대 대비를 만든다. */
+[data-contrast='max'] {
+  --bg: #000000;
+  --bg-glow: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #141414;
+  --border: #767676;
+  --border-strong: #b0b0b0;
+  --text: #ffffff;
+  --text-sub: #e6e6e6;
+  --accent: #9ad8ff;
+  --accent-strong: #cfeaff;
+  --accent-max: #ffffff;
+  --yellow: #ffd400;
+  --on-primary: #ffd400;
+  --primary-surface: #000000;
+  --primary-surface-hover: #1a1a1a;
+  --positive: #7dff9f;
+  --negative: #ff8f8f;
+  --warning: #ffd400;
+  --focus: #ffd400;
+}
+
+/* 저글레어 소프트 다크 — 난시·난독증 사용자는 밝은 글자가 번져 보여 오히려 대비를 낮춘 쪽이 편하다.
+   본문 대비를 13.7:1 수준으로 낮춰 눈부심을 줄이되 AAA(7:1)는 유지한다. */
+[data-contrast='soft'] {
+  --bg: #12121a;
+  --bg-glow: #191926;
+  --surface: #1b1b25;
+  --surface-2: #23232f;
+  --border: #4a4a58;
+  --border-strong: #7b7b8e;
+  --text: #dcdce4;
+  --text-sub: #b6b6c2;
+  --accent: #86bfe8;
+  --accent-strong: #a9d3f0;
+  --accent-max: #c8e4f8;
+  --yellow: #e8c968;
+  --on-primary: #e8c968;
+  --primary-surface: #232b38;
+  --primary-surface-hover: #2d374a;
+  --positive: #86ceA0;
+  --negative: #e59595;
+  --warning: #e0c072;
+  --focus: #e8c968;
 }
 
 *,
@@ -126,6 +182,38 @@ body {
   background: var(--bg);
   background-image: radial-gradient(circle at 50% 30%, var(--bg-glow) 0%, var(--bg) 70%);
   -webkit-font-smoothing: antialiased;
+}
+
+/* 배경 그라디언트와 상단바 블러는 장식이다. 어지럽거나 대비를 떨어뜨리는 사용자를 위해 끌 수 있게 한다.
+   시스템 설정(prefers-reduced-transparency / prefers-contrast)도 같은 결과를 내도록 함께 건다. */
+[data-plain-bg='on'] body,
+[data-contrast='max'] body {
+  background-image: none;
+}
+
+[data-plain-bg='on'] .top-bar,
+[data-contrast='max'] .top-bar {
+  background: var(--bg);
+  backdrop-filter: none;
+}
+
+[data-plain-bg='on'] .home-silhouette {
+  display: none;
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  body {
+    background-image: none;
+  }
+
+  .top-bar {
+    background: var(--bg);
+    backdrop-filter: none;
+  }
+
+  .home-silhouette {
+    opacity: 0.06;
+  }
 }
 
 button,
@@ -665,6 +753,64 @@ textarea.field {
   color: var(--warning);
 }
 
+/* 입력 옆에 바로 붙는 짧은 주의. 패널을 새로 열지 않고 한 줄로 알린다. */
+.warn-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 2px solid var(--warning);
+  border-left-width: 6px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.warn-inline::before {
+  content: '⚠';
+  flex: none;
+  color: var(--warning);
+}
+
+/* 사주 원국 — 표 대신 '라벨 — 값' 세로 목록. 표는 저시력에서 열/행 추적이 어렵다. */
+.pillar-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pillar-list__row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-bottom: 2px solid var(--border);
+}
+
+.pillar-list__row:last-child {
+  border-bottom: none;
+}
+
+.pillar-list dt {
+  flex: none;
+  min-width: 5em;
+  font-weight: 700;
+  color: var(--accent-strong);
+}
+
+.pillar-list dd {
+  margin: 0;
+}
+
+.pillar-list__ganji {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 .warn-panel ul {
   margin: 8px 0 0;
   padding-left: 20px;
@@ -962,6 +1108,126 @@ textarea.field {
   background-size: 8px 8px;
 }
 
+/* ── 카드 확대 뷰어 ──
+   타로 도판은 선이 가늘고 색이 많아 본질적으로 저대비인데 .card-img가 220px로 고정돼 있어
+   저시력 사용자가 그림 자체를 판독할 방법이 없었다. 반투명 배경은 대비를 더 떨어뜨려 불투명으로 덮는다. */
+.card-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.card-viewer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  /* column flex 자식이라 세로가 짧은 창에서 눌리면 컨트롤이 잘린다. */
+  flex: none;
+  padding: 12px 20px;
+  border-bottom: 2px solid var(--border-strong);
+  background: var(--surface);
+}
+
+/* 확대하면 카드가 화면을 넘친다. 이 영역만 스크롤시켜 컨트롤은 항상 보이게 둔다.
+   center는 넘친 콘텐츠를 양쪽으로 밀어내 왼쪽 영역에 scrollLeft로 닿을 수 없게 만든다.
+   safe center는 넘칠 때만 start로 물러나 확대한 부분을 전부 볼 수 있게 한다. */
+.card-viewer__stage {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  align-items: safe center;
+  justify-content: safe center;
+  padding: 24px;
+  background: var(--img-backdrop);
+}
+
+.card-viewer__img {
+  display: block;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-strong);
+}
+
+.card-viewer__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: none;
+  padding: 16px 20px;
+  border-top: 2px solid var(--border-strong);
+  background: var(--surface);
+}
+
+/* ── 리딩 플레이어 ──
+   .ai-result는 장문이라 읽던 위치를 잃기 쉽다. 문장 단위로 끊어 현재 위치를 시각·음성 양쪽으로 고정한다. */
+.reading-player {
+  margin-top: 16px;
+}
+
+.reading-player__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.reading-player__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reading-player__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  min-height: var(--touch-min);
+  padding: 12px 16px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+.reading-player__line:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+/* 글리프 폭이 ▶(전각)와 ·(반각)로 달라 현재 문장이 이동할 때마다 본문이 좌우로 흔들린다. */
+.reading-player__line > span:first-child {
+  flex: none;
+  width: 1.25em;
+  text-align: center;
+}
+
+.reading-player__line > span:last-child {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 현재 문장은 색만이 아니라 왼쪽 굵은 막대와 ▶ 글리프로도 표시한다(JSX에서 붙인다). */
+.reading-player__line--active {
+  background: var(--primary-surface);
+  border-color: var(--yellow);
+  border-left-width: 6px;
+  color: var(--on-primary);
+  font-weight: 700;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -1048,6 +1314,7 @@ textarea.field {
   .segment button.is-on,
   .list-choice button.is-selected,
   .learn-step.is-active,
+  .reading-player__line--active,
   .home-cta:hover,
   .btn--primary {
     background: Highlight;

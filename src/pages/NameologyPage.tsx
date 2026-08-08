@@ -5,6 +5,7 @@ import { estimateHangulStrokes } from '../lib/sajuName'
 import { recordServiceConsultation } from '../services/customers'
 import { saveHistory } from '../services/history'
 import { nameologyReading } from '../services/ollama'
+import { ReadingPlayer } from '../components/ReadingPlayer'
 import { useApp } from '../context/AppContext'
 import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
@@ -111,6 +112,8 @@ export function NameologyPage() {
         <div className="panel">
           <h2 style={{ marginTop: 0 }}>{t('nameo_result')}</h2>
           <div className="ai-result">{result}</div>
+          {/* 장문은 읽던 위치를 잃기 쉽다. 문장 단위 낭독으로 주시점을 고정한다. */}
+          <ReadingPlayer text={result} />
           <button
             type="button"
             className="btn"

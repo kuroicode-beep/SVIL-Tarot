@@ -3,7 +3,7 @@
 // 버전은 로고 옆에 상시 표시한다. 기능 추가 시마다 여기만 갱신한다.
 // 루트 VERSION 파일 / package.json의 version과 항상 같은 값을 유지할 것.
 
-export const APP_VERSION = '1.4.0'
+export const APP_VERSION = '1.5.0'
 
 export type VersionEntry = {
   version: string
@@ -14,6 +14,16 @@ export type VersionEntry = {
 
 /** 최신순 정렬. 설정 > 히스토리/업데이트 내역에 그대로 노출된다. */
 export const VERSION_HISTORY: VersionEntry[] = [
+  {
+    version: '1.5.0',
+    date: '2026-08-09',
+    lines: [
+      '카드 크게 보기 — 확대·대비 강화·명암 반전으로 도판 판독',
+      '문장별로 듣기 — 리딩을 문장 단위로 낭독하고 현재 위치 표시',
+      '대비 프리셋 3종(표준·초고대비·저글레어)과 글자 크기 5단계, 배경 장식 끄기',
+      '사주 원국을 표 대신 목록으로, 음력 선택 시 즉시 경고. 퀴즈 정답 쏠림 수정',
+    ],
+  },
   {
     version: '1.4.0',
     date: '2026-08-09',

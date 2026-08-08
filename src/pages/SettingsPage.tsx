@@ -1,4 +1,4 @@
-import { useApp, type FontSize } from '../context/AppContext'
+import { useApp, type ContrastMode, type FontSize } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 import { OLLAMA_MODEL } from '../services/ollama'
 import { clearHistory } from '../services/history'
@@ -16,6 +16,8 @@ export function SettingsPage() {
     setLocale,
     setTtsVoice,
     setTtsSpeed,
+    setContrast,
+    setPlainBackground,
     ollamaOk,
     ttsOk,
     voices,
@@ -73,7 +75,11 @@ export function SettingsPage() {
           Ollama: {OLLAMA_MODEL} · http://127.0.0.1:11434
         </p>
         <p className="muted mono">TTS: http://127.0.0.1:8765 (qwen3)</p>
-        {ttsError && <p className="error-text" role="alert">{ttsError}</p>}
+        {ttsError && (
+          <p className="error-text" role="alert">
+            {t(ttsError.code, ttsError.params)}
+          </p>
+        )}
       </div>
 
       <div className="panel">
@@ -116,9 +122,11 @@ export function SettingsPage() {
         <div className="chip-row">
           {(
             [
+              ['xs', 'size_xs'],
               ['sm', 'size_sm'],
               ['md', 'size_md'],
               ['lg', 'size_lg'],
+              ['xl', 'size_xl'],
             ] as [FontSize, string][]
           ).map(([v, key]) => (
             <button
@@ -132,6 +140,47 @@ export function SettingsPage() {
             </button>
           ))}
         </div>
+      </div>
+
+      {/* 다크모드가 만능이 아니다. 난시 인구가 상당수라 어두운 배경에서 밝은 글자가 번져 보이는
+          헤일레이션 때문에 오히려 대비를 낮춘 쪽을 선호하는 사용자가 있다. 셋 다 제공한다. */}
+      <div className="panel">
+        <h2 style={{ marginTop: 0 }}>{t('settings_contrast')}</h2>
+        <div className="chip-row" role="group" aria-label={t('settings_contrast')}>
+          {(
+            [
+              ['standard', 'contrast_standard'],
+              ['max', 'contrast_max'],
+              ['soft', 'contrast_soft'],
+            ] as [ContrastMode, string][]
+          ).map(([v, key]) => (
+            <button
+              key={v}
+              type="button"
+              className={`chip${settings.contrast === v ? ' is-on' : ''}`}
+              aria-pressed={settings.contrast === v}
+              onClick={() => setContrast(v)}
+            >
+              {t(key)}
+            </button>
+          ))}
+        </div>
+        <p className="muted" style={{ marginTop: 8 }}>
+          {t('contrast_hint')}
+        </p>
+        <div className="chip-row" style={{ marginTop: 12 }}>
+          <button
+            type="button"
+            className={`chip${settings.plainBackground ? ' is-on' : ''}`}
+            aria-pressed={settings.plainBackground}
+            onClick={() => setPlainBackground(!settings.plainBackground)}
+          >
+            {t('settings_plain_bg')}
+          </button>
+        </div>
+        <p className="muted" style={{ marginTop: 8 }}>
+          {t('settings_plain_bg_hint')}
+        </p>
       </div>
 
       <div className="panel">

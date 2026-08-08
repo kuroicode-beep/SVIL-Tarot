@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { checkOllama } from '../services/ollama'
-import { checkTts, listVoices, speakText, stopTts } from '../services/tts'
+import { checkTts, listVoices, speakText, stopTts, TtsError } from '../services/tts'
 import {
   fontOptions,
   translate,
@@ -17,7 +17,12 @@ import {
   type Locale,
 } from '../i18n'
 
-export type FontSize = 'sm' | 'md' | 'lg'
+export type FontSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+/** 대비 프리셋. 난시·난독증 사용자는 오히려 대비가 낮은 쪽을 선호해서 '초고대비'만으로는 부족하다. */
+export type ContrastMode = 'standard' | 'max' | 'soft'
+
+export type TtsErrorInfo = { code: string; params?: Record<string, string | number> }
 
 type Settings = {
   fontSize: FontSize
@@ -25,6 +30,9 @@ type Settings = {
   locale: Locale
   ttsVoice: string
   ttsSpeed: number
+  contrast: ContrastMode
+  /** 배경 그라디언트·블러 끄기. 투명·흐림 효과가 어지럽거나 대비를 떨어뜨리는 사용자를 위해. */
+  plainBackground: boolean
 }
 
 type AppContextValue = {
@@ -34,6 +42,8 @@ type AppContextValue = {
   setLocale: (v: Locale) => void
   setTtsVoice: (v: string) => void
   setTtsSpeed: (v: number) => void
+  setContrast: (v: ContrastMode) => void
+  setPlainBackground: (v: boolean) => void
   t: (key: string, params?: Record<string, string | number>) => string
   ollamaOk: boolean | null
   ttsOk: boolean | null
@@ -42,8 +52,9 @@ type AppContextValue = {
   speak: (text: string) => Promise<void>
   stopSpeak: () => void
   speaking: boolean
-  ttsError: string | null
-  setTtsError: (m: string | null) => void
+  /** 완성 문장이 아니라 i18n 키 + 파라미터. 서비스 계층은 로케일을 모르므로 화면에서 t()로 번역한다. */
+  ttsError: TtsErrorInfo | null
+  setTtsError: (m: TtsErrorInfo | null) => void
   enterFullscreen: () => Promise<void>
   lastSpeakText: string
   setLastSpeakText: (t: string) => void
@@ -63,6 +74,8 @@ const defaults: Settings = {
   locale: 'ko',
   ttsVoice: 'default',
   ttsSpeed: 100,
+  contrast: 'standard',
+  plainBackground: false,
 }
 
 const AppContext = createContext<AppContextValue | null>(null)
@@ -83,7 +96,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [ttsOk, setTtsOk] = useState<boolean | null>(null)
   const [voices, setVoices] = useState<string[]>([])
   const [speaking, setSpeaking] = useState(false)
-  const [ttsError, setTtsError] = useState<string | null>(null)
+  const [ttsError, setTtsError] = useState<TtsErrorInfo | null>(null)
   const [lastSpeakText, setLastSpeakText] = useState('')
   const [saveMessage, setSaveMessage] = useState<string | null>(null)
   const [saveFailed, setSaveFailed] = useState(false)
@@ -95,6 +108,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
     document.documentElement.dataset.fontSize = settings.fontSize
+    document.documentElement.dataset.contrast = settings.contrast
+    // 값이 false일 때 속성 자체를 지워야 CSS 선택자가 깔끔하게 갈린다.
+    if (settings.plainBackground) document.documentElement.dataset.plainBg = 'on'
+    else delete document.documentElement.dataset.plainBg
     document.documentElement.lang = settings.locale
     // 알 수 없는 fontId면 SVIL 표준 기본값(라인시드, 목록 첫 항목)으로 되돌린다.
     const font = fontOptions.find((f) => f.id === settings.fontId) ?? fontOptions[0]
@@ -125,6 +142,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const setLocale = (locale: Locale) => setSettings((s) => ({ ...s, locale }))
   const setTtsVoice = (ttsVoice: string) => setSettings((s) => ({ ...s, ttsVoice }))
   const setTtsSpeed = (ttsSpeed: number) => setSettings((s) => ({ ...s, ttsSpeed }))
+  const setContrast = (contrast: ContrastMode) => setSettings((s) => ({ ...s, contrast }))
+  const setPlainBackground = (plainBackground: boolean) =>
+    setSettings((s) => ({ ...s, plainBackground }))
 
   const stopSpeak = useCallback(() => {
     speakSeqRef.current += 1
@@ -144,7 +164,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         // 중단(abort)은 사용자가 의도한 것이라 오류로 알리지 않는다.
         const aborted = e instanceof Error && (e.name === 'AbortError' || e.message === 'ABORTED')
         if (!aborted && speakSeqRef.current === mySeq) {
-          setTtsError(e instanceof Error ? e.message : 'TTS_FAILED')
+          setTtsError(
+            e instanceof TtsError ? { code: e.code, params: e.params } : { code: 'tts_failed' },
+          )
         }
       } finally {
         if (speakSeqRef.current === mySeq) setSpeaking(false)
@@ -188,6 +210,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setLocale,
       setTtsVoice,
       setTtsSpeed,
+      setContrast,
+      setPlainBackground,
       t,
       ollamaOk,
       ttsOk,

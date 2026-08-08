@@ -18,6 +18,29 @@ function isAbortError(e: unknown): boolean {
   return typeof e === 'object' && e !== null && (e as { name?: string }).name === 'AbortError'
 }
 
+/**
+ * 이 계층은 사용자의 로케일을 모른다. 그래서 완성된 문장이 아니라 i18n 키만 던지고,
+ * 번역은 화면(AppShell·SettingsPage)이 t()로 한다.
+ * 서버 상태 코드는 `tts_err_http`에 {status} 파라미터로 넘긴다.
+ */
+export const TTS_ERR = {
+  timeout: 'tts_err_timeout',
+  playFailed: 'tts_err_play',
+  http: 'tts_err_http',
+} as const
+
+/** 화면이 `t(code, params)`로 바로 쓸 수 있게 코드와 파라미터를 함께 담는다. */
+export class TtsError extends Error {
+  readonly code: string
+  readonly params?: Record<string, string | number>
+  constructor(code: string, params?: Record<string, string | number>) {
+    super(code)
+    this.name = 'TtsError'
+    this.code = code
+    this.params = params
+  }
+}
+
 export async function checkTts(): Promise<boolean> {
   try {
     const res = await fetch(`${TTS_BASE}/api/tts/status`, { signal: AbortSignal.timeout(3000) })
@@ -94,14 +117,15 @@ export async function speakText(
     })
     if (myGen !== generation) return
     if (!res.ok) {
-      const detail = await res.text()
-      throw new Error(`TTS 오류 (${res.status}): ${detail.slice(0, 200)}`)
+      // 서버 본문은 사용자에게 의미가 없고 개인정보가 섞일 수 있어 화면에 올리지 않는다. 콘솔에만 남긴다.
+      console.error('[TTS]', res.status, (await res.text()).slice(0, 200))
+      throw new TtsError(TTS_ERR.http, { status: res.status })
     }
     blob = await res.blob()
   } catch (e) {
     // 중지·재호출로 버려진 요청은 조용히 끝낸다. 사용자에게 오류로 보이면 안 된다.
     if (myGen !== generation) return
-    if (timedOut) throw new Error(`TTS 응답 시간 초과 (${GENERATE_TIMEOUT_MS / 1000}초)`)
+    if (timedOut) throw new TtsError(TTS_ERR.timeout, { sec: GENERATE_TIMEOUT_MS / 1000 })
     if (isAbortError(e)) return
     throw e
   } finally {
@@ -138,7 +162,7 @@ export async function speakText(
         resolve()
         return
       }
-      reject(new Error('TTS 재생 실패'))
+      reject(new TtsError(TTS_ERR.playFailed))
     }
     void audio.play().catch((e) => {
       cleanup()
@@ -147,7 +171,7 @@ export async function speakText(
         resolve()
         return
       }
-      reject(e instanceof Error ? e : new Error('TTS 재생 실패'))
+      reject(new TtsError(TTS_ERR.playFailed))
     })
   })
 }

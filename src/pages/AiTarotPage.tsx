@@ -6,6 +6,7 @@ import { SpreadCards } from '../components/TarotCardView'
 import { fullAiReading, OLLAMA_MODEL } from '../services/ollama'
 import { saveHistory } from '../services/history'
 import { recordServiceConsultation } from '../services/customers'
+import { ReadingPlayer } from '../components/ReadingPlayer'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 import { CustomerPicker } from '../components/CustomerPicker'
@@ -70,9 +71,8 @@ export function AiTarotPage() {
         meta: { mode: s.mode, category: s.category },
       })
     }
-    const msg = t('save_ok')
-    setSavedMsg(msg)
-    setSaveMessage(msg)
+    // 성공 문구는 버튼 옆 로컬 메시지로만 띄운다. 전역 배너는 실패 전용이라 중복되지 않는다.
+    setSavedMsg(t('save_ok'))
   }
 
   useEffect(() => {
@@ -275,6 +275,8 @@ export function AiTarotPage() {
             {result ? (
               <>
                 <div className="ai-result">{result}</div>
+          {/* 장문은 읽던 위치를 잃기 쉽다. 문장 단위 낭독으로 주시점을 고정한다. */}
+          <ReadingPlayer text={result} />
                 <div className="btn-row">
                   {/* onSave를 직접 부르면 rejection이 void로 사라져 저장 실패가 조용히 묻힌다.
                       runSave는 등록된 핸들러를 try/catch로 감싸 save_fail 배너까지 띄운다. */}

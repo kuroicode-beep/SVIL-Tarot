@@ -5,6 +5,7 @@ import { buildSajuSummary } from '../lib/sajuName'
 import { recordServiceConsultation } from '../services/customers'
 import { saveHistory } from '../services/history'
 import { namingSuggest } from '../services/ollama'
+import { ReadingPlayer } from '../components/ReadingPlayer'
 import { useApp } from '../context/AppContext'
 import { useCustomerQueryParam } from '../hooks/useCustomerQueryParam'
 
@@ -71,6 +72,8 @@ export function NamingPage() {
     <main className="page">
       <h1>{t('home_naming')}</h1>
       <p className="muted">{t('naming_desc')}</p>
+      {/* 이 화면에는 달력 입력이 없어 항상 양력으로 계산된다. SajuPage와 동작이 달라 명시한다. */}
+      <p className="muted">{t('saju_solar_only')}</p>
       <div className="btn-row">
         <ConnectionBadge label="Ollama" ok={ollamaOk} />
       </div>
@@ -152,6 +155,8 @@ export function NamingPage() {
         <div className="panel">
           <h2 style={{ marginTop: 0 }}>{t('naming_result')}</h2>
           <div className="ai-result">{result}</div>
+          {/* 장문은 읽던 위치를 잃기 쉽다. 문장 단위 낭독으로 주시점을 고정한다. */}
+          <ReadingPlayer text={result} />
           <button
             type="button"
             className="btn"

@@ -6,6 +6,7 @@ import { SpreadCards } from '../components/TarotCardView'
 import { adviceFromPractice } from '../services/ollama'
 import { saveHistory } from '../services/history'
 import { recordServiceConsultation } from '../services/customers'
+import { ReadingPlayer } from '../components/ReadingPlayer'
 import { useApp } from '../context/AppContext'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 import { CustomerPicker } from '../components/CustomerPicker'
@@ -67,9 +68,8 @@ export function PracticePage() {
         consultationId = cons.id
       }
       savedRef.current = { historyId: hist.id, consultationId }
-      const msg = t('save_ok')
-      setSavedMsg(msg)
-      setSaveMessage(msg)
+      // 성공 문구는 버튼 옆 로컬 메시지로만 띄운다. 전역 배너는 실패 전용이라 중복되지 않는다.
+      setSavedMsg(t('save_ok'))
     } finally {
       savingRef.current = false
     }
@@ -192,6 +192,8 @@ export function PracticePage() {
         <div className="panel">
           <h2 style={{ marginTop: 0 }}>{t('practice_advice_title')}</h2>
           <div className="ai-result">{aiText}</div>
+          {/* 장문은 읽던 위치를 잃기 쉽다. 문장 단위 낭독으로 주시점을 고정한다. */}
+          <ReadingPlayer text={aiText} />
           <div className="btn-row">
             <button
               type="button"

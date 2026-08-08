@@ -14,7 +14,6 @@ export function AppShell() {
     runSave,
     saveMessage,
     setSaveMessage,
-    saveFailed,
     ttsError,
     setTtsError,
     t,
@@ -107,26 +106,22 @@ export function AppShell() {
           </button>
         </nav>
       </header>
-      {/* 성공·실패를 색이 아니라 문구와 role로 구분한다. 실패는 alert로 즉시 알린다. */}
+      {/* 전역 배너는 저장 '실패' 전용이다. 성공 문구는 각 화면이 버튼 옆에 띄운다 —
+          저시력 사용자에게는 화면 맨 위 배너보다 방금 누른 버튼 근처 메시지가 훨씬 잘 보인다.
+          save_none(저장할 내용 없음)도 실패 계열이라 여기서 함께 알린다. */}
       {saveMessage && (
-        <div
-          className="page"
-          style={{ paddingTop: 8, paddingBottom: 0 }}
-          role={saveFailed ? 'alert' : 'status'}
-          aria-live={saveFailed ? 'assertive' : 'polite'}
-        >
-          {saveFailed ? (
-            <p className="error-text">{saveMessage}</p>
-          ) : (
-            <p className="save-banner-ok">{saveMessage}</p>
-          )}
+        <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }}>
+          <p className="error-text" role="alert">
+            {saveMessage}
+          </p>
         </div>
       )}
-      {/* TTS 오류는 지금까지 설정 화면에서만 보였다. 정작 낭독을 누르는 곳은 전 화면이다. */}
+      {/* TTS 오류는 지금까지 설정 화면에서만 보였다. 정작 낭독을 누르는 곳은 전 화면이다.
+          서비스 계층이 i18n 키만 던지므로 여기서 로케일에 맞게 번역한다. */}
       {ttsError && (
         <div className="page" style={{ paddingTop: 8, paddingBottom: 0 }}>
           <p className="error-text" role="alert">
-            {t('tts_failed')}
+            {t(ttsError.code, ttsError.params)}
           </p>
         </div>
       )}

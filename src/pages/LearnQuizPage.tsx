@@ -12,6 +12,38 @@ type QuizItem = {
   answerIndex: number
 }
 
+/**
+ * 데이터에서 정답 위치를 아무리 고르게 분산해도, 이 화면이 JSON 순서를 그대로 렌더하는 한
+ * 같은 스테이지를 반복하면 "몇 번째 보기가 정답인지"를 통째로 외우게 된다.
+ * 그래서 렌더 시점에 보기를 섞되, 시드를 문항에 고정해 같은 문항을 다시 그려도(리렌더·오답 확인)
+ * 순서가 흔들리지 않게 한다. 세션이 바뀌면 sessionSeed가 달라져 배치도 달라진다.
+ */
+function shuffleOptions(options: string[], seed: number): string[] {
+  const out = [...options]
+  let state = seed >>> 0
+  const rand = () => {
+    // mulberry32 — 결정적이고 짧다. 순서 재현만 필요해서 암호학적 품질은 불필요하다.
+    state = (state + 0x6d2b79f5) >>> 0
+    let x = state
+    x = Math.imul(x ^ (x >>> 15), x | 1)
+    x ^= x + Math.imul(x ^ (x >>> 7), x | 61)
+    return ((x ^ (x >>> 14)) >>> 0) / 4294967296
+  }
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[out[i], out[j]] = [out[j], out[i]]
+  }
+  return out
+}
+
+function hashString(str: string): number {
+  let h = 2166136261
+  for (let i = 0; i < str.length; i++) {
+    h = Math.imul(h ^ str.charCodeAt(i), 16777619)
+  }
+  return h >>> 0
+}
+
 export function LearnQuizPage() {
   const { stageId = '' } = useParams()
   const items = ((quizzes.byStage as Record<string, QuizItem[]>)[stageId] ?? []) as QuizItem[]
@@ -19,10 +51,17 @@ export function LearnQuizPage() {
   const [picked, setPicked] = useState<number | null>(null)
   const [score, setScore] = useState(0)
   const [done, setDone] = useState(false)
+  // 세션마다 배치가 달라지도록 마운트 시 한 번만 정한다. 렌더 중 난수를 쓰면 매 렌더마다 순서가 바뀐다.
+  const [sessionSeed] = useState(() => Math.floor(Math.random() * 0xffffffff))
   const { speak, setLastSpeakText, t } = useApp()
 
   const q = items[qi]
   const card = useMemo(() => (q ? getCard(q.cardId) : null), [q])
+  // 문항 + 세션 시드로 결정적 셔플. 같은 문항 안에서는 순서가 고정된다.
+  const shuffled = useMemo(
+    () => (q ? shuffleOptions(q.options, hashString(`${q.cardId}#${qi}`) ^ sessionSeed) : []),
+    [q, qi, sessionSeed],
+  )
 
   if (!items.length) {
     return (
@@ -65,10 +104,10 @@ export function LearnQuizPage() {
   }
 
   const answered = picked !== null
-  // 인덱스가 아니라 문자열로 비교한다. 정답과 글자가 같은 보기가 또 있으면
-  // 인덱스 비교는 "화면에는 정답인데 오답 처리"가 되어 버린다.
+  // 보기를 섞으므로 정답 판정은 반드시 문자열 기준이어야 한다.
+  // (인덱스 비교는 셔플과 함께 쓰면 곧바로 오답 처리가 된다.)
   const answerText = q.options[q.answerIndex]
-  const correct = picked !== null && q.options[picked] === answerText
+  const correct = picked !== null && shuffled[picked] === answerText
 
   return (
     <main className="page">
@@ -80,7 +119,7 @@ export function LearnQuizPage() {
         </div>
       )}
       <div className="list-choice">
-        {q.options.map((opt, i) => {
+        {shuffled.map((opt, i) => {
           // 정오답을 색으로만 알리지 않도록 상태 라벨을 함께 붙인다(SVIL 접근성 규칙).
           const isCorrect = answered && opt === answerText
           const isWrong = answered && i === picked && opt !== answerText
