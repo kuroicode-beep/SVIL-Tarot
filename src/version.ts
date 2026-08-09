@@ -3,7 +3,7 @@
 // 버전은 로고 옆에 상시 표시한다. 기능 추가 시마다 여기만 갱신한다.
 // 루트 VERSION 파일 / package.json의 version과 항상 같은 값을 유지할 것.
 
-export const APP_VERSION = '1.5.1'
+export const APP_VERSION = '1.6.0'
 
 export type VersionEntry = {
   version: string
@@ -14,6 +14,16 @@ export type VersionEntry = {
 
 /** 최신순 정렬. 설정 > 히스토리/업데이트 내역에 그대로 노출된다. */
 export const VERSION_HISTORY: VersionEntry[] = [
+  {
+    version: '1.6.0',
+    date: '2026-08-09',
+    lines: [
+      '카드 사전 — 78장 검색·필터 + 내 키워드/해석 메모(AI 리딩에 주입)',
+      '리딩 통계 — 자주 나온 카드·수트 분포·사후 결과·적중률',
+      '사주 12절기 전체 반영 (기존엔 입춘만 — 달 초순 월주가 어긋났음)',
+      '오프라인 지원(PWA)과 리딩 내보내기(Markdown·인쇄)',
+    ],
+  },
   {
     version: '1.5.1',
     date: '2026-08-09',

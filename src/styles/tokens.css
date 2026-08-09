@@ -3,7 +3,27 @@
 @font-face {
   font-family: "LINESeedKR";
   src: url("/fonts/LINESeedKR-Rg.woff2") format("woff2");
-  font-weight: normal;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 이 앱은 버튼·라벨에 font-weight:700을 광범위하게 쓴다. Bold 파일이 없으면 브라우저가
+   Regular를 굵게 '합성'하는데, 합성 볼드는 획이 뭉개져 저시력 사용자에게 오히려 불리하다.
+   파일이 없으면 이 규칙은 조용히 무시되고 지금까지처럼 합성으로 폴백하므로 넣어 둬도 안전하다.
+   LINE Seed는 무료 배포(line.me/en/seed)라 LINESeedKR-Bd.woff2를 public/fonts/에 넣으면 바로 적용된다. */
+@font-face {
+  font-family: "LINESeedKR";
+  src: url("/fonts/LINESeedKR-Bd.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LINESeedKR";
+  src: url("/fonts/LINESeedKR-Th.woff2") format("woff2");
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
@@ -343,6 +363,41 @@ textarea,
 .icon-btn__label {
   font-size: 0.85rem;
   font-weight: 700;
+}
+
+/* 상단바 아래 AI 상태 줄. 상시 노출이라 높이를 낮게 잡되 터치타겟은 지킨다. */
+.ollama-control {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 24px;
+  border-bottom: 2px solid var(--border);
+  background: var(--surface);
+}
+
+/* 상단 보조 컨트롤이라 본문 버튼보다 작게 두되, 손가락으로 누를 수 있는 최소선은 유지한다. */
+.ollama-control__btn {
+  min-height: 40px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+}
+
+.ollama-control__hint {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+
+.ollama-control__error {
+  margin: 0;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .ollama-control {
+    padding: 8px 12px;
+  }
 }
 
 .page {

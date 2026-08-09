@@ -5,8 +5,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SVIL Tarot — Low-vision friendly tarot learn & AI reading</title>
-<meta name="description" content="Learn tarot, practice spreads, and get local AI readings with a high-contrast deck.">
+<title>SVIL Tarot — Low-vision friendly tarot learn &amp; AI reading</title>
+<meta name="description" content="A tarot app built low-vision-first: zoomable cards with contrast boost, sentence-by-sentence read-aloud, three contrast presets. Everything runs on your machine.">
+<link rel="canonical" href="https://svil-tarot.svil.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SVIL Tarot">
+<meta property="og:url" content="https://svil-tarot.svil.dev/">
+<meta property="og:title" content="SVIL Tarot — Low-vision friendly tarot">
+<meta property="og:description" content="Zoomable cards with contrast boost, sentence-by-sentence read-aloud, three contrast presets. Local AI, no cloud.">
+<meta name="theme-color" content="#0d0d12">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%2316161d' stroke='%23b3ddff' stroke-width='3'/></svg>">
 <style>
   :root {
@@ -112,6 +120,21 @@
   .qr-meta span { color: var(--text-sub); font-size: 0.97rem; }
   @media (max-width: 560px) { .support-card { justify-content: center; text-align: center; } .qr-meta { align-items: center; } }
 
+  /* 접근성 섹션 — 이 앱의 핵심 차별점이라 별도 강조 */
+  .a11y { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
+  .a11y ul { margin: 0; padding-left: 22px; }
+  .a11y li { margin: 0 0 10px; }
+  .a11y li:last-child { margin-bottom: 0; }
+  .a11y b { font-weight: normal; color: var(--accent-strong); }
+
+  /* 측정값 — 주장 대신 숫자를 보여 준다 */
+  .stats-row { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin: 22px 0 0; }
+  .stat { background: var(--surface-2); border: 2px solid var(--border-strong); border-radius: 12px; padding: 16px 18px; }
+  .stat .n { display: block; font-family: var(--font-mono); font-size: 1.5rem; color: var(--text); }
+  .stat .k { display: block; color: var(--text-sub); font-size: 0.88rem; margin-top: 4px; }
+
+  .note { color: var(--text-sub); font-size: 0.92rem; margin: 18px 0 0; }
+
   footer { border-top: 1px solid var(--border); padding: 32px 0 48px; color: var(--text-sub); font-size: 0.9rem; text-align: center; }
   /* 표준 푸터 링크 — 협업 문의·블로그·홈페이지(SVIL 공통 상수). 라벨만 번역, 값은 고정. */
   .foot-links { display: flex; flex-direction: column; gap: 8px; align-items: center; margin: 0 0 20px; }
@@ -135,7 +158,7 @@
     <div class="brand">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28" fill="#16161d" stroke="#b3ddff" stroke-width="3"/></svg>
       <b>SVIL Tarot</b>
-      <span class="ver">v1.0.0</span>
+      <span class="ver">v1.6.0</span>
     </div>
     <nav class="langs" aria-label="Language">
       <button type="button" data-lang="en" lang="en">English</button>
@@ -159,18 +182,71 @@
     <p class="meta"><span data-i18n="meta_a"></span> · <span data-i18n="meta_b"></span> · <span class="mono">MIT</span></p>
   </div>
 
+  <!-- 접근성이 이 앱의 유일한 차별점이라 기능 목록보다 먼저 둔다. -->
+  <section id="a11y">
+    <div class="wrap">
+      <h2 data-i18n="a11y_title"></h2>
+      <p class="sub" data-i18n="a11y_sub"></p>
+      <div class="a11y">
+        <ul>
+          <li><b data-i18n="a11y_1_t"></b> — <span data-i18n="a11y_1_d"></span></li>
+          <li><b data-i18n="a11y_2_t"></b> — <span data-i18n="a11y_2_d"></span></li>
+          <li><b data-i18n="a11y_3_t"></b> — <span data-i18n="a11y_3_d"></span></li>
+          <li><b data-i18n="a11y_4_t"></b> — <span data-i18n="a11y_4_d"></span></li>
+          <li><b data-i18n="a11y_5_t"></b> — <span data-i18n="a11y_5_d"></span></li>
+        </ul>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><span class="n">13.08:1</span><span class="k" data-i18n="stat_contrast"></span></div>
+        <div class="stat"><span class="n">1.48×</span><span class="k" data-i18n="stat_glare"></span></div>
+        <div class="stat"><span class="n">16–28px</span><span class="k" data-i18n="stat_font"></span></div>
+        <div class="stat"><span class="n">50px+</span><span class="k" data-i18n="stat_touch"></span></div>
+      </div>
+      <p class="note" data-i18n="a11y_note"></p>
+    </div>
+  </section>
+
   <section>
     <div class="wrap">
       <h2 data-i18n="features_title"></h2>
       <p class="sub" data-i18n="features_sub"></p>
       <div class="grid">
-        <!-- 카드 개수는 자유. 각 카드 h3/p에 data-i18n 키를 붙이고 아래 사전에 5개 언어 모두 추가 -->
         <div class="card"><h3 data-i18n="f1_t"></h3><p data-i18n="f1_d"></p></div>
         <div class="card"><h3 data-i18n="f2_t"></h3><p data-i18n="f2_d"></p></div>
         <div class="card"><h3 data-i18n="f3_t"></h3><p data-i18n="f3_d"></p></div>
         <div class="card"><h3 data-i18n="f4_t"></h3><p data-i18n="f4_d"></p></div>
         <div class="card"><h3 data-i18n="f5_t"></h3><p data-i18n="f5_d"></p></div>
         <div class="card"><h3 data-i18n="f6_t"></h3><p data-i18n="f6_d"></p></div>
+        <div class="card"><h3 data-i18n="f7_t"></h3><p data-i18n="f7_d"></p></div>
+        <div class="card"><h3 data-i18n="f8_t"></h3><p data-i18n="f8_d"></p></div>
+        <div class="card"><h3 data-i18n="f9_t"></h3><p data-i18n="f9_d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 로컬 우선이 이 앱의 두 번째 축이다. 개인정보를 다루는 CRM이라 명시적으로 밝힌다. -->
+  <section id="privacy">
+    <div class="wrap">
+      <h2 data-i18n="privacy_title"></h2>
+      <p class="sub" data-i18n="privacy_sub"></p>
+      <div class="a11y">
+        <ul>
+          <li><b data-i18n="p1_t"></b> — <span data-i18n="p1_d"></span></li>
+          <li><b data-i18n="p2_t"></b> — <span data-i18n="p2_d"></span></li>
+          <li><b data-i18n="p3_t"></b> — <span data-i18n="p3_d"></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="requirements">
+    <div class="wrap">
+      <h2 data-i18n="req_title"></h2>
+      <p class="sub" data-i18n="req_sub"></p>
+      <div class="grid">
+        <div class="card"><h3 data-i18n="r1_t"></h3><p data-i18n="r1_d"></p></div>
+        <div class="card"><h3 data-i18n="r2_t"></h3><p data-i18n="r2_d"></p></div>
+        <div class="card"><h3 data-i18n="r3_t"></h3><p data-i18n="r3_d"></p></div>
       </div>
     </div>
   </section>
@@ -207,199 +283,410 @@
 <footer>
   <div class="wrap">
     <!-- 표준 SVIL 푸터 링크. 값(이메일·블로그·홈페이지)은 SVIL 공통 상수이므로 그대로 둔다. -->
+    <p class="svil-mission" data-i18n="svil_mission"></p>
     <div class="foot-links">
       <div class="row"><span class="k" data-i18n="foot_contact"></span><a href="mailto:kuroicode@gmail.com">kuroicode@gmail.com</a></div>
       <div class="row"><span class="k" data-i18n="foot_blog"></span><a href="https://ghost-production-0ec2.up.railway.app/" target="_blank" rel="noopener">인블루의 로그 보관소</a></div>
-      <div class="row"><span class="k" data-i18n="foot_home"></span><a href="https://kuroicode-beep.github.io/svil-homepage/" target="_blank" rel="noopener">SVIL</a></div>
+      <div class="row"><span class="k" data-i18n="foot_home"></span><a href="https://svil.dev/" target="_blank" rel="noopener">SVIL</a></div>
+      <div class="row"><span class="k" data-i18n="foot_youtube"></span><a href="https://www.youtube.com/@SVIL-LAB" target="_blank" rel="noopener">@SVIL-LAB</a></div>
+      <div class="row"><span class="k" data-i18n="foot_github"></span><a href="https://github.com/kuroicode-beep" target="_blank" rel="noopener">kuroicode-beep</a></div>
     </div>
-    <p data-i18n="footer_lic"></p>
-    <p data-i18n="footer_by"></p>
+    <p data-i18n="foot_license"></p>
+    <p class="copyright">© <span id="svil-year">2026</span> SVIL Singularity Visual Intelligence Lab.</p>
   </div>
 </footer>
 
 <script>
+// 저작권 연도는 렌더 시점 기준. HTML 값은 JS 비활성 환경용 폴백이다.
+document.getElementById('svil-year').textContent = new Date().getFullYear();
+
 // 다국어 사전. 영어(en)가 디폴트/폴백. 모든 언어의 키 집합이 동일해야 한다(누락 시 en으로 폴백).
 // 사람/AI 이름·고유명사·코드·이메일은 번역하지 않는다.
 const I18N = {
   "en": {
     "_title": "SVIL Tarot — Low-vision friendly tarot",
     "hero_title": "SVIL Tarot",
-    "hero_tagline": "Tarot, saju, compatibility, nameology, and customer CRM — high-contrast and local AI.",
+    "hero_tagline": "A tarot app built low-vision-first. Zoom any card, boost its contrast, and have the reading spoken to you sentence by sentence.",
     "cta_primary": "Open repository",
     "cta_secondary": "Read README",
-    "meta_a": "Web · Desktop browser",
+    "meta_a": "Web · runs in your browser",
     "meta_b": "Free and open source",
+    "a11y_title": "Built for low vision, not retrofitted",
+    "a11y_sub": "Of the tarot apps we surveyed, none offered card magnification or contrast tools. These are the reason this app exists.",
+    "a11y_1_t": "Card close-up",
+    "a11y_1_d": "Zoom to 400%, boost contrast to 250%, invert light and dark. Tarot art is thin-lined and low-contrast by nature — at 220px it simply cannot be read.",
+    "a11y_2_t": "Sentence-by-sentence listening",
+    "a11y_2_d": "Long AI readings are split into sentences and read aloud one at a time, with the current line marked by a glyph and a thick edge bar. Click any sentence to start there.",
+    "a11y_3_t": "Three contrast presets",
+    "a11y_3_d": "Standard dark, maximum contrast, and low-glare soft. Dark mode is not universally better — many people with astigmatism see bright text smear, and prefer less contrast.",
+    "a11y_4_t": "No bright button fills",
+    "a11y_4_d": "A pale button on a near-black page passes WCAG on paper yet still glares. Emphasis here is a dark fill with a white border and white text.",
+    "a11y_5_t": "Never colour alone",
+    "a11y_5_d": "Every state carries a text label or a ✓ / ✕ glyph beside the colour. Focus rings stay visible, and Windows high-contrast themes are handled.",
+    "stat_contrast": "Button text contrast (AAA)",
+    "stat_glare": "Brightness jump vs page (was 13.6×)",
+    "stat_font": "Body text, five steps",
+    "stat_touch": "Minimum touch target",
+    "a11y_note": "Contrast figures are computed from the sRGB relative-luminance formula and re-checked in the browser on every build.",
     "features_title": "What it does",
-    "features_sub": "Consultations, learning, and AI readings in one fullscreen app.",
-    "f1_t": "Learn & quiz",
-    "f1_d": "Major arcana stages with quizzes and text-to-speech.",
-    "f2_t": "Practice + AI",
-    "f2_d": "Draw 1/3/5-card spreads, write your notes, get Ollama advice.",
-    "f3_t": "Soul card",
-    "f3_d": "Numerology 1–9 from birthdate with local AI explanation.",
-    "f4_t": "Customer CRM",
-    "f4_d": "Profiles, consultation logs, link every service to a customer.",
-    "f5_t": "Saju · Compat · Names",
-    "f5_d": "Four pillars, compatibility, nameology, and baby naming with local LLM.",
-    "f6_t": "Local LLM",
-    "f6_d": "Ollama gemma4:12b — no cloud API key in the app.",
+    "features_sub": "Reading, learning, and client work in one screen.",
+    "f1_t": "Card of the day",
+    "f1_d": "One card per day, seeded by the date, so it stays the same however often you open it. Streak included.",
+    "f2_t": "Practice reading",
+    "f2_d": "1/3/5-card spreads with your own notes. A rule-based spread analysis is fed to the AI so it never misses the skew.",
+    "f3_t": "AI tarot",
+    "f3_d": "A local LLM writes the reading. Ask a question or pick a category.",
+    "f4_t": "Learn & quiz",
+    "f4_d": "Staged lessons with quizzes. Answer options are shuffled at render, so you learn the cards rather than the positions.",
+    "f5_t": "Card dictionary",
+    "f5_d": "All 78 cards, searchable and filterable. Add your own keywords — they are injected into the AI prompt so readings use your words.",
+    "f6_t": "Reading stats",
+    "f6_d": "Recurring cards, suit spread, upright/reversed ratio, and how your past readings actually turned out.",
+    "f7_t": "Client CRM",
+    "f7_d": "Profiles and consultation history. Every service links back to a client.",
+    "f8_t": "Saju · Compatibility · Names",
+    "f8_d": "Four pillars, compatibility, nameology, and baby naming. All twelve solar terms are applied, and lunar dates are converted.",
+    "f9_t": "Soul card",
+    "f9_d": "Numerology 1–9 from a birth date, explained by the local AI.",
+    "privacy_title": "Your data never leaves the machine",
+    "privacy_sub": "This app handles client names and birth dates. Here is exactly where they go.",
+    "p1_t": "Browser storage only",
+    "p1_d": "Everything lives in IndexedDB on your device. There is no account, no server, and no sync.",
+    "p2_t": "Local AI and speech",
+    "p2_d": "The only network calls in the whole app go to 127.0.0.1 — Ollama and the TTS server on your own machine. No cloud API key exists in the code.",
+    "p3_t": "Backup is on you",
+    "p3_d": "Because nothing is synced, clearing site data erases it for good. Export a JSON backup from Settings regularly.",
+    "req_title": "What you need",
+    "req_sub": "The app opens without any of these — you only lose the AI and speech features.",
+    "r1_t": "A browser",
+    "r1_d": "Desktop Chrome, Edge, or Firefox. Installable as a PWA and usable offline.",
+    "r2_t": "Ollama (optional)",
+    "r2_d": "For AI readings. The app talks to gemma4:12b on 127.0.0.1:11434 and can load or unload the model from the top bar.",
+    "r3_t": "TTS server (optional)",
+    "r3_d": "For read-aloud. A local speech server on 127.0.0.1:8765.",
     "links_title": "Links",
-    "links_sub": "Questions, bugs, or just want to say hello.",
+    "links_sub": "Questions, bugs, or just to say hello.",
     "link_gh": "GitHub repository",
-    "link_contact": "Contact us",
+    "link_contact": "Contact",
     "support_title": "Support",
     "support_sub": "If this helped you, you can leave a small tip. Entirely optional — it stays free either way.",
     "support_toss_label": "Tip via Toss",
     "support_toss_hint": "Scan the QR with the Toss app (Korea) to send a tip.",
+    "svil_mission": "Singularity Visual Intelligence Lab: research and development to improve AI accessibility for people with low vision.",
     "foot_contact": "Contact",
     "foot_blog": "Blog",
     "foot_home": "Homepage",
-    "footer_lic": "Released under the MIT License.",
-    "footer_by": "Built by SVIL — Singularity Visual Intelligence Lab."
+    "foot_youtube": "YouTube",
+    "foot_github": "GitHub",
+    "foot_license": "Released under the MIT License."
   },
   "ko": {
-    "_title": "SVIL Tarot — 저시력 친화 타로",
-    "hero_title": "SVIL Tarot",
-    "hero_tagline": "타로·사주·궁합·성명·고객 CRM. 고대비 덱과 로컬 AI로 상담까지.",
+    "_title": "SVIL 타로 — 저시력 친화 타로",
+    "hero_title": "SVIL 타로",
+    "hero_tagline": "저시력을 먼저 놓고 만든 타로 앱입니다. 카드를 크게 키우고 대비를 올려 보고, 리딩은 문장별로 들으세요.",
     "cta_primary": "저장소 열기",
     "cta_secondary": "README 보기",
-    "meta_a": "웹 · 데스크톱 브라우저",
-    "meta_b": "무료 · 오픈소스",
-    "features_title": "무엇을 하나요",
-    "features_sub": "상담·학습·AI를 한 전체화면 앱에서.",
-    "f1_t": "배우기·퀴즈",
-    "f1_d": "메이저 단계 레슨과 퀴즈, TTS 낭독.",
-    "f2_t": "실전 + AI",
-    "f2_d": "1/3/5카드 드로우, 나의 해설, Ollama 조언.",
-    "f3_t": "소울카드",
-    "f3_d": "생년월일 수비학 1–9 + 로컬 AI 설명.",
-    "f4_t": "고객 CRM",
-    "f4_d": "프로필·상담 로그, 모든 서비스에 고객 연결.",
-    "f5_t": "사주·궁합·성명",
-    "f5_d": "사주풀이·궁합·성명학·작명 + 로컬 LLM.",
-    "f6_t": "로컬 LLM",
-    "f6_d": "Ollama gemma4:12b — 앱에 클라우드 키 없음.",
+    "meta_a": "웹 · 브라우저에서 바로 실행",
+    "meta_b": "무료 오픈소스",
+    "a11y_title": "저시력을 나중에 덧댄 게 아니라, 처음부터 기준으로 잡았습니다",
+    "a11y_sub": "조사한 타로 앱 중 카드 확대나 대비 조절을 제공하는 곳은 없었습니다. 이 앱이 존재하는 이유입니다.",
+    "a11y_1_t": "카드 크게 보기",
+    "a11y_1_d": "400%까지 확대하고 대비를 250%까지 올리고 명암을 반전합니다. 타로 도판은 선이 가늘고 색이 많아 본래 저대비인데, 220px로는 그림을 읽을 방법이 없었습니다.",
+    "a11y_2_t": "문장별로 듣기",
+    "a11y_2_d": "긴 AI 리딩을 문장 단위로 끊어 차례로 읽어 줍니다. 지금 읽는 문장은 글리프와 굵은 좌측 막대로 표시되고, 아무 문장이나 눌러 그 지점부터 들을 수 있습니다.",
+    "a11y_3_t": "대비 프리셋 3종",
+    "a11y_3_d": "표준 다크 · 초고대비 · 저글레어 소프트. 다크 모드가 언제나 정답은 아닙니다. 난시가 있으면 밝은 글자가 번져 보여 오히려 대비를 낮춘 쪽이 편합니다.",
+    "a11y_4_t": "밝은 바탕 버튼 없음",
+    "a11y_4_d": "까만 화면의 옅은 버튼은 대비율로는 AAA를 통과하면서도 눈이 부십니다. 이 앱의 강조는 어두운 바탕에 흰 테두리와 흰 글자입니다.",
+    "a11y_5_t": "색만으로 알리지 않음",
+    "a11y_5_d": "모든 상태에 색과 함께 글자 라벨이나 ✓ / ✕ 글리프를 답니다. 포커스 링은 항상 보이고, 윈도우 고대비 모드도 대응합니다.",
+    "stat_contrast": "버튼 글자 대비 (AAA)",
+    "stat_glare": "배경 대비 밝기 점프 (이전 13.6배)",
+    "stat_font": "본문 글자, 5단계",
+    "stat_touch": "최소 터치 영역",
+    "a11y_note": "대비 수치는 sRGB 상대휘도 공식으로 계산하고, 빌드마다 브라우저에서 다시 확인합니다.",
+    "features_title": "무엇을 할 수 있나",
+    "features_sub": "리딩과 학습, 고객 관리를 한 화면에서.",
+    "f1_t": "오늘의 한 장",
+    "f1_d": "날짜를 시드로 하루 한 장만 뽑아, 몇 번을 열어도 같은 카드가 나옵니다. 연속 일수도 함께.",
+    "f2_t": "실전 리딩",
+    "f2_d": "1·3·5장 스프레드에 내 해설을 답니다. 규칙으로 계산한 배열 진단을 AI에 함께 넘겨 편중을 놓치지 않게 합니다.",
+    "f3_t": "AI 타로",
+    "f3_d": "로컬 LLM이 리딩을 씁니다. 질문을 적거나 카테고리를 골라 시작합니다.",
+    "f4_t": "배우기와 퀴즈",
+    "f4_d": "단계별 학습과 퀴즈. 보기 순서를 그릴 때마다 섞어서, 자리를 외우는 대신 카드를 익히게 됩니다.",
+    "f5_t": "카드 사전",
+    "f5_d": "78장을 검색하고 걸러 봅니다. 내 키워드를 적어 두면 AI 리딩 프롬프트에 함께 들어가, 내 어휘로 리딩이 쓰입니다.",
+    "f6_t": "리딩 통계",
+    "f6_d": "자주 나온 카드, 수트 분포, 정·역방향 비율, 그리고 지난 리딩이 실제로 어떻게 됐는지까지.",
+    "f7_t": "고객 관리",
+    "f7_d": "프로필과 상담 이력. 모든 서비스가 고객에게 연결됩니다.",
+    "f8_t": "사주 · 궁합 · 성명학",
+    "f8_d": "사주풀이, 궁합, 성명학, 작명. 12절기를 모두 반영하고 음력은 양력으로 환산해 계산합니다.",
+    "f9_t": "소울카드",
+    "f9_d": "생년월일로 1~9 소울카드를 계산하고 로컬 AI가 풀이합니다.",
+    "privacy_title": "기록은 이 기기를 벗어나지 않습니다",
+    "privacy_sub": "고객 이름과 생년월일을 다루는 앱입니다. 그 정보가 어디에 있는지 분명히 밝힙니다.",
+    "p1_t": "브라우저에만 저장",
+    "p1_d": "모든 기록이 이 기기의 IndexedDB에만 있습니다. 계정도, 서버도, 동기화도 없습니다.",
+    "p2_t": "로컬 AI와 로컬 음성",
+    "p2_d": "앱 전체에서 나가는 네트워크 요청은 127.0.0.1 두 곳뿐입니다 — 내 컴퓨터의 Ollama와 TTS 서버. 클라우드 API 키는 코드에 존재하지 않습니다.",
+    "p3_t": "백업은 직접",
+    "p3_d": "동기화가 없으니 브라우저 저장소를 비우면 그대로 사라집니다. 설정에서 JSON 백업을 주기적으로 내보내세요.",
+    "req_title": "필요한 것",
+    "req_sub": "아무것도 없어도 앱은 열립니다. AI와 음성 기능만 쓸 수 없습니다.",
+    "r1_t": "브라우저",
+    "r1_d": "데스크톱 크롬·엣지·파이어폭스. PWA로 설치할 수 있고 오프라인에서도 동작합니다.",
+    "r2_t": "Ollama (선택)",
+    "r2_d": "AI 리딩용. 127.0.0.1:11434의 gemma4:12b와 통신하며, 상단바에서 모델을 올리고 내릴 수 있습니다.",
+    "r3_t": "TTS 서버 (선택)",
+    "r3_d": "낭독용. 127.0.0.1:8765에서 도는 로컬 음성 서버.",
     "links_title": "링크",
-    "links_sub": "문의, 버그 제보, 그냥 인사도 좋습니다.",
+    "links_sub": "질문, 버그 제보, 그냥 인사도 좋습니다.",
     "link_gh": "GitHub 저장소",
-    "link_contact": "문의하기",
+    "link_contact": "연락처",
     "support_title": "후원",
-    "support_sub": "이 앱이 도움이 되셨다면 작은 후원으로 응원해 주세요. 전적으로 선택이고, 후원과 무관하게 앱은 계속 무료예요.",
+    "support_sub": "도움이 되셨다면 작은 후원으로 응원해 주세요. 전적으로 선택이고, 후원과 무관하게 계속 무료입니다.",
     "support_toss_label": "토스로 후원",
     "support_toss_hint": "토스 앱으로 QR을 스캔하면 바로 후원할 수 있어요.",
+    "svil_mission": "Singularity Visual Intelligence Lab: 저시력 시각장애인의 AI 접근성을 높이기 위한 연구와 개발을 합니다.",
     "foot_contact": "협업 문의",
     "foot_blog": "블로그",
     "foot_home": "홈페이지",
-    "footer_lic": "MIT 라이선스로 배포됩니다.",
-    "footer_by": "SVIL — Singularity Visual Intelligence Lab 제작."
+    "foot_youtube": "유튜브",
+    "foot_github": "GitHub",
+    "foot_license": "MIT 라이선스로 배포됩니다."
   },
   "ja": {
-    "_title": "SVIL Tarot — 低視力フレンドリー",
-    "hero_title": "SVIL Tarot",
-    "hero_tagline": "タロット・四柱・相性・姓名・顧客CRM。高コントラストとローカルAI。",
+    "_title": "SVIL タロット — ロービジョン対応タロット",
+    "hero_title": "SVIL タロット",
+    "hero_tagline": "ロービジョンを基準に設計したタロットアプリ。カードを拡大してコントラストを上げ、リーディングは文ごとに聴けます。",
     "cta_primary": "リポジトリを開く",
-    "cta_secondary": "README",
-    "meta_a": "Web・デスクトップ",
+    "cta_secondary": "README を読む",
+    "meta_a": "Web · ブラウザで動作",
     "meta_b": "無料・オープンソース",
+    "a11y_title": "後付けではなく、最初からロービジョンを基準に",
+    "a11y_sub": "調査したタロットアプリの中に、カード拡大やコントラスト調整を備えたものはありませんでした。それがこのアプリの存在理由です。",
+    "a11y_1_t": "カードの拡大表示",
+    "a11y_1_d": "400%まで拡大し、コントラストを250%まで上げ、白黒を反転できます。タロットの図版は線が細く色数も多くて本来低コントラストで、220pxでは絵そのものが読み取れませんでした。",
+    "a11y_2_t": "文ごとに聴く",
+    "a11y_2_d": "長いAIリーディングを文単位に分けて順に読み上げます。読んでいる文はグリフと太い左バーで示し、任意の文をタップしてそこから聴けます。",
+    "a11y_3_t": "コントラスト3種",
+    "a11y_3_d": "標準ダーク・超高コントラスト・低グレアソフト。ダークモードが常に最適とは限りません。乱視があると明るい文字がにじみ、むしろ低いコントラストが楽なことがあります。",
+    "a11y_4_t": "明るい塗りのボタンなし",
+    "a11y_4_d": "暗い画面上の淡いボタンは、数値上はWCAGを満たしてもまぶしく感じます。このアプリの強調は暗い背景に白い枠と白い文字です。",
+    "a11y_5_t": "色だけで伝えない",
+    "a11y_5_d": "すべての状態に色と一緒に文字ラベルか ✓ / ✕ グリフを添えます。フォーカスリングは常に見え、Windowsのハイコントラストにも対応します。",
+    "stat_contrast": "ボタン文字のコントラスト (AAA)",
+    "stat_glare": "背景比の明るさ跳ね (以前は13.6倍)",
+    "stat_font": "本文サイズ・5段階",
+    "stat_touch": "最小タッチ領域",
+    "a11y_note": "コントラスト値はsRGB相対輝度の式で計算し、ビルドごとにブラウザで再確認しています。",
     "features_title": "できること",
-    "features_sub": "相談・学習・AIを一つの全画面アプリで。",
-    "f1_t": "学習とクイズ",
-    "f1_d": "メジャー段階レッスンとTTS。",
-    "f2_t": "実践 + AI",
-    "f2_d": "1/3/5枚スプレッドとOllama助言。",
-    "f3_t": "ソウルカード",
-    "f3_d": "生年月日数秘術1–9 + ローカルAI。",
-    "f4_t": "顧客CRM",
-    "f4_d": "プロフィールと相談ログ、全サービス連携。",
-    "f5_t": "四柱・相性・姓名",
-    "f5_d": "四柱・相性・姓名学・命名 + ローカルLLM。",
-    "f6_t": "ローカルLLM",
-    "f6_d": "Ollama gemma4:12b。",
+    "features_sub": "リーディングと学習、顧客管理をひとつの画面で。",
+    "f1_t": "今日の一枚",
+    "f1_d": "日付をシードに一日一枚だけ引くので、何度開いても同じカードです。連続日数も表示します。",
+    "f2_t": "実践リーディング",
+    "f2_d": "1・3・5枚のスプレッドに自分の解釈を添えます。ルールで算出したスプレッド診断をAIにも渡し、偏りを見落としません。",
+    "f3_t": "AIタロット",
+    "f3_d": "ローカルLLMがリーディングを書きます。質問を入力するかカテゴリを選んで始めます。",
+    "f4_t": "学習とクイズ",
+    "f4_d": "段階別レッスンとクイズ。選択肢は描画のたびにシャッフルされるので、位置ではなくカードを覚えられます。",
+    "f5_t": "カード事典",
+    "f5_d": "78枚を検索・絞り込みできます。自分のキーワードを書いておくとAIのプロンプトに入り、自分の言葉でリーディングが書かれます。",
+    "f6_t": "リーディング統計",
+    "f6_d": "よく出るカード、スート分布、正逆の比率、そして過去のリーディングが実際どうだったかまで。",
+    "f7_t": "顧客管理",
+    "f7_d": "プロフィールと相談履歴。すべてのサービスが顧客に結び付きます。",
+    "f8_t": "四柱 · 相性 · 姓名",
+    "f8_d": "四柱推命、相性、姓名判断、命名。二十四節気のうち十二節をすべて反映し、旧暦は新暦に換算して計算します。",
+    "f9_t": "ソウルカード",
+    "f9_d": "生年月日から1〜9のソウルカードを算出し、ローカルAIが解説します。",
+    "privacy_title": "記録はこの端末から出ません",
+    "privacy_sub": "顧客の氏名や生年月日を扱うアプリです。その情報がどこにあるかを明示します。",
+    "p1_t": "ブラウザにのみ保存",
+    "p1_d": "すべての記録が端末のIndexedDBにだけあります。アカウントもサーバーも同期もありません。",
+    "p2_t": "ローカルAIとローカル音声",
+    "p2_d": "アプリ全体で外に出る通信は127.0.0.1の2か所だけです — 自分のPCのOllamaとTTSサーバー。クラウドAPIキーはコードに存在しません。",
+    "p3_t": "バックアップは自分で",
+    "p3_d": "同期がないため、サイトデータを消すとそのまま失われます。設定からJSONバックアップを定期的に書き出してください。",
+    "req_title": "必要なもの",
+    "req_sub": "何もなくてもアプリは開きます。AIと音声機能だけが使えません。",
+    "r1_t": "ブラウザ",
+    "r1_d": "デスクトップのChrome・Edge・Firefox。PWAとしてインストールでき、オフラインでも動作します。",
+    "r2_t": "Ollama（任意）",
+    "r2_d": "AIリーディング用。127.0.0.1:11434のgemma4:12bと通信し、上部バーからモデルの読み込み・解放ができます。",
+    "r3_t": "TTSサーバー（任意）",
+    "r3_d": "読み上げ用。127.0.0.1:8765で動くローカル音声サーバー。",
     "links_title": "リンク",
-    "links_sub": "お問い合わせ歓迎。",
-    "link_gh": "GitHub",
+    "links_sub": "質問・不具合報告、ご挨拶だけでも。",
+    "link_gh": "GitHub リポジトリ",
     "link_contact": "お問い合わせ",
     "support_title": "支援",
-    "support_sub": "任意のチップで応援できます。",
+    "support_sub": "お役に立てたら少額のチップで応援できます。もちろん任意で、支援に関係なく無料のままです。",
     "support_toss_label": "Toss で支援",
-    "support_toss_hint": "TossアプリでQRをスキャン。",
+    "support_toss_hint": "Toss アプリ（韓国）で QR をスキャンして支援できます。",
+    "svil_mission": "Singularity Visual Intelligence Lab: ロービジョンの方のAIアクセシビリティを高めるための研究と開発をしています。",
     "foot_contact": "お問い合わせ",
     "foot_blog": "ブログ",
     "foot_home": "ホームページ",
-    "footer_lic": "MIT ライセンス。",
-    "footer_by": "SVIL 制作。"
+    "foot_youtube": "YouTube",
+    "foot_github": "GitHub",
+    "foot_license": "MIT ライセンスで公開しています。"
   },
   "zh": {
-    "_title": "SVIL Tarot — 低视力友好塔罗",
-    "hero_title": "SVIL Tarot",
-    "hero_tagline": "塔罗、四柱、合盘、姓名与客户 CRM — 高对比与本地 AI。",
+    "_title": "SVIL 塔罗 — 低视力友好塔罗",
+    "hero_title": "SVIL 塔罗",
+    "hero_tagline": "以低视力为基准设计的塔罗应用。放大牌面、增强对比，并逐句收听解读。",
     "cta_primary": "打开仓库",
-    "cta_secondary": "查看 README",
-    "meta_a": "网页 · 桌面浏览器",
-    "meta_b": "免费 · 开源",
-    "features_title": "它能做什么",
-    "features_sub": "咨询、学习与 AI 同在全屏应用。",
-    "f1_t": "学习与测验",
-    "f1_d": "大阿卡纳阶段课程与 TTS。",
-    "f2_t": "实战 + AI",
-    "f2_d": "1/3/5 牌阵与 Ollama 建议。",
-    "f3_t": "灵魂牌",
-    "f3_d": "生日数秘 1–9 + 本地 AI。",
-    "f4_t": "客户 CRM",
-    "f4_d": "档案与咨询记录，服务均可关联客户。",
-    "f5_t": "四柱·合盘·姓名",
-    "f5_d": "四柱、合盘、姓名学、起名 + 本地 LLM。",
-    "f6_t": "本地 LLM",
-    "f6_d": "Ollama gemma4:12b。",
+    "cta_secondary": "阅读 README",
+    "meta_a": "Web · 浏览器直接运行",
+    "meta_b": "免费开源",
+    "a11y_title": "不是事后补上，而是从一开始就以低视力为准",
+    "a11y_sub": "在我们调研的塔罗应用中，没有一款提供牌面放大或对比度调节。这正是本应用存在的理由。",
+    "a11y_1_t": "牌面放大",
+    "a11y_1_d": "可放大至 400%，对比度提升至 250%，并支持黑白反转。塔罗图像线条纤细、色彩繁多，本身就是低对比，220px 根本无法辨认。",
+    "a11y_2_t": "逐句收听",
+    "a11y_2_d": "把冗长的 AI 解读按句拆分依次朗读。当前句以字形和加粗左侧竖条标示，点击任意句子即可从该处开始。",
+    "a11y_3_t": "三种对比预设",
+    "a11y_3_d": "标准深色、超高对比、低眩光柔和。深色模式并非总是更好——有散光的人会觉得亮字发虚，反而偏好较低的对比。",
+    "a11y_4_t": "没有亮色填充按钮",
+    "a11y_4_d": "深色页面上的浅色按钮，数值上满足 WCAG 却依然刺眼。本应用的强调是深色底配白色边框与白色文字。",
+    "a11y_5_t": "绝不只靠颜色",
+    "a11y_5_d": "每种状态都在颜色之外附带文字标签或 ✓ / ✕ 字形。焦点框始终可见，并适配 Windows 高对比主题。",
+    "stat_contrast": "按钮文字对比度 (AAA)",
+    "stat_glare": "相对背景的亮度跳变 (原为 13.6 倍)",
+    "stat_font": "正文字号，五档",
+    "stat_touch": "最小触摸区域",
+    "a11y_note": "对比数值依 sRGB 相对亮度公式计算，并在每次构建时于浏览器中复核。",
+    "features_title": "能做什么",
+    "features_sub": "解读、学习与客户管理，都在一个界面。",
+    "f1_t": "今日一张",
+    "f1_d": "以日期为种子每天只抽一张，无论打开多少次都是同一张。并显示连续天数。",
+    "f2_t": "实战解读",
+    "f2_d": "1/3/5 张牌阵并写下自己的解读。规则计算出的牌阵诊断会一并交给 AI，避免遗漏偏重。",
+    "f3_t": "AI 塔罗",
+    "f3_d": "由本地 LLM 撰写解读。输入问题或选择类别即可开始。",
+    "f4_t": "学习与测验",
+    "f4_d": "分阶段课程与测验。选项在每次渲染时打乱，让你记住牌本身而不是位置。",
+    "f5_t": "牌义词典",
+    "f5_d": "78 张可搜索、可筛选。写下自己的关键词后会注入 AI 提示词，用你的语汇来写解读。",
+    "f6_t": "解读统计",
+    "f6_d": "高频出现的牌、花色分布、正逆位比例，以及过往解读的实际结果。",
+    "f7_t": "客户管理",
+    "f7_d": "档案与咨询记录。每项服务都关联到客户。",
+    "f8_t": "四柱 · 合盘 · 姓名",
+    "f8_d": "四柱、合盘、姓名学与取名。完整反映十二节气，农历会换算为阳历后计算。",
+    "f9_t": "灵魂牌",
+    "f9_d": "由出生日期推算 1–9 灵魂牌，并由本地 AI 解说。",
+    "privacy_title": "数据不会离开这台设备",
+    "privacy_sub": "这是一款处理客户姓名与出生日期的应用。以下明确说明这些信息的去向。",
+    "p1_t": "仅存于浏览器",
+    "p1_d": "所有记录只保存在本机的 IndexedDB。没有账号、没有服务器、没有同步。",
+    "p2_t": "本地 AI 与本地语音",
+    "p2_d": "整个应用向外的网络请求只有 127.0.0.1 两处——你自己电脑上的 Ollama 与 TTS 服务器。代码中不存在任何云端 API 密钥。",
+    "p3_t": "备份需自行处理",
+    "p3_d": "因为没有同步，清除站点数据即永久丢失。请在设置中定期导出 JSON 备份。",
+    "req_title": "需要准备什么",
+    "req_sub": "即使什么都没有，应用也能打开，只是无法使用 AI 与语音功能。",
+    "r1_t": "浏览器",
+    "r1_d": "桌面版 Chrome、Edge 或 Firefox。可作为 PWA 安装并离线使用。",
+    "r2_t": "Ollama（可选）",
+    "r2_d": "用于 AI 解读。与 127.0.0.1:11434 上的 gemma4:12b 通信，可从顶栏加载或卸载模型。",
+    "r3_t": "TTS 服务器（可选）",
+    "r3_d": "用于朗读。运行在 127.0.0.1:8765 的本地语音服务器。",
     "links_title": "链接",
-    "links_sub": "欢迎联系。",
-    "link_gh": "GitHub",
-    "link_contact": "联系我们",
+    "links_sub": "提问、报告问题，或只是打个招呼。",
+    "link_gh": "GitHub 仓库",
+    "link_contact": "联系方式",
     "support_title": "赞助",
-    "support_sub": "可选小费支持。",
+    "support_sub": "如果这个应用帮到了你，可以留个小费支持一下。完全自愿，无论是否赞助都会一直免费。",
     "support_toss_label": "用 Toss 赞助",
-    "support_toss_hint": "用 Toss 扫描二维码。",
+    "support_toss_hint": "用 Toss 应用（韩国）扫描二维码即可赞助。",
+    "svil_mission": "Singularity Visual Intelligence Lab：致力于提升低视力人群 AI 无障碍体验的研究与开发。",
     "foot_contact": "合作咨询",
     "foot_blog": "博客",
     "foot_home": "主页",
-    "footer_lic": "MIT 许可证。",
-    "footer_by": "由 SVIL 制作。"
+    "foot_youtube": "YouTube",
+    "foot_github": "GitHub",
+    "foot_license": "以 MIT 许可证发布。"
   },
   "vi": {
-    "_title": "SVIL Tarot — thân thiện thị lực kém",
+    "_title": "SVIL Tarot — Tarot thân thiện với thị lực kém",
     "hero_title": "SVIL Tarot",
-    "hero_tagline": "Tarot, tứ trụ, hợp tuổi, họ tên và CRM khách — tương phản cao, AI cục bộ.",
-    "cta_primary": "Mở kho",
+    "hero_tagline": "Ứng dụng tarot thiết kế từ đầu cho người thị lực kém. Phóng to lá bài, tăng tương phản và nghe luận giải theo từng câu.",
+    "cta_primary": "Mở kho mã nguồn",
     "cta_secondary": "Đọc README",
-    "meta_a": "Web · trình duyệt desktop",
-    "meta_b": "Miễn phí · mã mở",
-    "features_title": "Ứng dụng làm gì",
-    "features_sub": "Tư vấn, học và AI trong một app toàn màn hình.",
-    "f1_t": "Học & quiz",
-    "f1_d": "Bài học major và TTS.",
-    "f2_t": "Thực hành + AI",
-    "f2_d": "Trải 1/3/5 lá và lời khuyên Ollama.",
-    "f3_t": "Soul card",
-    "f3_d": "Số học 1–9 + AI cục bộ.",
-    "f4_t": "CRM khách",
-    "f4_d": "Hồ sơ và nhật ký tư vấn, gắn mọi dịch vụ.",
-    "f5_t": "Tứ trụ · Hợp · Tên",
-    "f5_d": "Tứ trụ, hợp tuổi, họ tên, đặt tên + LLM cục bộ.",
-    "f6_t": "LLM cục bộ",
-    "f6_d": "Ollama gemma4:12b.",
+    "meta_a": "Web · chạy ngay trên trình duyệt",
+    "meta_b": "Miễn phí và mã nguồn mở",
+    "a11y_title": "Không phải chắp vá về sau, mà lấy thị lực kém làm chuẩn ngay từ đầu",
+    "a11y_sub": "Trong các ứng dụng tarot đã khảo sát, không ứng dụng nào có phóng to lá bài hay chỉnh tương phản. Đó là lý do ứng dụng này tồn tại.",
+    "a11y_1_t": "Phóng to lá bài",
+    "a11y_1_d": "Phóng tới 400%, tăng tương phản tới 250%, đảo sáng tối. Tranh tarot vốn nét mảnh và nhiều màu nên tương phản thấp — ở 220px thì không thể đọc nổi hình.",
+    "a11y_2_t": "Nghe từng câu",
+    "a11y_2_d": "Bản luận giải AI dài được tách thành từng câu và đọc lần lượt. Câu đang đọc được đánh dấu bằng ký hiệu và thanh dọc đậm bên trái; bấm câu nào là nghe từ đó.",
+    "a11y_3_t": "Ba cài sẵn tương phản",
+    "a11y_3_d": "Tối tiêu chuẩn, tương phản tối đa, và dịu ít chói. Chế độ tối không phải lúc nào cũng tốt hơn — người loạn thị thấy chữ sáng bị nhòe và thường thích tương phản thấp hơn.",
+    "a11y_4_t": "Không có nút nền sáng",
+    "a11y_4_d": "Nút nhạt trên nền gần đen tuy đạt WCAG trên giấy tờ nhưng vẫn chói. Ở đây phần nhấn mạnh là nền tối với viền trắng và chữ trắng.",
+    "a11y_5_t": "Không bao giờ chỉ dùng màu",
+    "a11y_5_d": "Mọi trạng thái đều kèm nhãn chữ hoặc ký hiệu ✓ / ✕ bên cạnh màu. Viền tiêu điểm luôn hiện, và chế độ tương phản cao của Windows cũng được hỗ trợ.",
+    "stat_contrast": "Tương phản chữ trên nút (AAA)",
+    "stat_glare": "Độ nhảy sáng so với nền (trước là 13,6 lần)",
+    "stat_font": "Cỡ chữ nội dung, 5 mức",
+    "stat_touch": "Vùng chạm tối thiểu",
+    "a11y_note": "Các con số tương phản được tính theo công thức độ chói tương đối sRGB và kiểm tra lại trên trình duyệt ở mỗi lần build.",
+    "features_title": "Ứng dụng làm được gì",
+    "features_sub": "Trải bài, học tập và quản lý khách hàng trong cùng một màn hình.",
+    "f1_t": "Lá bài hôm nay",
+    "f1_d": "Mỗi ngày chỉ rút một lá theo ngày nên mở bao nhiêu lần vẫn là lá đó. Có kèm chuỗi ngày liên tiếp.",
+    "f2_t": "Trải bài thực hành",
+    "f2_d": "Trải 1/3/5 lá kèm ghi chú của bạn. Phần phân tích trải bài tính theo quy tắc cũng được đưa cho AI để không bỏ sót độ lệch.",
+    "f3_t": "Tarot AI",
+    "f3_d": "LLM cục bộ viết bản luận giải. Nhập câu hỏi hoặc chọn chủ đề để bắt đầu.",
+    "f4_t": "Học và trắc nghiệm",
+    "f4_d": "Bài học theo chặng kèm trắc nghiệm. Các lựa chọn được xáo mỗi lần hiển thị, nên bạn nhớ lá bài chứ không nhớ vị trí.",
+    "f5_t": "Từ điển lá bài",
+    "f5_d": "Tìm và lọc trong cả 78 lá. Ghi từ khóa của riêng bạn thì chúng được đưa vào prompt AI, để bản luận giải dùng đúng ngôn từ của bạn.",
+    "f6_t": "Thống kê trải bài",
+    "f6_d": "Lá hay xuất hiện, phân bố chất bài, tỉ lệ xuôi/ngược, và cả kết quả thực tế của những lần trải trước.",
+    "f7_t": "Quản lý khách hàng",
+    "f7_d": "Hồ sơ và lịch sử tư vấn. Mọi dịch vụ đều gắn với một khách hàng.",
+    "f8_t": "Tứ trụ · Hợp tuổi · Tên",
+    "f8_d": "Tứ trụ, hợp tuổi, danh học và đặt tên. Áp dụng đủ mười hai tiết khí, và âm lịch được quy đổi sang dương lịch.",
+    "f9_t": "Lá bài linh hồn",
+    "f9_d": "Tính lá bài linh hồn 1–9 từ ngày sinh, do AI cục bộ luận giải.",
+    "privacy_title": "Dữ liệu không rời khỏi máy của bạn",
+    "privacy_sub": "Đây là ứng dụng xử lý tên và ngày sinh của khách hàng. Dưới đây nói rõ những dữ liệu đó nằm ở đâu.",
+    "p1_t": "Chỉ lưu trong trình duyệt",
+    "p1_d": "Mọi dữ liệu chỉ nằm trong IndexedDB trên thiết bị của bạn. Không tài khoản, không máy chủ, không đồng bộ.",
+    "p2_t": "AI và giọng nói cục bộ",
+    "p2_d": "Toàn bộ kết nối mạng của ứng dụng chỉ đi tới 127.0.0.1 — Ollama và máy chủ TTS trên chính máy bạn. Không hề có khóa API đám mây trong mã nguồn.",
+    "p3_t": "Sao lưu là việc của bạn",
+    "p3_d": "Vì không có đồng bộ, xóa dữ liệu trang là mất vĩnh viễn. Hãy xuất bản sao lưu JSON trong Cài đặt một cách định kỳ.",
+    "req_title": "Bạn cần những gì",
+    "req_sub": "Không có gì thì ứng dụng vẫn mở được — chỉ là không dùng được tính năng AI và giọng nói.",
+    "r1_t": "Trình duyệt",
+    "r1_d": "Chrome, Edge hoặc Firefox trên máy tính. Cài được như PWA và dùng được ngoại tuyến.",
+    "r2_t": "Ollama (tùy chọn)",
+    "r2_d": "Dùng cho luận giải AI. Ứng dụng nói chuyện với gemma4:12b tại 127.0.0.1:11434 và có thể nạp hoặc giải phóng mô hình từ thanh trên cùng.",
+    "r3_t": "Máy chủ TTS (tùy chọn)",
+    "r3_d": "Dùng để đọc thành tiếng. Máy chủ giọng nói cục bộ tại 127.0.0.1:8765.",
     "links_title": "Liên kết",
-    "links_sub": "Liên hệ thoải mái.",
-    "link_gh": "GitHub",
+    "links_sub": "Câu hỏi, báo lỗi, hoặc chỉ để chào một tiếng.",
+    "link_gh": "Kho GitHub",
     "link_contact": "Liên hệ",
     "support_title": "Ủng hộ",
-    "support_sub": "Tip tùy ý qua Toss.",
-    "support_toss_label": "Ủng hộ Toss",
-    "support_toss_hint": "Quét QR bằng app Toss.",
+    "support_sub": "Nếu ứng dụng này giúp ích cho bạn, bạn có thể gửi một khoản tip nhỏ. Hoàn toàn tùy ý — ứng dụng vẫn miễn phí dù thế nào.",
+    "support_toss_label": "Ủng hộ qua Toss",
+    "support_toss_hint": "Quét mã QR bằng ứng dụng Toss (Hàn Quốc) để gửi ủng hộ.",
+    "svil_mission": "Singularity Visual Intelligence Lab: nghiên cứu và phát triển nhằm cải thiện khả năng tiếp cận AI cho người thị lực kém.",
     "foot_contact": "Liên hệ",
     "foot_blog": "Blog",
     "foot_home": "Trang chủ",
-    "footer_lic": "MIT.",
-    "footer_by": "Xây bởi SVIL."
+    "foot_youtube": "YouTube",
+    "foot_github": "GitHub",
+    "foot_license": "Phát hành theo Giấy phép MIT."
   }
 };
 

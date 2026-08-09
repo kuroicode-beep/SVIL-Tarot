@@ -8,6 +8,7 @@ import {
   type DailyDraw,
   type HistoryEntry,
   type SrsCard,
+  type CustomSpread,
 } from './db'
 
 /** 파일 서명. 확장자만으로는 남의 JSON과 구분되지 않아 복원 전 이 값으로 걸러낸다. */
@@ -25,6 +26,7 @@ export type BackupFile = {
     cardNotes: CardNote[]
     dailyDraws: DailyDraw[]
     srs: SrsCard[]
+    customSpreads: CustomSpread[]
   }
 }
 
@@ -37,6 +39,8 @@ type StoreSpec = {
   /** 없으면 화면이 깨지는 필드. 빈 문자열은 허용하고 타입만 본다. */
   requiredStrings: readonly string[]
   requiredObjects?: readonly string[]
+  /** 숫자여야 하는 필드. srs의 ease/interval처럼 문자열이 섞이면 스케줄러가 NaN을 뱉는다. */
+  requiredNumbers?: readonly string[]
 }
 
 // 복원 순서·검증 규칙을 한 곳에 모아 둔다. 스토어가 늘면 여기만 고치면 된다.
@@ -51,7 +55,13 @@ const STORE_SPECS: readonly StoreSpec[] = [
   { name: 'cardNotes', keyPath: 'cardId', requiredStrings: ['updatedAt'] },
   { name: 'dailyDraws', keyPath: 'date', requiredStrings: ['createdAt'], requiredObjects: ['card'] },
   // 학습 진도는 몇 달치 누적이라 백업에서 빠지면 사용자가 처음부터 다시 외워야 한다.
-  { name: 'srs', keyPath: 'cardId', requiredStrings: ['dueAt', 'updatedAt'] },
+  { name: 'customSpreads', keyPath: 'id', requiredStrings: ['nameKo', 'createdAt', 'updatedAt'] },
+  {
+    name: 'srs',
+    keyPath: 'cardId',
+    requiredStrings: ['dueAt', 'updatedAt'],
+    requiredNumbers: ['ease', 'interval', 'reps', 'lapses'],
+  },
 ]
 
 /** 파일명은 SVIL 규칙(공백 금지·언더스코어)을 따르고, 정렬이 되도록 로컬 시각을 YYYYMMDD_HHmm으로 쓴다. */
@@ -66,16 +76,25 @@ export async function exportBackup(): Promise<{ blob: Blob; filename: string; co
   // 시각을 두 번 읽으면 분 경계에서 파일명과 exportedAt이 1분 어긋난다. 한 번만 읽어 같이 쓴다.
   const now = new Date()
   // 스토어를 하나씩 순차로 읽으면 그 사이 다른 화면의 쓰기가 끼어들어 스냅숏이 어긋난다.
-  const [history, customers, consultations, cardNotes, dailyDraws, srs] = await Promise.all([
+  const [history, customers, consultations, cardNotes, dailyDraws, srs, customSpreads] = await Promise.all([
     db.getAll('history'),
     db.getAll('customers'),
     db.getAll('consultations'),
     db.getAll('cardNotes'),
     db.getAll('dailyDraws'),
     db.getAll('srs'),
+    db.getAll('customSpreads'),
   ])
 
-  const data: BackupFile['data'] = { history, customers, consultations, cardNotes, dailyDraws, srs }
+  const data: BackupFile['data'] = {
+    history,
+    customers,
+    consultations,
+    cardNotes,
+    dailyDraws,
+    srs,
+    customSpreads,
+  }
   const counts: Record<string, number> = {}
   let count = 0
   for (const spec of STORE_SPECS) {
@@ -136,6 +155,10 @@ function isValidRecord(spec: StoreSpec, value: unknown): boolean {
   for (const field of spec.requiredObjects ?? []) {
     const nested = obj[field]
     if (typeof nested !== 'object' || nested === null) return false
+  }
+  // Infinity·NaN은 typeof가 'number'라 통과한다. 스케줄러가 그대로 먹으면 복구가 안 되므로 여기서 막는다.
+  for (const field of spec.requiredNumbers ?? []) {
+    if (!Number.isFinite(obj[field])) return false
   }
   return true
 }

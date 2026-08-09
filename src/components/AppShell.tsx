@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
+import { OllamaControl } from './OllamaControl'
 import { APP_VERSION } from '../version'
 
 export function AppShell() {
@@ -106,6 +107,8 @@ export function AppShell() {
           </button>
         </nav>
       </header>
+      {/* AI 상태는 리딩 전에 항상 확인해야 하는 정보라 설정 화면이 아니라 상단에 상시 노출한다. */}
+      <OllamaControl />
       {/* 전역 배너는 저장 '실패' 전용이다. 성공 문구는 각 화면이 버튼 옆에 띄운다 —
           저시력 사용자에게는 화면 맨 위 배너보다 방금 누른 버튼 근처 메시지가 훨씬 잘 보인다.
           save_none(저장할 내용 없음)도 실패 계열이라 여기서 함께 알린다. */}

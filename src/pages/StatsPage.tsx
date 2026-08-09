@@ -64,7 +64,9 @@ function StatBar({ ratio }: { ratio: number }) {
     >
       <div
         className="stats-bar__fill"
-        style={{ width: `${width}%`, height: '100%', background: 'var(--accent)' }}
+        // --accent(#7ec8ff)는 이 코드베이스에서 글자·테두리로만 쓰는 밝은 색이다.
+        // 한 화면에 막대가 십수 개 깔리므로 채움에는 중립 경계색을 쓴다(밝은 면적 금지 규칙).
+        style={{ width: `${width}%`, height: '100%', background: 'var(--border-strong)' }}
       />
     </div>
   )
@@ -75,7 +77,8 @@ export function StatsPage() {
   const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading')
   const [period, setPeriod] = useState<Period>(30)
   // 막대는 어디까지나 보조라 끌 수 있어야 한다(색 시각화에는 반드시 리스트 뷰 토글을 붙인다).
-  const [showBars, setShowBars] = useState(true)
+  // 값은 항상 텍스트로 나오므로 막대는 장식이다. 저시력 우선이라 기본은 끄고 필요한 사람만 켠다.
+  const [showBars, setShowBars] = useState(false)
   const { t, setLastSpeakText } = useApp()
 
   const reload = async () => {

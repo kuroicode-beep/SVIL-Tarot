@@ -16,7 +16,9 @@ export function HomePage() {
     },
     { to: '/customers', labelKey: 'home_customers', icon: '👥', wide: true, hintKey: undefined as string | undefined },
     { to: '/consultations', labelKey: 'home_consultations', icon: '🗂️', wide: true, hintKey: undefined as string | undefined },
+    { to: '/stats', labelKey: 'home_stats', icon: '📊', wide: true, hintKey: 'stats_desc' as string | undefined },
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },
+    { to: '/dictionary', labelKey: 'home_dictionary', icon: '📚' },
     { to: '/spreads', labelKey: 'home_spreads', icon: '🃏' },
     {
       to: '/practice',
