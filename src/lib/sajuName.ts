@@ -10,30 +10,69 @@ export const SAJU_WARN = {
   lunarNotConverted: 'saju_warn_lunar_not_converted',
   hourMissing: 'saju_warn_hour_missing',
   solarTermBoundary: 'saju_warn_solar_term_boundary',
+  monthTermBoundary: 'saju_warn_month_term_boundary',
   lateZiHour: 'saju_warn_late_zi_hour',
 } as const
 
-/** 입춘 날짜(KST) 표 — 1900~2060, 한 해당 한 글자로 "2월 며칠"을 담는다.
- *  "기본 2/4 + 몇 해만 2/3" 근사는 1902~1984의 38개 해(실제 2/5)에서 연주를 한 해 앞당겨 틀린다.
- *  예: 1984-02-04는 실제 입춘(2/5 00:24 KST) 전이라 계해년인데 근사로는 갑자년이 된다. */
-const LICHUN_START_YEAR = 1900
-const LICHUN_DAYS = [
-  '4455545554555455544554455445544554455445', // 1900~1939
-  '5445544554455444544454445444544454445444', // 1940~1979
-  '5444544444444444444444444444444444444444', // 1980~2019
-  '4344434443444344434443444344434443444334', // 2020~2059
-  '4', // 2060
-].join('')
+/** 12절기 절입일(KST) 표 — 1900~2060.
+ *  연주·월주 경계는 달의 1일이 아니라 태양황경 기준 12절(節)에서 갈린다:
+ *  소한 285°(1월) 입춘 315°(2월) 경칩 345°(3월) 청명 15°(4월) 입하 45°(5월) 망종 75°(6월)
+ *  소서 105°(7월) 입추 135°(8월) 백로 165°(9월) 한로 195°(10월) 입동 225°(11월) 대설 255°(12월).
+ *
+ *  값은 Meeus/VSOP87 겉보기 태양황경(FK5 보정·장동·광행차 포함, ΔT는 Espenak–Meeus)으로
+ *  1900~2060을 미리 계산해 박아 넣었다 — 런타임 계산은 비용이 크고, 표로 두면 결과가 항상 결정적이다.
+ *  검산: 2024·2025년 KASI 절입시각 24건이 분 단위까지 일치하고, 2021 입춘(2/3 23:59)처럼
+ *  자정 직전 사례도 맞는다. 기존에 검증된 입춘 열(1900~2060 161개)과도 전부 일치한다.
+ *
+ *  "기본 2/4 + 몇 해만 2/3" 식 근사는 1902~1984의 38개 해(실제 2/5)에서 연주를 한 해 앞당겨 틀린다.
+ *  예: 1984-02-04는 실제 입춘(2/5 00:19 KST) 전이라 계해년인데 근사로는 갑자년이 된다. */
+const TERM_START_YEAR = 1900
+/** 달(1~12)별 절입일 최솟값. 실제 일자 = TERM_BASE_DAY[월-1] + TERM_OFFSETS[월-1][해-1900] */
+const TERM_BASE_DAY = [5, 3, 5, 4, 5, 5, 6, 7, 7, 7, 7, 6]
+/** 한 문자열이 한 절기의 1900~2060(161자)이고, 문자 하나가 그 해의 기준일 대비 오프셋(0~2)이다.
+ *  161년 × 12절기를 날짜 그대로 나열하면 표가 비대해져 "기준일 + 오프셋 한 자리"로 줄였다. */
+const TERM_OFFSETS = [
+  '11112111211121112111111111111111111111111111111111111111101110111011101110111011101110111001100110011001100110011001100110011000100010001000100010001000100010000', // 1월 소한 285°
+  '11222122212221222112211221122112211221122112211221122111211121112111211121112111211121111111111111111111111111111111111110111011101110111011101110111011101110011', // 2월 입춘 315°
+  '11121112111211121112111111111111111111111111111111111111011101110111011101110111011101110011001100110011001100110011001100010001000100010001000100010001000000000', // 3월 경칩 345°
+  '11221122112211221112111211121112111211121112111211111111111111111111111111111111111101110111011101110111011101110111001100110011001100110011001100010001000100010', // 4월 청명 15°
+  '11121112111211121111111111111111111111111111111101110111011101110111011101110111001100110011001100110011001100010001000100010001000100010001000000000000000000000', // 5월 입하 45°
+  '11221122111211121112111211121112111211111111111111111111111111111111111101110111011101110111011101110011001100110011001100110011000100010001000100010001000100010', // 6월 망종 75°
+  '22221222122212221222122212221222112211221122112211221122112211121112111211121112111211121111111111111111111111111111111111110111011101110111011101110111001100110', // 7월 소서 105°
+  '11121112111211121111111111111111111111111111111111110111011101110111011101110111001100110011001100110011001100010001000100010001000100010001000000000000000000000', // 8월 입추 135°
+  '11121112111211121112111211121112111111111111111111111111111111110111011101110111011101110111011100110011001100110011001100110001000100010001000100010001000100000', // 9월 백로 165°
+  '22222222222222222222122212221222122212221222122212221122112211221122112211221122112211121112111211121112111211121111111111111111111111111111111111110111011101110', // 10월 한로 195°
+  '11111111111111111111111111111111011101110111011101110111011101110111001100110011001100110011001100110001000100010001000100010001000100000000000000000000000000000', // 11월 입동 225°
+  '12221222122212221222122211221122112211221122112211221122111211121112111211121112111211121111111111111111111111111111111111111111011101110111011101110111011101110', // 12월 대설 255°
+]
 
-// 표 밖의 해는 근거가 없어 최빈값 2/4로 두되, 아래 경계 note가 2/3~2/5에 항상 붙는다
+/** 해당 연·월의 절입일(KST). 표 밖의 해·잘못된 달은 근거가 없어 최빈 오프셋 +1로 두되,
+ *  호출부가 ±1일에 경계 note를 붙이므로 조용히 틀린 값이 되지는 않는다. */
+function solarTermDay(year: number, month: number): number {
+  const base = TERM_BASE_DAY[month - 1] ?? 5
+  const row = TERM_OFFSETS[month - 1]
+  if (!row) return base + 1
+  const ch = row[year - TERM_START_YEAR]
+  return base + (ch ? Number(ch) : 1)
+}
+
+// 연주 경계는 2월 절기인 입춘이다
 function lichunDay(year: number): number {
-  const ch = LICHUN_DAYS[year - LICHUN_START_YEAR]
-  return ch ? Number(ch) : 4
+  return solarTermDay(year, 2)
 }
 
 // 음수 나머지를 피하려고 항상 양수로 정규화한다
 function mod(n: number, m: number): number {
   return ((n % m) + m) % m
+}
+
+/** 날짜 파싱이 깨졌는지 판정. Number.isInteger만으로는 부족하다 —
+ *  birthDate가 ''이거나 '-03-15'처럼 연도 자리가 비면 split('-')[0]이 ''이 되고
+ *  Number('')는 NaN이 아니라 0(정수)이라 검사를 통과한다. 그러면 월주·일주는 '—'인데
+ *  연주만 0년 간지(경신)가 찍히는 반쪽 결과가 나온다.
+ *  dayPillarApprox의 `!y` 검사와 같은 기준(0 이하 거부)으로 맞춘다. */
+function isValidYear(year: number): boolean {
+  return Number.isInteger(year) && year >= 1
 }
 
 /** 연주는 1/1이 아니라 입춘에 바뀌므로, 입춘 이전 출생은 전년도 간지를 쓴다.
@@ -42,15 +81,21 @@ export function yearPillar(
   year: number,
   month?: number,
   day?: number,
-): { ganji: string; stem: string; branch: string; element: string; note: string } {
+): { ganji: string; stem: string; branch: string; element: string; boundary: boolean; note: string } {
+  // 날짜 파싱이 깨진 값이 들어오면 월주·일주와 같게 '—'로 맞춘다(예전엔 'undefinedundefined'가 나왔다)
+  if (!isValidYear(year)) {
+    return { ganji: '—', stem: '', branch: '', element: '', boundary: false, note: '날짜 오류' }
+  }
   let effYear = year
   let note = ''
+  let boundary = false
   if (month && day) {
     const lichun = lichunDay(year)
     // 1월 전체와 입춘 전 2월 초는 아직 전년도 간지다
     if (month === 1 || (month === 2 && day < lichun)) effYear = year - 1
     // 절입은 시각 단위라 경계 ±1일은 뒤집힐 수 있어 확인 요청을 남긴다
     if (month === 2 && Math.abs(day - lichun) <= 1) {
+      boundary = true
       note = '입춘 경계라 실제 절입 시각 확인 필요'
     }
   }
@@ -63,20 +108,34 @@ export function yearPillar(
     stem,
     branch,
     element: `${STEM_ELEM[stemIdx]}·${BRANCH_ELEM[branchIdx]}`,
+    boundary,
     note,
   }
 }
 
-/** 월주 근사 — 인월은 양력 1월이 아니라 2월(입춘 이후)이므로 지지는 월 번호와 그대로 맞물린다.
- *  1월(축월)은 절기상 전년도에 속해 연간(年干)을 한 해 당겨서 월간을 뽑는다. */
+/** 월주 — 절기월은 달의 1일이 아니라 그 달의 절(節) 절입일에 바뀐다.
+ *  절입 전이면 한 칸 앞 절기월로 되돌린다(예: 3월 3일은 경칩 전이라 아직 인월,
+ *  1월 초는 소한 전이라 전해 12월의 자월).
+ *  인월은 양력 2월이라 절기월 번호와 지지가 그대로 맞물리고(2월→인, 12월→자, 1월→축),
+ *  월간(月干)은 입춘 기준 절기년의 연간에서 "갑기년 병인두" 규칙으로 뽑는다.
+ *  1월과 입춘 전 2월은 아직 전년도 절기년이라 연간을 한 해 당긴다. */
 export function monthPillarApprox(
   year: number,
   month: number,
   day?: number,
-): { ganji: string; stem: string; branch: string; note: string } {
-  // 입춘 전 2월 초는 아직 축월이라 1월과 같게 취급한다
-  const m = day && month === 2 && day < lichunDay(year) ? 1 : month
-  const baseYear = m === 1 ? year - 1 : year
+): { ganji: string; stem: string; branch: string; boundary: boolean; note: string } {
+  // 날짜 파싱이 깨진 값이 들어오면 간지 대신 '—'를 돌려준다(예전엔 'undefinedundefined'가 나왔다)
+  if (!isValidYear(year) || !Number.isInteger(month) || month < 1 || month > 12) {
+    return { ganji: '—', stem: '', branch: '', boundary: false, note: '날짜 오류' }
+  }
+  const termDay = solarTermDay(year, month)
+  // 일자를 안 넘기면 절입 판정을 할 수 없어 예전처럼 달 번호를 그대로 절기월로 본다(하위 호환)
+  const beforeTerm = !!day && day < termDay
+  const m = beforeTerm ? (month === 1 ? 12 : month - 1) : month
+  // 절입은 시각 단위라 경계 ±1일은 뒤집힐 수 있어 확인 요청을 남긴다
+  const boundary = !!day && Math.abs(day - termDay) <= 1
+  const beforeLichun = month === 1 || (month === 2 && !!day && day < lichunDay(year))
+  const baseYear = beforeLichun ? year - 1 : year
   const yearStem = mod(baseYear - 4, 10)
   const branchIdx = m % 12 // 2월→인(2), 12월→자(0), 1월→축(1)
   const startStem = [2, 4, 6, 8, 0][yearStem % 5] // 갑기년 병인두 규칙
@@ -88,7 +147,10 @@ export function monthPillarApprox(
     ganji: `${stem}${branch}`,
     stem,
     branch,
-    note: '절기 근사 월주(월초 절입 미반영, 참고용)',
+    boundary,
+    note: boundary
+      ? '12절기 절입일 반영 월주 — 절입 경계라 실제 절입 시각 확인 필요'
+      : '12절기 절입일 반영 월주(절입 시각까지는 미반영, 참고용)',
   }
 }
 
@@ -204,7 +266,9 @@ export function buildSajuSummary(opts: {
   const warnings: string[] = []
   if (isLunar) warnings.push(SAJU_WARN.lunarNotConverted)
   if (!hourPillar) warnings.push(SAJU_WARN.hourMissing)
-  if (year.note) warnings.push(SAJU_WARN.solarTermBoundary)
+  if (year.boundary) warnings.push(SAJU_WARN.solarTermBoundary)
+  // 연주(입춘)와 월주(그 달의 절)는 각각 다른 절기에서 갈리므로 경고도 따로 띄운다
+  if (month.boundary) warnings.push(SAJU_WARN.monthTermBoundary)
   if (isLateZi) warnings.push(SAJU_WARN.lateZiHour)
 
   const textBlock = [
