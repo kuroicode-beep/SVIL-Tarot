@@ -86,6 +86,21 @@ export type DailyDraw = {
   createdAt: string
 }
 
+/** SM-2 간격반복 학습 상태. 카드별로 하나. v4에서 추가. */
+export type SrsCard = {
+  cardId: string
+  /** 난이도 계수. 초기 2.5, 하한 1.3. */
+  ease: number
+  /** 다음 복습까지 일수. */
+  interval: number
+  /** 연속 정답 횟수. 틀리면 0으로 리셋. */
+  reps: number
+  lapses: number
+  /** ISO. 이 시각이 지나면 복습 대상. by-due 인덱스로 조회한다. */
+  dueAt: string
+  updatedAt: string
+}
+
 interface TarotDB extends DBSchema {
   history: {
     key: string
@@ -110,10 +125,15 @@ interface TarotDB extends DBSchema {
     key: string
     value: DailyDraw
   }
+  srs: {
+    key: string
+    value: SrsCard
+    indexes: { 'by-due': string }
+  }
 }
 
 export const DB_NAME = 'svil-tarot'
-export const DB_VERSION = 3
+export const DB_VERSION = 4
 
 let dbPromise: Promise<IDBPDatabase<TarotDB>> | null = null
 
@@ -158,6 +178,13 @@ export function getDb(): Promise<IDBPDatabase<TarotDB>> {
           }
           if (!db.objectStoreNames.contains('dailyDraws')) {
             db.createObjectStore('dailyDraws', { keyPath: 'date' })
+          }
+        }
+        if (oldVersion < 4) {
+          // 간격반복 학습. 오늘 복습할 카드를 뽑아야 하므로 dueAt 인덱스가 필수다.
+          if (!db.objectStoreNames.contains('srs')) {
+            const srs = db.createObjectStore('srs', { keyPath: 'cardId' })
+            srs.createIndex('by-due', 'dueAt')
           }
         }
       },

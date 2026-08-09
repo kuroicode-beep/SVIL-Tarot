@@ -508,6 +508,20 @@ textarea,
   cursor: not-allowed;
 }
 
+/* aria-disabled는 포커스를 유지하므로(첫/끝 문장에서 포커스가 body로 떨어지는 것 방지)
+   비활성으로 '보이게'만 만든다. opacity는 대비까지 무너뜨려 쓰지 않는다. */
+.btn[aria-disabled='true'] {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-sub);
+  cursor: not-allowed;
+}
+
+.btn[aria-disabled='true']:hover {
+  border-color: var(--border);
+  color: var(--text-sub);
+}
+
 .btn-row {
   display: flex;
   flex-wrap: wrap;
