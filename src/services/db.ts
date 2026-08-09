@@ -26,6 +26,9 @@ export type ServiceType =
 /** 리딩이 실제로 어떻게 됐는지. 색이 아니라 값으로 남겨 통계에 쓴다. */
 export type ReadingOutcome = 'hit' | 'partial' | 'miss'
 
+/** 상담 진행 상태. 색이 아니라 값으로 저장해 필터·배지에 함께 쓴다. */
+export type ConsultationStatus = 'todo' | 'doing' | 'done'
+
 export type Customer = {
   id: string
   name: string
@@ -51,6 +54,12 @@ export type Consultation = {
   historyId?: string
   meta?: Record<string, string | number | boolean>
   createdAt: string
+  /** 상담 대기열 — 마감일. 프로 리더가 여러 건을 굴릴 때 쓴다. v5에서 추가. */
+  dueAt?: string
+  /** 진행 상태. 없으면 'done'(기존 기록은 전부 완료된 것으로 본다). v5에서 추가. */
+  status?: ConsultationStatus
+  /** 로컬 LLM이 정리한 3줄 요약. v5에서 추가. */
+  aiNote?: string
 }
 
 export type HistoryEntry = {
@@ -84,6 +93,16 @@ export type DailyDraw = {
   card: DrawnCard
   aiText?: string
   createdAt: string
+}
+
+/** 사용자가 직접 만든 스프레드. 기본 spreads.json과 같은 스키마를 따른다. v5에서 추가. */
+export type CustomSpread = {
+  id: string
+  nameKo: string
+  cardCount: number
+  positions: { key: string; labelKo: string }[]
+  createdAt: string
+  updatedAt: string
 }
 
 /** SM-2 간격반복 학습 상태. 카드별로 하나. v4에서 추가. */
@@ -130,10 +149,15 @@ interface TarotDB extends DBSchema {
     value: SrsCard
     indexes: { 'by-due': string }
   }
+  customSpreads: {
+    key: string
+    value: CustomSpread
+    indexes: { 'by-updated': string }
+  }
 }
 
 export const DB_NAME = 'svil-tarot'
-export const DB_VERSION = 4
+export const DB_VERSION = 5
 
 let dbPromise: Promise<IDBPDatabase<TarotDB>> | null = null
 
@@ -185,6 +209,14 @@ export function getDb(): Promise<IDBPDatabase<TarotDB>> {
           if (!db.objectStoreNames.contains('srs')) {
             const srs = db.createObjectStore('srs', { keyPath: 'cardId' })
             srs.createIndex('by-due', 'dueAt')
+          }
+        }
+        if (oldVersion < 5) {
+          // 사용자 정의 스프레드. Consultation의 dueAt·status·aiNote는 선택 필드라
+          // IndexedDB가 레코드 단위로 저장하는 이상 마이그레이션이 필요 없다.
+          if (!db.objectStoreNames.contains('customSpreads')) {
+            const cs = db.createObjectStore('customSpreads', { keyPath: 'id' })
+            cs.createIndex('by-updated', 'updatedAt')
           }
         }
       },

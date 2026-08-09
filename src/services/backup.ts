@@ -8,6 +8,7 @@ import {
   type DailyDraw,
   type HistoryEntry,
   type SrsCard,
+  type CustomSpread,
 } from './db'
 
 /** 파일 서명. 확장자만으로는 남의 JSON과 구분되지 않아 복원 전 이 값으로 걸러낸다. */
@@ -25,6 +26,7 @@ export type BackupFile = {
     cardNotes: CardNote[]
     dailyDraws: DailyDraw[]
     srs: SrsCard[]
+    customSpreads: CustomSpread[]
   }
 }
 
@@ -53,6 +55,7 @@ const STORE_SPECS: readonly StoreSpec[] = [
   { name: 'cardNotes', keyPath: 'cardId', requiredStrings: ['updatedAt'] },
   { name: 'dailyDraws', keyPath: 'date', requiredStrings: ['createdAt'], requiredObjects: ['card'] },
   // 학습 진도는 몇 달치 누적이라 백업에서 빠지면 사용자가 처음부터 다시 외워야 한다.
+  { name: 'customSpreads', keyPath: 'id', requiredStrings: ['nameKo', 'createdAt', 'updatedAt'] },
   {
     name: 'srs',
     keyPath: 'cardId',
@@ -73,16 +76,25 @@ export async function exportBackup(): Promise<{ blob: Blob; filename: string; co
   // 시각을 두 번 읽으면 분 경계에서 파일명과 exportedAt이 1분 어긋난다. 한 번만 읽어 같이 쓴다.
   const now = new Date()
   // 스토어를 하나씩 순차로 읽으면 그 사이 다른 화면의 쓰기가 끼어들어 스냅숏이 어긋난다.
-  const [history, customers, consultations, cardNotes, dailyDraws, srs] = await Promise.all([
+  const [history, customers, consultations, cardNotes, dailyDraws, srs, customSpreads] = await Promise.all([
     db.getAll('history'),
     db.getAll('customers'),
     db.getAll('consultations'),
     db.getAll('cardNotes'),
     db.getAll('dailyDraws'),
     db.getAll('srs'),
+    db.getAll('customSpreads'),
   ])
 
-  const data: BackupFile['data'] = { history, customers, consultations, cardNotes, dailyDraws, srs }
+  const data: BackupFile['data'] = {
+    history,
+    customers,
+    consultations,
+    cardNotes,
+    dailyDraws,
+    srs,
+    customSpreads,
+  }
   const counts: Record<string, number> = {}
   let count = 0
   for (const spec of STORE_SPECS) {
