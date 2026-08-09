@@ -4,6 +4,8 @@ import { AppShell } from './components/AppShell'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { HomePage } from './pages/HomePage'
 import { DailyPage } from './pages/DailyPage'
+import { DictionaryPage } from './pages/DictionaryPage'
+import { StatsPage } from './pages/StatsPage'
 import { LearnPage } from './pages/LearnPage'
 import { LearnQuizPage } from './pages/LearnQuizPage'
 import { SpreadsPage } from './pages/SpreadsPage'
@@ -29,6 +31,8 @@ export default function App() {
           <Route element={<AppShell />}>
             <Route index element={<HomePage />} />
             <Route path="daily" element={<DailyPage />} />
+            <Route path="dictionary" element={<DictionaryPage />} />
+            <Route path="stats" element={<StatsPage />} />
             <Route path="learn" element={<LearnPage />} />
             <Route path="learn/:stageId" element={<LearnPage />} />
             <Route path="learn/:stageId/quiz" element={<LearnQuizPage />} />
