@@ -1,5 +1,7 @@
 // src/lib/sajuName.ts — 간이 만세력·성명 헬퍼 (전문 엔진 아님 — AI 풀이 보조 요약용)
 
+import { lunarToSolar, LUNAR_MIN_YEAR, LUNAR_MAX_YEAR } from './lunar'
+
 const STEMS = ['갑', '을', '병', '정', '무', '기', '경', '신', '임', '계'] as const
 const BRANCHES = ['자', '축', '인', '묘', '진', '사', '오', '미', '신', '유', '술', '해'] as const
 const STEM_ELEM = ['목', '목', '화', '화', '토', '토', '금', '금', '수', '수'] as const
@@ -7,7 +9,10 @@ const BRANCH_ELEM = ['수', '토', '목', '목', '토', '화', '화', '토', '�
 
 /** 경고 문구는 화면마다 언어가 달라야 하므로 텍스트 대신 i18n 키만 넘긴다 */
 export const SAJU_WARN = {
-  lunarNotConverted: 'saju_warn_lunar_not_converted',
+  /** 음력 → 양력 환산에 성공했음을 알린다. 실제 날짜는 SajuSummary.lunarDate·solarDate로 되비친다. */
+  lunarConverted: 'saju_warn_lunar_converted',
+  /** 환산 실패(지원 범위 밖·없는 날짜·없는 윤달) — 이때는 간지를 아예 세우지 않는다. */
+  lunarConvertFailed: 'saju_warn_lunar_convert_failed',
   hourMissing: 'saju_warn_hour_missing',
   solarTermBoundary: 'saju_warn_solar_term_boundary',
   monthTermBoundary: 'saju_warn_month_term_boundary',
@@ -229,11 +234,27 @@ function shiftIsoDate(isoDate: string, days: number): string {
   return `${dt.getUTCFullYear()}-${pad(dt.getUTCMonth() + 1)}-${pad(dt.getUTCDate())}`
 }
 
+// 'YYYY-MM-DD'로 0을 채워 맞춘다 — 간지 계산이 문자열 split에 의존하므로 자릿수가 어긋나면 안 된다
+function toIsoDate(d: { year: number; month: number; day: number }): string {
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${d.year}-${pad(d.month)}-${pad(d.day)}`
+}
+
 export type SajuSummary = {
+  /** 사용자가 입력한 날짜 그대로(음력이면 음력 날짜) */
   birthDate: string
   birthTime: string
   gender: string
   calendarType: string
+  /** 간지 계산에 실제로 쓴 양력 날짜. 양력 입력이면 birthDate와 같고, 환산 실패면 undefined.
+   *  화면이 "음력 O월 O일 → 양력 O월 O일"을 되비쳐 줄 때 쓴다. */
+  solarDate?: string
+  /** 음력 입력 원문('YYYY-MM-DD'). 양력 입력이면 undefined. */
+  lunarDate?: string
+  /** 음력 입력이 윤달이었는지 */
+  isLeapMonth?: boolean
+  /** 음력 → 양력 환산이 실제로 적용됐는지. false + calendarType==='lunar'면 환산 실패다. */
+  lunarConverted?: boolean
   year: ReturnType<typeof yearPillar>
   month: ReturnType<typeof monthPillarApprox>
   day: ReturnType<typeof dayPillarApprox>
@@ -249,38 +270,67 @@ export function buildSajuSummary(opts: {
   birthTime?: string
   gender?: string
   calendarType?: string
+  /** 음력 입력일 때 그 날짜가 윤달인지. 양력 입력이면 무시된다. */
+  isLeapMonth?: boolean
 }): SajuSummary {
-  const [y, m, d] = opts.birthDate.split('-').map(Number)
   const hour = parseHour(opts.birthTime)
   const isLunar = opts.calendarType === 'lunar'
-  const isLateZi = hour !== null && hour >= 23
+  const isLeap = isLunar && opts.isLeapMonth === true
+
+  // 간지는 전부 양력 기준 공식이라, 음력 입력은 반드시 먼저 양력으로 환산해야 한다.
+  // 예전에는 환산 없이 음력 날짜를 그대로 넣어 경고만 띄웠고, 그래서 틀린 사주가 나왔다.
+  let solarDate: string | null = opts.birthDate
+  if (isLunar) {
+    const [ly, lm, ld] = opts.birthDate.split('-').map(Number)
+    const converted = lunarToSolar({ year: ly, month: lm, day: ld, isLeapMonth: isLeap })
+    solarDate = converted ? toIsoDate(converted) : null
+  }
+  const lunarFailed = solarDate === null
+  // 환산에 실패하면 틀린 값을 보여 주느니 아예 세우지 않는다.
+  // 빈 문자열을 넘기면 기존 날짜 검사(isValidYear·dayPillarApprox)가 모든 주를 '—'로 돌려준다.
+  const calcDate = solarDate ?? ''
+  const [y, m, d] = calcDate.split('-').map(Number)
+  const isLateZi = !lunarFailed && hour !== null && hour >= 23
 
   // 연·월주는 절기 경계 판정에 일자가 필요하므로 월·일까지 넘긴다
   const year = yearPillar(y, m, d)
   const month = monthPillarApprox(y, m, d)
   // 야자시면 일주만 다음 날로 넘기고 연·월주는 원래 날짜 기준을 유지한다
-  const dayDate = isLateZi ? shiftIsoDate(opts.birthDate, 1) : opts.birthDate
+  const dayDate = isLateZi ? shiftIsoDate(calcDate, 1) : calcDate
   const day = dayPillarApprox(dayDate)
-  const hourPillar = hour === null ? null : hourPillarApprox(day.stemIdx, hour)
+  const hourPillar = hour === null || lunarFailed ? null : hourPillarApprox(day.stemIdx, hour)
 
   const warnings: string[] = []
-  if (isLunar) warnings.push(SAJU_WARN.lunarNotConverted)
-  if (!hourPillar) warnings.push(SAJU_WARN.hourMissing)
-  if (year.boundary) warnings.push(SAJU_WARN.solarTermBoundary)
-  // 연주(입춘)와 월주(그 달의 절)는 각각 다른 절기에서 갈리므로 경고도 따로 띄운다
-  if (month.boundary) warnings.push(SAJU_WARN.monthTermBoundary)
-  if (isLateZi) warnings.push(SAJU_WARN.lateZiHour)
+  if (lunarFailed) {
+    // 환산이 깨졌으면 아래 경고들은 세우지도 않은 간지에 대한 잡음이라 띄우지 않는다
+    warnings.push(SAJU_WARN.lunarConvertFailed)
+  } else {
+    if (isLunar) warnings.push(SAJU_WARN.lunarConverted)
+    if (!hourPillar) warnings.push(SAJU_WARN.hourMissing)
+    if (year.boundary) warnings.push(SAJU_WARN.solarTermBoundary)
+    // 연주(입춘)와 월주(그 달의 절)는 각각 다른 절기에서 갈리므로 경고도 따로 띄운다
+    if (month.boundary) warnings.push(SAJU_WARN.monthTermBoundary)
+    if (isLateZi) warnings.push(SAJU_WARN.lateZiHour)
+  }
+
+  const calendarLine = !isLunar
+    ? '달력: 양력'
+    : lunarFailed
+      ? `달력: 음력 입력 — 양력 환산 실패(지원 범위 음력 ${LUNAR_MIN_YEAR}~${LUNAR_MAX_YEAR}년, 윤달 여부·날짜 확인 필요)`
+      : `달력: 음력 ${opts.birthDate}${isLeap ? ' 윤달' : ''} → 양력 ${solarDate} 환산 적용`
 
   const textBlock = [
     `입력: ${opts.birthDate} ${opts.birthTime || '(시간 미상)'}`,
-    `달력: ${isLunar ? '음력 입력(양력 환산 미적용 — 결과 부정확)' : '양력'}`,
+    calendarLine,
     `성별: ${opts.gender || '미지정'}`,
     `년주: ${year.ganji} (${year.element})${year.note ? ` — ${year.note}` : ''}`,
     `월주(간이): ${month.ganji} — ${month.note}`,
     `일주(간이): ${day.ganji} — ${day.note}${isLateZi ? ' · 야자시라 다음 날 일주 적용' : ''}`,
     hourPillar
       ? `시주(간이): ${hourPillar.ganji} (${hourPillar.element}) — ${hourPillar.note}`
-      : '시주: 미산출 — 출생 시각이 없어 시주를 세우지 않았습니다',
+      : lunarFailed
+        ? '시주: 미산출 — 음력을 양력으로 환산하지 못해 계산하지 않았습니다'
+        : '시주: 미산출 — 출생 시각이 없어 시주를 세우지 않았습니다',
   ].join('\n')
 
   return {
@@ -288,6 +338,11 @@ export function buildSajuSummary(opts: {
     birthTime: opts.birthTime || '',
     gender: opts.gender || '',
     calendarType: opts.calendarType || 'solar',
+    // 빈 문자열(깨진 입력)도 undefined로 눌러야 화면이 "→ 양력 " 같은 반쪽 문구를 찍지 않는다
+    solarDate: solarDate || undefined,
+    lunarDate: isLunar ? opts.birthDate : undefined,
+    isLeapMonth: isLunar ? isLeap : undefined,
+    lunarConverted: isLunar ? !lunarFailed : undefined,
     year,
     month,
     day,
