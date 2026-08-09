@@ -71,6 +71,8 @@ export function ReadingPlayer({ text, title }: { text: string; title?: string })
   // 문장 이동은 곧 "그 지점부터 듣기"다. 재생 중이 아니면 강조 위치만 옮긴다.
   const jump = useCallback(
     (target: number, autoPlay: boolean) => {
+      // aria-disabled는 클릭을 막지 않으므로 범위를 여기서 잘라낸다.
+      if (target < 0 || target > sentences.length - 1) return
       const clamped = Math.max(0, Math.min(target, sentences.length - 1))
       stop()
       setIndex(clamped)
@@ -156,11 +158,13 @@ export function ReadingPlayer({ text, title }: { text: string; title?: string })
           <span aria-hidden="true">{playing ? '⏸' : '▶'}</span>
           {playing ? t('player_pause') : t('player_play')}
         </button>
+        {/* disabled를 걸면 첫 문장에 닿는 순간 버튼이 포커스를 잃고 body로 떨어진다.
+            aria-disabled는 포커스를 유지하면서 상태만 알린다. */}
         <button
           type="button"
           className="btn"
           onClick={() => jump(index - 1, playing)}
-          disabled={index === 0}
+          aria-disabled={index === 0 || undefined}
         >
           <span aria-hidden="true">⏮</span>
           {t('player_prev')}
@@ -169,7 +173,7 @@ export function ReadingPlayer({ text, title }: { text: string; title?: string })
           type="button"
           className="btn"
           onClick={() => jump(index + 1, playing)}
-          disabled={index >= last}
+          aria-disabled={index >= last || undefined}
         >
           <span aria-hidden="true">⏭</span>
           {t('player_next')}
