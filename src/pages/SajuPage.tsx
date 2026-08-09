@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { CustomerPicker } from '../components/CustomerPicker'
 import { ConnectionBadge } from '../components/ConnectionBadge'
 import { buildSajuSummary, type SajuSummary } from '../lib/sajuName'
+import { leapMonthOfYear } from '../lib/lunar'
 import { getCustomer, recordServiceConsultation, type Customer } from '../services/customers'
 import { saveHistory } from '../services/history'
 import { sajuReading } from '../services/ollama'
@@ -25,6 +26,8 @@ export function SajuPage() {
   const [birthTime, setBirthTime] = useState('')
   const [gender, setGender] = useState('')
   const [calendarType, setCalendarType] = useState<'solar' | 'lunar'>('solar')
+  // 윤달 여부를 넘기지 않으면 평달로 계산된다. 윤달 생일은 결과가 통째로 달라진다.
+  const [isLeapMonth, setIsLeapMonth] = useState(false)
   const [focusId, setFocusId] = useState<(typeof FOCUSES)[number]['id']>('all')
   // textBlock은 Ollama 프롬프트 페이로드라 한국어를 유지해야 한다(로케일에 따라 바뀌면 응답 품질이 흔들린다).
   // 그래서 화면에는 textBlock을 그대로 뿌리지 않고 구조화 필드를 t()로 렌더한다.
@@ -46,6 +49,12 @@ export function SajuPage() {
     })
   }, [customerId])
 
+  // 입력한 연도에 윤달이 있는지. 없으면 체크박스를 눌러도 계산이 실패하므로 미리 막는다.
+  const leapYear = (() => {
+    const y = Number(birthDate.slice(0, 4))
+    return Number.isInteger(y) ? leapMonthOfYear(y) : 0
+  })()
+
   const run = async () => {
     setError(null)
     if (!birthDate) {
@@ -56,7 +65,7 @@ export function SajuPage() {
     const f = FOCUSES.find((x) => x.id === focusId) ?? FOCUSES[0]
     const focus = f.prompt
     try {
-      const s = buildSajuSummary({ birthDate, birthTime, gender, calendarType })
+      const s = buildSajuSummary({ birthDate, birthTime, gender, calendarType, isLeapMonth })
       setSummary(s)
       setWarnings(s.warnings ?? [])
       const text = await sajuReading(s.textBlock, focus)
@@ -153,11 +162,29 @@ export function SajuPage() {
           </label>
         </div>
         {/* htmlFor="focus"는 대응 id가 없는 고아 레이블이었다. 칩 묶음은 role=group으로 이름을 준다. */}
-        {/* 경고를 풀이 실행 후에야 보여 주면 이미 잘못된 값을 본 뒤다. 선택 즉시 알린다. */}
+        {/* 이제 음력은 실제로 환산된다. 예전의 "환산 미적용" 문구는 거짓이므로 지원 범위 안내로 바꿨다. */}
         {calendarType === 'lunar' && (
-          <p className="warn-inline" role="note" style={{ marginTop: 12 }}>
-            {t('saju_warn_lunar_not_converted')}
-          </p>
+          <>
+            <p className="warn-inline" role="note" style={{ marginTop: 12 }}>
+              {t('saju_lunar_range')}
+            </p>
+            {/* 그 해에 윤달이 없으면 체크할 수 없다. 체크해도 lunarToSolar가 null을 돌려주기 때문이다. */}
+            <div className="chip-row" style={{ marginTop: 12 }}>
+              <button
+                type="button"
+                className={`chip${isLeapMonth ? ' is-on' : ''}`}
+                aria-pressed={isLeapMonth}
+                aria-disabled={leapYear === 0 || undefined}
+                onClick={() => {
+                  if (leapYear === 0) return
+                  setIsLeapMonth((v) => !v)
+                }}
+              >
+                {t('saju_f_leap')}
+              </button>
+              {leapYear === 0 && <span className="muted">{t('saju_leap_hint')}</span>}
+            </div>
+          </>
         )}
         <div className="label" style={{ marginTop: 12 }}>
           {t('saju_focus')}
@@ -219,6 +246,13 @@ export function SajuPage() {
               </div>
             ))}
           </dl>
+          {summary.lunarConverted && summary.solarDate && (
+            <p className="muted" style={{ marginTop: 12 }}>
+              {t('saju_lunar_input')}: <span className="mono">{summary.lunarDate}</span>
+              {summary.isLeapMonth ? ` (${t('saju_f_leap')})` : ''} → {t('saju_solar_converted')}:{' '}
+              <span className="mono">{summary.solarDate}</span>
+            </p>
+          )}
           <p className="muted" style={{ marginTop: 12 }}>
             {t('saju_approx_note')}
           </p>

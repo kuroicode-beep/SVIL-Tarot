@@ -6,6 +6,9 @@ import { HomePage } from './pages/HomePage'
 import { DailyPage } from './pages/DailyPage'
 import { DictionaryPage } from './pages/DictionaryPage'
 import { StatsPage } from './pages/StatsPage'
+import { CalendarPage } from './pages/CalendarPage'
+import { DreamPage } from './pages/DreamPage'
+import { SpreadBuilderPage } from './pages/SpreadBuilderPage'
 import { LearnPage } from './pages/LearnPage'
 import { LearnQuizPage } from './pages/LearnQuizPage'
 import { SpreadsPage } from './pages/SpreadsPage'
@@ -37,12 +40,15 @@ export default function App() {
             <Route path="learn/:stageId" element={<LearnPage />} />
             <Route path="learn/:stageId/quiz" element={<LearnQuizPage />} />
             <Route path="spreads" element={<SpreadsPage />} />
+            <Route path="spread-builder" element={<SpreadBuilderPage />} />
             <Route path="practice" element={<PracticePage />} />
             <Route path="ai" element={<AiTarotPage />} />
             <Route path="soul" element={<SoulCardPage />} />
+            <Route path="dream" element={<DreamPage />} />
             <Route path="customers" element={<CustomersPage />} />
             <Route path="customers/:id" element={<CustomersPage />} />
             <Route path="consultations" element={<ConsultationsPage />} />
+            <Route path="calendar" element={<CalendarPage />} />
             <Route path="saju" element={<SajuPage />} />
             <Route path="compat" element={<CompatPage />} />
             <Route path="nameology" element={<NameologyPage />} />

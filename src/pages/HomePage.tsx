@@ -20,6 +20,7 @@ export function HomePage() {
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },
     { to: '/dictionary', labelKey: 'home_dictionary', icon: '📚' },
     { to: '/spreads', labelKey: 'home_spreads', icon: '🃏' },
+    { to: '/spread-builder', labelKey: 'home_spread_builder', icon: '🛠️' },
     {
       to: '/practice',
       labelKey: 'home_practice',
@@ -29,6 +30,14 @@ export function HomePage() {
     },
     { to: '/ai', labelKey: 'home_ai', icon: '🤖' },
     { to: '/soul', labelKey: 'home_soul', icon: '💫' },
+    { to: '/dream', labelKey: 'home_dream', icon: '🌙' },
+    {
+      to: '/calendar',
+      labelKey: 'home_calendar',
+      icon: '📅',
+      wide: true,
+      hintKey: 'home_calendar_hint' as string | undefined,
+    },
     { to: '/saju', labelKey: 'home_saju', icon: '📜' },
     { to: '/compat', labelKey: 'home_compat', icon: '💞' },
     { to: '/nameology', labelKey: 'home_nameology', icon: '🔤' },
