@@ -12,6 +12,47 @@ export async function checkOllama(): Promise<boolean> {
   }
 }
 
+/** 모델이 지금 VRAM에 올라가 있는지. 서버가 살아 있어도 모델은 내려가 있을 수 있다. */
+export async function isModelLoaded(): Promise<boolean> {
+  try {
+    const res = await fetch(`${OLLAMA_BASE}/api/ps`, { signal: AbortSignal.timeout(3000) })
+    if (!res.ok) return false
+    const data = (await res.json()) as { models?: { name?: string; model?: string }[] }
+    return (data.models ?? []).some((m) => m.name === OLLAMA_MODEL || m.model === OLLAMA_MODEL)
+  } catch {
+    return false
+  }
+}
+
+/**
+ * 모델을 VRAM에 올린다. 빈 프롬프트로 생성 요청을 보내면 로드만 하고 끝난다.
+ * 첫 리딩에서 수십 초 기다리는 대신 미리 올려 두려는 용도라 타임아웃을 넉넉히 준다.
+ */
+export async function loadModel(): Promise<void> {
+  const res = await fetch(`${OLLAMA_BASE}/api/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: OLLAMA_MODEL, prompt: '', keep_alive: '30m' }),
+    signal: AbortSignal.timeout(180_000),
+  })
+  if (!res.ok) throw new Error('OLLAMA_LOAD_FAILED')
+}
+
+/**
+ * 모델을 VRAM에서 내린다(`keep_alive: 0`). 서버 프로세스는 그대로 살아 있다.
+ * 브라우저는 로컬 프로세스를 죽일 수 없으므로 '중지'가 가능한 범위는 여기까지다.
+ * 같은 GPU를 쓰는 이미지·TTS 작업에 VRAM을 넘겨줄 때 쓴다.
+ */
+export async function unloadModel(): Promise<void> {
+  const res = await fetch(`${OLLAMA_BASE}/api/generate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: OLLAMA_MODEL, prompt: '', keep_alive: 0 }),
+    signal: AbortSignal.timeout(30_000),
+  })
+  if (!res.ok) throw new Error('OLLAMA_UNLOAD_FAILED')
+}
+
 export async function ollamaChat(
   messages: ChatMessage[],
   opts?: { temperature?: number; timeoutMs?: number },

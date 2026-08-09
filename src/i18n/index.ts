@@ -408,6 +408,16 @@ const ko: Dict = {
   export_label_ai: 'AI 리딩',
   export_label_outcome: '사후 결과',
   export_label_outcome_note: '결과 메모',
+  // 상단바 AI 상태·모델 제어
+  ai_model_loaded: '모델 올림',
+  ai_model_unloaded: '모델 내림',
+  ai_load: '모델 올리기',
+  ai_loading: '올리는 중…',
+  ai_unload: '모델 내리기',
+  ai_unloading: '내리는 중…',
+  ai_load_failed: '모델을 올리지 못했습니다.',
+  ai_unload_failed: '모델을 내리지 못했습니다.',
+  ai_start_hint: '터미널에서 ollama serve 를 실행하세요',
 }
 
 const en: Dict = {
@@ -804,6 +814,16 @@ const en: Dict = {
   export_label_ai: 'AI reading',
   export_label_outcome: 'Outcome',
   export_label_outcome_note: 'Outcome note',
+  // 상단바 AI 상태·모델 제어
+  ai_model_loaded: 'Model loaded',
+  ai_model_unloaded: 'Model unloaded',
+  ai_load: 'Load model',
+  ai_loading: 'Loading…',
+  ai_unload: 'Unload model',
+  ai_unloading: 'Unloading…',
+  ai_load_failed: 'Could not load the model.',
+  ai_unload_failed: 'Could not unload the model.',
+  ai_start_hint: 'Run `ollama serve` in a terminal',
 }
 
 const ja: Dict = {
@@ -1200,6 +1220,16 @@ const ja: Dict = {
   export_label_ai: 'AIリーディング',
   export_label_outcome: '事後結果',
   export_label_outcome_note: '結果メモ',
+  // 상단바 AI 상태·모델 제어
+  ai_model_loaded: 'モデル読込済',
+  ai_model_unloaded: 'モデル未読込',
+  ai_load: 'モデルを読み込む',
+  ai_loading: '読み込み中…',
+  ai_unload: 'モデルを解放する',
+  ai_unloading: '解放中…',
+  ai_load_failed: 'モデルを読み込めませんでした。',
+  ai_unload_failed: 'モデルを解放できませんでした。',
+  ai_start_hint: 'ターミナルで ollama serve を実行してください',
 }
 
 const zh: Dict = {
@@ -1594,6 +1624,16 @@ const zh: Dict = {
   export_label_ai: 'AI解读',
   export_label_outcome: '事后结果',
   export_label_outcome_note: '结果备注',
+  // 상단바 AI 상태·모델 제어
+  ai_model_loaded: '模型已加载',
+  ai_model_unloaded: '模型已卸载',
+  ai_load: '加载模型',
+  ai_loading: '加载中…',
+  ai_unload: '卸载模型',
+  ai_unloading: '卸载中…',
+  ai_load_failed: '无法加载模型。',
+  ai_unload_failed: '无法卸载模型。',
+  ai_start_hint: '请在终端运行 ollama serve',
 }
 
 const vi: Dict = {
@@ -1990,6 +2030,16 @@ const vi: Dict = {
   export_label_ai: 'Bài đọc AI',
   export_label_outcome: 'Kết quả sau đó',
   export_label_outcome_note: 'Ghi chú kết quả',
+  // 상단바 AI 상태·모델 제어
+  ai_model_loaded: 'Đã nạp mô hình',
+  ai_model_unloaded: 'Chưa nạp mô hình',
+  ai_load: 'Nạp mô hình',
+  ai_loading: 'Đang nạp…',
+  ai_unload: 'Giải phóng mô hình',
+  ai_unloading: 'Đang giải phóng…',
+  ai_load_failed: 'Không nạp được mô hình.',
+  ai_unload_failed: 'Không giải phóng được mô hình.',
+  ai_start_hint: 'Chạy `ollama serve` trong terminal',
 }
 
 const tables: Record<Locale, Dict> = { ko, en, ja, zh, vi }
