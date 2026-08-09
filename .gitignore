@@ -22,3 +22,23 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
+
+# 환경변수 — *.local은 .env.local만 잡아서 순수 .env가 그냥 커밋된다
+.env
+.env.*
+!.env.example
+
+# 비밀키·자격증명
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+secrets.*
+credentials.*
+
+# 로컬 데이터 덤프 (고객 백업 JSON이 실수로 커밋되는 걸 막는다)
+*.sqlite
+*.db
+svil-tarot-backup_*.json
