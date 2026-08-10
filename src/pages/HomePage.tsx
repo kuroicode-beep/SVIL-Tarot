@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useApp } from '../context/AppContext'
-import { deckUrl } from '../lib/cards'
+// cards.ts가 아니라 deckUrl 전용 모듈에서 가져온다 — 홈은 카드 데이터(152KB)가 필요 없다.
+import { deckUrl } from '../lib/deckUrl'
 
 export function HomePage() {
   const { setLastSpeakText, t } = useApp()
@@ -17,6 +18,13 @@ export function HomePage() {
     { to: '/customers', labelKey: 'home_customers', icon: '👥', wide: true, hintKey: undefined as string | undefined },
     { to: '/consultations', labelKey: 'home_consultations', icon: '🗂️', wide: true, hintKey: undefined as string | undefined },
     { to: '/stats', labelKey: 'home_stats', icon: '📊', wide: true, hintKey: 'stats_desc' as string | undefined },
+    {
+      to: '/review',
+      labelKey: 'home_review',
+      icon: '🔁',
+      wide: true,
+      hintKey: 'home_review_hint' as string | undefined,
+    },
     { to: '/learn', labelKey: 'home_learn', icon: '📖' },
     { to: '/dictionary', labelKey: 'home_dictionary', icon: '📚' },
     { to: '/spreads', labelKey: 'home_spreads', icon: '🃏' },

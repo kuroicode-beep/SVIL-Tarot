@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { listHistory, type HistoryEntry } from '../services/history'
-import { allCards } from '../lib/cards'
+import { getLocalizedCards, subtitleEn } from '../lib/cards'
 import { computeStats, DECK_SIZE, PERIODS, SUIT_ORDER, type Period } from '../lib/stats'
 import { useApp } from '../context/AppContext'
 
@@ -29,8 +29,17 @@ const OUTCOME_ROWS = [
 
 // getCard는 미등록 id에 throw한다. 옛 기록에 남은 카드 id 하나로 통계 화면이 통째로
 // 죽지 않도록 throw하지 않는 이름 조회를 쓴다.
-const nameById = new Map(allCards.map((c) => [c.id, `${c.nameKo} (${c.nameEn})`]))
-const cardLabel = (id: string) => nameById.get(id) ?? id
+// 로케일이 걸리므로 모듈 상수가 아니라 화면 안에서 만든다(언어를 바꾸면 이름도 따라가야 한다).
+function makeCardLabel(locale: string): (id: string) => string {
+  // 영어 로케일에서는 표시 이름이 곧 영어 원명이라 괄호를 붙이면 "The Fool (The Fool)"이 된다.
+  const nameById = new Map(
+    getLocalizedCards(locale).map((c) => {
+      const en = subtitleEn(c)
+      return [c.id, en ? `${c.nameKo} (${en})` : c.nameKo]
+    }),
+  )
+  return (id: string) => nameById.get(id) ?? id
+}
 
 /** 요약 수치 한 줄. '라벨 — 값' 정의 목록이라 스크린리더에서도 짝이 유지된다. */
 function StatRow({ label, value }: { label: string; value: string }) {
@@ -79,7 +88,8 @@ export function StatsPage() {
   // 막대는 어디까지나 보조라 끌 수 있어야 한다(색 시각화에는 반드시 리스트 뷰 토글을 붙인다).
   // 값은 항상 텍스트로 나오므로 막대는 장식이다. 저시력 우선이라 기본은 끄고 필요한 사람만 켠다.
   const [showBars, setShowBars] = useState(false)
-  const { t, setLastSpeakText } = useApp()
+  const { t, setLastSpeakText, settings } = useApp()
+  const cardLabel = useMemo(() => makeCardLabel(settings.locale), [settings.locale])
 
   const reload = async () => {
     setLoadState('loading')

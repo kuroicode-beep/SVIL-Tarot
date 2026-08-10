@@ -1,6 +1,6 @@
 // src/components/CardViewer.tsx — 카드 도판을 전체화면으로 확대·대비 강화해 보는 저시력 판독 뷰어
 import { useEffect, useId, useRef, useState } from 'react'
-import { cardImageUrl, getCard } from '../lib/cards'
+import { cardImageUrl, findLocalizedCard, subtitleEn } from '../lib/cards'
 import { useApp } from '../context/AppContext'
 
 const ZOOM_MIN = 100
@@ -19,8 +19,9 @@ export function CardViewer({
   isReversed?: boolean
   onClose: () => void
 }) {
-  const card = getCard(cardId)
-  const { t } = useApp()
+  const { t, settings } = useApp()
+  // 덱에서 빠진 카드면 undefined. 훅 순서를 지키려고 렌더 분기는 훅을 전부 부른 뒤에 한다.
+  const card = findLocalizedCard(cardId, settings.locale)
   const uid = useId()
   const [zoom, setZoom] = useState(ZOOM_MIN)
   const [contrast, setContrast] = useState(CONTRAST_MIN)
@@ -93,6 +94,23 @@ export function CardViewer({
     setRotated(Boolean(isReversed))
   }
 
+  // 덱에서 빠진 카드는 확대할 도판이 없다. 진입 경로(TarotCardView)가 이미 막지만,
+  // 여기서도 조용히 닫히지 않게 이유를 남긴다.
+  if (!card) {
+    return (
+      <div className="card-viewer" role="dialog" aria-modal="true" aria-label={t('viewer_title')}>
+        <div className="card-viewer__bar">
+          <p className="error-text" role="alert">
+            {t('card_unknown', { id: cardId })}
+          </p>
+          <button ref={closeRef} type="button" className="btn btn--primary" onClick={onClose}>
+            {t('viewer_close')}
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       ref={rootRef}
@@ -106,7 +124,8 @@ export function CardViewer({
         <div>
           <div style={{ fontWeight: 700 }}>{card.nameKo}</div>
           <div className="muted" style={{ fontSize: '0.85rem' }}>
-            {card.nameEn} · {dirLabel}
+            {/* 영어 로케일에서는 부제가 표시 이름과 같아지므로 정·역 라벨만 남긴다. */}
+            {subtitleEn(card) ? `${subtitleEn(card)} · ${dirLabel}` : dirLabel}
           </div>
         </div>
         <button ref={closeRef} type="button" className="btn btn--primary" onClick={onClose}>
@@ -126,7 +145,8 @@ export function CardViewer({
         <img
           className="card-viewer__img"
           src={cardImageUrl(card)}
-          alt={`${card.nameKo} ${card.nameEn} ${dirLabel}`}
+          // 영어에서는 이름이 겹쳐 "The Fool The Fool Upright"로 낭독된다. 겹치면 한 번만 읽는다.
+          alt={[card.nameKo, subtitleEn(card), dirLabel].filter(Boolean).join(' ')}
           // 배율은 뷰포트에 맞춘 기본 크기에 곱한다. 넘치는 만큼은 스테이지가 스크롤로 받는다.
           style={{
             width: `calc(min(62vh, 86vw) * ${zoom / 100})`,

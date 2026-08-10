@@ -1,5 +1,5 @@
 // src/services/exportReading.ts — 리딩 1건을 고객에게 건넬 Markdown 문서/인쇄물로 내보낸다.
-import { getCard, type DrawnCard } from '../lib/cards'
+import { getLocalizedCard, type DrawnCard } from '../lib/cards'
 import { APP_VERSION } from '../version'
 import type { HistoryEntry, ReadingOutcome } from './db'
 
@@ -60,6 +60,8 @@ export type ExportOptions = {
   customerName?: string
   /** 'AI 타로'처럼 호출부가 이미 번역해 둔 유형 '값'. 라벨이 아니다. */
   kindLabel?: string
+  /** 카드 이름·의미를 어느 언어로 쓸지. 안 넘기면 한국어 원본. */
+  locale?: string
   labels?: Partial<ExportLabels>
 }
 
@@ -128,19 +130,29 @@ type ExportModel = {
   footer: string
 }
 
-function toExportCard(card: DrawnCard, labels: ExportLabels): ExportCard {
+function toExportCard(card: DrawnCard, labels: ExportLabels, locale: string): ExportCard {
   let meaning = ''
+  // 기록에 저장된 nameKo는 '뽑을 당시의 한국어'다. 문서 언어를 따라가도록 덱에서 다시 읽고,
+  // 지금 덱에 없는 옛 카드 id일 때만 저장된 이름으로 되돌아간다.
+  let name = card.nameKo || card.nameEn || card.id
+  // 괄호 부제는 기록에 저장된 nameEn이 아니라 '덱의 영어 이름'을 쓴다.
+  // 소울카드는 저장할 때 nameEn 자리에도 한국어를 넣기 때문에(SoulCardPage), 저장값을 쓰면
+  // 영어 문서에 "The Magician (마법사)"처럼 한국어가 새어 나온다.
+  let nameEn = card.nameEn
   try {
-    const meta = getCard(card.id)
+    const meta = getLocalizedCard(card.id, locale)
     meaning = card.isReversed ? meta.reversed : meta.upright
+    name = meta.nameKo || name
+    nameEn = meta.nameEn || nameEn
   } catch {
     // 옛 기록에는 지금 덱에 없는 카드 id가 남아 있을 수 있다.
-    // getCard는 그럴 때 throw하므로, 의미 한 줄 때문에 문서 전체를 못 만드는 일을 막는다.
+    // getLocalizedCard는 그럴 때 throw하므로, 이름·의미 때문에 문서 전체를 못 만드는 일을 막는다.
   }
   return {
     position: card.positionLabel?.trim() || undefined,
-    name: card.nameKo || card.nameEn || card.id,
-    nameEn: card.nameEn && card.nameEn !== card.nameKo ? card.nameEn : undefined,
+    name,
+    // 표시 이름과 같으면(영어 로케일) 부제를 빼서 같은 글자가 두 번 나오지 않게 한다.
+    nameEn: nameEn && nameEn !== name ? nameEn : undefined,
     direction: card.isReversed ? labels.reversed : labels.upright,
     meaning: meaning || undefined,
   }
@@ -153,7 +165,7 @@ function buildModel(entry: HistoryEntry, opts: ExportOptions, labels: ExportLabe
   const kind = clean(opts.kindLabel)
   if (kind) meta.push({ label: labels.kind, value: kind })
 
-  const cards = (entry.cards ?? []).map((c) => toExportCard(c, labels))
+  const cards = (entry.cards ?? []).map((c) => toExportCard(c, labels, opts.locale ?? 'ko'))
 
   const sections: ExportModel['sections'] = []
   const userNote = clean(entry.userNote)
@@ -262,6 +274,8 @@ const PRINT_CSS = `
     background: var(--doc-bg);
     color: var(--doc-ink);
     font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    /* 종이는 12pt 고정. 화면(취소하고 남는 창)에서는 앱에서 고른 글자 크기를 따른다 —
+       '큼 24px'을 쓰던 사람이 인쇄 버튼 하나로 16px 상당 화면을 만나면 읽을 수 없다. */
     font-size: 12pt;
     line-height: 1.7;
     -webkit-print-color-adjust: exact;
@@ -315,6 +329,7 @@ function renderPrintHtml(
   labels: ExportLabels,
   docTitle: string,
   lang: string,
+  screenFontPx: number,
 ): string {
   const meta = model.meta
     .map(
@@ -341,7 +356,10 @@ function renderPrintHtml(
     .map((s) => `<h2>${escapeHtml(s.heading)}</h2><p class="text">${escapeHtml(s.text)}</p>`)
     .join('')
 
-  return `<!doctype html><html lang="${escapeHtml(lang)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHtml(docTitle)}</title><style>${PRINT_CSS}</style></head><body><h1>${escapeHtml(model.title)}</h1><div class="meta">${meta}</div>${cards}${sections}<p class="foot">${escapeHtml(model.footer)}</p></body></html>`
+  // 화면에서만 앱의 글자 크기를 따른다. 인쇄(@page)는 12pt 종이 기준을 유지한다.
+  const screenCss = `@media screen { body { font-size: ${screenFontPx}px; } }`
+
+  return `<!doctype html><html lang="${escapeHtml(lang)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${escapeHtml(docTitle)}</title><style>${PRINT_CSS}${screenCss}</style></head><body><h1>${escapeHtml(model.title)}</h1><div class="meta">${meta}</div>${cards}${sections}<p class="foot">${escapeHtml(model.footer)}</p></body></html>`
 }
 
 /** 인쇄용 HTML을 새 창에 열어 브라우저 print-to-PDF로 넘긴다. 팝업이 막히면 POPUP_BLOCKED를 던진다. */
@@ -351,7 +369,12 @@ export function printReading(entry: HistoryEntry, opts: PrintOptions = {}): void
   // 화면 문서의 lang은 AppContext가 설정 언어로 계속 갱신한다(ErrorBoundary도 같은 값을 읽는다).
   // 이 계층은 로케일을 모르니 그 값을 그대로 물려받는 게 가장 정확하다.
   const lang = clean(opts.lang) || document.documentElement.lang || 'ko'
-  const html = renderPrintHtml(model, labels, clean(opts.title) || model.title, lang)
+  // 이 창은 인쇄를 취소해도 화면에 남는다. 앱에서 고른 글자 크기를 그대로 물려받지 않으면
+  // '큼 24px'을 쓰던 사람이 16px 상당 화면을 만나 그 자리에서 못 읽는다.
+  // 루트 font-size는 AppContext가 설정에 맞춰 갱신하므로 그 값을 읽어 쓴다.
+  const rootPx = Number.parseFloat(getComputedStyle(document.documentElement).fontSize)
+  const screenFontPx = Number.isFinite(rootPx) && rootPx > 0 ? rootPx : 16
+  const html = renderPrintHtml(model, labels, clean(opts.title) || model.title, lang, screenFontPx)
 
   // 팝업이 막히면 window.open은 예외 대신 null을 준다. 확인하지 않으면 버튼이 먹통처럼 보인다.
   // features에 noopener를 넣으면 차단이 아닐 때도 null이 오므로(핸들을 안 준다) 넣지 않는다 —

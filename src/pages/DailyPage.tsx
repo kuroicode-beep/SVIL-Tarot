@@ -1,7 +1,7 @@
 // src/pages/DailyPage.tsx — 오늘의 한 장. 날짜 시드로 하루 한 장만 결정적으로 뽑는다.
 import { useEffect, useRef, useState } from 'react'
 import { getOrCreateDailyDraw, getStreak, saveDailyAiText, todayKey } from '../lib/daily'
-import { getCard, type DrawnCard } from '../lib/cards'
+import { getCard, getLocalizedCard, type DrawnCard } from '../lib/cards'
 import { TarotCardView } from '../components/TarotCardView'
 import { dailyCardReading } from '../services/ollama'
 import { saveHistory } from '../services/history'
@@ -10,7 +10,9 @@ import { ReadingPlayer } from '../components/ReadingPlayer'
 import { useApp } from '../context/AppContext'
 
 export function DailyPage() {
-  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, runSave, setSaveMessage, t } = useApp()
+  const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, runSave, setSaveMessage, t, settings } =
+    useApp()
+  const locale = settings.locale
   const [dateKey] = useState(() => todayKey())
   const [card, setCard] = useState<DrawnCard | null>(null)
   const [aiText, setAiText] = useState('')
@@ -33,17 +35,18 @@ export function DailyPage() {
         setCard(draw.card)
         setAiText(draw.aiText ?? '')
         setStreak(await getStreak())
-        const meta = getCard(draw.card.id)
+        // 낭독문은 화면 언어를 따른다. 기록에 저장된 nameKo는 뽑을 당시의 한국어라 쓰지 않는다.
+        const shown = getLocalizedCard(draw.card.id, locale)
         setLastSpeakText(
-          `${t('daily_today', { date: dateKey })}. ${draw.card.nameKo}. ${
+          `${t('daily_today', { date: dateKey })}. ${shown.nameKo}. ${
             draw.card.isReversed ? t('reversed') : t('upright')
-          }. ${draw.card.isReversed ? meta.reversed : meta.upright}`,
+          }. ${draw.card.isReversed ? shown.reversed : shown.upright}`,
         )
       } catch {
         setLoadError(true)
       }
     })()
-  }, [dateKey, setLastSpeakText, t])
+  }, [dateKey, setLastSpeakText, t, locale])
 
   const onSave = async () => {
     const s = stateRef.current
@@ -80,11 +83,13 @@ export function DailyPage() {
     setBusy(true)
     setError(null)
     try {
+      // LLM에 넘기는 페이로드는 한국어로 고정한다(프롬프트 언어가 흔들리면 리딩 품질이 같이 흔들린다).
+      // 정/역 라벨도 t()가 아니라 한국어 원문을 쓴다.
       const meta = getCard(card.id)
-      const dir = card.isReversed ? t('reversed') : t('upright')
+      const dir = card.isReversed ? '역방향' : '정방향'
       const meaning = card.isReversed ? meta.reversed : meta.upright
       const text = await dailyCardReading(
-        `${card.nameKo}(${card.nameEn}) ${dir} — ${meaning}`,
+        `${meta.nameKo}(${meta.nameEn}) ${dir} — ${meaning}`,
         dateKey,
       )
       setAiText(text)
@@ -111,7 +116,8 @@ export function DailyPage() {
     )
   }
 
-  const meta = card ? getCard(card.id) : null
+  // 화면에 뿌리는 의미 문장은 로케일 적용본.
+  const meta = card ? getLocalizedCard(card.id, locale) : null
 
   return (
     <main className="page">

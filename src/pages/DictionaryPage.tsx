@@ -1,6 +1,6 @@
 // src/pages/DictionaryPage.tsx — 78장 카드 사전. 검색·필터로 좁혀 보고, 카드마다 내 키워드·해석을 적는다.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { allCards, type TarotCard } from '../lib/cards'
+import { getCard, getLocalizedCards, subtitleEn, type TarotCard } from '../lib/cards'
 import { useApp } from '../context/AppContext'
 import { TarotCardView } from '../components/TarotCardView'
 import {
@@ -29,7 +29,10 @@ const SUIT_CHIPS: { id: SuitFilter; key: string }[] = [
 ]
 
 export function DictionaryPage() {
-  const { t, setLastSpeakText } = useApp()
+  const { t, setLastSpeakText, settings } = useApp()
+  // 78장을 로케일 적용본으로 받는다. 언어별로 캐시되므로 렌더마다 호출해도 새 객체가 생기지 않는다.
+  // 공유 배열이라 정렬·역순 같은 제자리 변형은 금지 — 아래는 filter만 쓴다.
+  const deck = getLocalizedCards(settings.locale)
 
   const [query, setQuery] = useState('')
   const [arcana, setArcana] = useState<ArcanaFilter>('all')
@@ -70,8 +73,8 @@ export function DictionaryPage() {
   }, [])
 
   const selected: TarotCard | null = useMemo(
-    () => (selectedId ? (allCards.find((c) => c.id === selectedId) ?? null) : null),
-    [selectedId],
+    () => (selectedId ? (deck.find((c) => c.id === selectedId) ?? null) : null),
+    [selectedId, deck],
   )
 
   // 상세를 열 때 저장소에서 다시 읽는다. 목록 캐시만 믿으면 다른 화면에서 바뀐 메모를 덮어쓴다.
@@ -122,19 +125,29 @@ export function DictionaryPage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    return allCards.filter((c) => {
+    return deck.filter((c) => {
       if (arcana !== 'all' && c.arcana !== arcana) return false
       if (suit !== 'all' && c.suit !== suit) return false
       const note = notes.get(c.id)
       if (onlyNoted && !note) return false
       if (!q) return true
       // 내가 적어 둔 키워드로도 찾을 수 있어야 한다. 사전을 외우는 게 아니라 내 어휘로 되찾는 게 목적이다.
-      const hay = [c.nameKo, c.nameEn, c.upright, c.reversed, note?.keywords ?? '', note?.meaning ?? '']
+      // 화면 언어를 영어로 바꿨다고 '컵 3'으로 못 찾으면 안 되므로 한국어 원본 이름도 건초더미에 넣는다.
+      const orig = getCard(c.id)
+      const hay = [
+        c.nameKo,
+        c.nameEn,
+        c.upright,
+        c.reversed,
+        orig.nameKo,
+        note?.keywords ?? '',
+        note?.meaning ?? '',
+      ]
         .join(' ')
         .toLowerCase()
       return hay.includes(q)
     })
-  }, [query, arcana, suit, onlyNoted, notes])
+  }, [query, arcana, suit, onlyNoted, notes, deck])
 
   const filterActive = query.trim() !== '' || arcana !== 'all' || suit !== 'all' || onlyNoted
 
@@ -221,7 +234,8 @@ export function DictionaryPage() {
         <h1 ref={detailHeadingRef} tabIndex={-1}>
           {selected.nameKo}
         </h1>
-        <p className="muted mono">{selected.nameEn}</p>
+        {/* 영어 로케일에서는 부제가 제목과 같은 글자라 그리지 않는다. */}
+        {subtitleEn(selected) && <p className="muted mono">{subtitleEn(selected)}</p>}
 
         <div className="panel learn-bento">
           <TarotCardView cardId={selected.id} />
@@ -409,7 +423,7 @@ export function DictionaryPage() {
               >
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                   <strong>{c.nameKo}</strong>
-                  <span className="muted">{c.nameEn}</span>
+                  {subtitleEn(c) && <span className="muted">{subtitleEn(c)}</span>}
                   <span>{c.upright}</span>
                   {/* 메모 유무를 색이 아니라 글자로 알린다. */}
                   <span className="muted">{hasNote ? t('dict_has_note') : t('dict_no_note')}</span>

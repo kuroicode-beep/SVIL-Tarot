@@ -1,6 +1,6 @@
 // src/pages/AiTarotPage.tsx — AI 타로 화면(질문·카테고리 → 스프레드 뽑기 → 로컬 LLM 리딩)
 import { useEffect, useRef, useState } from 'react'
-import spreads from '../data/spreads.json'
+import { allSpreads, PRESET_SPREADS, type SpreadOption } from '../services/customSpreads'
 import { deckUrl, drawCards, formatDrawnForPrompt, type DrawnCard } from '../lib/cards'
 import { SpreadCards } from '../components/TarotCardView'
 import { fullAiReading, OLLAMA_MODEL } from '../services/ollama'
@@ -21,10 +21,11 @@ const CATEGORY_KEY: Record<(typeof CATEGORIES)[number], string> = {
   건강: 'cat_health',
   종합: 'cat_all',
 }
-type Spread = (typeof spreads)[number]
-
 export function AiTarotPage() {
-  const list = spreads as Spread[]
+  // 실전 화면과 같은 규칙 — 프리셋으로 즉시 그리고 내 스프레드가 오면 합쳐 넣는다.
+  const [list, setList] = useState<SpreadOption[]>(PRESET_SPREADS)
+  // 프리셋만 있는 첫 렌더와 '내 스프레드까지 다 받은 뒤'를 구분한다(실전 화면과 같은 이유).
+  const [listLoaded, setListLoaded] = useState(false)
   const [mode, setMode] = useState<'question' | 'category'>('question')
   const [question, setQuestion] = useState('')
   const [category, setCategory] = useState<(typeof CATEGORIES)[number]>('종합')
@@ -38,7 +39,8 @@ export function AiTarotPage() {
   const { speak, setLastSpeakText, ollamaOk, registerSaveHandler, runSave, setSaveMessage, t } =
     useApp()
 
-  const spread = list.find((s) => s.id === spreadId) ?? list[1]
+  // 고른 스프레드가 목록에서 사라져도(다른 탭에서 삭제) undefined로 떨어지지 않게 첫 항목으로 폴백한다.
+  const spread = list.find((s) => s.id === spreadId) ?? list[0]
   const stateRef = useRef({ cards, result, mode, question, category, spreadId, customerId })
   stateRef.current = { cards, result, mode, question, category, spreadId, customerId }
 
@@ -79,6 +81,27 @@ export function AiTarotPage() {
     registerSaveHandler(() => onSave())
     return () => registerSaveHandler(null)
   }, [registerSaveHandler, t])
+
+  // 스프레드 빌더에서 만든 내 스프레드를 여기서 바로 고를 수 있어야 한다.
+  useEffect(() => {
+    let alive = true
+    void (async () => {
+      const all = await allSpreads()
+      if (!alive) return
+      setList(all)
+      setListLoaded(true)
+    })()
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  // 고른 스프레드가 목록에서 사라지면 select의 value와 보이는 항목이 어긋난다. 목록 기준으로 되돌린다.
+  // 전체 목록을 받은 뒤에만 판단한다 — 프리셋만 있는 상태로 판단하면 내 스프레드를 튕겨낸다.
+  useEffect(() => {
+    if (!listLoaded || list.length === 0) return
+    if (!list.some((s) => s.id === spreadId)) setSpreadId(list[0].id)
+  }, [listLoaded, list, spreadId])
 
   const run = async () => {
     setBusy(true)
@@ -178,9 +201,10 @@ export function AiTarotPage() {
               value={spreadId}
               onChange={(e) => setSpreadId(e.target.value)}
             >
+              {/* 프리셋과 내 스프레드를 색이 아니라 글자로 구분한다. */}
               {list.map((s) => (
                 <option key={s.id} value={s.id}>
-                  {s.nameKo}
+                  {s.custom ? `${s.nameKo} · ${t('sb_title')}` : s.nameKo}
                 </option>
               ))}
             </select>

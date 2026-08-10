@@ -12,8 +12,14 @@ export type SpreadAnalysis = {
   /** 가장 편중된 수트. 편중이 없으면 null. suit는 원본 수트 id다. */
   dominantSuit: { suit: string; count: number } | null
   /** i18n 키 + 파라미터 형태의 진단 항목. 문구 자체는 담지 않는다.
-   *  params는 translate(locale, key, params)에 그대로 넘길 수 있게 맞춰져 있다. */
-  notes: Array<{ key: string; params: Record<string, string | number> }>
+   *  params는 translate(locale, key, params)에 그대로 넘길 수 있게 맞춰져 있다.
+   *  paramKeys에 든 항목은 '값이 아니라 사전 키'라서, 화면이 t()로 옮긴 뒤 넣어야 한다
+   *  (noteParams 헬퍼를 쓴다). 수트 이름이 여기 해당한다. */
+  notes: Array<{
+    key: string
+    params: Record<string, string | number>
+    paramKeys?: Record<string, string>
+  }>
 }
 
 // 판정 임계값을 상수로 모아 둔다 — 규칙이 바뀔 때 한 곳만 고치면 되도록.
@@ -25,13 +31,20 @@ const SUIT_MIN_COUNT = 2
 // 동점일 때 어느 수트를 고를지 흔들리지 않게, 비교 순서를 데이터가 아닌 여기서 고정한다.
 const SUIT_ORDER = ['cup', 'wand', 'sword', 'pentacle']
 
-// 수트 라벨은 i18n 사전에 키가 없어서(analyze_suit이 {suit}를 그대로 끼워 넣는다)
-// 카드 이름(nameKo)과 같은 방식으로 한국어 표기를 쓴다.
+// LLM 프롬프트(analysisToPrompt)용 한국어 표기. 프롬프트는 로케일과 무관하게 한국어로 고정한다.
 const SUIT_LABELS: Record<string, string> = {
   cup: '컵',
   wand: '완드',
   sword: '소드',
   pentacle: '펜타클',
+}
+
+// 화면용 수트 이름은 사전 키로 넘긴다. 사전(dict_suit_*)에 5개 언어가 모두 있다.
+const SUIT_I18N: Record<string, string> = {
+  cup: 'dict_suit_cup',
+  wand: 'dict_suit_wand',
+  sword: 'dict_suit_sword',
+  pentacle: 'dict_suit_pentacle',
 }
 
 // LLM에게 수트 편중의 의미까지 알려 주려고, 라벨과 별개로 짧은 힌트를 붙인다.
@@ -96,7 +109,9 @@ export function analyzeSpread(cards: DrawnCard[]): SpreadAnalysis {
   if (dominantSuit) {
     notes.push({
       key: 'analyze_suit',
-      params: { suit: SUIT_LABELS[dominantSuit.suit] ?? dominantSuit.suit, n: dominantSuit.count },
+      // suit는 값이 아니라 사전 키다 — 화면이 noteParams로 옮겨 넣는다.
+      params: { suit: dominantSuit.suit, n: dominantSuit.count },
+      paramKeys: SUIT_I18N[dominantSuit.suit] ? { suit: SUIT_I18N[dominantSuit.suit] } : undefined,
     })
   }
   // 진단이 하나도 없을 때 목록이 비면 화면이 텅 비어 보여서, 대신 "편중 없음"을 명시한다.
@@ -114,6 +129,21 @@ export function analyzeSpread(cards: DrawnCard[]): SpreadAnalysis {
     dominantSuit,
     notes,
   }
+}
+
+/**
+ * 진단 항목의 파라미터를 화면 언어로 옮긴다.
+ * paramKeys에 든 항목은 사전 키이므로 t()를 한 번 더 거쳐야 한다 — 안 그러면 수트 이름만
+ * 영어 화면에 'cup'(또는 한국어 '컵')으로 남는다.
+ */
+export function noteParams(
+  note: SpreadAnalysis['notes'][number],
+  t: (key: string) => string,
+): Record<string, string | number> {
+  if (!note.paramKeys) return note.params
+  const out: Record<string, string | number> = { ...note.params }
+  for (const [field, key] of Object.entries(note.paramKeys)) out[field] = t(key)
+  return out
 }
 
 /** LLM 프롬프트에 넣을 한 문단 요약. 이건 모델용이라 한국어 평문이어도 된다. */

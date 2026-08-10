@@ -26,6 +26,11 @@ export function getCard(id: string): TarotCard {
   return card
 }
 
+/** 덱에 있는 id인가. 옛 기록에는 지금 덱에 없는 카드 id가 남아 있을 수 있다. */
+export function hasCard(id: string): boolean {
+  return byId.has(id)
+}
+
 // ---------- 로케일 오버레이 ----------
 
 /** cards.i18n.json 한 항목. 한국어 원본(cards.json)에 덮어씌울 번역 텍스트다. */
@@ -75,6 +80,26 @@ export function getLocalizedCard(id: string, locale: string): TarotCard {
   }
 }
 
+/**
+ * throw하지 않는 조회. 저장된 옛 기록을 그리는 화면은 반드시 이걸 쓴다 —
+ * 렌더 중에 getCard가 throw하면 카드 한 장 때문에 화면 전체가 오류로 바뀐다.
+ */
+export function findLocalizedCard(id: string, locale: string): TarotCard | undefined {
+  return byId.has(id) ? getLocalizedCard(id, locale) : undefined
+}
+
+/**
+ * 부제로 그릴 영어 이름. 표시 이름과 같으면 undefined를 준다.
+ *
+ * 화면들은 '한국어 이름 + 영어 부제'를 전제로 짜여 있는데, 영어 로케일에서는 번역 이름이
+ * 곧 영어 원명이라(cards.i18n.json의 en.name 78장 전부 nameEn과 동일) 그대로 그리면
+ * "The Fool / The Fool"처럼 같은 글자가 두 줄로 나온다. 저시력 화면에서 밀도만 올라가고
+ * 스크린리더는 카드마다 이름을 두 번 읽는다. 부제를 그리는 곳은 전부 이걸 거친다.
+ */
+export function subtitleEn(card: TarotCard): string | undefined {
+  return card.nameEn && card.nameEn !== card.nameKo ? card.nameEn : undefined
+}
+
 /** 카드 객체에서 해당 로케일의 표시 이름만 뽑는다. 번역이 없으면 한국어 원본 이름. */
 export function localizedName(card: TarotCard, locale: string): string {
   const lang = normalizeLocale(locale)
@@ -99,10 +124,10 @@ export function getLocalizedCards(locale: string): TarotCard[] {
 
 // ---------- 이미지 ----------
 
-// Vite base(예: 서브패스 배포) 아래에서도 덱 이미지 경로가 깨지지 않도록 BASE_URL을 붙인다.
-export function deckUrl(file: string): string {
-  return `${import.meta.env.BASE_URL}deck/${file}`
-}
+// deckUrl은 카드 데이터가 필요 없어 별도 모듈에 있다(홈 화면이 152KB를 안 끌고 오게).
+// 여기서도 계속 가져다 쓸 수 있도록 그대로 다시 내보낸다.
+export { deckUrl } from './deckUrl'
+import { deckUrl } from './deckUrl'
 
 export function cardImageUrl(card: TarotCard | string): string {
   const file = typeof card === 'string' ? getCard(card).file : card.file

@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useApp } from '../context/AppContext'
 import { OllamaControl } from './OllamaControl'
+import { ErrorBoundary } from './ErrorBoundary'
 import { APP_VERSION } from '../version'
 
 export function AppShell() {
@@ -136,7 +137,26 @@ export function AppShell() {
         </div>
       )}
       <div id="main" tabIndex={-1} className="main-region">
-        <Outlet />
+        {/* 화면 코드를 라우트별로 쪼개 놨다(App.tsx의 lazy). 청크를 받는 동안 본문이 사라지면
+            저시력·스크린리더 사용자는 화면이 죽은 건지 알 수 없다. role=status로 상태를 알린다.
+
+            경계를 본문 안쪽에도 하나 더 둔다. 최상위 경계만 있으면 화면 하나가 실패할 때
+            상단바·뒤로·저장·낭독까지 통째로 오류 화면으로 바뀌어 '앱이 사라진 것'처럼 겪는다.
+            여기서 잡으면 상단바는 그대로 남아 다른 화면으로 빠져나갈 수 있고,
+            경로가 바뀌면 resetKey로 저절로 복구된다. */}
+        <ErrorBoundary resetKey={loc.pathname} scope="route">
+          <Suspense
+            fallback={
+              <main className="page">
+                <p className="muted" role="status">
+                  {t('loading')}
+                </p>
+              </main>
+            }
+          >
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </div>
   )

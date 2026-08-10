@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import lessons from '../data/lessons.json'
-import { getCard } from '../lib/cards'
+import { getLocalizedCard, subtitleEn } from '../lib/cards'
 import { TarotCardView } from '../components/TarotCardView'
 import { useApp } from '../context/AppContext'
 
@@ -11,7 +11,8 @@ type Stage = (typeof lessons.stages)[number]
 export function LearnPage() {
   const { stageId } = useParams()
   const nav = useNavigate()
-  const { speak, setLastSpeakText, t } = useApp()
+  const { speak, setLastSpeakText, t, settings } = useApp()
+  const locale = settings.locale
   const stages = lessons.stages as Stage[]
   const stage = stages.find((s) => s.id === stageId) ?? stages[0]
   const [idx, setIdx] = useState(0)
@@ -20,7 +21,10 @@ export function LearnPage() {
   // stage.id로 잡으면 파라미터가 없을 때 stages[0]으로 폴백해 값이 안 바뀌므로, URL 파라미터를 기준으로 초기화한다.
   useEffect(() => setIdx(0), [stageId])
 
-  const card = useMemo(() => getCard(stage.cardIds[Math.min(idx, stage.cardIds.length - 1)]), [stage, idx])
+  const card = useMemo(
+    () => getLocalizedCard(stage.cardIds[Math.min(idx, stage.cardIds.length - 1)], locale),
+    [stage, idx, locale],
+  )
 
   // 낭독문도 화면 언어를 따라야 해서 정/역방향 라벨을 사전 키로 뺀다.
   const speakLesson = () => {
@@ -55,7 +59,7 @@ export function LearnPage() {
         <p className="learn-sidebar__title">{stage.title}</p>
         <div className="learn-sidebar__list">
           {stage.cardIds.map((id, i) => {
-            const c = getCard(id)
+            const c = getLocalizedCard(id, locale)
             const active = i === idx
             return (
               <button
@@ -70,8 +74,9 @@ export function LearnPage() {
                 </span>
                 <span>
                   <span className="learn-step__label">{t('learn_card_n', { n: i + 1 })}</span>
+                  {/* 영어 로케일에서는 두 값이 같아 "The Fool (The Fool)"이 된다. 다를 때만 괄호를 붙인다. */}
                   <span className="learn-step__name">
-                    {c.nameKo} ({c.nameEn})
+                    {subtitleEn(c) ? `${c.nameKo} (${subtitleEn(c)})` : c.nameKo}
                   </span>
                 </span>
               </button>
@@ -86,10 +91,15 @@ export function LearnPage() {
       <main className="learn-main">
         <div className="lesson-badge">Lesson · {stage.title}</div>
         <h1>
-          {card.nameKo}{' '}
-          <span className="muted" style={{ fontSize: '1rem' }}>
-            ({card.nameEn})
-          </span>
+          {card.nameKo}
+          {subtitleEn(card) && (
+            <>
+              {' '}
+              <span className="muted" style={{ fontSize: '1rem' }}>
+                ({subtitleEn(card)})
+              </span>
+            </>
+          )}
         </h1>
         <p className="progress mono">
           {idx + 1} / {stage.cardIds.length}

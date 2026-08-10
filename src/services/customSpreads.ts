@@ -52,6 +52,20 @@ type PresetSpread = {
 // spreads.json은 nameEn·description·quiz도 들고 있지만 스프레드 선택에는 필요 없다.
 const presets: PresetSpread[] = presetData
 
+/**
+ * 기본 프리셋만 담은 동기 목록.
+ * 스프레드 선택은 리딩의 입구라 첫 렌더가 빈 목록이면 안 된다(선택값이 없는 순간
+ * '뽑기'를 누르면 화면이 죽는다). 화면은 이걸로 즉시 그리고, IndexedDB 응답이 오면
+ * allSpreads() 결과로 갈아 끼운다.
+ */
+export const PRESET_SPREADS: SpreadOption[] = presets.map((p) => ({
+  id: p.id,
+  nameKo: p.nameKo,
+  cardCount: p.cardCount,
+  positions: p.positions.map((x) => ({ key: x.key, labelKo: x.labelKo })),
+  custom: false,
+}))
+
 export type SpreadsFile = {
   format: typeof SPREADS_FORMAT
   version: number
@@ -190,13 +204,8 @@ function toOption(s: CustomSpread): SpreadOption | null {
  * 프리셋을 앞에 두어 기본 선택(three)이 흔들리지 않게 한다.
  */
 export async function allSpreads(): Promise<SpreadOption[]> {
-  const out: SpreadOption[] = presets.map((p) => ({
-    id: p.id,
-    nameKo: p.nameKo,
-    cardCount: p.cardCount,
-    positions: p.positions.map((x) => ({ key: x.key, labelKo: x.labelKo })),
-    custom: false,
-  }))
+  // 얕은 복사 — 아래에서 push하므로 모듈 상수를 그대로 쓰면 호출할 때마다 프리셋 목록이 늘어난다.
+  const out: SpreadOption[] = [...PRESET_SPREADS]
 
   let mine: CustomSpread[]
   try {

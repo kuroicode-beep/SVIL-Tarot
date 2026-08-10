@@ -846,6 +846,16 @@ textarea.field {
   color: var(--warning);
 }
 
+/* 번호 목록 — 브라우저 기본은 줄 간격이 촘촘해 저시력에서 줄을 놓친다. 항목 사이를 벌린다. */
+.list-plain {
+  margin: 12px 0 0;
+  padding-left: 1.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  line-height: 1.6;
+}
+
 /* 사주 원국 — 표 대신 '라벨 — 값' 세로 목록. 표는 저시력에서 열/행 추적이 어렵다. */
 .pillar-list {
   margin: 0;

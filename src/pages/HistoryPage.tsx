@@ -1,3 +1,4 @@
+// src/pages/HistoryPage.tsx — 저장된 리딩 목록·상세. 사후 결과 기록과 문서 내보내기를 여기서 한다.
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -9,7 +10,16 @@ import {
 } from '../services/history'
 import { getCustomer } from '../services/customers'
 import { SpreadCards } from '../components/TarotCardView'
-import { cardImageUrl } from '../lib/cards'
+import { cardImageUrl, hasCard } from '../lib/cards'
+import {
+  downloadMarkdown,
+  POPUP_BLOCKED,
+  printReading,
+  readingFilename,
+  readingToMarkdown,
+  type ExportLabels,
+  type ExportOptions,
+} from '../services/exportReading'
 import { useApp } from '../context/AppContext'
 
 const kindKey: Record<string, string> = {
@@ -41,13 +51,82 @@ export function HistoryPage() {
   const [outcomeNote, setOutcomeNote] = useState('')
   const [outcomeSaved, setOutcomeSaved] = useState(false)
   const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading')
-  const { speak, setLastSpeakText, t } = useApp()
+  const [exportMsg, setExportMsg] = useState<string | null>(null)
+  const [exportErr, setExportErr] = useState<string | null>(null)
+  const { speak, setLastSpeakText, t, settings } = useApp()
   const kindLabel = (kind: string) => (kindKey[kind] ? t(kindKey[kind]) : kind)
+
+  // 문서 라벨은 서비스가 아니라 화면에서 만든다(서비스 계층은 로케일을 모른다).
+  const exportOptions = (entry: HistoryEntry): ExportOptions => {
+    const labels: Partial<ExportLabels> = {
+      date: t('export_label_date'),
+      customer: t('export_label_customer'),
+      kind: t('export_label_kind'),
+      cards: t('export_label_cards'),
+      meaning: t('export_label_meaning'),
+      upright: t('export_label_upright'),
+      reversed: t('export_label_reversed'),
+      note: t('export_label_note'),
+      aiReading: t('export_label_ai'),
+      outcome: t('export_label_outcome'),
+      outcomeNote: t('export_label_outcome_note'),
+      outcomeValues: {
+        hit: t('outcome_hit'),
+        partial: t('outcome_partial'),
+        miss: t('outcome_miss'),
+      },
+    }
+    return {
+      customerName: entry.customerId ? names[entry.customerId] : undefined,
+      kindLabel: kindLabel(entry.kind),
+      locale: settings.locale,
+      labels,
+    }
+  }
+
+  /**
+   * 같은 문자열을 다시 넣으면 DOM이 안 바뀌어 aria-live가 아무것도 알리지 않는다.
+   * 두 번째 내보내기부터 조용해지므로, 한 번 비운 뒤 다시 넣어 내용 변화를 만든다.
+   */
+  const announceExport = (text: string) => {
+    setExportMsg(null)
+    window.setTimeout(() => setExportMsg(text), 60)
+  }
+
+  const onExportMd = (entry: HistoryEntry) => {
+    setExportErr(null)
+    try {
+      downloadMarkdown(readingToMarkdown(entry, exportOptions(entry)), readingFilename(entry))
+      announceExport(t('export_done'))
+    } catch {
+      setExportMsg(null)
+      setExportErr(t('save_fail'))
+    }
+  }
+
+  const onPrint = (entry: HistoryEntry) => {
+    setExportMsg(null)
+    setExportErr(null)
+    try {
+      printReading(entry, {
+        ...exportOptions(entry),
+        title: entry.title,
+        // 인쇄 문서의 lang이 없으면 스크린리더가 화면과 다른 발음으로 읽는다.
+        lang: settings.locale,
+      })
+    } catch (e) {
+      // 팝업 차단은 사용자가 직접 풀어야 하는 상황이라 원인을 그대로 알린다.
+      setExportErr(e instanceof Error && e.message === POPUP_BLOCKED ? t('export_popup_blocked') : t('save_fail'))
+    }
+  }
 
   const openEntry = (entry: HistoryEntry | null) => {
     setOpen(entry)
     setOutcomeNote(entry?.outcomeNote ?? '')
     setOutcomeSaved(false)
+    // 앞 리딩에서 띄운 '저장했습니다'가 남아 있으면 이 리딩도 내보낸 줄 착각한다.
+    setExportMsg(null)
+    setExportErr(null)
   }
 
   const applyOutcome = async (value: ReadingOutcome) => {
@@ -171,6 +250,29 @@ export function HistoryPage() {
             )}
           </div>
         )}
+        {/* 상담사가 고객에게 건넬 문서. 서버 없이 브라우저의 내려받기·인쇄만 쓴다. */}
+        <div className="panel">
+          <h2 style={{ marginTop: 0 }}>{t('export_title')}</h2>
+          <p className="muted">{t('export_desc')}</p>
+          <div className="btn-row">
+            <button type="button" className="btn btn--primary" onClick={() => onExportMd(open)}>
+              {t('export_md')}
+            </button>
+            <button type="button" className="btn" onClick={() => onPrint(open)}>
+              {t('export_print')}
+            </button>
+          </div>
+          {exportMsg && (
+            <p className="feedback-ok" role="status">
+              {exportMsg}
+            </p>
+          )}
+          {exportErr && (
+            <p className="error-text" role="alert">
+              {exportErr}
+            </p>
+          )}
+        </div>
         <div className="btn-row">
           <button type="button" className="btn" onClick={() => openEntry(null)}>
             {t('list_label')}
@@ -222,15 +324,20 @@ export function HistoryPage() {
               className="history-item"
               onClick={() => openEntry(item)}
             >
+              {/* cardImageUrl은 미등록 id에 throw한다. 옛 기록에 남은 카드 하나로
+                  목록 전체가 오류 화면이 되지 않도록 그릴 수 있는 것만 남긴다. */}
               <div className="history-thumbs">
-                {(item.cards ?? []).slice(0, 3).map((c) => (
-                  <img
-                    key={c.id + String(c.isReversed)}
-                    src={cardImageUrl(c.id)}
-                    alt=""
-                    style={c.isReversed ? { transform: 'rotate(180deg)' } : undefined}
-                  />
-                ))}
+                {(item.cards ?? [])
+                  .filter((c) => hasCard(c.id))
+                  .slice(0, 3)
+                  .map((c) => (
+                    <img
+                      key={c.id + String(c.isReversed)}
+                      src={cardImageUrl(c.id)}
+                      alt=""
+                      style={c.isReversed ? { transform: 'rotate(180deg)' } : undefined}
+                    />
+                  ))}
               </div>
               <div>
                 <div>

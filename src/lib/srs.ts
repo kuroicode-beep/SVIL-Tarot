@@ -166,11 +166,20 @@ export async function getSrsCard(cardId: string): Promise<SrsCard | undefined> {
   }
 }
 
-export async function recordAnswer(cardId: string, grade: SrsGrade): Promise<SrsCard> {
+/**
+ * 채점 결과.
+ *
+ * saved=false는 '계산은 했지만 저장은 못 했다'는 뜻이다. 화면이 이걸 구분하지 못하면
+ * 저장 실패가 성공과 똑같이 보이고, 사용자는 오늘 복습한 게 남았다고 믿는다(무성 데이터 손실).
+ * 진행을 막지는 않되 반드시 알린다.
+ */
+export type SrsAnswer = { card: SrsCard; saved: boolean; isNew: boolean }
+
+export async function recordAnswer(cardId: string, grade: SrsGrade): Promise<SrsAnswer> {
   const now = new Date()
   const db = await openSrsDb()
   // 스토어가 아직 없어도 계산 결과는 돌려준다 — 호출부가 답을 못 받아 화면이 멈추는 편이 더 나쁘다.
-  if (!db) return { ...scheduleNext(undefined, grade, now), cardId }
+  if (!db) return { card: { ...scheduleNext(undefined, grade, now), cardId }, saved: false, isNew: true }
   try {
     // 읽기와 쓰기를 한 트랜잭션에 묶는다. 나눠 하면 같은 카드를 빠르게 두 번 채점했을 때
     // 늦게 도착한 쓰기가 옛 상태로 계산한 값을 덮어써 reps가 되감긴다.
@@ -179,10 +188,10 @@ export async function recordAnswer(cardId: string, grade: SrsGrade): Promise<Srs
     const next = { ...scheduleNext(prev, grade, now), cardId }
     await tx.store.put(next)
     await tx.done
-    return next
+    return { card: next, saved: true, isNew: prev === undefined }
   } catch {
     // 트랜잭션이 깨지면 직전 상태를 알 수 없다. 신규 취급으로라도 결과를 돌려주고 저장은 포기한다.
-    return { ...scheduleNext(undefined, grade, now), cardId }
+    return { card: { ...scheduleNext(undefined, grade, now), cardId }, saved: false, isNew: true }
   }
 }
 
@@ -213,6 +222,19 @@ export async function dueCards(limit?: number): Promise<string[]> {
   // limit=0은 "0장"이라는 뜻이라 undefined(전부)와 구분한다.
   const take = typeof limit === 'number' && Number.isFinite(limit) && limit >= 0 ? limit : undefined
   return rows.slice(0, take).map((c) => c.cardId)
+}
+
+/**
+ * 아직 한 번도 채점하지 않은 카드 id. 덱 순서 그대로라 메이저 0번부터 배우는 흐름이 유지된다.
+ * dueCards만으로는 첫 사용자가 영원히 0장이다 — 복습 대상은 '이미 푼 적 있는 카드'뿐이기 때문이다.
+ */
+export async function newCards(limit?: number): Promise<string[]> {
+  const records = await readAllSrs()
+  const seen = new Set(records.map((c) => c.cardId))
+  const rest = allCards.filter((c) => !seen.has(c.id)).map((c) => c.id)
+  // dueCards와 같은 규칙 — limit=0은 '0장'이고 undefined가 '전부'다.
+  const take = typeof limit === 'number' && Number.isFinite(limit) && limit >= 0 ? limit : undefined
+  return rest.slice(0, take)
 }
 
 /** 학습 진도 요약 — 리포트 카드 화면이 쓴다. */
