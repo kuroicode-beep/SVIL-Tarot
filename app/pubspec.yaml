@@ -1,0 +1,49 @@
+name: svil_tarot
+description: "SVIL 타로 — 저시력 친화 타로 학습·실전·AI 리딩"
+publish_to: 'none'
+
+# 버전은 SVIL SemVer 규칙을 따른다. MAJOR = 데이터 구조 변경.
+# 웹판(v1.8.0)에서 IndexedDB → SQLite로 저장소가 바뀌므로 2.0.0이다.
+# 이 값과 lib/version.dart의 APP_VERSION을 항상 같이 맞춘다.
+version: 2.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  drift: ^2.34.3
+  file_selector: ^1.1.0
+  flutter:
+    sdk: flutter
+  go_router: ^17.5.0
+  http: ^1.6.0
+  intl: ^0.20.3
+  just_audio: ^0.10.6
+  path: ^1.9.1
+  path_provider: ^2.1.6
+  pdf: ^3.13.0
+  printing: ^5.15.0
+  provider: ^6.1.5+1
+  shared_preferences: ^2.5.5
+  uuid: ^4.6.0
+  window_manager: ^0.5.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.34.5
+  build_runner: ^2.15.1
+
+flutter:
+  uses-material-design: true
+
+  # 에셋은 WU 0.2에서 채운다. pubspec은 없는 파일을 선언하면 빌드가 실패하므로
+  # 실제로 디스크에 넣은 뒤에만 여기에 적는다(웹 @font-face는 조용히 무시했지만 여기는 아니다).
+  # assets:
+  #   - assets/deck/
+  #   - assets/data/
+
+  # 글꼴도 WU 0.2에서. tokens.css가 선언해 둔 LINESeedKR-Bd/Th는 실제 파일이 없으므로
+  # 그대로 옮기면 안 된다.
+  # fonts:

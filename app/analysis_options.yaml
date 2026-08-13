@@ -1,0 +1,35 @@
+# analysis_options.yaml — SVIL 타로 정적 분석 설정
+#
+# 접근성 규칙(Material 버튼 금지 등)은 analyzer로 표현할 수 없어
+# `tool/check_a11y.dart`가 따로 맡는다. 여기는 언어 수준 규칙만 다룬다.
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    # drift 코드젠 산출물. 사람이 고치지 않으므로 검사하지 않는다.
+    - "**/*.g.dart"
+    - "**/*.drift.dart"
+
+  errors:
+    # 저시력 앱이라 문자열이 곧 기능이다. 안 쓰는 것·죽은 코드는 경고가 아니라 오류로 본다.
+    unused_import: error
+    unused_local_variable: error
+    dead_code: error
+
+linter:
+  rules:
+    # 위젯 트리가 깊어서 const가 성능·가독성 양쪽에 실질적으로 기여한다.
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+
+    # 한국어 주석이 코드베이스 관례다. 공개 API에 주석을 강제하지는 않되
+    # 반환 타입은 명시하게 한다 — 로직 포팅에서 int/double 혼동이 실제 위험이다.
+    always_declare_return_types: true
+
+    # JS→Dart 포팅에서 실제로 사고가 나는 지점들.
+    # (JS는 int/double 구분이 없어 `2`와 `2.5`가 섞여 들어온다)
+    avoid_dynamic_calls: true
+
+    # 비동기 흐름에서 BuildContext를 넘겨 쓰다 마운트 해제된 위젯을 건드리는 사고 방지.
+    use_build_context_synchronously: true

@@ -42,3 +42,9 @@ credentials.*
 *.sqlite
 *.db
 svil-tarot-backup_*.json
+
+# Flutter (app/)
+app/build/
+app/.dart_tool/
+app/windows/flutter/ephemeral/
+app/.flutter-plugins-dependencies
