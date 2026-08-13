@@ -1,0 +1,7733 @@
+{
+  "note": "한국 표준시 기준 음력. 중국 농력과 다르다",
+  "minYear": 1900,
+  "maxYear": 2100,
+  "leapMonths": [
+    {
+      "year": 1900,
+      "leapMonth": 8
+    },
+    {
+      "year": 1901,
+      "leapMonth": 0
+    },
+    {
+      "year": 1902,
+      "leapMonth": 0
+    },
+    {
+      "year": 1903,
+      "leapMonth": 5
+    },
+    {
+      "year": 1904,
+      "leapMonth": 0
+    },
+    {
+      "year": 1905,
+      "leapMonth": 0
+    },
+    {
+      "year": 1906,
+      "leapMonth": 4
+    },
+    {
+      "year": 1907,
+      "leapMonth": 0
+    },
+    {
+      "year": 1908,
+      "leapMonth": 0
+    },
+    {
+      "year": 1909,
+      "leapMonth": 2
+    },
+    {
+      "year": 1910,
+      "leapMonth": 0
+    },
+    {
+      "year": 1911,
+      "leapMonth": 6
+    },
+    {
+      "year": 1912,
+      "leapMonth": 0
+    },
+    {
+      "year": 1913,
+      "leapMonth": 0
+    },
+    {
+      "year": 1914,
+      "leapMonth": 5
+    },
+    {
+      "year": 1915,
+      "leapMonth": 0
+    },
+    {
+      "year": 1916,
+      "leapMonth": 0
+    },
+    {
+      "year": 1917,
+      "leapMonth": 2
+    },
+    {
+      "year": 1918,
+      "leapMonth": 0
+    },
+    {
+      "year": 1919,
+      "leapMonth": 7
+    },
+    {
+      "year": 1920,
+      "leapMonth": 0
+    },
+    {
+      "year": 1921,
+      "leapMonth": 0
+    },
+    {
+      "year": 1922,
+      "leapMonth": 5
+    },
+    {
+      "year": 1923,
+      "leapMonth": 0
+    },
+    {
+      "year": 1924,
+      "leapMonth": 0
+    },
+    {
+      "year": 1925,
+      "leapMonth": 4
+    },
+    {
+      "year": 1926,
+      "leapMonth": 0
+    },
+    {
+      "year": 1927,
+      "leapMonth": 0
+    },
+    {
+      "year": 1928,
+      "leapMonth": 2
+    },
+    {
+      "year": 1929,
+      "leapMonth": 0
+    },
+    {
+      "year": 1930,
+      "leapMonth": 6
+    },
+    {
+      "year": 1931,
+      "leapMonth": 0
+    },
+    {
+      "year": 1932,
+      "leapMonth": 0
+    },
+    {
+      "year": 1933,
+      "leapMonth": 5
+    },
+    {
+      "year": 1934,
+      "leapMonth": 0
+    },
+    {
+      "year": 1935,
+      "leapMonth": 0
+    },
+    {
+      "year": 1936,
+      "leapMonth": 3
+    },
+    {
+      "year": 1937,
+      "leapMonth": 0
+    },
+    {
+      "year": 1938,
+      "leapMonth": 7
+    },
+    {
+      "year": 1939,
+      "leapMonth": 0
+    },
+    {
+      "year": 1940,
+      "leapMonth": 0
+    },
+    {
+      "year": 1941,
+      "leapMonth": 6
+    },
+    {
+      "year": 1942,
+      "leapMonth": 0
+    },
+    {
+      "year": 1943,
+      "leapMonth": 0
+    },
+    {
+      "year": 1944,
+      "leapMonth": 4
+    },
+    {
+      "year": 1945,
+      "leapMonth": 0
+    },
+    {
+      "year": 1946,
+      "leapMonth": 0
+    },
+    {
+      "year": 1947,
+      "leapMonth": 2
+    },
+    {
+      "year": 1948,
+      "leapMonth": 0
+    },
+    {
+      "year": 1949,
+      "leapMonth": 7
+    },
+    {
+      "year": 1950,
+      "leapMonth": 0
+    },
+    {
+      "year": 1951,
+      "leapMonth": 0
+    },
+    {
+      "year": 1952,
+      "leapMonth": 5
+    },
+    {
+      "year": 1953,
+      "leapMonth": 0
+    },
+    {
+      "year": 1954,
+      "leapMonth": 0
+    },
+    {
+      "year": 1955,
+      "leapMonth": 3
+    },
+    {
+      "year": 1956,
+      "leapMonth": 0
+    },
+    {
+      "year": 1957,
+      "leapMonth": 8
+    },
+    {
+      "year": 1958,
+      "leapMonth": 0
+    },
+    {
+      "year": 1959,
+      "leapMonth": 0
+    },
+    {
+      "year": 1960,
+      "leapMonth": 6
+    },
+    {
+      "year": 1961,
+      "leapMonth": 0
+    },
+    {
+      "year": 1962,
+      "leapMonth": 0
+    },
+    {
+      "year": 1963,
+      "leapMonth": 4
+    },
+    {
+      "year": 1964,
+      "leapMonth": 0
+    },
+    {
+      "year": 1965,
+      "leapMonth": 0
+    },
+    {
+      "year": 1966,
+      "leapMonth": 3
+    },
+    {
+      "year": 1967,
+      "leapMonth": 0
+    },
+    {
+      "year": 1968,
+      "leapMonth": 7
+    },
+    {
+      "year": 1969,
+      "leapMonth": 0
+    },
+    {
+      "year": 1970,
+      "leapMonth": 0
+    },
+    {
+      "year": 1971,
+      "leapMonth": 5
+    },
+    {
+      "year": 1972,
+      "leapMonth": 0
+    },
+    {
+      "year": 1973,
+      "leapMonth": 0
+    },
+    {
+      "year": 1974,
+      "leapMonth": 4
+    },
+    {
+      "year": 1975,
+      "leapMonth": 0
+    },
+    {
+      "year": 1976,
+      "leapMonth": 8
+    },
+    {
+      "year": 1977,
+      "leapMonth": 0
+    },
+    {
+      "year": 1978,
+      "leapMonth": 0
+    },
+    {
+      "year": 1979,
+      "leapMonth": 6
+    },
+    {
+      "year": 1980,
+      "leapMonth": 0
+    },
+    {
+      "year": 1981,
+      "leapMonth": 0
+    },
+    {
+      "year": 1982,
+      "leapMonth": 4
+    },
+    {
+      "year": 1983,
+      "leapMonth": 0
+    },
+    {
+      "year": 1984,
+      "leapMonth": 10
+    },
+    {
+      "year": 1985,
+      "leapMonth": 0
+    },
+    {
+      "year": 1986,
+      "leapMonth": 0
+    },
+    {
+      "year": 1987,
+      "leapMonth": 6
+    },
+    {
+      "year": 1988,
+      "leapMonth": 0
+    },
+    {
+      "year": 1989,
+      "leapMonth": 0
+    },
+    {
+      "year": 1990,
+      "leapMonth": 5
+    },
+    {
+      "year": 1991,
+      "leapMonth": 0
+    },
+    {
+      "year": 1992,
+      "leapMonth": 0
+    },
+    {
+      "year": 1993,
+      "leapMonth": 3
+    },
+    {
+      "year": 1994,
+      "leapMonth": 0
+    },
+    {
+      "year": 1995,
+      "leapMonth": 8
+    },
+    {
+      "year": 1996,
+      "leapMonth": 0
+    },
+    {
+      "year": 1997,
+      "leapMonth": 0
+    },
+    {
+      "year": 1998,
+      "leapMonth": 5
+    },
+    {
+      "year": 1999,
+      "leapMonth": 0
+    },
+    {
+      "year": 2000,
+      "leapMonth": 0
+    },
+    {
+      "year": 2001,
+      "leapMonth": 4
+    },
+    {
+      "year": 2002,
+      "leapMonth": 0
+    },
+    {
+      "year": 2003,
+      "leapMonth": 0
+    },
+    {
+      "year": 2004,
+      "leapMonth": 2
+    },
+    {
+      "year": 2005,
+      "leapMonth": 0
+    },
+    {
+      "year": 2006,
+      "leapMonth": 7
+    },
+    {
+      "year": 2007,
+      "leapMonth": 0
+    },
+    {
+      "year": 2008,
+      "leapMonth": 0
+    },
+    {
+      "year": 2009,
+      "leapMonth": 5
+    },
+    {
+      "year": 2010,
+      "leapMonth": 0
+    },
+    {
+      "year": 2011,
+      "leapMonth": 0
+    },
+    {
+      "year": 2012,
+      "leapMonth": 3
+    },
+    {
+      "year": 2013,
+      "leapMonth": 0
+    },
+    {
+      "year": 2014,
+      "leapMonth": 9
+    },
+    {
+      "year": 2015,
+      "leapMonth": 0
+    },
+    {
+      "year": 2016,
+      "leapMonth": 0
+    },
+    {
+      "year": 2017,
+      "leapMonth": 5
+    },
+    {
+      "year": 2018,
+      "leapMonth": 0
+    },
+    {
+      "year": 2019,
+      "leapMonth": 0
+    },
+    {
+      "year": 2020,
+      "leapMonth": 4
+    },
+    {
+      "year": 2021,
+      "leapMonth": 0
+    },
+    {
+      "year": 2022,
+      "leapMonth": 0
+    },
+    {
+      "year": 2023,
+      "leapMonth": 2
+    },
+    {
+      "year": 2024,
+      "leapMonth": 0
+    },
+    {
+      "year": 2025,
+      "leapMonth": 6
+    },
+    {
+      "year": 2026,
+      "leapMonth": 0
+    },
+    {
+      "year": 2027,
+      "leapMonth": 0
+    },
+    {
+      "year": 2028,
+      "leapMonth": 5
+    },
+    {
+      "year": 2029,
+      "leapMonth": 0
+    },
+    {
+      "year": 2030,
+      "leapMonth": 0
+    },
+    {
+      "year": 2031,
+      "leapMonth": 3
+    },
+    {
+      "year": 2032,
+      "leapMonth": 0
+    },
+    {
+      "year": 2033,
+      "leapMonth": 11
+    },
+    {
+      "year": 2034,
+      "leapMonth": 0
+    },
+    {
+      "year": 2035,
+      "leapMonth": 0
+    },
+    {
+      "year": 2036,
+      "leapMonth": 6
+    },
+    {
+      "year": 2037,
+      "leapMonth": 0
+    },
+    {
+      "year": 2038,
+      "leapMonth": 0
+    },
+    {
+      "year": 2039,
+      "leapMonth": 5
+    },
+    {
+      "year": 2040,
+      "leapMonth": 0
+    },
+    {
+      "year": 2041,
+      "leapMonth": 0
+    },
+    {
+      "year": 2042,
+      "leapMonth": 2
+    },
+    {
+      "year": 2043,
+      "leapMonth": 0
+    },
+    {
+      "year": 2044,
+      "leapMonth": 7
+    },
+    {
+      "year": 2045,
+      "leapMonth": 0
+    },
+    {
+      "year": 2046,
+      "leapMonth": 0
+    },
+    {
+      "year": 2047,
+      "leapMonth": 5
+    },
+    {
+      "year": 2048,
+      "leapMonth": 0
+    },
+    {
+      "year": 2049,
+      "leapMonth": 0
+    },
+    {
+      "year": 2050,
+      "leapMonth": 3
+    },
+    {
+      "year": 2051,
+      "leapMonth": 0
+    },
+    {
+      "year": 2052,
+      "leapMonth": 8
+    },
+    {
+      "year": 2053,
+      "leapMonth": 0
+    },
+    {
+      "year": 2054,
+      "leapMonth": 0
+    },
+    {
+      "year": 2055,
+      "leapMonth": 6
+    },
+    {
+      "year": 2056,
+      "leapMonth": 0
+    },
+    {
+      "year": 2057,
+      "leapMonth": 0
+    },
+    {
+      "year": 2058,
+      "leapMonth": 4
+    },
+    {
+      "year": 2059,
+      "leapMonth": 0
+    },
+    {
+      "year": 2060,
+      "leapMonth": 0
+    },
+    {
+      "year": 2061,
+      "leapMonth": 3
+    },
+    {
+      "year": 2062,
+      "leapMonth": 0
+    },
+    {
+      "year": 2063,
+      "leapMonth": 7
+    },
+    {
+      "year": 2064,
+      "leapMonth": 0
+    },
+    {
+      "year": 2065,
+      "leapMonth": 0
+    },
+    {
+      "year": 2066,
+      "leapMonth": 5
+    },
+    {
+      "year": 2067,
+      "leapMonth": 0
+    },
+    {
+      "year": 2068,
+      "leapMonth": 0
+    },
+    {
+      "year": 2069,
+      "leapMonth": 4
+    },
+    {
+      "year": 2070,
+      "leapMonth": 0
+    },
+    {
+      "year": 2071,
+      "leapMonth": 8
+    },
+    {
+      "year": 2072,
+      "leapMonth": 0
+    },
+    {
+      "year": 2073,
+      "leapMonth": 0
+    },
+    {
+      "year": 2074,
+      "leapMonth": 6
+    },
+    {
+      "year": 2075,
+      "leapMonth": 0
+    },
+    {
+      "year": 2076,
+      "leapMonth": 0
+    },
+    {
+      "year": 2077,
+      "leapMonth": 4
+    },
+    {
+      "year": 2078,
+      "leapMonth": 0
+    },
+    {
+      "year": 2079,
+      "leapMonth": 0
+    },
+    {
+      "year": 2080,
+      "leapMonth": 3
+    },
+    {
+      "year": 2081,
+      "leapMonth": 0
+    },
+    {
+      "year": 2082,
+      "leapMonth": 7
+    },
+    {
+      "year": 2083,
+      "leapMonth": 0
+    },
+    {
+      "year": 2084,
+      "leapMonth": 0
+    },
+    {
+      "year": 2085,
+      "leapMonth": 5
+    },
+    {
+      "year": 2086,
+      "leapMonth": 0
+    },
+    {
+      "year": 2087,
+      "leapMonth": 0
+    },
+    {
+      "year": 2088,
+      "leapMonth": 4
+    },
+    {
+      "year": 2089,
+      "leapMonth": 0
+    },
+    {
+      "year": 2090,
+      "leapMonth": 8
+    },
+    {
+      "year": 2091,
+      "leapMonth": 0
+    },
+    {
+      "year": 2092,
+      "leapMonth": 0
+    },
+    {
+      "year": 2093,
+      "leapMonth": 6
+    },
+    {
+      "year": 2094,
+      "leapMonth": 0
+    },
+    {
+      "year": 2095,
+      "leapMonth": 0
+    },
+    {
+      "year": 2096,
+      "leapMonth": 4
+    },
+    {
+      "year": 2097,
+      "leapMonth": 0
+    },
+    {
+      "year": 2098,
+      "leapMonth": 0
+    },
+    {
+      "year": 2099,
+      "leapMonth": 3
+    },
+    {
+      "year": 2100,
+      "leapMonth": 0
+    }
+  ],
+  "cases": [
+    {
+      "kind": "lunarToSolar",
+      "note": "1997 설날 — 한국 2/8, 중국 2/7",
+      "input": {
+        "year": 1997,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "day": 8,
+          "month": 2,
+          "year": 1997
+        }
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "1988 설날 — 한국 2/18",
+      "input": {
+        "year": 1988,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "day": 18,
+          "month": 2,
+          "year": 1988
+        }
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "2024 설날",
+      "input": {
+        "year": 2024,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "day": 10,
+          "month": 2,
+          "year": 2024
+        }
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "2026 추석",
+      "input": {
+        "year": 2026,
+        "month": 8,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "day": 25,
+          "month": 9,
+          "year": 2026
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2009,
+        "month": 11,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2009,
+          "month": 9,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2078,
+        "month": 7,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2078,
+          "month": 6,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2032,
+        "month": 1,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2031,
+          "month": 12,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1918,
+        "month": 1,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1917,
+          "month": 12,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2085,
+        "month": 5,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2085,
+          "month": 4,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1936,
+        "month": 6,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1936,
+          "month": 4,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2000,
+        "month": 12,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2000,
+          "month": 11,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2005,
+        "month": 9,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2005,
+          "month": 8,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1921,
+        "month": 2,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1921,
+          "month": 1,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1996,
+        "month": 2,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1995,
+          "month": 12,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1924,
+        "month": 5,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1924,
+          "month": 4,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1992,
+        "month": 5,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1992,
+          "month": 4,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2004,
+        "month": 3,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2004,
+          "month": 2,
+          "day": 3,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2055,
+        "month": 4,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2055,
+          "month": 3,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1986,
+        "month": 7,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1986,
+          "month": 5,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2031,
+        "month": 12,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2031,
+          "month": 11,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2097,
+        "month": 7,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2097,
+          "month": 6,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2072,
+        "month": 12,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2072,
+          "month": 11,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2088,
+        "month": 5,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2088,
+          "month": 4,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1916,
+        "month": 11,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1916,
+          "month": 10,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1974,
+        "month": 6,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1974,
+          "month": 5,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2073,
+        "month": 4,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2073,
+          "month": 3,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1928,
+        "month": 9,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1928,
+          "month": 8,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1909,
+        "month": 5,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1909,
+          "month": 4,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2006,
+        "month": 12,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2006,
+          "month": 10,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2013,
+        "month": 4,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2013,
+          "month": 3,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1998,
+        "month": 1,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1997,
+          "month": 12,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2010,
+        "month": 2,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2010,
+          "month": 1,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1942,
+        "month": 10,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1942,
+          "month": 8,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1953,
+        "month": 5,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1953,
+          "month": 3,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2028,
+        "month": 3,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2028,
+          "month": 2,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2045,
+        "month": 8,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2045,
+          "month": 7,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1911,
+        "month": 8,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1911,
+          "month": 6,
+          "day": 29,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2059,
+        "month": 6,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2059,
+          "month": 5,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2056,
+        "month": 5,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2056,
+          "month": 3,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2005,
+        "month": 12,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2005,
+          "month": 10,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2063,
+        "month": 8,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2063,
+          "month": 7,
+          "day": 4,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2073,
+        "month": 11,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2073,
+          "month": 10,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2066,
+        "month": 1,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2065,
+          "month": 12,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2036,
+        "month": 6,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2036,
+          "month": 5,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1936,
+        "month": 2,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1936,
+          "month": 1,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2014,
+        "month": 2,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2014,
+          "month": 1,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1998,
+        "month": 12,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1998,
+          "month": 10,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1902,
+        "month": 1,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1901,
+          "month": 12,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1916,
+        "month": 2,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1916,
+          "month": 1,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1972,
+        "month": 5,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1972,
+          "month": 3,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1986,
+        "month": 11,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1986,
+          "month": 10,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2019,
+        "month": 10,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2019,
+          "month": 9,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2057,
+        "month": 1,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2056,
+          "month": 11,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1968,
+        "month": 1,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1967,
+          "month": 12,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1988,
+        "month": 12,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1988,
+          "month": 10,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2083,
+        "month": 8,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2083,
+          "month": 6,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2091,
+        "month": 4,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2091,
+          "month": 2,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1914,
+        "month": 11,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1914,
+          "month": 9,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2030,
+        "month": 12,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2030,
+          "month": 11,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2032,
+        "month": 3,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2032,
+          "month": 2,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2031,
+        "month": 1,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2030,
+          "month": 12,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1962,
+        "month": 8,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1962,
+          "month": 7,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2061,
+        "month": 3,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2061,
+          "month": 3,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2003,
+        "month": 10,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2003,
+          "month": 10,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1932,
+        "month": 2,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1931,
+          "month": 12,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2045,
+        "month": 4,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2045,
+          "month": 2,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1909,
+        "month": 3,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1909,
+          "month": 2,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1967,
+        "month": 10,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1967,
+          "month": 9,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1959,
+        "month": 5,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1959,
+          "month": 3,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1936,
+        "month": 8,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1936,
+          "month": 6,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1966,
+        "month": 1,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1966,
+          "month": 1,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2033,
+        "month": 6,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2033,
+          "month": 5,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1913,
+        "month": 2,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1913,
+          "month": 1,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2043,
+        "month": 4,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2043,
+          "month": 2,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2041,
+        "month": 2,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2041,
+          "month": 1,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1983,
+        "month": 5,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1983,
+          "month": 3,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1922,
+        "month": 7,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1922,
+          "month": 5,
+          "day": 27,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2058,
+        "month": 5,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2058,
+          "month": 4,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1916,
+        "month": 7,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1916,
+          "month": 6,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1970,
+        "month": 3,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1970,
+          "month": 2,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1916,
+        "month": 2,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1916,
+          "month": 1,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2059,
+        "month": 8,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2059,
+          "month": 6,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1914,
+        "month": 11,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1914,
+          "month": 9,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1930,
+        "month": 8,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1930,
+          "month": 6,
+          "day": 8,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 1,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2081,
+          "month": 12,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1996,
+        "month": 9,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1996,
+          "month": 7,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1979,
+        "month": 6,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1979,
+          "month": 5,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2028,
+        "month": 2,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2028,
+          "month": 1,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2090,
+        "month": 12,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2090,
+          "month": 11,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2031,
+        "month": 4,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2031,
+          "month": 3,
+          "day": 1,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1934,
+        "month": 5,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1934,
+          "month": 4,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1901,
+        "month": 1,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1900,
+          "month": 11,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1971,
+        "month": 2,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1971,
+          "month": 1,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2061,
+        "month": 3,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2061,
+          "month": 2,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2094,
+        "month": 12,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2094,
+          "month": 11,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1951,
+        "month": 11,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1951,
+          "month": 10,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1969,
+        "month": 9,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1969,
+          "month": 8,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2033,
+        "month": 10,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2033,
+          "month": 9,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2008,
+        "month": 1,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2007,
+          "month": 12,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2086,
+        "month": 9,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2086,
+          "month": 8,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1931,
+        "month": 11,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1931,
+          "month": 10,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2063,
+        "month": 8,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2063,
+          "month": 7,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1995,
+        "month": 2,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1995,
+          "month": 1,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2059,
+        "month": 11,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2059,
+          "month": 10,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2095,
+        "month": 7,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2095,
+          "month": 6,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1901,
+        "month": 4,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1901,
+          "month": 2,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2098,
+        "month": 3,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2098,
+          "month": 2,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2091,
+        "month": 4,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2091,
+          "month": 2,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2030,
+        "month": 3,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2030,
+          "month": 2,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1910,
+        "month": 4,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1910,
+          "month": 3,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2051,
+        "month": 12,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2051,
+          "month": 11,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2047,
+        "month": 5,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2047,
+          "month": 4,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2023,
+        "month": 7,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2023,
+          "month": 5,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1922,
+        "month": 5,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1922,
+          "month": 5,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1959,
+        "month": 4,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1959,
+          "month": 2,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1927,
+        "month": 5,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1927,
+          "month": 4,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1953,
+        "month": 7,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1953,
+          "month": 5,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2091,
+        "month": 7,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2091,
+          "month": 5,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2048,
+        "month": 9,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2048,
+          "month": 8,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1914,
+        "month": 10,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1914,
+          "month": 8,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2006,
+        "month": 1,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2005,
+          "month": 12,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1984,
+        "month": 3,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1984,
+          "month": 2,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2025,
+        "month": 9,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2025,
+          "month": 7,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1975,
+        "month": 3,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1975,
+          "month": 1,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1970,
+        "month": 6,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1970,
+          "month": 5,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2004,
+        "month": 12,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2004,
+          "month": 11,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1974,
+        "month": 11,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1974,
+          "month": 9,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2017,
+        "month": 5,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2017,
+          "month": 5,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2094,
+        "month": 11,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2094,
+          "month": 10,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2073,
+        "month": 1,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2072,
+          "month": 12,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2056,
+        "month": 1,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2055,
+          "month": 11,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1942,
+        "month": 7,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1942,
+          "month": 5,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1994,
+        "month": 5,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1994,
+          "month": 3,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2083,
+        "month": 5,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2083,
+          "month": 4,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1961,
+        "month": 3,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1961,
+          "month": 1,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2023,
+        "month": 5,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2023,
+          "month": 3,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2002,
+        "month": 11,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2002,
+          "month": 10,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1922,
+        "month": 4,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1922,
+          "month": 3,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1915,
+        "month": 10,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1915,
+          "month": 9,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2013,
+        "month": 4,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2013,
+          "month": 3,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1977,
+        "month": 4,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1977,
+          "month": 3,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1995,
+        "month": 3,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1995,
+          "month": 2,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2055,
+        "month": 3,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2055,
+          "month": 2,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2029,
+        "month": 4,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2029,
+          "month": 3,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2018,
+        "month": 8,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2018,
+          "month": 7,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1989,
+        "month": 7,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1989,
+          "month": 6,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2093,
+        "month": 5,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2093,
+          "month": 4,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2008,
+        "month": 1,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2007,
+          "month": 12,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2093,
+        "month": 1,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2092,
+          "month": 12,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2048,
+        "month": 5,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2048,
+          "month": 4,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2022,
+        "month": 8,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2022,
+          "month": 8,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2100,
+        "month": 8,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2100,
+          "month": 7,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1997,
+        "month": 2,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1997,
+          "month": 1,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1908,
+        "month": 6,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1908,
+          "month": 5,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1912,
+        "month": 12,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1912,
+          "month": 11,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1957,
+        "month": 6,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1957,
+          "month": 5,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1954,
+        "month": 1,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1953,
+          "month": 12,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1912,
+        "month": 7,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1912,
+          "month": 6,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1954,
+        "month": 12,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1954,
+          "month": 11,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2050,
+        "month": 6,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2050,
+          "month": 5,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2060,
+        "month": 10,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2060,
+          "month": 9,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2006,
+        "month": 1,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2005,
+          "month": 12,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2058,
+        "month": 1,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2058,
+          "month": 1,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2054,
+        "month": 8,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2054,
+          "month": 7,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2017,
+        "month": 8,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2017,
+          "month": 6,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1920,
+        "month": 6,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1920,
+          "month": 5,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1965,
+        "month": 7,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1965,
+          "month": 6,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2010,
+        "month": 3,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2010,
+          "month": 1,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1929,
+        "month": 12,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1929,
+          "month": 11,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2034,
+        "month": 5,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2034,
+          "month": 4,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1940,
+        "month": 3,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1940,
+          "month": 2,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2008,
+        "month": 6,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2008,
+          "month": 5,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2047,
+        "month": 11,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2047,
+          "month": 9,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1934,
+        "month": 6,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1934,
+          "month": 5,
+          "day": 5,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1916,
+        "month": 10,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1916,
+          "month": 9,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1956,
+        "month": 8,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1956,
+          "month": 7,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2051,
+        "month": 10,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2051,
+          "month": 9,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2094,
+        "month": 3,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2094,
+          "month": 2,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1974,
+        "month": 9,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1974,
+          "month": 7,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1941,
+        "month": 3,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1941,
+          "month": 2,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2025,
+        "month": 5,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2025,
+          "month": 4,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1922,
+        "month": 3,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1922,
+          "month": 2,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2073,
+        "month": 11,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2073,
+          "month": 10,
+          "day": 5,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2097,
+        "month": 8,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2097,
+          "month": 7,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2066,
+        "month": 1,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2065,
+          "month": 12,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1959,
+        "month": 11,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1959,
+          "month": 10,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1938,
+        "month": 7,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1938,
+          "month": 6,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1974,
+        "month": 5,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1974,
+          "month": 4,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1925,
+        "month": 6,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1925,
+          "month": 5,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2015,
+        "month": 2,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2014,
+          "month": 12,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2083,
+        "month": 1,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 12,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1996,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1995,
+          "month": 11,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1957,
+        "month": 1,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1956,
+          "month": 12,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1954,
+        "month": 8,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1954,
+          "month": 7,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1950,
+        "month": 6,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1950,
+          "month": 5,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2085,
+        "month": 3,
+        "day": 26
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2085,
+          "month": 3,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2047,
+        "month": 3,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2047,
+          "month": 2,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2004,
+        "month": 9,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2004,
+          "month": 8,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1924,
+        "month": 8,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1924,
+          "month": 7,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2090,
+        "month": 3,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2090,
+          "month": 2,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1928,
+        "month": 7,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1928,
+          "month": 6,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1942,
+        "month": 2,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1942,
+          "month": 1,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2015,
+        "month": 4,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2015,
+          "month": 2,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2002,
+        "month": 11,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2002,
+          "month": 9,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1918,
+        "month": 4,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1918,
+          "month": 3,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2032,
+        "month": 2,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2031,
+          "month": 12,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2090,
+        "month": 9,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2090,
+          "month": 8,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2025,
+        "month": 9,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2025,
+          "month": 7,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2011,
+        "month": 8,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2011,
+          "month": 7,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1999,
+        "month": 11,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1999,
+          "month": 9,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2073,
+        "month": 8,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2073,
+          "month": 7,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1966,
+        "month": 5,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1966,
+          "month": 4,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2087,
+        "month": 5,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2087,
+          "month": 4,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2047,
+        "month": 4,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2047,
+          "month": 3,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1972,
+        "month": 4,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1972,
+          "month": 3,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2048,
+        "month": 10,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2048,
+          "month": 9,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2060,
+        "month": 8,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2060,
+          "month": 7,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1932,
+        "month": 10,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1932,
+          "month": 9,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2043,
+        "month": 8,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2043,
+          "month": 7,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2096,
+        "month": 2,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2096,
+          "month": 1,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1946,
+        "month": 5,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1946,
+          "month": 4,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1914,
+        "month": 5,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1914,
+          "month": 4,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1941,
+        "month": 6,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1941,
+          "month": 5,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1967,
+        "month": 10,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1967,
+          "month": 8,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2015,
+        "month": 12,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2015,
+          "month": 11,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1918,
+        "month": 9,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1918,
+          "month": 8,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2061,
+        "month": 11,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2061,
+          "month": 9,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1919,
+        "month": 12,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1919,
+          "month": 10,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2028,
+        "month": 10,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2028,
+          "month": 8,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1997,
+        "month": 11,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1997,
+          "month": 10,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 5,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 4,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2009,
+        "month": 1,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2009,
+          "month": 1,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1940,
+        "month": 12,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1940,
+          "month": 11,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1918,
+        "month": 10,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1918,
+          "month": 9,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2081,
+        "month": 8,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2081,
+          "month": 6,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2065,
+        "month": 12,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2065,
+          "month": 11,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2090,
+        "month": 1,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2089,
+          "month": 12,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2024,
+        "month": 12,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2024,
+          "month": 11,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2095,
+        "month": 8,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2095,
+          "month": 7,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1902,
+        "month": 3,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1902,
+          "month": 1,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1912,
+        "month": 3,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1912,
+          "month": 1,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1939,
+        "month": 12,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1939,
+          "month": 11,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1925,
+        "month": 10,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1925,
+          "month": 9,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1949,
+        "month": 1,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1948,
+          "month": 12,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1944,
+        "month": 9,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1944,
+          "month": 8,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1912,
+        "month": 7,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1912,
+          "month": 6,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1951,
+        "month": 1,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1950,
+          "month": 12,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1932,
+        "month": 6,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1932,
+          "month": 5,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1959,
+        "month": 2,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1959,
+          "month": 1,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2079,
+        "month": 1,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2078,
+          "month": 12,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1997,
+        "month": 1,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1996,
+          "month": 11,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1956,
+        "month": 11,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1956,
+          "month": 10,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1949,
+        "month": 1,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1948,
+          "month": 12,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1901,
+        "month": 12,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1901,
+          "month": 10,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2045,
+        "month": 3,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2045,
+          "month": 2,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2029,
+        "month": 3,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2029,
+          "month": 2,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2090,
+        "month": 12,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2090,
+          "month": 11,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2085,
+        "month": 1,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2085,
+          "month": 1,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1928,
+        "month": 12,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1928,
+          "month": 11,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2091,
+        "month": 3,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2091,
+          "month": 1,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1974,
+        "month": 6,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1974,
+          "month": 4,
+          "day": 17,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2058,
+        "month": 2,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2058,
+          "month": 1,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1944,
+        "month": 5,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1944,
+          "month": 4,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1939,
+        "month": 4,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1939,
+          "month": 3,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2093,
+        "month": 6,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2093,
+          "month": 5,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1931,
+        "month": 10,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1931,
+          "month": 9,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2006,
+        "month": 1,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2005,
+          "month": 12,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1984,
+        "month": 1,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1983,
+          "month": 12,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1962,
+        "month": 8,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1962,
+          "month": 7,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2049,
+        "month": 2,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2049,
+          "month": 1,
+          "day": 5,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1951,
+        "month": 8,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1951,
+          "month": 6,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2083,
+        "month": 7,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2083,
+          "month": 6,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2075,
+        "month": 2,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2074,
+          "month": 12,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2052,
+        "month": 9,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2052,
+          "month": 8,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1940,
+        "month": 7,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1940,
+          "month": 6,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2039,
+        "month": 5,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2039,
+          "month": 4,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2087,
+        "month": 4,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2087,
+          "month": 3,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1940,
+        "month": 7,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1940,
+          "month": 6,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1952,
+        "month": 8,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1952,
+          "month": 6,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2088,
+        "month": 1,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2087,
+          "month": 12,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2016,
+        "month": 2,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2016,
+          "month": 1,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2043,
+        "month": 5,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2043,
+          "month": 3,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2035,
+        "month": 4,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2035,
+          "month": 3,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2089,
+        "month": 6,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2089,
+          "month": 4,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2078,
+        "month": 1,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2077,
+          "month": 11,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1966,
+        "month": 8,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1966,
+          "month": 6,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2071,
+        "month": 2,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2071,
+          "month": 1,
+          "day": 5,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1985,
+        "month": 12,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1985,
+          "month": 10,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2077,
+        "month": 4,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2077,
+          "month": 3,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1968,
+        "month": 9,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1968,
+          "month": 7,
+          "day": 15,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2034,
+        "month": 5,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2034,
+          "month": 4,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2029,
+        "month": 6,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2029,
+          "month": 4,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2098,
+        "month": 7,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2098,
+          "month": 6,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2068,
+        "month": 12,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2068,
+          "month": 11,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1913,
+        "month": 7,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1913,
+          "month": 6,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1988,
+        "month": 10,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1988,
+          "month": 8,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2094,
+        "month": 10,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2094,
+          "month": 9,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2072,
+        "month": 3,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2072,
+          "month": 1,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 11,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 10,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1979,
+        "month": 1,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1978,
+          "month": 12,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2043,
+        "month": 11,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2043,
+          "month": 10,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1980,
+        "month": 6,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1980,
+          "month": 5,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2032,
+        "month": 12,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2032,
+          "month": 11,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 9,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 8,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1905,
+        "month": 11,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1905,
+          "month": 10,
+          "day": 5,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2061,
+        "month": 9,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2061,
+          "month": 7,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1929,
+        "month": 7,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1929,
+          "month": 6,
+          "day": 21,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2035,
+        "month": 1,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2034,
+          "month": 12,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1962,
+        "month": 9,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1962,
+          "month": 8,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1925,
+        "month": 6,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1925,
+          "month": 4,
+          "day": 26,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1993,
+        "month": 1,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1993,
+          "month": 1,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2069,
+        "month": 8,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2069,
+          "month": 7,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1955,
+        "month": 4,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1955,
+          "month": 3,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1981,
+        "month": 2,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1981,
+          "month": 1,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2038,
+        "month": 5,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2038,
+          "month": 4,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2026,
+        "month": 2,
+        "day": 3
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2025,
+          "month": 12,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2041,
+        "month": 6,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2041,
+          "month": 5,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1972,
+        "month": 10,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1972,
+          "month": 9,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1987,
+        "month": 2,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1987,
+          "month": 1,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1972,
+        "month": 10,
+        "day": 17
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1972,
+          "month": 9,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2087,
+        "month": 6,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2087,
+          "month": 5,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2059,
+        "month": 7,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2059,
+          "month": 5,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1970,
+        "month": 6,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1970,
+          "month": 5,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 7,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 6,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1992,
+        "month": 7,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1992,
+          "month": 6,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1923,
+        "month": 12,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1923,
+          "month": 10,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2097,
+        "month": 7,
+        "day": 9
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2097,
+          "month": 6,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1942,
+        "month": 9,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1942,
+          "month": 7,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1989,
+        "month": 9,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1989,
+          "month": 8,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2034,
+        "month": 3,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2034,
+          "month": 1,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 6,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 5,
+          "day": 5,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2029,
+        "month": 12,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2029,
+          "month": 11,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1943,
+        "month": 7,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1943,
+          "month": 6,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1932,
+        "month": 12,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1932,
+          "month": 11,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1962,
+        "month": 5,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1962,
+          "month": 4,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1920,
+        "month": 2,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1919,
+          "month": 12,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2007,
+        "month": 10,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2007,
+          "month": 8,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2000,
+        "month": 4,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2000,
+          "month": 3,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2055,
+        "month": 4,
+        "day": 24
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2055,
+          "month": 3,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2066,
+        "month": 5,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2066,
+          "month": 5,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1928,
+        "month": 3,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1928,
+          "month": 2,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1950,
+        "month": 9,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1950,
+          "month": 8,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1914,
+        "month": 4,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1914,
+          "month": 3,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1929,
+        "month": 2,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1928,
+          "month": 12,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1966,
+        "month": 6,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1966,
+          "month": 4,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2037,
+        "month": 5,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2037,
+          "month": 4,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1930,
+        "month": 11,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1930,
+          "month": 9,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2015,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2014,
+          "month": 11,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2015,
+        "month": 3,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2015,
+          "month": 2,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1974,
+        "month": 2,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1974,
+          "month": 1,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1973,
+        "month": 4,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1973,
+          "month": 3,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2044,
+        "month": 7,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2044,
+          "month": 6,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2082,
+        "month": 5,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2082,
+          "month": 4,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2066,
+        "month": 2,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2066,
+          "month": 1,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2027,
+        "month": 7,
+        "day": 14
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2027,
+          "month": 6,
+          "day": 11,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1970,
+        "month": 8,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1970,
+          "month": 7,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2001,
+        "month": 5,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2001,
+          "month": 4,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2078,
+        "month": 6,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2078,
+          "month": 5,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2021,
+        "month": 10,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2021,
+          "month": 9,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2056,
+        "month": 6,
+        "day": 13
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2056,
+          "month": 5,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1946,
+        "month": 5,
+        "day": 27
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1946,
+          "month": 4,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1950,
+        "month": 12,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1950,
+          "month": 10,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1983,
+        "month": 6,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1983,
+          "month": 5,
+          "day": 12,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2096,
+        "month": 5,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2096,
+          "month": 4,
+          "day": 4,
+          "isLeapMonth": true
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1908,
+        "month": 12,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1908,
+          "month": 11,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1905,
+        "month": 11,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1905,
+          "month": 10,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1952,
+        "month": 10,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1952,
+          "month": 8,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2079,
+        "month": 1,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2078,
+          "month": 12,
+          "day": 18,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1914,
+        "month": 9,
+        "day": 22
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1914,
+          "month": 8,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1960,
+        "month": 9,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1960,
+          "month": 7,
+          "day": 28,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2065,
+        "month": 8,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2065,
+          "month": 7,
+          "day": 9,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1951,
+        "month": 12,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1951,
+          "month": 11,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1955,
+        "month": 3,
+        "day": 4
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1955,
+          "month": 2,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1996,
+        "month": 10,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1996,
+          "month": 8,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1911,
+        "month": 2,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1911,
+          "month": 1,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1919,
+        "month": 11,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1919,
+          "month": 9,
+          "day": 27,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2089,
+        "month": 9,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2089,
+          "month": 8,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2083,
+        "month": 12,
+        "day": 15
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2083,
+          "month": 11,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2050,
+        "month": 8,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2050,
+          "month": 7,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1976,
+        "month": 4,
+        "day": 16
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1976,
+          "month": 3,
+          "day": 17,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2046,
+        "month": 6,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2046,
+          "month": 5,
+          "day": 7,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1950,
+        "month": 7,
+        "day": 11
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1950,
+          "month": 5,
+          "day": 26,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1996,
+        "month": 7,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1996,
+          "month": 6,
+          "day": 8,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1957,
+        "month": 8,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1957,
+          "month": 8,
+          "day": 1,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2073,
+        "month": 11,
+        "day": 12
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2073,
+          "month": 10,
+          "day": 13,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1931,
+        "month": 6,
+        "day": 6
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1931,
+          "month": 4,
+          "day": 20,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1944,
+        "month": 7,
+        "day": 25
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1944,
+          "month": 6,
+          "day": 6,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2056,
+        "month": 1,
+        "day": 18
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2055,
+          "month": 12,
+          "day": 2,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2075,
+        "month": 2,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2074,
+          "month": 12,
+          "day": 22,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1968,
+        "month": 3,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1968,
+          "month": 2,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2013,
+        "month": 9,
+        "day": 23
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2013,
+          "month": 8,
+          "day": 19,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1917,
+        "month": 10,
+        "day": 19
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1917,
+          "month": 9,
+          "day": 4,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2033,
+        "month": 7,
+        "day": 10
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2033,
+          "month": 6,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2047,
+        "month": 6,
+        "day": 7
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2047,
+          "month": 5,
+          "day": 14,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2067,
+        "month": 12,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2067,
+          "month": 11,
+          "day": 16,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1973,
+        "month": 10,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1973,
+          "month": 9,
+          "day": 10,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2046,
+        "month": 2,
+        "day": 20
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2046,
+          "month": 1,
+          "day": 15,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2021,
+        "month": 8,
+        "day": 2
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2021,
+          "month": 6,
+          "day": 24,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2013,
+        "month": 11,
+        "day": 5
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2013,
+          "month": 10,
+          "day": 3,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 2097,
+        "month": 9,
+        "day": 28
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 2097,
+          "month": 8,
+          "day": 23,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1976,
+        "month": 11,
+        "day": 21
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1976,
+          "month": 9,
+          "day": 30,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1926,
+        "month": 9,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1926,
+          "month": 7,
+          "day": 25,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1921,
+        "month": 3,
+        "day": 8
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1921,
+          "month": 1,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "solarToLunar",
+      "input": {
+        "year": 1932,
+        "month": 8,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": {
+          "year": 1932,
+          "month": 6,
+          "day": 29,
+          "isLeapMonth": false
+        }
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "불가능",
+      "input": {
+        "year": 1899,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "불가능",
+      "input": {
+        "year": 2101,
+        "month": 1,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "불가능",
+      "input": {
+        "year": 2024,
+        "month": 13,
+        "day": 1
+      },
+      "result": {
+        "ok": true,
+        "value": null
+      }
+    },
+    {
+      "kind": "lunarToSolar",
+      "note": "불가능",
+      "input": {
+        "year": 2024,
+        "month": 1,
+        "day": 31
+      },
+      "result": {
+        "ok": true,
+        "value": null
+      }
+    }
+  ]
+}

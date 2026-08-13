@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# 픽스처는 커밋한다 — TS 실행으로 만든 정본이라 재생성 없이도 검증이 돌아야 한다.
+!test/fixtures/

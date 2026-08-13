@@ -1,0 +1,2218 @@
+{
+  "note": "calcSoulCard(생년월일) → 1~9 (또는 0)",
+  "names": {
+    "1": "마법사",
+    "2": "여사제",
+    "3": "여황제",
+    "4": "황제",
+    "5": "교황",
+    "6": "연인",
+    "7": "전차",
+    "8": "힘",
+    "9": "은둔자"
+  },
+  "majorIds": {
+    "1": "major_01",
+    "2": "major_02",
+    "3": "major_03",
+    "4": "major_04",
+    "5": "major_05",
+    "6": "major_06",
+    "7": "major_07",
+    "8": "major_08",
+    "9": "major_09"
+  },
+  "cases": [
+    {
+      "input": "1900-01-01",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2000-02-29",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1999-12-31",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2026-08-10",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1988-02-18",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1997-02-08",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2024-02-29",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2100-12-31",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2009-07-19",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2077-11-02",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2030-11-17",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2068-06-11",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2018-06-09",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2085-01-12",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2063-11-26",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2025-09-20",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1936-05-22",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2019-11-27",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2065-08-15",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2081-07-06",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2091-07-17",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1922-10-05",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2033-01-10",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2013-01-21",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2047-07-02",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2067-04-15",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1902-06-12",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1947-09-18",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2044-04-11",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1939-05-10",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1988-09-15",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2086-09-11",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2075-02-17",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1973-12-28",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2073-09-25",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1900-12-22",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1912-01-06",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2014-03-14",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1980-05-26",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1979-11-09",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1935-07-18",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1970-01-15",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2072-08-04",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1952-04-03",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2060-06-16",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1953-12-11",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1961-09-14",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1934-10-22",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1942-12-19",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1955-11-17",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2018-10-13",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2013-04-27",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1971-06-16",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1907-04-27",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1906-06-21",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1977-09-17",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2033-12-28",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2020-10-14",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1921-05-02",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1984-12-02",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2091-07-09",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1985-08-08",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1904-06-02",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2000-08-08",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2097-02-21",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1994-08-23",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2056-01-15",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1903-04-23",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1909-11-22",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2020-10-17",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2022-08-03",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1991-10-10",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2002-11-16",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1949-05-05",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2089-10-19",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1979-12-06",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1939-04-16",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1984-03-21",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2081-05-05",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1994-07-03",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2065-09-08",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2027-12-22",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2057-02-28",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1936-08-11",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2040-06-06",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1944-04-18",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1976-01-04",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1933-09-25",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2074-02-28",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2027-06-24",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1909-01-09",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2083-12-06",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2015-09-11",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1969-04-04",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1999-12-17",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1921-04-26",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1904-08-14",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1914-01-08",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1906-09-08",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2027-04-07",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1997-12-26",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1950-11-21",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1948-05-15",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2039-08-04",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2033-05-27",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1943-11-04",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2002-10-06",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1917-10-17",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1956-06-15",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2072-01-03",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1960-08-19",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1924-05-27",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2035-07-18",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2035-03-16",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2019-08-14",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2079-02-25",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2025-02-10",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1982-12-27",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1974-11-21",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1961-02-11",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1953-09-21",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2056-10-23",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2024-02-05",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2052-01-20",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2028-12-28",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1933-01-07",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1978-08-02",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1970-08-06",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1999-07-10",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2059-01-17",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2093-09-03",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2050-06-23",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2079-05-03",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2088-04-18",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2052-02-14",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2076-04-26",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1976-09-16",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1905-12-06",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2086-04-03",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2051-10-26",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2026-01-24",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2084-01-27",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1909-03-18",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2089-10-28",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2018-02-01",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1945-02-02",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1946-02-06",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2088-09-04",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2067-12-07",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1913-02-07",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2042-12-02",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2000-11-08",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1906-04-05",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1985-09-09",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1926-10-26",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1905-11-14",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1905-03-08",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2075-08-07",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1903-05-01",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2088-03-21",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1934-12-19",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1948-09-27",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2091-10-26",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1907-12-04",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2099-07-27",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1948-05-11",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1995-03-23",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1932-08-07",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1969-05-06",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1956-11-27",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1989-05-05",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2062-09-15",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1915-10-12",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1902-07-09",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2023-10-21",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1929-03-08",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2018-01-26",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2001-08-25",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1923-01-22",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2039-02-06",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2001-10-20",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1973-01-27",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1950-05-06",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2002-09-08",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2033-03-27",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1902-03-17",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1933-07-21",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1978-02-19",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1962-11-27",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1990-03-25",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1903-02-10",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2021-02-24",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1920-02-12",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2094-03-25",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1961-04-10",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2050-03-19",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1975-12-19",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1989-04-28",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2016-12-24",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2092-02-02",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2010-04-13",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2055-02-28",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2063-11-25",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1943-02-26",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2075-09-12",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1912-05-20",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2072-12-12",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1994-08-19",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2087-09-26",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2034-10-01",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2083-01-23",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2043-06-05",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2010-12-19",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1911-07-09",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2044-10-04",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1990-08-14",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1905-12-24",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2025-10-08",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1963-01-12",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1923-10-20",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1970-12-18",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1932-01-20",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1997-08-11",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2063-08-13",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1929-12-11",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2064-08-27",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1996-12-23",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2001-03-10",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1998-07-26",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2004-01-13",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2012-04-04",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2092-02-28",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2005-04-06",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2043-02-13",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2050-05-19",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1946-01-26",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1997-01-19",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2091-12-07",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2009-01-05",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2087-09-09",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1972-12-03",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1927-03-15",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2058-02-15",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1963-07-22",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1963-11-24",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1967-12-04",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1941-05-07",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2043-11-02",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1959-03-05",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1917-02-10",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1985-03-20",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1970-10-05",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2078-04-17",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1901-01-17",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1948-12-11",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "1917-06-11",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1952-04-21",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2010-06-26",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1974-10-24",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1917-03-18",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2002-06-10",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2029-07-15",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "1980-04-25",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1991-05-17",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2065-12-22",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1986-06-07",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1967-12-08",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2086-04-12",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1991-10-28",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1979-11-02",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2085-03-01",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2079-07-08",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2058-01-25",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1903-09-03",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2049-10-09",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2039-08-24",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2030-05-08",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2091-11-08",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1942-02-14",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2066-03-02",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1918-10-03",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2073-08-27",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2038-08-26",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2094-07-21",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2017-08-11",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "1962-07-21",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "1988-05-07",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2006-05-14",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2012-10-09",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2029-11-25",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "2076-05-05",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1993-03-07",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2015-11-22",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "1914-08-25",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "1920-03-10",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "1947-10-16",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    },
+    {
+      "input": "2045-10-03",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2062-08-19",
+      "result": {
+        "ok": true,
+        "value": 1
+      }
+    },
+    {
+      "input": "2015-04-21",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1996-03-24",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "2098-09-11",
+      "result": {
+        "ok": true,
+        "value": 3
+      }
+    },
+    {
+      "input": "2051-02-21",
+      "result": {
+        "ok": true,
+        "value": 4
+      }
+    },
+    {
+      "input": "1923-09-17",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2031-01-16",
+      "result": {
+        "ok": true,
+        "value": 5
+      }
+    },
+    {
+      "input": "2074-03-28",
+      "result": {
+        "ok": true,
+        "value": 8
+      }
+    },
+    {
+      "input": "2044-12-11",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2075-09-04",
+      "result": {
+        "ok": true,
+        "value": 9
+      }
+    },
+    {
+      "input": "2036-01-04",
+      "result": {
+        "ok": true,
+        "value": 7
+      }
+    },
+    {
+      "input": "",
+      "result": {
+        "ok": false,
+        "error": "생년월일 형식 오류"
+      }
+    },
+    {
+      "input": "abc",
+      "result": {
+        "ok": false,
+        "error": "생년월일 형식 오류"
+      }
+    },
+    {
+      "input": "2026-13-01",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "2026-02-30",
+      "result": {
+        "ok": true,
+        "value": 6
+      }
+    },
+    {
+      "input": "1899-01-01",
+      "result": {
+        "ok": true,
+        "value": 2
+      }
+    }
+  ]
+}
