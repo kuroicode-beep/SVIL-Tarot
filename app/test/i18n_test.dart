@@ -12,16 +12,24 @@ import 'package:svil_tarot/i18n/i18n.dart';
 import 'package:svil_tarot/i18n/strings.dart';
 
 void main() {
+  // 정확한 수를 단언한다. 대량 붙여넣기가 몇십 개를 조용히 흘려도 여기서 터지게 하려는 것이라,
+  // 키를 의도적으로 추가할 때만 이 두 숫자를 함께 올린다.
+  //
+  // 웹판 이관분 659(ko) / 657(나머지)
+  // + v2 신규 4: selected, settings_system_scale, settings_scale_clamped,
+  //              settings_system_high_contrast (Windows 배율·고대비 안내)
+  const koKeyCount = 663;
+  const translatedKeyCount = 661;
+
   group('사전 구조', () {
-    test('ko가 659키 전량을 갖는다', () {
-      // 대량 붙여넣기가 몇십 개를 조용히 흘려도 여기서 터지도록 정확한 수를 단언한다.
-      expect(koStrings.length, 659);
+    test('ko가 전량을 갖는다', () {
+      expect(koStrings.length, koKeyCount);
     });
 
-    test('나머지 4개 언어가 각각 657키를 번역했다', () {
-      // 웹판과 같은 수다. brand·settings_tts는 고유명사·약어라 의도적으로 번역하지 않는다.
+    test('나머지 4개 언어가 각각 같은 수를 번역했다', () {
+      // brand·settings_tts는 고유명사·약어라 의도적으로 번역하지 않는다.
       for (final loc in ['en', 'ja', 'zh', 'vi']) {
-        expect(stringTables[loc]!.length, 657, reason: '$loc 번역 수가 달라졌다');
+        expect(stringTables[loc]!.length, translatedKeyCount, reason: '$loc 번역 수가 달라졌다');
       }
     });
 

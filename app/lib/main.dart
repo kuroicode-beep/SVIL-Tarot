@@ -1,26 +1,34 @@
 // lib/main.dart — 진입점.
 //
-// WU 0.1 단계라 아직 화면이 없다. 창이 뜨고 어두운 바탕이 칠해지는 것까지만 확인한다.
-// 팔레트·글꼴·라우팅은 각각 WU 0.4 / 0.2 / Phase 1에서 붙는다.
+// 라우트는 웹판 App.tsx의 25개를 그대로 옮겨 가되, 화면이 준비된 것부터 붙인다.
+// 코드 분할·서비스워커·청크 프리페치는 Flutter에 개념 자체가 없어 통째로 사라졌다.
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'version.dart';
+import 'a11y/a11y_theme.dart';
+import 'a11y/scroll_into_view.dart';
+import 'i18n/i18n.dart';
+import 'screens/home_screen.dart';
+import 'screens/settings_screen.dart';
+import 'state/app_state.dart';
+import 'widgets/app_shell.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 전체화면 토글(웹판 Fullscreen API 대체)에 window_manager가 필요하고,
-  // 초기 창 크기도 여기서 정한다. 저시력 사용자가 글자를 크게 쓰므로 작은 창으로 시작하지 않는다.
   await windowManager.ensureInitialized();
   await windowManager.waitUntilReadyToShow(
     const WindowOptions(
       size: Size(1280, 860),
+      // 저시력 사용자가 글자를 크게 쓰므로 작은 창으로 시작하지 않는다.
+      // 이 값이 레이아웃 검증의 기준 하한이기도 하다.
       minimumSize: Size(960, 640),
       center: true,
       title: 'SVIL 타로',
-      titleBarStyle: TitleBarStyle.normal,
     ),
     () async {
       await windowManager.show();
@@ -28,47 +36,70 @@ Future<void> main() async {
     },
   );
 
-  runApp(const SvilTarotApp());
+  final prefs = await SharedPreferences.getInstance();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AppState(prefs),
+      child: const SvilTarotApp(),
+    ),
+  );
 }
+
+final GoRouter _router = GoRouter(
+  routes: [
+    ShellRoute(
+      builder: (context, state, child) => AppShell(child: child),
+      routes: [
+        GoRoute(path: '/', builder: (_, _) => const HomeScreen()),
+        GoRoute(path: '/settings', builder: (_, _) => const SettingsScreen()),
+      ],
+    ),
+  ],
+  // 아직 없는 경로로 가면 홈으로. 웹판의 catch-all Navigate와 같다.
+  errorBuilder: (_, _) => const HomeScreen(),
+);
 
 class SvilTarotApp extends StatelessWidget {
   const SvilTarotApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'SVIL 타로',
-      debugShowCheckedModeBanner: false,
-      // 임시 테마. WU 0.4에서 tokens.css의 3개 프리셋으로 교체된다.
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF0D0D12),
-      ),
-      home: const _Placeholder(),
-    );
-  }
-}
+    final app = context.watch<AppState>();
 
-class _Placeholder extends StatelessWidget {
-  const _Placeholder();
+    return Builder(
+      builder: (context) {
+        // Windows 고대비는 엔진이 SPI_GETHIGHCONTRAST로 읽어 여기에 넣어 준다.
+        // WM_THEMECHANGED로 실행 중 전환도 반영되므로 FFI가 필요 없다.
+        final highContrast = MediaQuery.highContrastOf(context);
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          app.updateSystemHighContrast(highContrast);
+        });
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'SVIL 타로',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFFF5F5F7)),
-            ),
-            SizedBox(height: 8),
-            // SVIL 앱 규칙: 버전은 로고 옆에 상시 표시한다.
-            Text('v$appVersion', style: TextStyle(fontSize: 18, color: Color(0xFFB9B9C6))),
-          ],
-        ),
-      ),
+        // 시스템 텍스트 배율(레지스트리 TextScaleFactor)이 앱 설정과 곱해진다.
+        // 웹판에 없던 변수라 상한을 두지 않으면 1280×800에서 화면이 통째로 밀려난다.
+        final systemScale = MediaQuery.textScalerOf(context).scale(16) / 16;
+        final scale = effectiveTextScale(
+          step: app.settings.fontSize,
+          systemScale: systemScale,
+        );
+
+        return MaterialApp.router(
+          title: 'SVIL 타로',
+          debugShowCheckedModeBanner: false,
+          routerConfig: _router,
+          theme: buildA11yTheme(
+            contrast: app.effectiveContrast,
+            fontSize: app.settings.fontSize,
+            fontFamily: resolvedFontFamily(app.settings.fontId),
+          ),
+          builder: (context, child) => MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(scale)),
+            // 포커스가 상단바 뒤로 숨지 않게 셸 전체를 감싼다(scroll-margin-top 대체).
+            child: FocusScrollKeeper(child: child ?? const SizedBox.shrink()),
+          ),
+        );
+      },
     );
   }
 }

@@ -669,6 +669,10 @@ const Map<String, String> koStrings = {
   'err_chunk_desc': '앱의 일부를 내려받지 못했습니다. 연결을 확인하고 다시 시도해 주세요. 앱이 업데이트된 경우 새로고침하면 해결됩니다.',
   'err_boundary_reset_settings': '글자 크기·언어 등 설정 지우고 새로고침',
   'err_boundary_reset_confirm': '글자 크기·글꼴·언어·대비·음성 설정을 모두 지웁니다. 저장된 리딩 기록과 고객 정보는 그대로입니다. 되돌릴 수 없습니다. 진행할까요?',
+  'selected': '선택됨',
+  'settings_system_scale': 'Windows 텍스트 크기 설정 {pct}%가 함께 적용됩니다.',
+  'settings_scale_clamped': '화면이 잘리지 않도록 확대 배율을 상한까지만 적용했습니다.',
+  'settings_system_high_contrast': 'Windows 고대비 모드가 켜져 있어 초고대비로 고정됩니다. 끄면 위 선택이 다시 적용됩니다.',
 };
 
 const Map<String, String> enStrings = {
@@ -1329,6 +1333,10 @@ const Map<String, String> enStrings = {
   'err_chunk_desc': 'Part of the app failed to download. Check your connection and try again. If the app was updated, reloading fixes it.',
   'err_boundary_reset_settings': 'Clear text size, language and other settings, then reload',
   'err_boundary_reset_confirm': 'This clears text size, font, language, contrast and voice settings. Saved readings and client records are kept. This cannot be undone. Continue?',
+  'selected': 'selected',
+  'settings_system_scale': 'Windows text size of {pct}% is applied on top of this.',
+  'settings_scale_clamped': 'Zoom is capped so the layout stays on screen.',
+  'settings_system_high_contrast': 'Windows high contrast is on, so the app stays at maximum contrast. Turn it off to use your choice above.',
 };
 
 const Map<String, String> jaStrings = {
@@ -1989,6 +1997,10 @@ const Map<String, String> jaStrings = {
   'err_chunk_desc': 'アプリの一部をダウンロードできませんでした。接続を確認して、もう一度お試しください。アプリが更新された場合は再読み込みで解決します。',
   'err_boundary_reset_settings': '文字サイズ・言語などの設定を消して再読み込み',
   'err_boundary_reset_confirm': '文字サイズ・フォント・言語・コントラスト・音声の設定をすべて消します。保存したリーディングと顧客情報はそのままです。元に戻せません。続けますか？',
+  'selected': '選択中',
+  'settings_system_scale': 'Windows の文字サイズ設定 {pct}% も一緒に適用されます。',
+  'settings_scale_clamped': '画面が切れないように拡大率を上限までに抑えました。',
+  'settings_system_high_contrast': 'Windows のハイコントラストが有効なため、最大コントラストに固定されます。解除すると上の選択が適用されます。',
 };
 
 const Map<String, String> zhStrings = {
@@ -2649,6 +2661,10 @@ const Map<String, String> zhStrings = {
   'err_chunk_desc': '应用的部分内容未能下载。请检查网络后重试。如果应用刚更新，刷新即可解决。',
   'err_boundary_reset_settings': '清除字号·语言等设置并刷新',
   'err_boundary_reset_confirm': '将清除字号、字体、语言、对比度和语音设置。已保存的解读与客户资料会保留。此操作无法撤销，要继续吗？',
+  'selected': '已选择',
+  'settings_system_scale': '同时应用了 Windows 文字大小设置 {pct}%。',
+  'settings_scale_clamped': '为避免画面被裁切，缩放已限制在上限。',
+  'settings_system_high_contrast': 'Windows 高对比度已开启，应用固定为最高对比度。关闭后将恢复上面的选择。',
 };
 
 const Map<String, String> viStrings = {
@@ -3309,6 +3325,10 @@ const Map<String, String> viStrings = {
   'err_chunk_desc': 'Một phần của ứng dụng chưa tải xong. Hãy kiểm tra kết nối và thử lại. Nếu ứng dụng vừa cập nhật, tải lại trang sẽ khắc phục.',
   'err_boundary_reset_settings': 'Xóa cỡ chữ, ngôn ngữ và các cài đặt rồi tải lại',
   'err_boundary_reset_confirm': 'Thao tác này xóa cỡ chữ, phông, ngôn ngữ, độ tương phản và giọng đọc. Các lượt trải bài đã lưu và hồ sơ khách hàng vẫn được giữ. Không thể hoàn tác. Tiếp tục?',
+  'selected': 'đã chọn',
+  'settings_system_scale': 'Cỡ chữ {pct}% của Windows cũng được áp dụng cùng.',
+  'settings_scale_clamped': 'Đã giới hạn mức phóng to để bố cục không bị cắt.',
+  'settings_system_high_contrast': 'Chế độ tương phản cao của Windows đang bật nên ứng dụng giữ ở mức tương phản tối đa. Tắt đi để dùng lựa chọn ở trên.',
 };
 
 /// 로케일 코드 → 문자열 테이블.
