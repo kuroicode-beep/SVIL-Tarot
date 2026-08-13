@@ -7,7 +7,17 @@
 
 import fs from 'node:fs'
 
-const CSS = 'src/styles/tokens.css'
+// 검사 대상은 인자로 받는다. 없으면 프로젝트 관례 경로 → 에셋 폴더 정본 순으로 찾는다.
+// (원본은 'src/styles/tokens.css' 고정이라 다른 위치에서 돌리면 ENOENT로 죽었다)
+const CSS = process.argv[2]
+  ?? ['src/styles/tokens.css', 'src/styles.css', 'css/svil-tokens.css',
+      new URL('../css/svil-tokens.css', import.meta.url).pathname.replace(/^\//, '')]
+     .find((p) => fs.existsSync(p))
+if (!CSS) {
+  console.error('FAIL: 검사할 tokens.css를 찾지 못했다. 경로를 인자로 넘겨라 — node check-contrast.mjs <경로>')
+  process.exit(1)
+}
+console.log(`대상: ${CSS}\n`)
 
 const lin = (c) => {
   c /= 255
