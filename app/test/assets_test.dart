@@ -62,8 +62,11 @@ void main() {
 
     var declared = 0;
     for (final family in fonts!) {
-      for (final entry in (family['fonts'] as YamlList)) {
-        final asset = entry['asset'] as String;
+      // YamlList/YamlMap은 dynamic을 돌려주므로 명시적으로 좁혀 준다.
+      // avoid_dynamic_calls를 켠 이유가 여기 있다 — 오타가 런타임까지 살아남지 않게.
+      final familyMap = family as YamlMap;
+      for (final entry in familyMap['fonts'] as YamlList) {
+        final asset = (entry as YamlMap)['asset'] as String;
         expect(File(asset).existsSync(), isTrue, reason: '$asset 이 선언돼 있으나 파일이 없다');
         declared++;
       }
