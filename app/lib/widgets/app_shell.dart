@@ -129,13 +129,18 @@ class _TopBar extends StatelessWidget {
           // SVIL 앱 규칙: 버전은 로고 옆에 상시 표시한다.
           _Brand(),
           A11yButton(
-            label: app.t('nav_tts'),
-            icon: Icons.volume_up,
+            // 낭독 중에는 같은 버튼이 '중지'가 된다. 상태를 색이 아니라 글자로 바꾼다.
+            label: app.speaking ? app.t('nav_stop') : app.t('nav_tts'),
+            icon: app.speaking ? Icons.stop : Icons.volume_up,
             // 읽을 내용이 없을 때 hard-disable하면 탭 순서에서 빠져 상태를 알 길이 없어진다.
-            softDisabled: !canSpeak,
-            disabledReason: canSpeak ? null : app.t('nav_tts_none'),
+            softDisabled: !app.speaking && !canSpeak,
+            disabledReason: (!app.speaking && !canSpeak) ? app.t('nav_tts_none') : null,
             onPressed: () {
-              // TTS 배선은 WU 1.3에서. 지금은 낭독 대상 등록 여부만 확인한다.
+              if (app.speaking) {
+                app.stopSpeak();
+              } else if (canSpeak) {
+                app.speak(app.lastSpeakText);
+              }
             },
           ),
           A11yButton(

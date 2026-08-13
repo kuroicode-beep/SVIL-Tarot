@@ -13,6 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../a11y/tokens.dart';
 import '../i18n/i18n.dart';
+import '../services/ollama.dart';
+import '../services/tts.dart';
 
 const String settingsStorageKey = 'svil-tarot-settings';
 
@@ -90,9 +92,14 @@ class AppSettings {
 }
 
 class AppState extends ChangeNotifier {
-  AppState(this._prefs) : _settings = _load(_prefs);
+  AppState(this._prefs, {TtsService? tts, OllamaClient? ollama})
+      : _settings = _load(_prefs),
+        _tts = tts ?? TtsService(),
+        _ollama = ollama ?? OllamaClient();
 
   final SharedPreferences _prefs;
+  final TtsService _tts;
+  final OllamaClient _ollama;
   AppSettings _settings;
 
   AppSettings get settings => _settings;
@@ -170,6 +177,74 @@ class AppState extends ChangeNotifier {
     if (_lastSpeakText == v) return;
     _lastSpeakText = v;
     notifyListeners();
+  }
+
+  // ---------- 낭독 ----------
+
+  bool _speaking = false;
+  TtsException? _ttsError;
+
+  bool get speaking => _speaking;
+
+  /// i18n 키 + 파라미터. 서비스 계층은 로케일을 모르므로 화면이 t()로 옮긴다.
+  TtsException? get ttsError => _ttsError;
+
+  void clearTtsError() {
+    if (_ttsError == null) return;
+    _ttsError = null;
+    notifyListeners();
+  }
+
+  Future<void> speak(String text) async {
+    _ttsError = null;
+    _speaking = true;
+    _lastSpeakText = text;
+    notifyListeners();
+    try {
+      await _tts.speak(text, voice: _settings.ttsVoice, speedPct: _settings.ttsSpeed);
+    } on TtsException catch (e) {
+      _ttsError = e;
+    } finally {
+      _speaking = false;
+      notifyListeners();
+    }
+  }
+
+  /// 중지는 오류가 아니다. speak()가 정상 완료되고 배너도 뜨지 않는다.
+  Future<void> stopSpeak() async {
+    await _tts.stop();
+    _speaking = false;
+    notifyListeners();
+  }
+
+  // ---------- 로컬 서버 상태 ----------
+
+  bool? _ollamaOk;
+  bool? _ttsOk;
+  List<String> _voices = const [];
+
+  bool? get ollamaOk => _ollamaOk;
+  bool? get ttsOk => _ttsOk;
+  List<String> get voices => _voices;
+
+  /// 상단 상태 표시용. 실패해도 화면이 죽지 않게 전부 삼킨다.
+  Future<void> refreshStatus() async {
+    final results = await Future.wait([
+      _ollama.ping(),
+      _tts.ping(),
+      _tts.voices(),
+    ]);
+    _ollamaOk = results[0] as bool;
+    _ttsOk = results[1] as bool;
+    _voices = results[2] as List<String>;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    unawaited(_tts.dispose());
+    _ollama.dispose();
+    super.dispose();
   }
 
   // ---------- 저장 ----------
