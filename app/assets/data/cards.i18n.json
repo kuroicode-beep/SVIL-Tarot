@@ -1,0 +1,1882 @@
+{
+  "en": {
+    "major_00": {
+      "name": "The Fool",
+      "upright": "New beginnings, innocence, adventure",
+      "reversed": "Recklessness, delay, carelessness",
+      "lesson": "Major Arcana 0. The Fool is a symbol of new beginnings, innocence, adventure. Reversed, it carries a message of recklessness, delay, carelessness. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_01": {
+      "name": "The Magician",
+      "upright": "Will, creation, skill",
+      "reversed": "Lack of planning, wasted talent",
+      "lesson": "Major Arcana 1. The Magician is a symbol of will, creation, skill. Reversed, it carries a message of lack of planning, wasted talent. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_02": {
+      "name": "The High Priestess",
+      "upright": "Intuition, secrets, the inner world",
+      "reversed": "Hidden secrets, ignored intuition",
+      "lesson": "Major Arcana 2. The High Priestess is a symbol of intuition, secrets, the inner world. Reversed, it carries a message of hidden secrets, ignored intuition. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_03": {
+      "name": "The Empress",
+      "upright": "Abundance, nurturing, creativity",
+      "reversed": "Dependence, creative block",
+      "lesson": "Major Arcana 3. The Empress is a symbol of abundance, nurturing, creativity. Reversed, it carries a message of dependence, creative block. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_04": {
+      "name": "The Emperor",
+      "upright": "Authority, structure, stability",
+      "reversed": "Domineering, rigidity",
+      "lesson": "Major Arcana 4. The Emperor is a symbol of authority, structure, stability. Reversed, it carries a message of domineering, rigidity. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_05": {
+      "name": "The Hierophant",
+      "upright": "Tradition, teaching, conviction",
+      "reversed": "Dogmatic belief, rebellion",
+      "lesson": "Major Arcana 5. The Hierophant is a symbol of tradition, teaching, conviction. Reversed, it carries a message of dogmatic belief, rebellion. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_06": {
+      "name": "The Lovers",
+      "upright": "Love, choice, harmony",
+      "reversed": "Discord, a wrong choice",
+      "lesson": "Major Arcana 6. The Lovers is a symbol of love, choice, harmony. Reversed, it carries a message of discord, a wrong choice. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_07": {
+      "name": "The Chariot",
+      "upright": "Victory, drive, willpower",
+      "reversed": "Setback, loss of direction",
+      "lesson": "Major Arcana 7. The Chariot is a symbol of victory, drive, willpower. Reversed, it carries a message of setback, loss of direction. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_08": {
+      "name": "Strength",
+      "upright": "Courage, patience, gentle strength",
+      "reversed": "Low confidence, suppression",
+      "lesson": "Major Arcana 8. Strength is a symbol of courage, patience, gentle strength. Reversed, it carries a message of low confidence, suppression. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_09": {
+      "name": "The Hermit",
+      "upright": "Reflection, wisdom, solitude",
+      "reversed": "Isolation, stubbornness",
+      "lesson": "Major Arcana 9. The Hermit is a symbol of reflection, wisdom, solitude. Reversed, it carries a message of isolation, stubbornness. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_10": {
+      "name": "Wheel of Fortune",
+      "upright": "Change, opportunity, cycles",
+      "reversed": "Misfortune, resistance",
+      "lesson": "Major Arcana 10. Wheel of Fortune is a symbol of change, opportunity, cycles. Reversed, it carries a message of misfortune, resistance. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_11": {
+      "name": "Justice",
+      "upright": "Fairness, balance, truth",
+      "reversed": "Injustice, dodged responsibility",
+      "lesson": "Major Arcana 11. Justice is a symbol of fairness, balance, truth. Reversed, it carries a message of injustice, dodged responsibility. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_12": {
+      "name": "The Hanged Man",
+      "upright": "Sacrifice, a new perspective, pause",
+      "reversed": "Stagnation, refusing to give",
+      "lesson": "Major Arcana 12. The Hanged Man is a symbol of sacrifice, a new perspective, pause. Reversed, it carries a message of stagnation, refusing to give. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_13": {
+      "name": "Death",
+      "upright": "Transition, endings and beginnings, transformation",
+      "reversed": "Stagnation, fear of change",
+      "lesson": "Major Arcana 13. Death is a symbol of transition, endings and beginnings, transformation. Reversed, it carries a message of stagnation, fear of change. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_14": {
+      "name": "Temperance",
+      "upright": "Balance, moderation, healing",
+      "reversed": "Imbalance, excess",
+      "lesson": "Major Arcana 14. Temperance is a symbol of balance, moderation, healing. Reversed, it carries a message of imbalance, excess. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_15": {
+      "name": "The Devil",
+      "upright": "Obsession, temptation, bondage",
+      "reversed": "Liberation, letting go of obsession",
+      "lesson": "Major Arcana 15. The Devil is a symbol of obsession, temptation, bondage. Reversed, it carries a message of liberation, letting go of obsession. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_16": {
+      "name": "The Tower",
+      "upright": "Sudden upheaval, collapse, awakening",
+      "reversed": "Avoided crisis, fear",
+      "lesson": "Major Arcana 16. The Tower is a symbol of sudden upheaval, collapse, awakening. Reversed, it carries a message of avoided crisis, fear. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_17": {
+      "name": "The Star",
+      "upright": "Hope, healing, inspiration",
+      "reversed": "Discouragement, lost trust",
+      "lesson": "Major Arcana 17. The Star is a symbol of hope, healing, inspiration. Reversed, it carries a message of discouragement, lost trust. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_18": {
+      "name": "The Moon",
+      "upright": "Anxiety, illusion, the unconscious",
+      "reversed": "Confusion clearing, facing the truth",
+      "lesson": "Major Arcana 18. The Moon is a symbol of anxiety, illusion, the unconscious. Reversed, it carries a message of confusion clearing, facing the truth. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_19": {
+      "name": "The Sun",
+      "upright": "Joy, success, vitality",
+      "reversed": "Fleeting joy, arrogance",
+      "lesson": "Major Arcana 19. The Sun is a symbol of joy, success, vitality. Reversed, it carries a message of fleeting joy, arrogance. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_20": {
+      "name": "Judgement",
+      "upright": "Rebirth, awakening, calling",
+      "reversed": "Self-criticism, delay",
+      "lesson": "Major Arcana 20. Judgement is a symbol of rebirth, awakening, calling. Reversed, it carries a message of self-criticism, delay. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "major_21": {
+      "name": "The World",
+      "upright": "Completion, achievement, integration",
+      "reversed": "Incompletion, stagnation",
+      "lesson": "Major Arcana 21. The World is a symbol of completion, achievement, integration. Reversed, it carries a message of incompletion, stagnation. Study tip: read the upright and reversed keywords aloud, then tie them to one everyday situation in a single sentence."
+    },
+    "cup_01": {
+      "name": "Ace of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Ace)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Ace)",
+      "lesson": "Ace of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_02": {
+      "name": "Two of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Two)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Two)",
+      "lesson": "Two of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_03": {
+      "name": "Three of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Three)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Three)",
+      "lesson": "Three of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_04": {
+      "name": "Four of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Four)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Four)",
+      "lesson": "Four of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_05": {
+      "name": "Five of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Five)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Five)",
+      "lesson": "Five of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_06": {
+      "name": "Six of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Six)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Six)",
+      "lesson": "Six of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_07": {
+      "name": "Seven of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Seven)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Seven)",
+      "lesson": "Seven of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_08": {
+      "name": "Eight of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Eight)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Eight)",
+      "lesson": "Eight of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_09": {
+      "name": "Nine of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Nine)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Nine)",
+      "lesson": "Nine of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_10": {
+      "name": "Ten of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Ten)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Ten)",
+      "lesson": "Ten of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_11": {
+      "name": "Page of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Page)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Page)",
+      "lesson": "Page of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_12": {
+      "name": "Knight of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Knight)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Knight)",
+      "lesson": "Knight of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_13": {
+      "name": "Queen of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (Queen)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (Queen)",
+      "lesson": "Queen of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "cup_14": {
+      "name": "King of Cups",
+      "upright": "Emotion & Relationships — the flow of feeling and connection (King)",
+      "reversed": "Emotion & Relationships — emotional imbalance and disconnection (King)",
+      "lesson": "King of the Cups suit. In the realm of Emotion & Relationships, it signifies the flow of feeling and connection."
+    },
+    "wand_01": {
+      "name": "Ace of Wands",
+      "upright": "Passion & Action — energy and momentum (Ace)",
+      "reversed": "Passion & Action — burnout and delay (Ace)",
+      "lesson": "Ace of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_02": {
+      "name": "Two of Wands",
+      "upright": "Passion & Action — energy and momentum (Two)",
+      "reversed": "Passion & Action — burnout and delay (Two)",
+      "lesson": "Two of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_03": {
+      "name": "Three of Wands",
+      "upright": "Passion & Action — energy and momentum (Three)",
+      "reversed": "Passion & Action — burnout and delay (Three)",
+      "lesson": "Three of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_04": {
+      "name": "Four of Wands",
+      "upright": "Passion & Action — energy and momentum (Four)",
+      "reversed": "Passion & Action — burnout and delay (Four)",
+      "lesson": "Four of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_05": {
+      "name": "Five of Wands",
+      "upright": "Passion & Action — energy and momentum (Five)",
+      "reversed": "Passion & Action — burnout and delay (Five)",
+      "lesson": "Five of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_06": {
+      "name": "Six of Wands",
+      "upright": "Passion & Action — energy and momentum (Six)",
+      "reversed": "Passion & Action — burnout and delay (Six)",
+      "lesson": "Six of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_07": {
+      "name": "Seven of Wands",
+      "upright": "Passion & Action — energy and momentum (Seven)",
+      "reversed": "Passion & Action — burnout and delay (Seven)",
+      "lesson": "Seven of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_08": {
+      "name": "Eight of Wands",
+      "upright": "Passion & Action — energy and momentum (Eight)",
+      "reversed": "Passion & Action — burnout and delay (Eight)",
+      "lesson": "Eight of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_09": {
+      "name": "Nine of Wands",
+      "upright": "Passion & Action — energy and momentum (Nine)",
+      "reversed": "Passion & Action — burnout and delay (Nine)",
+      "lesson": "Nine of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_10": {
+      "name": "Ten of Wands",
+      "upright": "Passion & Action — energy and momentum (Ten)",
+      "reversed": "Passion & Action — burnout and delay (Ten)",
+      "lesson": "Ten of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_11": {
+      "name": "Page of Wands",
+      "upright": "Passion & Action — energy and momentum (Page)",
+      "reversed": "Passion & Action — burnout and delay (Page)",
+      "lesson": "Page of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_12": {
+      "name": "Knight of Wands",
+      "upright": "Passion & Action — energy and momentum (Knight)",
+      "reversed": "Passion & Action — burnout and delay (Knight)",
+      "lesson": "Knight of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_13": {
+      "name": "Queen of Wands",
+      "upright": "Passion & Action — energy and momentum (Queen)",
+      "reversed": "Passion & Action — burnout and delay (Queen)",
+      "lesson": "Queen of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "wand_14": {
+      "name": "King of Wands",
+      "upright": "Passion & Action — energy and momentum (King)",
+      "reversed": "Passion & Action — burnout and delay (King)",
+      "lesson": "King of the Wands suit. In the realm of Passion & Action, it signifies energy and momentum."
+    },
+    "sword_01": {
+      "name": "Ace of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Ace)",
+      "reversed": "Thought & Conflict — confusion and harshness (Ace)",
+      "lesson": "Ace of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_02": {
+      "name": "Two of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Two)",
+      "reversed": "Thought & Conflict — confusion and harshness (Two)",
+      "lesson": "Two of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_03": {
+      "name": "Three of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Three)",
+      "reversed": "Thought & Conflict — confusion and harshness (Three)",
+      "lesson": "Three of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_04": {
+      "name": "Four of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Four)",
+      "reversed": "Thought & Conflict — confusion and harshness (Four)",
+      "lesson": "Four of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_05": {
+      "name": "Five of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Five)",
+      "reversed": "Thought & Conflict — confusion and harshness (Five)",
+      "lesson": "Five of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_06": {
+      "name": "Six of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Six)",
+      "reversed": "Thought & Conflict — confusion and harshness (Six)",
+      "lesson": "Six of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_07": {
+      "name": "Seven of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Seven)",
+      "reversed": "Thought & Conflict — confusion and harshness (Seven)",
+      "lesson": "Seven of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_08": {
+      "name": "Eight of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Eight)",
+      "reversed": "Thought & Conflict — confusion and harshness (Eight)",
+      "lesson": "Eight of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_09": {
+      "name": "Nine of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Nine)",
+      "reversed": "Thought & Conflict — confusion and harshness (Nine)",
+      "lesson": "Nine of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_10": {
+      "name": "Ten of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Ten)",
+      "reversed": "Thought & Conflict — confusion and harshness (Ten)",
+      "lesson": "Ten of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_11": {
+      "name": "Page of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Page)",
+      "reversed": "Thought & Conflict — confusion and harshness (Page)",
+      "lesson": "Page of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_12": {
+      "name": "Knight of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Knight)",
+      "reversed": "Thought & Conflict — confusion and harshness (Knight)",
+      "lesson": "Knight of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_13": {
+      "name": "Queen of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (Queen)",
+      "reversed": "Thought & Conflict — confusion and harshness (Queen)",
+      "lesson": "Queen of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "sword_14": {
+      "name": "King of Swords",
+      "upright": "Thought & Conflict — clear thinking and decisiveness (King)",
+      "reversed": "Thought & Conflict — confusion and harshness (King)",
+      "lesson": "King of the Swords suit. In the realm of Thought & Conflict, it signifies clear thinking and decisiveness."
+    },
+    "pentacle_01": {
+      "name": "Ace of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Ace)",
+      "reversed": "Material & Reality — insecurity and clinging (Ace)",
+      "lesson": "Ace of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_02": {
+      "name": "Two of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Two)",
+      "reversed": "Material & Reality — insecurity and clinging (Two)",
+      "lesson": "Two of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_03": {
+      "name": "Three of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Three)",
+      "reversed": "Material & Reality — insecurity and clinging (Three)",
+      "lesson": "Three of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_04": {
+      "name": "Four of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Four)",
+      "reversed": "Material & Reality — insecurity and clinging (Four)",
+      "lesson": "Four of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_05": {
+      "name": "Five of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Five)",
+      "reversed": "Material & Reality — insecurity and clinging (Five)",
+      "lesson": "Five of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_06": {
+      "name": "Six of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Six)",
+      "reversed": "Material & Reality — insecurity and clinging (Six)",
+      "lesson": "Six of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_07": {
+      "name": "Seven of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Seven)",
+      "reversed": "Material & Reality — insecurity and clinging (Seven)",
+      "lesson": "Seven of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_08": {
+      "name": "Eight of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Eight)",
+      "reversed": "Material & Reality — insecurity and clinging (Eight)",
+      "lesson": "Eight of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_09": {
+      "name": "Nine of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Nine)",
+      "reversed": "Material & Reality — insecurity and clinging (Nine)",
+      "lesson": "Nine of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_10": {
+      "name": "Ten of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Ten)",
+      "reversed": "Material & Reality — insecurity and clinging (Ten)",
+      "lesson": "Ten of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_11": {
+      "name": "Page of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Page)",
+      "reversed": "Material & Reality — insecurity and clinging (Page)",
+      "lesson": "Page of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_12": {
+      "name": "Knight of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Knight)",
+      "reversed": "Material & Reality — insecurity and clinging (Knight)",
+      "lesson": "Knight of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_13": {
+      "name": "Queen of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (Queen)",
+      "reversed": "Material & Reality — insecurity and clinging (Queen)",
+      "lesson": "Queen of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    },
+    "pentacle_14": {
+      "name": "King of Pentacles",
+      "upright": "Material & Reality — stability and practical effort (King)",
+      "reversed": "Material & Reality — insecurity and clinging (King)",
+      "lesson": "King of the Pentacles suit. In the realm of Material & Reality, it signifies stability and practical effort."
+    }
+  },
+  "ja": {
+    "major_00": {
+      "name": "愚者",
+      "upright": "新しい始まり、純粋さ、冒険",
+      "reversed": "無謀さ、遅れ、軽率さ",
+      "lesson": "大アルカナ0番。愚者は「新しい始まり、純粋さ、冒険」の象徴です。逆位置では「無謀さ、遅れ、軽率さ」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_01": {
+      "name": "魔術師",
+      "upright": "意志、創造、技術",
+      "reversed": "計画不足、才能の浪費",
+      "lesson": "大アルカナ1番。魔術師は「意志、創造、技術」の象徴です。逆位置では「計画不足、才能の浪費」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_02": {
+      "name": "女教皇",
+      "upright": "直感、秘密、内面",
+      "reversed": "秘密の隠蔽、直感の無視",
+      "lesson": "大アルカナ2番。女教皇は「直感、秘密、内面」の象徴です。逆位置では「秘密の隠蔽、直感の無視」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_03": {
+      "name": "女帝",
+      "upright": "豊かさ、育み、創造性",
+      "reversed": "依存、創造性の停滞",
+      "lesson": "大アルカナ3番。女帝は「豊かさ、育み、創造性」の象徴です。逆位置では「依存、創造性の停滞」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_04": {
+      "name": "皇帝",
+      "upright": "権威、構造、安定",
+      "reversed": "独断、硬直",
+      "lesson": "大アルカナ4番。皇帝は「権威、構造、安定」の象徴です。逆位置では「独断、硬直」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_05": {
+      "name": "教皇",
+      "upright": "伝統、教え、信念",
+      "reversed": "独善的な信念、反抗",
+      "lesson": "大アルカナ5番。教皇は「伝統、教え、信念」の象徴です。逆位置では「独善的な信念、反抗」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_06": {
+      "name": "恋人",
+      "upright": "愛、選択、調和",
+      "reversed": "不和、誤った選択",
+      "lesson": "大アルカナ6番。恋人は「愛、選択、調和」の象徴です。逆位置では「不和、誤った選択」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_07": {
+      "name": "戦車",
+      "upright": "勝利、推進、意志",
+      "reversed": "挫折、方向の喪失",
+      "lesson": "大アルカナ7番。戦車は「勝利、推進、意志」の象徴です。逆位置では「挫折、方向の喪失」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_08": {
+      "name": "力",
+      "upright": "勇気、忍耐、やさしい強さ",
+      "reversed": "自信のなさ、抑圧",
+      "lesson": "大アルカナ8番。力は「勇気、忍耐、やさしい強さ」の象徴です。逆位置では「自信のなさ、抑圧」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_09": {
+      "name": "隠者",
+      "upright": "内省、知恵、孤独",
+      "reversed": "孤立、頑固さ",
+      "lesson": "大アルカナ9番。隠者は「内省、知恵、孤独」の象徴です。逆位置では「孤立、頑固さ」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_10": {
+      "name": "運命の輪",
+      "upright": "変化、機会、循環",
+      "reversed": "不運、抵抗",
+      "lesson": "大アルカナ10番。運命の輪は「変化、機会、循環」の象徴です。逆位置では「不運、抵抗」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_11": {
+      "name": "正義",
+      "upright": "公正、均衡、真実",
+      "reversed": "不公正、責任逃れ",
+      "lesson": "大アルカナ11番。正義は「公正、均衡、真実」の象徴です。逆位置では「不公正、責任逃れ」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_12": {
+      "name": "吊るされた男",
+      "upright": "犠牲、新しい視点、立ち止まり",
+      "reversed": "停滞、犠牲の拒否",
+      "lesson": "大アルカナ12番。吊るされた男は「犠牲、新しい視点、立ち止まり」の象徴です。逆位置では「停滞、犠牲の拒否」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_13": {
+      "name": "死神",
+      "upright": "転換、終わりと始まり、変容",
+      "reversed": "停滞、変化への恐れ",
+      "lesson": "大アルカナ13番。死神は「転換、終わりと始まり、変容」の象徴です。逆位置では「停滞、変化への恐れ」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_14": {
+      "name": "節制",
+      "upright": "均衡、節制、癒し",
+      "reversed": "不均衡、過剰",
+      "lesson": "大アルカナ14番。節制は「均衡、節制、癒し」の象徴です。逆位置では「不均衡、過剰」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_15": {
+      "name": "悪魔",
+      "upright": "執着、誘惑、束縛",
+      "reversed": "解放、執着の手放し",
+      "lesson": "大アルカナ15番。悪魔は「執着、誘惑、束縛」の象徴です。逆位置では「解放、執着の手放し」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_16": {
+      "name": "塔",
+      "upright": "急変、崩壊、覚醒",
+      "reversed": "危機の回避、恐れ",
+      "lesson": "大アルカナ16番。塔は「急変、崩壊、覚醒」の象徴です。逆位置では「危機の回避、恐れ」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_17": {
+      "name": "星",
+      "upright": "希望、癒し、ひらめき",
+      "reversed": "落胆、信頼の喪失",
+      "lesson": "大アルカナ17番。星は「希望、癒し、ひらめき」の象徴です。逆位置では「落胆、信頼の喪失」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_18": {
+      "name": "月",
+      "upright": "不安、幻想、無意識",
+      "reversed": "混乱の解消、真実との対面",
+      "lesson": "大アルカナ18番。月は「不安、幻想、無意識」の象徴です。逆位置では「混乱の解消、真実との対面」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_19": {
+      "name": "太陽",
+      "upright": "喜び、成功、活力",
+      "reversed": "一時的な喜び、傲慢",
+      "lesson": "大アルカナ19番。太陽は「喜び、成功、活力」の象徴です。逆位置では「一時的な喜び、傲慢」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_20": {
+      "name": "審判",
+      "upright": "再生、覚醒、使命",
+      "reversed": "自己批判、遅れ",
+      "lesson": "大アルカナ20番。審判は「再生、覚醒、使命」の象徴です。逆位置では「自己批判、遅れ」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "major_21": {
+      "name": "世界",
+      "upright": "完成、達成、統合",
+      "reversed": "未完成、停滞",
+      "lesson": "大アルカナ21番。世界は「完成、達成、統合」の象徴です。逆位置では「未完成、停滞」のメッセージを伝えます。学習のヒント：正位置と逆位置のキーワードを声に出して読み、日常の場面に一文でつなげてみましょう。"
+    },
+    "cup_01": {
+      "name": "カップのエース",
+      "upright": "感情・関係 — 感情の流れとつながり（エース）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（エース）",
+      "lesson": "カップのスートのエース。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_02": {
+      "name": "カップの2",
+      "upright": "感情・関係 — 感情の流れとつながり（2）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（2）",
+      "lesson": "カップのスートの2。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_03": {
+      "name": "カップの3",
+      "upright": "感情・関係 — 感情の流れとつながり（3）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（3）",
+      "lesson": "カップのスートの3。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_04": {
+      "name": "カップの4",
+      "upright": "感情・関係 — 感情の流れとつながり（4）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（4）",
+      "lesson": "カップのスートの4。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_05": {
+      "name": "カップの5",
+      "upright": "感情・関係 — 感情の流れとつながり（5）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（5）",
+      "lesson": "カップのスートの5。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_06": {
+      "name": "カップの6",
+      "upright": "感情・関係 — 感情の流れとつながり（6）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（6）",
+      "lesson": "カップのスートの6。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_07": {
+      "name": "カップの7",
+      "upright": "感情・関係 — 感情の流れとつながり（7）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（7）",
+      "lesson": "カップのスートの7。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_08": {
+      "name": "カップの8",
+      "upright": "感情・関係 — 感情の流れとつながり（8）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（8）",
+      "lesson": "カップのスートの8。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_09": {
+      "name": "カップの9",
+      "upright": "感情・関係 — 感情の流れとつながり（9）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（9）",
+      "lesson": "カップのスートの9。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_10": {
+      "name": "カップの10",
+      "upright": "感情・関係 — 感情の流れとつながり（10）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（10）",
+      "lesson": "カップのスートの10。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_11": {
+      "name": "カップのペイジ",
+      "upright": "感情・関係 — 感情の流れとつながり（ペイジ）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（ペイジ）",
+      "lesson": "カップのスートのペイジ。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_12": {
+      "name": "カップのナイト",
+      "upright": "感情・関係 — 感情の流れとつながり（ナイト）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（ナイト）",
+      "lesson": "カップのスートのナイト。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_13": {
+      "name": "カップのクイーン",
+      "upright": "感情・関係 — 感情の流れとつながり（クイーン）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（クイーン）",
+      "lesson": "カップのスートのクイーン。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "cup_14": {
+      "name": "カップのキング",
+      "upright": "感情・関係 — 感情の流れとつながり（キング）",
+      "reversed": "感情・関係 — 感情の不均衡・断絶（キング）",
+      "lesson": "カップのスートのキング。感情・関係の領域で、感情の流れとつながりを表します。"
+    },
+    "wand_01": {
+      "name": "ワンドのエース",
+      "upright": "情熱・行動 — エネルギーと推進力（エース）",
+      "reversed": "情熱・行動 — 消耗・遅延（エース）",
+      "lesson": "ワンドのスートのエース。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_02": {
+      "name": "ワンドの2",
+      "upright": "情熱・行動 — エネルギーと推進力（2）",
+      "reversed": "情熱・行動 — 消耗・遅延（2）",
+      "lesson": "ワンドのスートの2。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_03": {
+      "name": "ワンドの3",
+      "upright": "情熱・行動 — エネルギーと推進力（3）",
+      "reversed": "情熱・行動 — 消耗・遅延（3）",
+      "lesson": "ワンドのスートの3。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_04": {
+      "name": "ワンドの4",
+      "upright": "情熱・行動 — エネルギーと推進力（4）",
+      "reversed": "情熱・行動 — 消耗・遅延（4）",
+      "lesson": "ワンドのスートの4。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_05": {
+      "name": "ワンドの5",
+      "upright": "情熱・行動 — エネルギーと推進力（5）",
+      "reversed": "情熱・行動 — 消耗・遅延（5）",
+      "lesson": "ワンドのスートの5。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_06": {
+      "name": "ワンドの6",
+      "upright": "情熱・行動 — エネルギーと推進力（6）",
+      "reversed": "情熱・行動 — 消耗・遅延（6）",
+      "lesson": "ワンドのスートの6。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_07": {
+      "name": "ワンドの7",
+      "upright": "情熱・行動 — エネルギーと推進力（7）",
+      "reversed": "情熱・行動 — 消耗・遅延（7）",
+      "lesson": "ワンドのスートの7。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_08": {
+      "name": "ワンドの8",
+      "upright": "情熱・行動 — エネルギーと推進力（8）",
+      "reversed": "情熱・行動 — 消耗・遅延（8）",
+      "lesson": "ワンドのスートの8。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_09": {
+      "name": "ワンドの9",
+      "upright": "情熱・行動 — エネルギーと推進力（9）",
+      "reversed": "情熱・行動 — 消耗・遅延（9）",
+      "lesson": "ワンドのスートの9。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_10": {
+      "name": "ワンドの10",
+      "upright": "情熱・行動 — エネルギーと推進力（10）",
+      "reversed": "情熱・行動 — 消耗・遅延（10）",
+      "lesson": "ワンドのスートの10。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_11": {
+      "name": "ワンドのペイジ",
+      "upright": "情熱・行動 — エネルギーと推進力（ペイジ）",
+      "reversed": "情熱・行動 — 消耗・遅延（ペイジ）",
+      "lesson": "ワンドのスートのペイジ。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_12": {
+      "name": "ワンドのナイト",
+      "upright": "情熱・行動 — エネルギーと推進力（ナイト）",
+      "reversed": "情熱・行動 — 消耗・遅延（ナイト）",
+      "lesson": "ワンドのスートのナイト。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_13": {
+      "name": "ワンドのクイーン",
+      "upright": "情熱・行動 — エネルギーと推進力（クイーン）",
+      "reversed": "情熱・行動 — 消耗・遅延（クイーン）",
+      "lesson": "ワンドのスートのクイーン。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "wand_14": {
+      "name": "ワンドのキング",
+      "upright": "情熱・行動 — エネルギーと推進力（キング）",
+      "reversed": "情熱・行動 — 消耗・遅延（キング）",
+      "lesson": "ワンドのスートのキング。情熱・行動の領域で、エネルギーと推進力を表します。"
+    },
+    "sword_01": {
+      "name": "ソードのエース",
+      "upright": "思考・葛藤 — 明晰な思考と決断（エース）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（エース）",
+      "lesson": "ソードのスートのエース。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_02": {
+      "name": "ソードの2",
+      "upright": "思考・葛藤 — 明晰な思考と決断（2）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（2）",
+      "lesson": "ソードのスートの2。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_03": {
+      "name": "ソードの3",
+      "upright": "思考・葛藤 — 明晰な思考と決断（3）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（3）",
+      "lesson": "ソードのスートの3。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_04": {
+      "name": "ソードの4",
+      "upright": "思考・葛藤 — 明晰な思考と決断（4）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（4）",
+      "lesson": "ソードのスートの4。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_05": {
+      "name": "ソードの5",
+      "upright": "思考・葛藤 — 明晰な思考と決断（5）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（5）",
+      "lesson": "ソードのスートの5。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_06": {
+      "name": "ソードの6",
+      "upright": "思考・葛藤 — 明晰な思考と決断（6）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（6）",
+      "lesson": "ソードのスートの6。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_07": {
+      "name": "ソードの7",
+      "upright": "思考・葛藤 — 明晰な思考と決断（7）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（7）",
+      "lesson": "ソードのスートの7。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_08": {
+      "name": "ソードの8",
+      "upright": "思考・葛藤 — 明晰な思考と決断（8）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（8）",
+      "lesson": "ソードのスートの8。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_09": {
+      "name": "ソードの9",
+      "upright": "思考・葛藤 — 明晰な思考と決断（9）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（9）",
+      "lesson": "ソードのスートの9。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_10": {
+      "name": "ソードの10",
+      "upright": "思考・葛藤 — 明晰な思考と決断（10）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（10）",
+      "lesson": "ソードのスートの10。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_11": {
+      "name": "ソードのペイジ",
+      "upright": "思考・葛藤 — 明晰な思考と決断（ペイジ）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（ペイジ）",
+      "lesson": "ソードのスートのペイジ。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_12": {
+      "name": "ソードのナイト",
+      "upright": "思考・葛藤 — 明晰な思考と決断（ナイト）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（ナイト）",
+      "lesson": "ソードのスートのナイト。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_13": {
+      "name": "ソードのクイーン",
+      "upright": "思考・葛藤 — 明晰な思考と決断（クイーン）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（クイーン）",
+      "lesson": "ソードのスートのクイーン。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "sword_14": {
+      "name": "ソードのキング",
+      "upright": "思考・葛藤 — 明晰な思考と決断（キング）",
+      "reversed": "思考・葛藤 — 混乱・冷酷さ（キング）",
+      "lesson": "ソードのスートのキング。思考・葛藤の領域で、明晰な思考と決断を表します。"
+    },
+    "pentacle_01": {
+      "name": "ペンタクルのエース",
+      "upright": "物質・現実 — 安定と実践（エース）",
+      "reversed": "物質・現実 — 不安・執着（エース）",
+      "lesson": "ペンタクルのスートのエース。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_02": {
+      "name": "ペンタクルの2",
+      "upright": "物質・現実 — 安定と実践（2）",
+      "reversed": "物質・現実 — 不安・執着（2）",
+      "lesson": "ペンタクルのスートの2。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_03": {
+      "name": "ペンタクルの3",
+      "upright": "物質・現実 — 安定と実践（3）",
+      "reversed": "物質・現実 — 不安・執着（3）",
+      "lesson": "ペンタクルのスートの3。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_04": {
+      "name": "ペンタクルの4",
+      "upright": "物質・現実 — 安定と実践（4）",
+      "reversed": "物質・現実 — 不安・執着（4）",
+      "lesson": "ペンタクルのスートの4。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_05": {
+      "name": "ペンタクルの5",
+      "upright": "物質・現実 — 安定と実践（5）",
+      "reversed": "物質・現実 — 不安・執着（5）",
+      "lesson": "ペンタクルのスートの5。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_06": {
+      "name": "ペンタクルの6",
+      "upright": "物質・現実 — 安定と実践（6）",
+      "reversed": "物質・現実 — 不安・執着（6）",
+      "lesson": "ペンタクルのスートの6。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_07": {
+      "name": "ペンタクルの7",
+      "upright": "物質・現実 — 安定と実践（7）",
+      "reversed": "物質・現実 — 不安・執着（7）",
+      "lesson": "ペンタクルのスートの7。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_08": {
+      "name": "ペンタクルの8",
+      "upright": "物質・現実 — 安定と実践（8）",
+      "reversed": "物質・現実 — 不安・執着（8）",
+      "lesson": "ペンタクルのスートの8。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_09": {
+      "name": "ペンタクルの9",
+      "upright": "物質・現実 — 安定と実践（9）",
+      "reversed": "物質・現実 — 不安・執着（9）",
+      "lesson": "ペンタクルのスートの9。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_10": {
+      "name": "ペンタクルの10",
+      "upright": "物質・現実 — 安定と実践（10）",
+      "reversed": "物質・現実 — 不安・執着（10）",
+      "lesson": "ペンタクルのスートの10。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_11": {
+      "name": "ペンタクルのペイジ",
+      "upright": "物質・現実 — 安定と実践（ペイジ）",
+      "reversed": "物質・現実 — 不安・執着（ペイジ）",
+      "lesson": "ペンタクルのスートのペイジ。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_12": {
+      "name": "ペンタクルのナイト",
+      "upright": "物質・現実 — 安定と実践（ナイト）",
+      "reversed": "物質・現実 — 不安・執着（ナイト）",
+      "lesson": "ペンタクルのスートのナイト。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_13": {
+      "name": "ペンタクルのクイーン",
+      "upright": "物質・現実 — 安定と実践（クイーン）",
+      "reversed": "物質・現実 — 不安・執着（クイーン）",
+      "lesson": "ペンタクルのスートのクイーン。物質・現実の領域で、安定と実践を表します。"
+    },
+    "pentacle_14": {
+      "name": "ペンタクルのキング",
+      "upright": "物質・現実 — 安定と実践（キング）",
+      "reversed": "物質・現実 — 不安・執着（キング）",
+      "lesson": "ペンタクルのスートのキング。物質・現実の領域で、安定と実践を表します。"
+    }
+  },
+  "zh": {
+    "major_00": {
+      "name": "愚者",
+      "upright": "新的开始、纯真、冒险",
+      "reversed": "鲁莽、拖延、轻率",
+      "lesson": "大阿卡纳第0号。愚者象征着新的开始、纯真、冒险。逆位时，它传达鲁莽、拖延、轻率的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_01": {
+      "name": "魔术师",
+      "upright": "意志、创造、技艺",
+      "reversed": "缺乏计划、浪费才能",
+      "lesson": "大阿卡纳第1号。魔术师象征着意志、创造、技艺。逆位时，它传达缺乏计划、浪费才能的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_02": {
+      "name": "女祭司",
+      "upright": "直觉、秘密、内在",
+      "reversed": "隐瞒秘密、忽视直觉",
+      "lesson": "大阿卡纳第2号。女祭司象征着直觉、秘密、内在。逆位时，它传达隐瞒秘密、忽视直觉的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_03": {
+      "name": "皇后",
+      "upright": "丰饶、滋养、创造力",
+      "reversed": "依赖、创意受阻",
+      "lesson": "大阿卡纳第3号。皇后象征着丰饶、滋养、创造力。逆位时，它传达依赖、创意受阻的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_04": {
+      "name": "皇帝",
+      "upright": "权威、秩序、稳定",
+      "reversed": "独断、僵化",
+      "lesson": "大阿卡纳第4号。皇帝象征着权威、秩序、稳定。逆位时，它传达独断、僵化的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_05": {
+      "name": "教皇",
+      "upright": "传统、教导、信念",
+      "reversed": "教条的信念、叛逆",
+      "lesson": "大阿卡纳第5号。教皇象征着传统、教导、信念。逆位时，它传达教条的信念、叛逆的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_06": {
+      "name": "恋人",
+      "upright": "爱、抉择、和谐",
+      "reversed": "不和、错误的选择",
+      "lesson": "大阿卡纳第6号。恋人象征着爱、抉择、和谐。逆位时，它传达不和、错误的选择的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_07": {
+      "name": "战车",
+      "upright": "胜利、推进、意志",
+      "reversed": "受挫、失去方向",
+      "lesson": "大阿卡纳第7号。战车象征着胜利、推进、意志。逆位时，它传达受挫、失去方向的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_08": {
+      "name": "力量",
+      "upright": "勇气、忍耐、温柔的力量",
+      "reversed": "缺乏自信、压抑",
+      "lesson": "大阿卡纳第8号。力量象征着勇气、忍耐、温柔的力量。逆位时，它传达缺乏自信、压抑的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_09": {
+      "name": "隐士",
+      "upright": "省察、智慧、独处",
+      "reversed": "孤立、固执",
+      "lesson": "大阿卡纳第9号。隐士象征着省察、智慧、独处。逆位时，它传达孤立、固执的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_10": {
+      "name": "命运之轮",
+      "upright": "变化、机会、循环",
+      "reversed": "厄运、抗拒",
+      "lesson": "大阿卡纳第10号。命运之轮象征着变化、机会、循环。逆位时，它传达厄运、抗拒的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_11": {
+      "name": "正义",
+      "upright": "公正、平衡、真相",
+      "reversed": "不公、逃避责任",
+      "lesson": "大阿卡纳第11号。正义象征着公正、平衡、真相。逆位时，它传达不公、逃避责任的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_12": {
+      "name": "倒吊人",
+      "upright": "牺牲、新的视角、停顿",
+      "reversed": "停滞、拒绝付出",
+      "lesson": "大阿卡纳第12号。倒吊人象征着牺牲、新的视角、停顿。逆位时，它传达停滞、拒绝付出的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_13": {
+      "name": "死神",
+      "upright": "转变、终结与开始、蜕变",
+      "reversed": "停滞、害怕改变",
+      "lesson": "大阿卡纳第13号。死神象征着转变、终结与开始、蜕变。逆位时，它传达停滞、害怕改变的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_14": {
+      "name": "节制",
+      "upright": "平衡、节制、疗愈",
+      "reversed": "失衡、过度",
+      "lesson": "大阿卡纳第14号。节制象征着平衡、节制、疗愈。逆位时，它传达失衡、过度的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_15": {
+      "name": "恶魔",
+      "upright": "执着、诱惑、束缚",
+      "reversed": "解放、放下执着",
+      "lesson": "大阿卡纳第15号。恶魔象征着执着、诱惑、束缚。逆位时，它传达解放、放下执着的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_16": {
+      "name": "塔",
+      "upright": "剧变、崩塌、觉醒",
+      "reversed": "回避危机、恐惧",
+      "lesson": "大阿卡纳第16号。塔象征着剧变、崩塌、觉醒。逆位时，它传达回避危机、恐惧的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_17": {
+      "name": "星星",
+      "upright": "希望、疗愈、灵感",
+      "reversed": "灰心、失去信任",
+      "lesson": "大阿卡纳第17号。星星象征着希望、疗愈、灵感。逆位时，它传达灰心、失去信任的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_18": {
+      "name": "月亮",
+      "upright": "不安、幻象、潜意识",
+      "reversed": "迷雾散去、直面真相",
+      "lesson": "大阿卡纳第18号。月亮象征着不安、幻象、潜意识。逆位时，它传达迷雾散去、直面真相的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_19": {
+      "name": "太阳",
+      "upright": "喜悦、成功、活力",
+      "reversed": "短暂的欢愉、傲慢",
+      "lesson": "大阿卡纳第19号。太阳象征着喜悦、成功、活力。逆位时，它传达短暂的欢愉、傲慢的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_20": {
+      "name": "审判",
+      "upright": "重生、觉醒、召唤",
+      "reversed": "自我苛责、拖延",
+      "lesson": "大阿卡纳第20号。审判象征着重生、觉醒、召唤。逆位时，它传达自我苛责、拖延的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "major_21": {
+      "name": "世界",
+      "upright": "圆满、成就、整合",
+      "reversed": "未竟、停滞",
+      "lesson": "大阿卡纳第21号。世界象征着圆满、成就、整合。逆位时，它传达未竟、停滞的讯息。学习提示：把正位与逆位的关键词大声读出来，再用一句话把它们连到日常情境上。"
+    },
+    "cup_01": {
+      "name": "圣杯首牌",
+      "upright": "情感·关系 — 情感的流动与联结（首牌）",
+      "reversed": "情感·关系 — 情感失衡·断裂（首牌）",
+      "lesson": "圣杯牌组的首牌。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_02": {
+      "name": "圣杯二",
+      "upright": "情感·关系 — 情感的流动与联结（二）",
+      "reversed": "情感·关系 — 情感失衡·断裂（二）",
+      "lesson": "圣杯牌组的二。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_03": {
+      "name": "圣杯三",
+      "upright": "情感·关系 — 情感的流动与联结（三）",
+      "reversed": "情感·关系 — 情感失衡·断裂（三）",
+      "lesson": "圣杯牌组的三。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_04": {
+      "name": "圣杯四",
+      "upright": "情感·关系 — 情感的流动与联结（四）",
+      "reversed": "情感·关系 — 情感失衡·断裂（四）",
+      "lesson": "圣杯牌组的四。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_05": {
+      "name": "圣杯五",
+      "upright": "情感·关系 — 情感的流动与联结（五）",
+      "reversed": "情感·关系 — 情感失衡·断裂（五）",
+      "lesson": "圣杯牌组的五。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_06": {
+      "name": "圣杯六",
+      "upright": "情感·关系 — 情感的流动与联结（六）",
+      "reversed": "情感·关系 — 情感失衡·断裂（六）",
+      "lesson": "圣杯牌组的六。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_07": {
+      "name": "圣杯七",
+      "upright": "情感·关系 — 情感的流动与联结（七）",
+      "reversed": "情感·关系 — 情感失衡·断裂（七）",
+      "lesson": "圣杯牌组的七。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_08": {
+      "name": "圣杯八",
+      "upright": "情感·关系 — 情感的流动与联结（八）",
+      "reversed": "情感·关系 — 情感失衡·断裂（八）",
+      "lesson": "圣杯牌组的八。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_09": {
+      "name": "圣杯九",
+      "upright": "情感·关系 — 情感的流动与联结（九）",
+      "reversed": "情感·关系 — 情感失衡·断裂（九）",
+      "lesson": "圣杯牌组的九。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_10": {
+      "name": "圣杯十",
+      "upright": "情感·关系 — 情感的流动与联结（十）",
+      "reversed": "情感·关系 — 情感失衡·断裂（十）",
+      "lesson": "圣杯牌组的十。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_11": {
+      "name": "圣杯侍从",
+      "upright": "情感·关系 — 情感的流动与联结（侍从）",
+      "reversed": "情感·关系 — 情感失衡·断裂（侍从）",
+      "lesson": "圣杯牌组的侍从。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_12": {
+      "name": "圣杯骑士",
+      "upright": "情感·关系 — 情感的流动与联结（骑士）",
+      "reversed": "情感·关系 — 情感失衡·断裂（骑士）",
+      "lesson": "圣杯牌组的骑士。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_13": {
+      "name": "圣杯王后",
+      "upright": "情感·关系 — 情感的流动与联结（王后）",
+      "reversed": "情感·关系 — 情感失衡·断裂（王后）",
+      "lesson": "圣杯牌组的王后。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "cup_14": {
+      "name": "圣杯国王",
+      "upright": "情感·关系 — 情感的流动与联结（国王）",
+      "reversed": "情感·关系 — 情感失衡·断裂（国王）",
+      "lesson": "圣杯牌组的国王。在情感·关系的领域中，象征情感的流动与联结。"
+    },
+    "wand_01": {
+      "name": "权杖首牌",
+      "upright": "热情·行动 — 能量与推动力（首牌）",
+      "reversed": "热情·行动 — 耗竭·拖延（首牌）",
+      "lesson": "权杖牌组的首牌。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_02": {
+      "name": "权杖二",
+      "upright": "热情·行动 — 能量与推动力（二）",
+      "reversed": "热情·行动 — 耗竭·拖延（二）",
+      "lesson": "权杖牌组的二。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_03": {
+      "name": "权杖三",
+      "upright": "热情·行动 — 能量与推动力（三）",
+      "reversed": "热情·行动 — 耗竭·拖延（三）",
+      "lesson": "权杖牌组的三。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_04": {
+      "name": "权杖四",
+      "upright": "热情·行动 — 能量与推动力（四）",
+      "reversed": "热情·行动 — 耗竭·拖延（四）",
+      "lesson": "权杖牌组的四。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_05": {
+      "name": "权杖五",
+      "upright": "热情·行动 — 能量与推动力（五）",
+      "reversed": "热情·行动 — 耗竭·拖延（五）",
+      "lesson": "权杖牌组的五。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_06": {
+      "name": "权杖六",
+      "upright": "热情·行动 — 能量与推动力（六）",
+      "reversed": "热情·行动 — 耗竭·拖延（六）",
+      "lesson": "权杖牌组的六。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_07": {
+      "name": "权杖七",
+      "upright": "热情·行动 — 能量与推动力（七）",
+      "reversed": "热情·行动 — 耗竭·拖延（七）",
+      "lesson": "权杖牌组的七。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_08": {
+      "name": "权杖八",
+      "upright": "热情·行动 — 能量与推动力（八）",
+      "reversed": "热情·行动 — 耗竭·拖延（八）",
+      "lesson": "权杖牌组的八。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_09": {
+      "name": "权杖九",
+      "upright": "热情·行动 — 能量与推动力（九）",
+      "reversed": "热情·行动 — 耗竭·拖延（九）",
+      "lesson": "权杖牌组的九。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_10": {
+      "name": "权杖十",
+      "upright": "热情·行动 — 能量与推动力（十）",
+      "reversed": "热情·行动 — 耗竭·拖延（十）",
+      "lesson": "权杖牌组的十。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_11": {
+      "name": "权杖侍从",
+      "upright": "热情·行动 — 能量与推动力（侍从）",
+      "reversed": "热情·行动 — 耗竭·拖延（侍从）",
+      "lesson": "权杖牌组的侍从。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_12": {
+      "name": "权杖骑士",
+      "upright": "热情·行动 — 能量与推动力（骑士）",
+      "reversed": "热情·行动 — 耗竭·拖延（骑士）",
+      "lesson": "权杖牌组的骑士。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_13": {
+      "name": "权杖王后",
+      "upright": "热情·行动 — 能量与推动力（王后）",
+      "reversed": "热情·行动 — 耗竭·拖延（王后）",
+      "lesson": "权杖牌组的王后。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "wand_14": {
+      "name": "权杖国王",
+      "upright": "热情·行动 — 能量与推动力（国王）",
+      "reversed": "热情·行动 — 耗竭·拖延（国王）",
+      "lesson": "权杖牌组的国王。在热情·行动的领域中，象征能量与推动力。"
+    },
+    "sword_01": {
+      "name": "宝剑首牌",
+      "upright": "思维·冲突 — 清晰的思考与决断（首牌）",
+      "reversed": "思维·冲突 — 混乱·苛刻（首牌）",
+      "lesson": "宝剑牌组的首牌。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_02": {
+      "name": "宝剑二",
+      "upright": "思维·冲突 — 清晰的思考与决断（二）",
+      "reversed": "思维·冲突 — 混乱·苛刻（二）",
+      "lesson": "宝剑牌组的二。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_03": {
+      "name": "宝剑三",
+      "upright": "思维·冲突 — 清晰的思考与决断（三）",
+      "reversed": "思维·冲突 — 混乱·苛刻（三）",
+      "lesson": "宝剑牌组的三。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_04": {
+      "name": "宝剑四",
+      "upright": "思维·冲突 — 清晰的思考与决断（四）",
+      "reversed": "思维·冲突 — 混乱·苛刻（四）",
+      "lesson": "宝剑牌组的四。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_05": {
+      "name": "宝剑五",
+      "upright": "思维·冲突 — 清晰的思考与决断（五）",
+      "reversed": "思维·冲突 — 混乱·苛刻（五）",
+      "lesson": "宝剑牌组的五。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_06": {
+      "name": "宝剑六",
+      "upright": "思维·冲突 — 清晰的思考与决断（六）",
+      "reversed": "思维·冲突 — 混乱·苛刻（六）",
+      "lesson": "宝剑牌组的六。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_07": {
+      "name": "宝剑七",
+      "upright": "思维·冲突 — 清晰的思考与决断（七）",
+      "reversed": "思维·冲突 — 混乱·苛刻（七）",
+      "lesson": "宝剑牌组的七。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_08": {
+      "name": "宝剑八",
+      "upright": "思维·冲突 — 清晰的思考与决断（八）",
+      "reversed": "思维·冲突 — 混乱·苛刻（八）",
+      "lesson": "宝剑牌组的八。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_09": {
+      "name": "宝剑九",
+      "upright": "思维·冲突 — 清晰的思考与决断（九）",
+      "reversed": "思维·冲突 — 混乱·苛刻（九）",
+      "lesson": "宝剑牌组的九。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_10": {
+      "name": "宝剑十",
+      "upright": "思维·冲突 — 清晰的思考与决断（十）",
+      "reversed": "思维·冲突 — 混乱·苛刻（十）",
+      "lesson": "宝剑牌组的十。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_11": {
+      "name": "宝剑侍从",
+      "upright": "思维·冲突 — 清晰的思考与决断（侍从）",
+      "reversed": "思维·冲突 — 混乱·苛刻（侍从）",
+      "lesson": "宝剑牌组的侍从。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_12": {
+      "name": "宝剑骑士",
+      "upright": "思维·冲突 — 清晰的思考与决断（骑士）",
+      "reversed": "思维·冲突 — 混乱·苛刻（骑士）",
+      "lesson": "宝剑牌组的骑士。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_13": {
+      "name": "宝剑王后",
+      "upright": "思维·冲突 — 清晰的思考与决断（王后）",
+      "reversed": "思维·冲突 — 混乱·苛刻（王后）",
+      "lesson": "宝剑牌组的王后。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "sword_14": {
+      "name": "宝剑国王",
+      "upright": "思维·冲突 — 清晰的思考与决断（国王）",
+      "reversed": "思维·冲突 — 混乱·苛刻（国王）",
+      "lesson": "宝剑牌组的国王。在思维·冲突的领域中，象征清晰的思考与决断。"
+    },
+    "pentacle_01": {
+      "name": "星币首牌",
+      "upright": "物质·现实 — 稳定与实践（首牌）",
+      "reversed": "物质·现实 — 不安·执着（首牌）",
+      "lesson": "星币牌组的首牌。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_02": {
+      "name": "星币二",
+      "upright": "物质·现实 — 稳定与实践（二）",
+      "reversed": "物质·现实 — 不安·执着（二）",
+      "lesson": "星币牌组的二。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_03": {
+      "name": "星币三",
+      "upright": "物质·现实 — 稳定与实践（三）",
+      "reversed": "物质·现实 — 不安·执着（三）",
+      "lesson": "星币牌组的三。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_04": {
+      "name": "星币四",
+      "upright": "物质·现实 — 稳定与实践（四）",
+      "reversed": "物质·现实 — 不安·执着（四）",
+      "lesson": "星币牌组的四。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_05": {
+      "name": "星币五",
+      "upright": "物质·现实 — 稳定与实践（五）",
+      "reversed": "物质·现实 — 不安·执着（五）",
+      "lesson": "星币牌组的五。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_06": {
+      "name": "星币六",
+      "upright": "物质·现实 — 稳定与实践（六）",
+      "reversed": "物质·现实 — 不安·执着（六）",
+      "lesson": "星币牌组的六。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_07": {
+      "name": "星币七",
+      "upright": "物质·现实 — 稳定与实践（七）",
+      "reversed": "物质·现实 — 不安·执着（七）",
+      "lesson": "星币牌组的七。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_08": {
+      "name": "星币八",
+      "upright": "物质·现实 — 稳定与实践（八）",
+      "reversed": "物质·现实 — 不安·执着（八）",
+      "lesson": "星币牌组的八。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_09": {
+      "name": "星币九",
+      "upright": "物质·现实 — 稳定与实践（九）",
+      "reversed": "物质·现实 — 不安·执着（九）",
+      "lesson": "星币牌组的九。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_10": {
+      "name": "星币十",
+      "upright": "物质·现实 — 稳定与实践（十）",
+      "reversed": "物质·现实 — 不安·执着（十）",
+      "lesson": "星币牌组的十。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_11": {
+      "name": "星币侍从",
+      "upright": "物质·现实 — 稳定与实践（侍从）",
+      "reversed": "物质·现实 — 不安·执着（侍从）",
+      "lesson": "星币牌组的侍从。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_12": {
+      "name": "星币骑士",
+      "upright": "物质·现实 — 稳定与实践（骑士）",
+      "reversed": "物质·现实 — 不安·执着（骑士）",
+      "lesson": "星币牌组的骑士。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_13": {
+      "name": "星币王后",
+      "upright": "物质·现实 — 稳定与实践（王后）",
+      "reversed": "物质·现实 — 不安·执着（王后）",
+      "lesson": "星币牌组的王后。在物质·现实的领域中，象征稳定与实践。"
+    },
+    "pentacle_14": {
+      "name": "星币国王",
+      "upright": "物质·现实 — 稳定与实践（国王）",
+      "reversed": "物质·现实 — 不安·执着（国王）",
+      "lesson": "星币牌组的国王。在物质·现实的领域中，象征稳定与实践。"
+    }
+  },
+  "vi": {
+    "major_00": {
+      "name": "Gã Khờ",
+      "upright": "Khởi đầu mới, sự ngây thơ, phiêu lưu",
+      "reversed": "Liều lĩnh, trì hoãn, khinh suất",
+      "lesson": "Ẩn Chính số 0. Gã Khờ tượng trưng cho khởi đầu mới, sự ngây thơ, phiêu lưu. Khi ngược, lá bài mang thông điệp liều lĩnh, trì hoãn, khinh suất. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_01": {
+      "name": "Nhà Ảo Thuật",
+      "upright": "Ý chí, sáng tạo, kỹ năng",
+      "reversed": "Thiếu kế hoạch, lãng phí tài năng",
+      "lesson": "Ẩn Chính số 1. Nhà Ảo Thuật tượng trưng cho ý chí, sáng tạo, kỹ năng. Khi ngược, lá bài mang thông điệp thiếu kế hoạch, lãng phí tài năng. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_02": {
+      "name": "Nữ Tư Tế",
+      "upright": "Trực giác, bí mật, nội tâm",
+      "reversed": "Che giấu bí mật, phớt lờ trực giác",
+      "lesson": "Ẩn Chính số 2. Nữ Tư Tế tượng trưng cho trực giác, bí mật, nội tâm. Khi ngược, lá bài mang thông điệp che giấu bí mật, phớt lờ trực giác. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_03": {
+      "name": "Nữ Hoàng",
+      "upright": "Sung túc, nuôi dưỡng, sáng tạo",
+      "reversed": "Phụ thuộc, bế tắc sáng tạo",
+      "lesson": "Ẩn Chính số 3. Nữ Hoàng tượng trưng cho sung túc, nuôi dưỡng, sáng tạo. Khi ngược, lá bài mang thông điệp phụ thuộc, bế tắc sáng tạo. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_04": {
+      "name": "Hoàng Đế",
+      "upright": "Quyền uy, cấu trúc, ổn định",
+      "reversed": "Độc đoán, cứng nhắc",
+      "lesson": "Ẩn Chính số 4. Hoàng Đế tượng trưng cho quyền uy, cấu trúc, ổn định. Khi ngược, lá bài mang thông điệp độc đoán, cứng nhắc. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_05": {
+      "name": "Giáo Hoàng",
+      "upright": "Truyền thống, giáo huấn, niềm tin",
+      "reversed": "Niềm tin giáo điều, nổi loạn",
+      "lesson": "Ẩn Chính số 5. Giáo Hoàng tượng trưng cho truyền thống, giáo huấn, niềm tin. Khi ngược, lá bài mang thông điệp niềm tin giáo điều, nổi loạn. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_06": {
+      "name": "Tình Nhân",
+      "upright": "Tình yêu, lựa chọn, hòa hợp",
+      "reversed": "Bất hòa, lựa chọn sai lầm",
+      "lesson": "Ẩn Chính số 6. Tình Nhân tượng trưng cho tình yêu, lựa chọn, hòa hợp. Khi ngược, lá bài mang thông điệp bất hòa, lựa chọn sai lầm. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_07": {
+      "name": "Cỗ Xe",
+      "upright": "Chiến thắng, thúc đẩy, ý chí",
+      "reversed": "Thất bại, mất phương hướng",
+      "lesson": "Ẩn Chính số 7. Cỗ Xe tượng trưng cho chiến thắng, thúc đẩy, ý chí. Khi ngược, lá bài mang thông điệp thất bại, mất phương hướng. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_08": {
+      "name": "Sức Mạnh",
+      "upright": "Can đảm, kiên nhẫn, sức mạnh dịu dàng",
+      "reversed": "Thiếu tự tin, bị kìm nén",
+      "lesson": "Ẩn Chính số 8. Sức Mạnh tượng trưng cho can đảm, kiên nhẫn, sức mạnh dịu dàng. Khi ngược, lá bài mang thông điệp thiếu tự tin, bị kìm nén. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_09": {
+      "name": "Ẩn Sĩ",
+      "upright": "Chiêm nghiệm, trí tuệ, cô độc",
+      "reversed": "Cô lập, cố chấp",
+      "lesson": "Ẩn Chính số 9. Ẩn Sĩ tượng trưng cho chiêm nghiệm, trí tuệ, cô độc. Khi ngược, lá bài mang thông điệp cô lập, cố chấp. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_10": {
+      "name": "Bánh Xe Số Phận",
+      "upright": "Thay đổi, cơ hội, chu kỳ",
+      "reversed": "Vận rủi, chống cự",
+      "lesson": "Ẩn Chính số 10. Bánh Xe Số Phận tượng trưng cho thay đổi, cơ hội, chu kỳ. Khi ngược, lá bài mang thông điệp vận rủi, chống cự. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_11": {
+      "name": "Công Lý",
+      "upright": "Công bằng, cân bằng, sự thật",
+      "reversed": "Bất công, trốn tránh trách nhiệm",
+      "lesson": "Ẩn Chính số 11. Công Lý tượng trưng cho công bằng, cân bằng, sự thật. Khi ngược, lá bài mang thông điệp bất công, trốn tránh trách nhiệm. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_12": {
+      "name": "Người Treo Ngược",
+      "upright": "Hy sinh, góc nhìn mới, tạm dừng",
+      "reversed": "Đình trệ, từ chối hy sinh",
+      "lesson": "Ẩn Chính số 12. Người Treo Ngược tượng trưng cho hy sinh, góc nhìn mới, tạm dừng. Khi ngược, lá bài mang thông điệp đình trệ, từ chối hy sinh. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_13": {
+      "name": "Thần Chết",
+      "upright": "Chuyển tiếp, kết thúc và khởi đầu, biến đổi",
+      "reversed": "Đình trệ, sợ thay đổi",
+      "lesson": "Ẩn Chính số 13. Thần Chết tượng trưng cho chuyển tiếp, kết thúc và khởi đầu, biến đổi. Khi ngược, lá bài mang thông điệp đình trệ, sợ thay đổi. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_14": {
+      "name": "Điều Độ",
+      "upright": "Cân bằng, điều độ, chữa lành",
+      "reversed": "Mất cân bằng, thái quá",
+      "lesson": "Ẩn Chính số 14. Điều Độ tượng trưng cho cân bằng, điều độ, chữa lành. Khi ngược, lá bài mang thông điệp mất cân bằng, thái quá. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_15": {
+      "name": "Ác Quỷ",
+      "upright": "Ám ảnh, cám dỗ, ràng buộc",
+      "reversed": "Giải thoát, buông bỏ chấp niệm",
+      "lesson": "Ẩn Chính số 15. Ác Quỷ tượng trưng cho ám ảnh, cám dỗ, ràng buộc. Khi ngược, lá bài mang thông điệp giải thoát, buông bỏ chấp niệm. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_16": {
+      "name": "Tòa Tháp",
+      "upright": "Biến động đột ngột, sụp đổ, thức tỉnh",
+      "reversed": "Né tránh khủng hoảng, sợ hãi",
+      "lesson": "Ẩn Chính số 16. Tòa Tháp tượng trưng cho biến động đột ngột, sụp đổ, thức tỉnh. Khi ngược, lá bài mang thông điệp né tránh khủng hoảng, sợ hãi. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_17": {
+      "name": "Ngôi Sao",
+      "upright": "Hy vọng, chữa lành, cảm hứng",
+      "reversed": "Nản lòng, mất niềm tin",
+      "lesson": "Ẩn Chính số 17. Ngôi Sao tượng trưng cho hy vọng, chữa lành, cảm hứng. Khi ngược, lá bài mang thông điệp nản lòng, mất niềm tin. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_18": {
+      "name": "Mặt Trăng",
+      "upright": "Lo âu, ảo ảnh, vô thức",
+      "reversed": "Xua tan hỗn loạn, đối diện sự thật",
+      "lesson": "Ẩn Chính số 18. Mặt Trăng tượng trưng cho lo âu, ảo ảnh, vô thức. Khi ngược, lá bài mang thông điệp xua tan hỗn loạn, đối diện sự thật. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_19": {
+      "name": "Mặt Trời",
+      "upright": "Niềm vui, thành công, sức sống",
+      "reversed": "Niềm vui thoáng qua, kiêu ngạo",
+      "lesson": "Ẩn Chính số 19. Mặt Trời tượng trưng cho niềm vui, thành công, sức sống. Khi ngược, lá bài mang thông điệp niềm vui thoáng qua, kiêu ngạo. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_20": {
+      "name": "Phán Xét",
+      "upright": "Tái sinh, thức tỉnh, tiếng gọi sứ mệnh",
+      "reversed": "Tự trách, trì hoãn",
+      "lesson": "Ẩn Chính số 20. Phán Xét tượng trưng cho tái sinh, thức tỉnh, tiếng gọi sứ mệnh. Khi ngược, lá bài mang thông điệp tự trách, trì hoãn. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "major_21": {
+      "name": "Thế Giới",
+      "upright": "Hoàn thành, thành tựu, hợp nhất",
+      "reversed": "Dang dở, đình trệ",
+      "lesson": "Ẩn Chính số 21. Thế Giới tượng trưng cho hoàn thành, thành tựu, hợp nhất. Khi ngược, lá bài mang thông điệp dang dở, đình trệ. Mẹo học: đọc to từ khóa xuôi và ngược, rồi nối chúng với một tình huống thường ngày bằng một câu."
+    },
+    "cup_01": {
+      "name": "Át Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Át)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Át)",
+      "lesson": "Lá Át thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_02": {
+      "name": "Hai Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Hai)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Hai)",
+      "lesson": "Lá Hai thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_03": {
+      "name": "Ba Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Ba)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Ba)",
+      "lesson": "Lá Ba thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_04": {
+      "name": "Bốn Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Bốn)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Bốn)",
+      "lesson": "Lá Bốn thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_05": {
+      "name": "Năm Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Năm)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Năm)",
+      "lesson": "Lá Năm thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_06": {
+      "name": "Sáu Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Sáu)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Sáu)",
+      "lesson": "Lá Sáu thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_07": {
+      "name": "Bảy Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Bảy)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Bảy)",
+      "lesson": "Lá Bảy thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_08": {
+      "name": "Tám Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Tám)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Tám)",
+      "lesson": "Lá Tám thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_09": {
+      "name": "Chín Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Chín)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Chín)",
+      "lesson": "Lá Chín thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_10": {
+      "name": "Mười Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Mười)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Mười)",
+      "lesson": "Lá Mười thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_11": {
+      "name": "Tiểu Đồng Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Tiểu Đồng)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Tiểu Đồng)",
+      "lesson": "Lá Tiểu Đồng thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_12": {
+      "name": "Hiệp Sĩ Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Hiệp Sĩ)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Hiệp Sĩ)",
+      "lesson": "Lá Hiệp Sĩ thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_13": {
+      "name": "Hoàng Hậu Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Hoàng Hậu)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Hoàng Hậu)",
+      "lesson": "Lá Hoàng Hậu thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "cup_14": {
+      "name": "Vua Cốc",
+      "upright": "Cảm xúc & Quan hệ — dòng chảy cảm xúc và sự kết nối (Vua)",
+      "reversed": "Cảm xúc & Quan hệ — mất cân bằng cảm xúc, đứt gãy kết nối (Vua)",
+      "lesson": "Lá Vua thuộc bộ Cốc. Trong lĩnh vực Cảm xúc & Quan hệ, lá bài biểu thị dòng chảy cảm xúc và sự kết nối."
+    },
+    "wand_01": {
+      "name": "Át Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Át)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Át)",
+      "lesson": "Lá Át thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_02": {
+      "name": "Hai Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Hai)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Hai)",
+      "lesson": "Lá Hai thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_03": {
+      "name": "Ba Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Ba)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Ba)",
+      "lesson": "Lá Ba thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_04": {
+      "name": "Bốn Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Bốn)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Bốn)",
+      "lesson": "Lá Bốn thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_05": {
+      "name": "Năm Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Năm)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Năm)",
+      "lesson": "Lá Năm thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_06": {
+      "name": "Sáu Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Sáu)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Sáu)",
+      "lesson": "Lá Sáu thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_07": {
+      "name": "Bảy Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Bảy)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Bảy)",
+      "lesson": "Lá Bảy thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_08": {
+      "name": "Tám Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Tám)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Tám)",
+      "lesson": "Lá Tám thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_09": {
+      "name": "Chín Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Chín)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Chín)",
+      "lesson": "Lá Chín thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_10": {
+      "name": "Mười Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Mười)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Mười)",
+      "lesson": "Lá Mười thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_11": {
+      "name": "Tiểu Đồng Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Tiểu Đồng)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Tiểu Đồng)",
+      "lesson": "Lá Tiểu Đồng thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_12": {
+      "name": "Hiệp Sĩ Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Hiệp Sĩ)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Hiệp Sĩ)",
+      "lesson": "Lá Hiệp Sĩ thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_13": {
+      "name": "Hoàng Hậu Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Hoàng Hậu)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Hoàng Hậu)",
+      "lesson": "Lá Hoàng Hậu thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "wand_14": {
+      "name": "Vua Gậy",
+      "upright": "Đam mê & Hành động — năng lượng và động lực (Vua)",
+      "reversed": "Đam mê & Hành động — kiệt sức, trì hoãn (Vua)",
+      "lesson": "Lá Vua thuộc bộ Gậy. Trong lĩnh vực Đam mê & Hành động, lá bài biểu thị năng lượng và động lực."
+    },
+    "sword_01": {
+      "name": "Át Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Át)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Át)",
+      "lesson": "Lá Át thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_02": {
+      "name": "Hai Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Hai)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Hai)",
+      "lesson": "Lá Hai thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_03": {
+      "name": "Ba Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Ba)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Ba)",
+      "lesson": "Lá Ba thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_04": {
+      "name": "Bốn Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Bốn)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Bốn)",
+      "lesson": "Lá Bốn thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_05": {
+      "name": "Năm Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Năm)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Năm)",
+      "lesson": "Lá Năm thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_06": {
+      "name": "Sáu Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Sáu)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Sáu)",
+      "lesson": "Lá Sáu thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_07": {
+      "name": "Bảy Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Bảy)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Bảy)",
+      "lesson": "Lá Bảy thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_08": {
+      "name": "Tám Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Tám)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Tám)",
+      "lesson": "Lá Tám thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_09": {
+      "name": "Chín Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Chín)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Chín)",
+      "lesson": "Lá Chín thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_10": {
+      "name": "Mười Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Mười)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Mười)",
+      "lesson": "Lá Mười thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_11": {
+      "name": "Tiểu Đồng Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Tiểu Đồng)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Tiểu Đồng)",
+      "lesson": "Lá Tiểu Đồng thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_12": {
+      "name": "Hiệp Sĩ Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Hiệp Sĩ)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Hiệp Sĩ)",
+      "lesson": "Lá Hiệp Sĩ thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_13": {
+      "name": "Hoàng Hậu Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Hoàng Hậu)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Hoàng Hậu)",
+      "lesson": "Lá Hoàng Hậu thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "sword_14": {
+      "name": "Vua Kiếm",
+      "upright": "Tư duy & Xung đột — tư duy sáng rõ và sự quyết đoán (Vua)",
+      "reversed": "Tư duy & Xung đột — hỗn loạn, khắc nghiệt (Vua)",
+      "lesson": "Lá Vua thuộc bộ Kiếm. Trong lĩnh vực Tư duy & Xung đột, lá bài biểu thị tư duy sáng rõ và sự quyết đoán."
+    },
+    "pentacle_01": {
+      "name": "Át Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Át)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Át)",
+      "lesson": "Lá Át thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_02": {
+      "name": "Hai Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Hai)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Hai)",
+      "lesson": "Lá Hai thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_03": {
+      "name": "Ba Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Ba)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Ba)",
+      "lesson": "Lá Ba thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_04": {
+      "name": "Bốn Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Bốn)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Bốn)",
+      "lesson": "Lá Bốn thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_05": {
+      "name": "Năm Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Năm)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Năm)",
+      "lesson": "Lá Năm thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_06": {
+      "name": "Sáu Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Sáu)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Sáu)",
+      "lesson": "Lá Sáu thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_07": {
+      "name": "Bảy Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Bảy)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Bảy)",
+      "lesson": "Lá Bảy thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_08": {
+      "name": "Tám Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Tám)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Tám)",
+      "lesson": "Lá Tám thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_09": {
+      "name": "Chín Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Chín)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Chín)",
+      "lesson": "Lá Chín thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_10": {
+      "name": "Mười Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Mười)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Mười)",
+      "lesson": "Lá Mười thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_11": {
+      "name": "Tiểu Đồng Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Tiểu Đồng)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Tiểu Đồng)",
+      "lesson": "Lá Tiểu Đồng thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_12": {
+      "name": "Hiệp Sĩ Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Hiệp Sĩ)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Hiệp Sĩ)",
+      "lesson": "Lá Hiệp Sĩ thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_13": {
+      "name": "Hoàng Hậu Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Hoàng Hậu)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Hoàng Hậu)",
+      "lesson": "Lá Hoàng Hậu thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    },
+    "pentacle_14": {
+      "name": "Vua Tiền",
+      "upright": "Vật chất & Hiện thực — sự ổn định và thực hành (Vua)",
+      "reversed": "Vật chất & Hiện thực — bất an, bám chấp (Vua)",
+      "lesson": "Lá Vua thuộc bộ Tiền. Trong lĩnh vực Vật chất & Hiện thực, lá bài biểu thị sự ổn định và thực hành."
+    }
+  }
+}
